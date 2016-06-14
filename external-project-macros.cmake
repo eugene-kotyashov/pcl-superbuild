@@ -67,7 +67,7 @@ macro(compile_vtk)
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
       -DBUILD_SHARED_LIBS:BOOL=ON
       -DBUILD_TESTING:BOOL=OFF
-      -DVTK_IOS_BUILD:BOOL=ON
+      -DVTK_IOS_BUILD:BOOL=OFF
       -DVTK_ANDROID_BUILD:BOOL=ON
       ${vtk_module_defaults}
   )
