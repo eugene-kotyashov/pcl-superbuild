@@ -1,12 +1,12 @@
 set(CMAKE_SYSTEM_NAME Darwin)
 
-find_program(CMAKE_C_COMPILER NAME gcc
+find_program(CMAKE_C_COMPILER NAME clang++
   PATHS
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/
   /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/
   NO_DEFAULT_PATH)
 
-find_program(CMAKE_CXX_COMPILER NAME g++
+find_program(CMAKE_CXX_COMPILER NAME clang++
   PATHS
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/
   /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/
