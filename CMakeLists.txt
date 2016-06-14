@@ -18,6 +18,7 @@ compile_vtk()
 
 set(tags)
 
+# Add
 if(BUILD_ANDROID)
  list(APPEND tags android)
 endif()
@@ -30,7 +31,7 @@ endif()
 
 foreach(tag ${tags})
   crosscompile_vtk(${tag})
-  crosscompile_boost(${tag})
+  # crosscompile_boost(${tag})
   crosscompile_flann(${tag})
   crosscompile_pcl(${tag})
 endforeach()
