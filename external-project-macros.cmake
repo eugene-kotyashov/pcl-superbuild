@@ -144,7 +144,7 @@ macro(fetch_boost)
   ExternalProject_Add(
     boost-fetch
     SOURCE_DIR ${source_prefix}/boost
-    GIT_REPOSITORY git://github.com/patmarion/boost-build
+    GIT_REPOSITORY git://github.com/Sirokujira/boost-build.git
     GIT_TAG origin/master
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
@@ -183,7 +183,7 @@ macro(fetch_pcl)
   ExternalProject_Add(
     pcl-fetch
     SOURCE_DIR ${source_prefix}/pcl
-    GIT_REPOSITORY git://github.com/Sirokujira/boost-build.git
+    GIT_REPOSITORY git://github.com/patmarion/PCL.git
     GIT_TAG origin/android-tag
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
