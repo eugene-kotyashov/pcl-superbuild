@@ -1,16 +1,10 @@
-sudo: false 
 language: cpp 
-compiler: 
-  - gcc
-  - clang
 
 matrix: 
    include: 
      - os: linux
-       language: cpp
        compiler: gcc
      - os: osx
-       language: cpp
        compiler: clang
  addons: 
   apt: 

@@ -13,13 +13,12 @@ branches:
     - master 
 
 # Set build version format here instead of in the admin panel.
-version: "0.0.{build}"
+# version: "0.0.{build}"
 
 # Fix line endings in Windows. (runs before repo cloning)
 init:
   - git config --global core.autocrlf input
 
-# "C:\\android-ndk-r11c"
 environment:
   matrix:
   # Android NDK(32 bit)
@@ -53,9 +52,9 @@ build_script:
 
     cd build
 
-    cmake ../
-
-    make
+    cmake -G "MinGW Makefiles" ../
+    
+    mingw32-make
 
 before_test:
 
