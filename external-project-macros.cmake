@@ -67,8 +67,6 @@ macro(compile_vtk)
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
       -DBUILD_SHARED_LIBS:BOOL=ON
       -DBUILD_TESTING:BOOL=OFF
-      -DVTK_IOS_BUILD:BOOL=OFF
-      -DVTK_ANDROID_BUILD:BOOL=ON
       ${vtk_module_defaults}
   )
 endmacro()
@@ -204,8 +202,8 @@ macro(crosscompile_pcl tag)
   get_filename_component(toolchain_file ${original_toolchain_file} NAME)
   set(toolchain_file ${build_prefix}/${proj}/${toolchain_file})
   configure_file(${original_toolchain_file} ${toolchain_file} COPYONLY)
-  # file(APPEND ${toolchain_file}
-  #  "\nlist(APPEND CMAKE_FIND_ROOT_PATH ${install_prefix}/boost-${tag})\n")
+  file(APPEND ${toolchain_file}
+    "\nlist(APPEND CMAKE_FIND_ROOT_PATH ${install_prefix}/boost-${tag})\n")
 
   ExternalProject_Add(
     ${proj}
