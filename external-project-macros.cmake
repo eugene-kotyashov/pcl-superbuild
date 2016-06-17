@@ -45,6 +45,7 @@ macro(fetch_vtk)
     SOURCE_DIR ${source_prefix}/vtk
     GIT_REPOSITORY git://github.com/Kitware/VTK.git
     GIT_TAG origin/master
+    # GIT_TAG v6.3.0
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
@@ -182,6 +183,7 @@ macro(fetch_pcl)
     pcl-fetch
     SOURCE_DIR ${source_prefix}/pcl
     GIT_REPOSITORY git://github.com/patmarion/PCL.git
+    # GIT_REPOSITORY git://github.com/
     GIT_TAG origin/android-tag
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""

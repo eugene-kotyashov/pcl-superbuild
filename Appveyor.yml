@@ -1,0 +1,64 @@
+# 
+# PCL : http://roomplan.de/getting-started-pcl-android/
+# MinGW : https://github.com/imazen-discovery/net-gd-appveyor/blob/master/appveyor.yml
+#
+
+os:
+- Windows Server 2012 R2
+
+# branches to build 
+branches: 
+  # whitelist 
+  only: 
+    - master 
+
+# Set build version format here instead of in the admin panel.
+version: "0.0.{build}"
+
+# Fix line endings in Windows. (runs before repo cloning)
+init:
+  - git config --global core.autocrlf input
+
+# "C:\\android-ndk-r11c"
+environment:
+  matrix:
+  # Android NDK(32 bit)
+  - ANDROID_NDK: "C:\\android-ndk-r11c"
+    NDK_VERSION: "r11c"
+    ARCH: "32"
+  # Android NDK(64 bit)
+  - ANDROID_NDK: "C:\\android-ndk-r11c"
+    NDK_VERSION: "r11c"
+    ARCH: "64"
+
+# Install scripts. (runs after repo cloning)
+install:
+  # Set bash.
+  - cinst mingw-get
+  - cinst git
+  - set PATH=%PATH%;C:\MinGW\msys\1.0\bin;C:\MinGW\bin
+  - mingw-get install mingw-developer-toolkit
+  # - mingw-get install msys-zip 
+  # - mingw-get install msys-unzip 
+  
+  # AndroidNDK Install
+  - ps : appveyor\install.ps1
+
+# Don't actually build.
+build: off
+
+build_script:
+- cmd: >-
+    mkdir build
+
+    cd build
+
+    cmake ../
+
+    make
+
+before_test:
+
+test_script:
+
+
