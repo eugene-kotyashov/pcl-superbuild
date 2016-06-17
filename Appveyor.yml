@@ -6,6 +6,24 @@
 os:
 - Windows Server 2012 R2
 
+environment:
+  global:
+    # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
+    # /E:ON and /V:ON options are not enabled in the batch script intepreter
+    # See: http://stackoverflow.com/a/13751649/163740
+    CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\appveyor\\run_with_env.cmd"
+
+  matrix:
+  # Android NDK(32 bit)
+  - ANDROID_NDK: "C:\\android-ndk-r11c"
+    NDK_VERSION: "r11c"
+    ARCH: "32"
+  # Android NDK(64 bit)
+  - ANDROID_NDK: "C:\\android-ndk-r11c"
+    NDK_VERSION: "r11c"
+    ARCH: "64"
+
+
 # branches to build 
 branches: 
   # whitelist 
@@ -19,16 +37,6 @@ branches:
 init:
   - git config --global core.autocrlf input
 
-environment:
-  matrix:
-  # Android NDK(32 bit)
-  - ANDROID_NDK: "C:\\android-ndk-r11c"
-    NDK_VERSION: "r11c"
-    ARCH: "32"
-  # Android NDK(64 bit)
-  - ANDROID_NDK: "C:\\android-ndk-r11c"
-    NDK_VERSION: "r11c"
-    ARCH: "64"
 
 # Install scripts. (runs after repo cloning)
 install:
@@ -44,7 +52,7 @@ install:
   - ps : appveyor\install.ps1
 
 # Don't actually build.
-build: off
+# build: cmd
 
 build_script:
 - cmd: >-
@@ -55,9 +63,4 @@ build_script:
     cmake -G "MinGW Makefiles" ../
     
     mingw32-make
-
-before_test:
-
-test_script:
-
 

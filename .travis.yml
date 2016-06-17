@@ -1,13 +1,15 @@
 language: cpp 
 
+
 matrix: 
    include: 
      - os: linux
        compiler: gcc
      - os: osx
        compiler: clang
- addons: 
-  apt: 
+
+addons: 
+   apt: 
     sources: 
       - kalakris-cmake 
       - boost-latest 
@@ -49,10 +51,5 @@ before_install:
       cmake ../
     fi
 
-    # - bash .travis.sh install
-
 install:
-    # travis_wait 40 make;
-    travis_wait 40 make -j2;
-
-    # - bash .travis.sh install TASK
+    - travis_wait 40 make -j2;
