@@ -35,27 +35,27 @@ cache:
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew update >/dev/null;
-      wget http://dl.google.com/android/repository/android-ndk-r11c-darwin-x86_64.zip
-      unzip android-ndk-r11c-darwin-x86_64.zip
-      cd android-ndk-r11c
-      export ANDROID_NDK=$PWD
+      wget http://dl.google.com/android/repository/android-ndk-r11c-darwin-x86_64.zip;
+      unzip android-ndk-r11c-darwin-x86_64.zip;
+      cd android-ndk-r11c;
+      export ANDROID_NDK=$PWD;
 
-      cd ..
-      mkdir build
-      cd build
-      cmake -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=ON ../
+      cd ..;
+      mkdir build;
+      cd build;
+      cmake -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=ON ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
-      wget http://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip
-      unzip android-ndk-r11c-linux-x86_64.zip
-      cd android-ndk-r11c
-      export ANDROID_NDK=$PWD
+      wget http://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip;
+      unzip android-ndk-r11c-linux-x86_64.zip;
+      cd android-ndk-r11c;
+      export ANDROID_NDK=$PWD;
 
-      cd ..
-      mkdir build
-      cd build
-      cmake ../
+      cd ..;
+      mkdir build;
+      cd build;
+      cmake ../;
     fi
 
 
