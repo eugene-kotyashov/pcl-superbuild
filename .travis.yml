@@ -19,6 +19,7 @@ addons:
       - libgtest-dev 
       - doxygen-latex 
       - libusb-1.0-0-dev 
+
 cache: 
   directories: 
   - $HOME/flann 
@@ -28,15 +29,17 @@ cache:
 
 # http://dl.google.com/android/repository/android-ndk-r11c-windows-x86.zip
 # http://dl.google.com/android/repository/android-ndk-r11c-windows-x86_64.zip
+# wget http://dl.google.com/android/ndk/android-ndk-r8c-darwin-x86.tar.bz2
+# tar -jxvf android-ndk-r8c-darwin-x86.tar.bz2
+# cd android-ndk-r8c
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew update >/dev/null;
-      # wget http://dl.google.com/android/ndk/android-ndk-r8c-darwin-x86.tar.bz2
       wget http://dl.google.com/android/repository/android-ndk-r11c-darwin-x86_64.zip
-      # tar -jxvf android-ndk-r8c-darwin-x86.tar.bz2
       unzip android-ndk-r11c-darwin-x86_64.zip
-      cd android-ndk-r8c
+      cd android-ndk-r11c
       export ANDROID_NDK=$PWD
+
       cd ..
       mkdir build
       cd build
@@ -45,15 +48,17 @@ before_install:
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
       wget http://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip
-      # tar -jxvf android-ndk-r11c-linux-x86_64.tar.bz2
       unzip android-ndk-r11c-linux-x86_64.zip
       cd android-ndk-r11c
       export ANDROID_NDK=$PWD
+
       cd ..
       mkdir build
       cd build
       cmake ../
     fi
 
+
 install:
-    - travis_wait 40 make -j2;
+    - travis_wait 40 make -j2
+
