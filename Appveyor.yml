@@ -1,7 +1,5 @@
-# 
 # PCL : http://roomplan.de/getting-started-pcl-android/
 # MinGW : https://github.com/imazen-discovery/net-gd-appveyor/blob/master/appveyor.yml
-#
 
 os:
 - Windows Server 2012 R2
@@ -31,25 +29,27 @@ branches:
     - master 
 
 # Set build version format here instead of in the admin panel.
-# version: "0.0.{build}"
+version: "0.0.{build}"
 
 # Fix line endings in Windows. (runs before repo cloning)
 init:
-  - git config --global core.autocrlf input
+    - cmd:
+    - git config --global core.autocrlf input
 
 
 # Install scripts. (runs after repo cloning)
+# Set bash.
 install:
-  # Set bash.
-  - cinst mingw-get
-  - cinst git
-  - set PATH=%PATH%;C:\MinGW\msys\1.0\bin;C:\MinGW\bin
-  - mingw-get install mingw-developer-toolkit
-  # - mingw-get install msys-zip 
-  # - mingw-get install msys-unzip 
-  
-  # AndroidNDK Install
-  - ps : appveyor\install.ps1
+    - cmd :
+    - cinst mingw-get
+    - cinst git
+    - set PATH=%PATH%;C:\MinGW\msys\1.0\bin;C:\MinGW\bin
+    - mingw-get install mingw-developer-toolkit
+    - mingw-get install msys-zip 
+    - mingw-get install msys-unzip 
+    
+    # AndroidNDK Install
+    - ps : appveyor\install.ps1
 
 # Don't actually build.
 # build: cmd
@@ -61,6 +61,6 @@ build_script:
     cd build
 
     cmake -G "MinGW Makefiles" ../
-    
+
     mingw32-make
 

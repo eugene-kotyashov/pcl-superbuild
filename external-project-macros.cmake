@@ -44,8 +44,10 @@ macro(fetch_vtk)
     vtk-fetch
     SOURCE_DIR ${source_prefix}/vtk
     GIT_REPOSITORY git://github.com/Kitware/VTK.git
-    GIT_TAG origin/master
-    # GIT_TAG v6.3.0
+    # Version 1.8.0
+    # GIT_TAG origin/master
+    # Version 1.7.2
+    GIT_TAG v6.3.0
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
