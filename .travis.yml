@@ -36,7 +36,7 @@ before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew update >/dev/null;
       wget http://dl.google.com/android/repository/android-ndk-r11c-darwin-x86_64.zip;
-      unzip android-ndk-r11c-darwin-x86_64.zip;
+      unzip -q android-ndk-r11c-darwin-x86_64.zip;
       cd android-ndk-r11c;
       export ANDROID_NDK=$PWD;
 
@@ -48,7 +48,7 @@ before_install:
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
       wget http://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip;
-      unzip android-ndk-r11c-linux-x86_64.zip;
+      unzip -q android-ndk-r11c-linux-x86_64.zip;
       cd android-ndk-r11c;
       export ANDROID_NDK=$PWD;
 
