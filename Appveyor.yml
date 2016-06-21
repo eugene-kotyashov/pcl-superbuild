@@ -1,8 +1,11 @@
+# 
 # PCL : http://roomplan.de/getting-started-pcl-android/
 # MinGW : https://github.com/imazen-discovery/net-gd-appveyor/blob/master/appveyor.yml
+# Environment : https://www.appveyor.com/docs/installed-software
+# 
 
 os:
-- Windows Server 2012 R2
+- Visual Studio 2013
 
 environment:
   global:
@@ -16,10 +19,15 @@ environment:
   - ANDROID_NDK: "C:\\android-ndk-r11c"
     NDK_VERSION: "r11c"
     ARCH: "32"
+    Compiler: mingw
+    Build: static
   # Android NDK(64 bit)
   - ANDROID_NDK: "C:\\android-ndk-r11c"
     NDK_VERSION: "r11c"
     ARCH: "64"
+    Compiler: mingw
+    Build: static
+    WINDBG_DIR: '%ProgramFiles(x86)%\Windows Kits\8.1\Debuggers\x64' 
 
 
 # branches to build 
@@ -31,24 +39,13 @@ branches:
 # Set build version format here instead of in the admin panel.
 version: "0.0.{build}"
 
-# Fix line endings in Windows. (runs before repo cloning)
-init:
-    - cmd:
-    - git config --global core.autocrlf input
-
-
 # Install scripts. (runs after repo cloning)
 # Set bash.
+# AndroidNDK Install
 install:
-    - cmd :
-    - cinst mingw-get
-    - cinst git
-    - set PATH=%PATH%;C:\MinGW\msys\1.0\bin;C:\MinGW\bin
-    - mingw-get install mingw-developer-toolkit
-    - mingw-get install msys-zip 
-    - mingw-get install msys-unzip 
-    
-    # AndroidNDK Install
+    - cmd : mingw-get install mingw-developer-toolkit
+    - cmd : mingw-get install msys-zip 
+    - cmd : mingw-get install msys-unzip 
     - ps : appveyor\install.ps1
 
 # Don't actually build.

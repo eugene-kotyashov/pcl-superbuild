@@ -207,7 +207,7 @@ macro(fetch_pcl)
     GIT_REPOSITORY git://github.com/PointCloudLibrary/pcl.git
     # GIT_TAG origin/android-tag
     # GIT_TAG origin/master
-    GIT_TAG pcl-1.7.2
+    GIT_TAG pcl-1.8.0
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
@@ -241,6 +241,7 @@ macro(crosscompile_pcl tag)
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
       -DBUILD_SHARED_LIBS:BOOL=OFF
       -DPCL_SHARED_LIBS:BOOL=OFF
+      -DWITH_OPENGL:BOOL=OFF
       -DBUILD_visualization:BOOL=OFF
       -DBUILD_examples:BOOL=OFF
       -DEIGEN_INCLUDE_DIR=${install_prefix}/eigen
