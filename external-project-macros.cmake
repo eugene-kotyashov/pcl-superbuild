@@ -70,6 +70,25 @@ macro(compile_vtk)
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
       -DBUILD_SHARED_LIBS:BOOL=ON
       -DBUILD_TESTING:BOOL=OFF
+      -DVTK_ANDROID_BUILD                OFF
+      -DVTK_EXTRA_COMPILER_WARNINGS      OFF
+      -DVTK_Group_Imaging                OFF
+      -DVTK_Group_MPI                    OFF
+      -DVTK_Group_Qt                     OFF
+      -DVTK_Group_Rendering              OFF
+      -DVTK_Group_StandAlone             ON
+      -DVTK_Group_Tk                     OFF
+      -DVTK_Group_Views                  OFF
+      -DVTK_Group_Web                    OFF
+      -DVTK_IOS_BUILD                    OFF
+      -DVTK_PYTHON_VERSION               2
+      -DVTK_RENDERING_BACKEND            OpenGL
+      -DVTK_SMP_IMPLEMENTATION_TYPE      Sequential
+      -DVTK_USE_LARGE_DATA               OFF
+      -DVTK_WRAP_JAVA                    OFF
+      -DVTK_WRAP_PYTHON                  OFF
+      -DVTK_WRAP_TCL                     OFF
+      find_package(OpenGL REQUIRED)
       ${vtk_module_defaults}
   )
 endmacro()
