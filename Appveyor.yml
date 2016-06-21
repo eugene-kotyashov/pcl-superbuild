@@ -42,6 +42,7 @@ version: "0.0.{build}"
 # Install scripts. (runs after repo cloning)
 # Set bash.
 # AndroidNDK Install
+# -DCMAKE_TOOLCHAIN_FILE=toolchain\android.toolchain.cmake
 install:
     - cmd : mingw-get install mingw-developer-toolkit
     - cmd : mingw-get install msys-zip 
@@ -53,11 +54,9 @@ install:
 
 build_script:
 - cmd: >-
-    mkdir build
+    mkdir build && cd build
 
-    cd build
+    cmake.exe -G"MinGW Makefiles" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows\bin\make.exe" ..
 
-    cmake -G "MinGW Makefiles" ../
-
-    mingw32-make
+    cmake.exe --build .
 

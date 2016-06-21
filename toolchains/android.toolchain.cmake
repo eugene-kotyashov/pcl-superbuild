@@ -1384,8 +1384,10 @@ if( ANDROID_COMPILER_IS_CLANG )
 endif()
 
 # cache flags
-set( CMAKE_CXX_FLAGS           ""                        CACHE STRING "c++ flags" )
-set( CMAKE_C_FLAGS             ""                        CACHE STRING "c flags" )
+# set( CMAKE_CXX_FLAGS           ""                      CACHE STRING "c++ flags" )
+# set( CMAKE_C_FLAGS             ""                        CACHE STRING "c flags" )
+set( CMAKE_CXX_FLAGS           " -D_LITTLE_ENDIAN -DNO_BZIP2" CACHE STRING "c++ flags" )
+set( CMAKE_C_FLAGS             " -D_LITTLE_ENDIAN -DNO_BZIP2" CACHE STRING "c flags" )
 set( CMAKE_CXX_FLAGS_RELEASE   "-O3 -DNDEBUG"            CACHE STRING "c++ Release flags" )
 set( CMAKE_C_FLAGS_RELEASE     "-O3 -DNDEBUG"            CACHE STRING "c Release flags" )
 set( CMAKE_CXX_FLAGS_DEBUG     "-O0 -g -DDEBUG -D_DEBUG" CACHE STRING "c++ Debug flags" )
