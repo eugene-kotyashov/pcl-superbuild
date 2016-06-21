@@ -216,7 +216,7 @@ endmacro()
 
 #
 # PCL crosscompile
-#
+# -DBOOST_BIG_ENDIAN
 macro(crosscompile_pcl tag)
   set(proj pcl-${tag})
   get_toolchain_file(${tag})
@@ -248,6 +248,7 @@ macro(crosscompile_pcl tag)
       -DFLANN_INCLUDE_DIR=${install_prefix}/flann-${tag}/include
       -DFLANN_LIBRARY=${install_prefix}/flann-${tag}/lib/libflann_cpp_s.a
       -DBOOST_ROOT=${install_prefix}/boost-${tag}
+      -DBOOST_LITTLE_ENDIAN
       -C ${try_run_results_file}
   )
 
