@@ -38,9 +38,6 @@ version: "0.0.{build}"
 # AndroidNDK Install
 # -DCMAKE_TOOLCHAIN_FILE=toolchain\android.toolchain.cmake
 install:
-    - cmd : mingw-get install mingw-developer-toolkit
-    - cmd : mingw-get install msys-zip 
-    - cmd : mingw-get install msys-unzip 
     - ps : appveyor\install.ps1
 
 build_script:
