@@ -10,14 +10,14 @@ environment:
 
   matrix:
   # Android NDK(32 bit)
-  - ANDROID_NDK: "C:\\android-ndk-r11c"
-    NDK_VERSION: "r11c"
+  - ANDROID_NDK: "C:\\android-ndk-r12"
+    NDK_VERSION: "r12"
     ARCH: "32"
     Compiler: mingw
     Build: static
   # Android NDK(64 bit)
-  - ANDROID_NDK: "C:\\android-ndk-r11c"
-    NDK_VERSION: "r11c"
+  - ANDROID_NDK: "C:\\android-ndk-r12"
+    NDK_VERSION: "r12"
     ARCH: "64"
     Compiler: mingw
     Build: static
