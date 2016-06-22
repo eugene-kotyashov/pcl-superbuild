@@ -1,9 +1,3 @@
-# 
-# PCL : http://roomplan.de/getting-started-pcl-android/
-# MinGW : https://github.com/imazen-discovery/net-gd-appveyor/blob/master/appveyor.yml
-# Environment : https://www.appveyor.com/docs/installed-software
-# 
-
 os:
 - Visual Studio 2013
 
@@ -48,9 +42,6 @@ install:
     - cmd : mingw-get install msys-zip 
     - cmd : mingw-get install msys-unzip 
     - ps : appveyor\install.ps1
-
-# Don't actually build.
-# build: cmd
 
 build_script:
 - cmd: >-
