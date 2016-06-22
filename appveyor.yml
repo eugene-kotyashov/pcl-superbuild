@@ -39,7 +39,7 @@ version: "0.0.{build}"
 # -DCMAKE_TOOLCHAIN_FILE=toolchain\android.toolchain.cmake
 install:
     - ps : Import-Module ".\appveyor\PS-Zip\PS-Zip.psm1" -Force
-    - ps : appveyor\install.ps1
+    - ps : .\appveyor\install.ps1
 
 build_script:
 - cmd: >-
