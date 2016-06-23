@@ -207,7 +207,8 @@ macro(fetch_pcl)
     GIT_REPOSITORY git://github.com/PointCloudLibrary/pcl.git
     # GIT_TAG origin/android-tag
     # GIT_TAG origin/master
-    GIT_TAG pcl-1.8.0
+    # GIT_TAG pcl-1.8.0
+    GIT_TAG pcl-1.7.2
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""

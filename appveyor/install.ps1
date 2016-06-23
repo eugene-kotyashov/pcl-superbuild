@@ -46,10 +46,7 @@ function Download ($filename, $url)
 
 function InstallAndroidNDK_ZIP ($zippath, $ndk_home, $install_log)
 {
-    $archivePath = $ndk_home
-    # $zipFilePath = $zippath
-    $zipFilePath = "C:\\projects\\pcl-superbuild\\" + "$zippath"
-    New-ZipExtract -source $zipFilePath -destination $archivePath -force -verbose
+    New-ZipExtract -source $zippath -destination $ndk_home -force -verbose
 }
 
 function InstallAndroidNDK_EXE ($exepath, $ndk_home, $install_log)
