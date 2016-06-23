@@ -48,7 +48,7 @@ build_script:
 - cmd: >-
     mkdir build && cd build
 
-    cmake.exe -G"MinGW Makefiles" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows_%ARCH2%_\bin\make.exe" ..
+    cmake.exe -G"MinGW Makefiles" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows-%ARCH2%\bin\make.exe" ..
 
     cmake.exe --build .
 
