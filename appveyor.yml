@@ -13,12 +13,14 @@ environment:
   - ANDROID_NDK: "C:\\android-ndk-r12"
     NDK_VERSION: "r12"
     ARCH: "32"
+    ARCH2: "x86"
     Compiler: mingw
     Build: static
   # Android NDK(64 bit)
   - ANDROID_NDK: "C:\\android-ndk-r12"
     NDK_VERSION: "r12"
     ARCH: "64"
+    ARCH2: "x86_64"
     Compiler: mingw
     Build: static
     WINDBG_DIR: '%ProgramFiles(x86)%\Windows Kits\8.1\Debuggers\x64' 
@@ -41,11 +43,12 @@ install:
     - ps : Import-Module ".\appveyor\PS-Zip\PS-Zip.psm1" -Force
     - ps : .\appveyor\install.ps1
 
+# cmake.exe -G"MinGW Makefiles" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows\bin\make.exe" ..
 build_script:
 - cmd: >-
     mkdir build && cd build
 
-    cmake.exe -G"MinGW Makefiles" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows\bin\make.exe" ..
+    cmake.exe -G"MinGW Makefiles" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows_%ARCH2%_\bin\make.exe" ..
 
     cmake.exe --build .
 
