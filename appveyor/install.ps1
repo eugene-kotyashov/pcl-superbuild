@@ -2,7 +2,9 @@
 # Authors: 
 # License: CC0 1.0 Universal: http://creativecommons.org/publicdomain/zero/1.0/
 
-$BASE_ANDROIDNDK_URL = "http://dl.google.com/android/ndk/"
+# http://dl.google.com/android/repository/android-ndk-r12-windows-x86_64.zip
+$BASE_ANDROIDNDK_URL = "http://dl.google.com/android/repository/"
+                        
 
 function Download ($filename, $url) 
 {
@@ -44,9 +46,7 @@ function Download ($filename, $url)
 
 function InstallAndroidNDK_ZIP ($zippath, $ndk_home, $install_log)
 {
-    $archivePath = $ndk_home
-    $zipFilePath = $zippath
-    New-ZipExtract -source $zipFilePath -destination $archivePath -force -verbose
+    New-ZipExtract -source $zippath -destination $ndk_home -force -verbose
 }
 
 function InstallAndroidNDK_EXE ($exepath, $ndk_home, $install_log)
@@ -142,7 +142,7 @@ function InstallAndroidNDK ($ndk_version, $architecture, $ndk_home)
 function main () 
 {
     # Android NDK
-    InstallAndroidNDK $env:NDK_VERSION $env:ARCH $env:NDK_ROOT
+    InstallAndroidNDK $env:NDK_VERSION $env:ARCH $env:ANDROID_NDK
 }
 
 main

@@ -70,6 +70,25 @@ macro(compile_vtk)
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
       -DBUILD_SHARED_LIBS:BOOL=ON
       -DBUILD_TESTING:BOOL=OFF
+      -DVTK_ANDROID_BUILD:BOOL=OFF
+      -DVTK_EXTRA_COMPILER_WARNINGS:BOOL=OFF
+      -DVTK_Group_Imaging:BOOL=OFF
+      -DVTK_Group_MPI:BOOL=OFF
+      -DVTK_Group_Qt:BOOL=OFF
+      -DVTK_Group_Rendering:BOOL=OFF
+      -DVTK_Group_StandAlone:BOOL=ON
+      -DVTK_Group_Tk:BOOL=OFF
+      -DVTK_Group_Views:BOOL=OFF
+      -DVTK_Group_Web:BOOL=OFF
+      -DVTK_IOS_BUILD:BOOL=OFF
+      -DVTK_PYTHON_VERSION:STRING=2
+      -DVTK_RENDERING_BACKEND:STRING=OpenGL
+      -DVTK_SMP_IMPLEMENTATION_TYPE:STRING=Sequential
+      -DVTK_USE_LARGE_DATA:BOOL=OFF
+      -DVTK_WRAP_JAVA:BOOL=OFF
+      -DVTK_WRAP_PYTHON:BOOL=OFF
+      -DVTK_WRAP_TCL:BOOL=OFF
+      find_package(OpenGL REQUIRED)
       ${vtk_module_defaults}
   )
 endmacro()
@@ -189,6 +208,7 @@ macro(fetch_pcl)
     GIT_REPOSITORY git://github.com/Sirokujira/pcl.git
     # GIT_TAG origin/android-tag
     # GIT_TAG origin/master
+    # GIT_TAG pcl-1.8.0
     GIT_TAG pcl-1.7.2
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
@@ -198,7 +218,6 @@ endmacro()
 
 #
 # PCL crosscompile
-#
 macro(crosscompile_pcl tag)
   set(proj pcl-${tag})
   get_toolchain_file(${tag})
@@ -223,6 +242,7 @@ macro(crosscompile_pcl tag)
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
       -DBUILD_SHARED_LIBS:BOOL=OFF
       -DPCL_SHARED_LIBS:BOOL=OFF
+      -DWITH_OPENGL:BOOL=OFF
       -DBUILD_visualization:BOOL=OFF
       -DBUILD_examples:BOOL=OFF
       -DEIGEN_INCLUDE_DIR=${install_prefix}/eigen
