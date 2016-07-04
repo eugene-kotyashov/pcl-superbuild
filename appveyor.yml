@@ -43,7 +43,10 @@ install:
     - ps : Import-Module ".\appveyor\PS-Zip\PS-Zip.psm1" -Force
     - ps : .\appveyor\install.ps1
 
+# < r12
 # cmake.exe -G"MinGW Makefiles" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows\bin\make.exe" ..
+# >= r12
+# cmake.exe -G"MinGW Makefiles" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows-%ARCH2%\bin\make.exe" ..
 build_script:
 - cmd: >-
     mkdir build && cd build

@@ -125,7 +125,8 @@ macro(fetch_flann)
     flann-fetch
     SOURCE_DIR ${source_prefix}/flann
     GIT_REPOSITORY git://github.com/mariusmuja/flann
-    GIT_TAG cee08ec38a8df7bc70397f10a4d30b9b33518bb4
+    # GIT_TAG cee08ec38a8df7bc70397f10a4d30b9b33518bb4
+    GIT_TAG 1.8.4
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
@@ -204,11 +205,12 @@ macro(fetch_pcl)
     pcl-fetch
     SOURCE_DIR ${source_prefix}/pcl
     # GIT_REPOSITORY git://github.com/patmarion/PCL.git
-    GIT_REPOSITORY git://github.com/PointCloudLibrary/pcl.git
+    # GIT_REPOSITORY git://github.com/PointCloudLibrary/pcl.git
+    GIT_REPOSITORY git://github.com/Sirokujira/pcl.git
     # GIT_TAG origin/android-tag
     # GIT_TAG origin/master
     # GIT_TAG pcl-1.8.0
-    GIT_TAG pcl-1.7.2
+    GIT_TAG Branch_pcl-1.7.2
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
@@ -242,6 +244,8 @@ macro(crosscompile_pcl tag)
       -DBUILD_SHARED_LIBS:BOOL=OFF
       -DPCL_SHARED_LIBS:BOOL=OFF
       -DWITH_OPENGL:BOOL=OFF
+      -DWITH_PCAP:BOOL=OFF
+      -DWITH_LIBUSB:BOOL=OFF
       -DBUILD_visualization:BOOL=OFF
       -DBUILD_examples:BOOL=OFF
       -DEIGEN_INCLUDE_DIR=${install_prefix}/eigen
