@@ -60,5 +60,5 @@ before_install:
 
 
 install:
-    - travis_wait 40 make
+    - travis_wait 45 make -j4
 
