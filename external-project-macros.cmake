@@ -88,7 +88,6 @@ macro(compile_vtk)
       -DVTK_WRAP_JAVA:BOOL=OFF
       -DVTK_WRAP_PYTHON:BOOL=OFF
       -DVTK_WRAP_TCL:BOOL=OFF
-      find_package(OpenGL REQUIRED)
       ${vtk_module_defaults}
   )
 endmacro()
