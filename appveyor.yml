@@ -25,6 +25,9 @@ environment:
     Build: static
     WINDBG_DIR: '%ProgramFiles(x86)%\Windows Kits\8.1\Debuggers\x64' 
 
+# git clone ‚ÌÛ‚Ì‰üs‚ð•ÏŠ·‚µ‚È‚¢‚æ‚¤‚É‚µ‚Ü‚·
+init:
+  - git config --global core.autocrlf false
 
 # branches to build 
 branches: 
@@ -47,11 +50,20 @@ install:
 # cmake.exe -G"MinGW Makefiles" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows\bin\make.exe" ..
 # >= r12
 # cmake.exe -G"MinGW Makefiles" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows-%ARCH2%\bin\make.exe" ..
+# MinGW
+# cmake.exe -G"MinGW Makefiles" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows-%ARCH2%\bin\make.exe" ..
+# ../VCMDDAndroid/cmake.exe
+# ../VCMDDAndroid/cmake.exe "Visual Studio 14" 
+# ../VCMDDAndroid/cmake.exe --build .
 build_script:
 - cmd: >-
+	dir 
+
     mkdir build && cd build
 
-    cmake.exe -G"MinGW Makefiles" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows-%ARCH2%\bin\make.exe" ..
+    cmake.exe --version
+
+    cmake.exe -G "Visual Studio 14" 
 
     cmake.exe --build .
 

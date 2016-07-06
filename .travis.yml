@@ -35,6 +35,13 @@ cache:
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew update >/dev/null;
+
+      sudo apt-get install software-properties-common;
+      sudo add-apt-repository ppa:george-edison55/cmake-3.x;
+      sudo apt-get update;
+      sudo apt-get install cmake;
+      cmake --version;
+
       wget http://dl.google.com/android/repository/android-ndk-r11c-darwin-x86_64.zip;
       unzip -q android-ndk-r11c-darwin-x86_64.zip;
       cd android-ndk-r11c;
@@ -47,6 +54,12 @@ before_install:
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
+      sudo apt-get install software-properties-common;
+      sudo add-apt-repository ppa:george-edison55/cmake-3.x;
+      sudo apt-get update;
+      sudo apt-get install cmake;
+      cmake --version;
+
       wget http://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip;
       unzip -q android-ndk-r11c-linux-x86_64.zip;
       cd android-ndk-r11c;

@@ -139,10 +139,35 @@ function InstallAndroidNDK ($ndk_version, $architecture, $ndk_home)
     }
 }
 
+function InstallCMake ($cmake_home)
+{
+	$installer_path = DownloadCMake
+
+    InstallCMake_ZIP $installer_path $cmake_home
+}
+
+function InstallCMake_ZIP ($zippath, $cmake_home)
+{
+	New-ZipExtract -source $zippath -destination $cmake_home -force -verbose
+}
+
+function DownloadCMake () 
+{
+    $filename = "VCMDDAndroid.zip"
+    $url = "https://github.com/Microsoft/CMake/archive/feature/VCMDDAndroid.zip"
+
+    # (plan modified function)
+    $filepath = Download $filename $url
+    return $filepath
+}
+
+
 function main () 
 {
     # Android NDK
     InstallAndroidNDK $env:NDK_VERSION $env:ARCH $env:ANDROID_NDK
+    # CMake(Microsoft)
+    InstallCMake ("")
 }
 
 main

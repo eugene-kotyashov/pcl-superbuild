@@ -113,6 +113,24 @@ macro(crosscompile_vtk tag)
       -DBUILD_TESTING:BOOL=OFF
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
       -DVTKCompileTools_DIR:PATH=${build_prefix}/vtk-host
+      -DVTK_ANDROID_BUILD:BOOL=ON
+      -DVTK_EXTRA_COMPILER_WARNINGS:BOOL=OFF
+      -DVTK_Group_Imaging:BOOL=OFF
+      -DVTK_Group_MPI:BOOL=OFF
+      -DVTK_Group_Qt:BOOL=OFF
+      -DVTK_Group_Rendering:BOOL=OFF
+      -DVTK_Group_StandAlone:BOOL=ON
+      -DVTK_Group_Tk:BOOL=OFF
+      -DVTK_Group_Views:BOOL=OFF
+      -DVTK_Group_Web:BOOL=OFF
+      -DVTK_IOS_BUILD:BOOL=OFF
+      -DVTK_PYTHON_VERSION:STRING=2
+      -DVTK_RENDERING_BACKEND:STRING=OpenGL
+      -DVTK_SMP_IMPLEMENTATION_TYPE:STRING=Sequential
+      -DVTK_USE_LARGE_DATA:BOOL=OFF
+      -DVTK_WRAP_JAVA:BOOL=OFF
+      -DVTK_WRAP_PYTHON:BOOL=OFF
+      -DVTK_WRAP_TCL:BOOL=OFF
       ${vtk_module_defaults}
       -C ${try_run_results_file}
   )
