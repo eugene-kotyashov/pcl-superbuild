@@ -39,7 +39,7 @@ before_install:
       sudo apt-get install software-properties-common;
       sudo add-apt-repository ppa:george-edison55/cmake-3.x;
       sudo apt-get update;
-      sudo apt-get install cmake;
+      travis_wait 45 sudo apt-get install cmake;
       cmake --version;
 
       wget http://dl.google.com/android/repository/android-ndk-r11c-darwin-x86_64.zip;
@@ -57,7 +57,7 @@ before_install:
       sudo apt-get install software-properties-common;
       sudo add-apt-repository ppa:george-edison55/cmake-3.x;
       sudo apt-get update;
-      sudo apt-get install cmake;
+      travis_wait 45 sudo apt-get install cmake;
       cmake --version;
 
       wget http://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip;
