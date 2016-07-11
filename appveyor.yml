@@ -14,14 +14,12 @@ environment:
     NDK_VERSION: "r12"
     ARCH: "32"
     ARCH2: "x86"
-    Compiler: mingw
     Build: static
   # Android NDK(64 bit)
   - ANDROID_NDK: "C:\\android-ndk-r12"
     NDK_VERSION: "r12"
     ARCH: "64"
     ARCH2: "x86_64"
-    Compiler: mingw
     Build: static
     WINDBG_DIR: '%ProgramFiles(x86)%\Windows Kits\8.1\Debuggers\x64' 
 
@@ -57,13 +55,13 @@ install:
 # ../VCMDDAndroid/cmake.exe --build .
 build_script:
 - cmd: >-
-	dir 
+    dir 
 
     mkdir build && cd build
 
     cmake.exe --version
 
-    cmake.exe -G "Visual Studio 14" 
+    cmake.exe -G "Visual Studio 14" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows-%ARCH2%\bin\make.exe" ..
 
     cmake.exe --build .
 
