@@ -101,12 +101,21 @@ endmacro()
 # VTK crosscompile
 #
 macro(crosscompile_vtk tag)
-  # set(proj vtk-${tag})
-  # get_toolchain_file(${tag})
-  # get_try_run_results_file(${proj})
-  # if(${tag} == "toolchain_android")
-  # elif(${tag} == "toolchain_ios_device")
-  # elif(${tag} == "toolchain_ios_simulator")
+  set(proj vtk-${tag})
+  get_toolchain_file(${tag})
+  get_try_run_results_file(${proj})
+  if(${tag} == "toolchain_android")
+    set(is_Android ON)
+    set(is_iOSDevice OFF)
+    set(is_iOSSimulator ON)
+  elif(${tag} == "toolchain_ios_device")
+    set(is_Android OFF)
+    set(is_iOSDevice ON)
+    set(is_iOSSimulator ON)
+  elif(${tag} == "toolchain_ios_simulator")
+    set(is_Android OFF)
+    set(is_iOSDevice ON)
+    set(is_iOSSimulator ON)
 
   ExternalProject_Add(
     ${proj}
@@ -120,7 +129,8 @@ macro(crosscompile_vtk tag)
       -DBUILD_TESTING:BOOL=OFF
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
       -DVTKCompileTools_DIR:PATH=${build_prefix}/vtk-host
-      -DVTK_ANDROID_BUILD:BOOL=ON
+      -DVTK_ANDROID_BUILD:BOOL=${is_Android}
+      -DVTK_IOS_BUILD:BOOL=${is_iOSDevice}
       -DANDROID_ARCH_NAME:STRING=armeabi-v7a
       -DANDROID_NATIVE_API_LEVEL:STRING=21
       -DOPENGL_ES_VERSION:STRING=2.0
@@ -133,7 +143,6 @@ macro(crosscompile_vtk tag)
       -DVTK_Group_Tk:BOOL=OFF
       -DVTK_Group_Views:BOOL=OFF
       -DVTK_Group_Web:BOOL=OFF
-      -DVTK_IOS_BUILD:BOOL=OFF
       -DVTK_PYTHON_VERSION:STRING=2
       -DVTK_RENDERING_BACKEND:STRING=OpenGL
       -DVTK_SMP_IMPLEMENTATION_TYPE:STRING=Sequential
