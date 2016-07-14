@@ -53,6 +53,7 @@ install:
 # ../VCMDDAndroid/cmake.exe
 # ../VCMDDAndroid/cmake.exe "Visual Studio 14" 
 # ../VCMDDAndroid/cmake.exe --build .
+# C:\Users\appveyor\Desktop\VCMDDAndroid\cmake
 build_script:
 - cmd: >-
     dir 

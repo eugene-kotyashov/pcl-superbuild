@@ -43,13 +43,13 @@ macro(fetch_vtk)
   ExternalProject_Add(
     vtk-fetch
     SOURCE_DIR ${source_prefix}/vtk
-    # GIT_REPOSITORY git://github.com/Kitware/VTK.git
+    GIT_REPOSITORY git://github.com/Kitware/VTK.git
     # Version 1.8.0
     # GIT_TAG origin/master
     # Version 1.7.2
-    # GIT_TAG v6.3.0
-    GIT_REPOSITORY git://github.com/patmarion/VTK.git
-    GIT_TAG ce4a267
+    GIT_TAG v6.3.0
+    # GIT_REPOSITORY git://github.com/patmarion/VTK.git
+    # GIT_TAG ce4a267
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
@@ -73,6 +73,9 @@ macro(compile_vtk)
       -DBUILD_SHARED_LIBS:BOOL=ON
       -DBUILD_TESTING:BOOL=OFF
       -DVTK_ANDROID_BUILD:BOOL=ON
+      -DANDROID_ARCH_NAME:STRING=armeabi-v7a
+      -DANDROID_NATIVE_API_LEVEL:STRING=21
+      -DOPENGL_ES_VERSION:STRING=2.0
       -DVTK_EXTRA_COMPILER_WARNINGS:BOOL=OFF
       -DVTK_Group_Imaging:BOOL=OFF
       -DVTK_Group_MPI:BOOL=OFF
@@ -98,9 +101,13 @@ endmacro()
 # VTK crosscompile
 #
 macro(crosscompile_vtk tag)
-  set(proj vtk-${tag})
-  get_toolchain_file(${tag})
-  get_try_run_results_file(${proj})
+  # set(proj vtk-${tag})
+  # get_toolchain_file(${tag})
+  # get_try_run_results_file(${proj})
+  # if(${tag} == "toolchain_android")
+  # elif(${tag} == "toolchain_ios_device")
+  # elif(${tag} == "toolchain_ios_simulator")
+
   ExternalProject_Add(
     ${proj}
     SOURCE_DIR ${source_prefix}/vtk
@@ -114,6 +121,9 @@ macro(crosscompile_vtk tag)
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
       -DVTKCompileTools_DIR:PATH=${build_prefix}/vtk-host
       -DVTK_ANDROID_BUILD:BOOL=ON
+      -DANDROID_ARCH_NAME:STRING=armeabi-v7a
+      -DANDROID_NATIVE_API_LEVEL:STRING=21
+      -DOPENGL_ES_VERSION:STRING=2.0
       -DVTK_EXTRA_COMPILER_WARNINGS:BOOL=OFF
       -DVTK_Group_Imaging:BOOL=OFF
       -DVTK_Group_MPI:BOOL=OFF
