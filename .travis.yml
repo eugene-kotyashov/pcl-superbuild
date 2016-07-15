@@ -1,5 +1,7 @@
 language: cpp 
 
+cache:
+  apt: true
 
 matrix: 
    include: 
@@ -54,6 +56,13 @@ before_install:
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
+      sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test;
+      sudo apt-get -qq update;
+      sudo apt-get -qq install g++-4.9 -y;
+      wget --no-check-certificate -qO- http://www.cmake.org/files/v3.4/cmake-3.4.1-Linux-x86_64.tar.gz -O /tmp/cmake-3.4.1-Linux-x86_64.tar.gz;
+      tar -xvf /tmp/cmake-3.4.1-Linux-x86_64.tar.gz;
+      export PATH=$PWD/cmake-3.4.1-Linux-x86_64/bin/:$PATH;
+
       wget http://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip;
       unzip -q android-ndk-r11c-linux-x86_64.zip;
       cd android-ndk-r11c;

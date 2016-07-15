@@ -1,7 +1,6 @@
 #include "hello-pcl.h"
 
 #include <cstdio>
-#include <android/log.h>
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
 #include <pcl/io/pcd_io.h>
@@ -10,7 +9,7 @@
 #include <boost/shared_ptr.hpp>
 #include <pcl/kdtree/kdtree_flann.h>
 
-#define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "hello-ndk", __VA_ARGS__))
+// #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "hello-ndk", __VA_ARGS__))
 
 
 using namespace boost::filesystem;
@@ -38,7 +37,7 @@ JNIEXPORT jstring JNICALL Java_org_pointclouds_PCLAndroidSample_HelloPCL_boostMk
 	
 	
 	printf("Hello from NDK using PCL\n");
-	LOGI("Hello from NDK using PCL");
+	// LOGI("Hello from NDK using PCL");
 	
 	
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
@@ -62,10 +61,10 @@ JNIEXPORT jstring JNICALL Java_org_pointclouds_PCLAndroidSample_HelloPCL_boostMk
 		std::vector<float> distances;
 		kdtree.nearestKSearch (0, 3, indices, distances);
 		printf ("indices size: %d\n", indices.size ());
-		LOGI ("indices size %d\n", indices.size ());
+		// LOGI ("indices size %d\n", indices.size ());
 	}
 	
-	LOGI ("Doing stuff with PCL on Android");
+	// LOGI ("Doing stuff with PCL on Android");
 	
 	
   pcl::io::savePCDFileASCII ("/mnt/sdcard/KiwiViewer/output.pcd", *cloud);
