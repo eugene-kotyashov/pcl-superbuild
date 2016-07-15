@@ -108,14 +108,15 @@ macro(crosscompile_vtk tag)
     set(is_Android ON)
     set(is_iOSDevice OFF)
     set(is_iOSSimulator ON)
-  elif(${tag} STREQUAL  "ios_device")
+  elseif(${tag} STREQUAL  "ios_device")
     set(is_Android OFF)
     set(is_iOSDevice ON)
     set(is_iOSSimulator ON)
-  elif(${tag} STREQUAL  "ios_simulator")
+  elseif(${tag} STREQUAL  "ios_simulator")
     set(is_Android OFF)
     set(is_iOSDevice ON)
     set(is_iOSSimulator ON)
+  endif ()
 
   ExternalProject_Add(
     ${proj}
