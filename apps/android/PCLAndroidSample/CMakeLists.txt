@@ -75,3 +75,22 @@ target_link_libraries(helloPCLWorld ${PCL_LIBRARIES}libpcl_sample_consensus.a)
 target_link_libraries(helloPCLWorld ${PCL_LIBRARIES}libpcl_kdtree.a)
 target_link_libraries(helloPCLWorld ${PCL_LIBRARIES}libpcl_search.a)
 
+# if(ANDROID) 
+# else(ANDROID) 
+#     list(APPEND Boost_LIBRARY_DIRS ${Boost_LIBRARY_DIR}/libboost_date_time.a) 
+#     list(APPEND Boost_LIBRARY_DIRS ${Boost_LIBRARY_DIR}/libboost_graph.a) 
+# endif() 
+# 
+# 
+# list(APPEND Boost_LIBRARY_DIRS ${Boost_LIBRARY_DIR}/libboost_exception.a) 
+# list(APPEND Boost_LIBRARY_DIRS ${Boost_LIBRARY_DIR}/libboost_random.a) 
+# list(APPEND Boost_LIBRARY_DIRS ${Boost_LIBRARY_DIR}/libboost_regex.a) 
+# list(APPEND Boost_LIBRARY_DIRS ${Boost_LIBRARY_DIR}/libboost_wave.a) 
+# list(APPEND Boost_LIBRARY_DIRS ${Boost_LIBRARY_DIR}/libboost_chrono.a) 
+# list(APPEND Boost_LIBRARY_DIRS ${Boost_LIBRARY_DIR}/libboost_iostreams.a) 
+# list(APPEND Boost_LIBRARY_DIRS ${Boost_LIBRARY_DIR}/libboost_signals.a) 
+# list(APPEND Boost_LIBRARY_DIRS ${Boost_LIBRARY_DIR}/libboost_filesystem.a) 
+# list(APPEND Boost_LIBRARY_DIRS ${Boost_LIBRARY_DIR}/libboost_system.a) 
+# list(APPEND Boost_LIBRARY_DIRS ${Boost_LIBRARY_DIR}/libboost_thread.a) 
+# list(APPEND Boost_LIBRARY_DIRS ${Boost_LIBRARY_DIR}/libboost_timer.a) 
+
