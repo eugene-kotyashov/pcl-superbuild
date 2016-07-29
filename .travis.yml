@@ -71,7 +71,7 @@ before_install:
       cd ..;
       mkdir build;
       cd build;
-      cmake ../;
+      cmake -DIOS_PLATFORM_LOCATION="OS" ../;
     fi
 
 

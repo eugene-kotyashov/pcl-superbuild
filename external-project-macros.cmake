@@ -179,16 +179,6 @@ macro(crosscompile_flann tag)
   set(proj flann-${tag})
   get_toolchain_file(${tag})
   
-  if(${tag} STREQUAL "android")
-    set(ios_platform "")
-  elseif(${tag} STREQUAL  "ios_device")
-    # set(ios_root 
-    set(ios_platform "OS")
-  elseif(${tag} STREQUAL  "ios_simulator")
-    # set(ios_root
-    set(ios_platform "SIMULATOR64")
-  endif ()
-  
   ExternalProject_Add(
     ${proj}
     SOURCE_DIR ${source_prefix}/flann
@@ -199,7 +189,7 @@ macro(crosscompile_flann tag)
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
      # -DCMAKE_IOS_DEVELOPER_ROOT:${ios_root}
-      -DIOS_PLATFORM_LOCATION:${ios_platform}
+     # -DIOS_PLATFORM_LOCATION:${ios_platform}
      # -DBUILD_SHARED_LIBS:BOOL=OFF
       -DBUILD_EXAMPLES:BOOL=OFF
       -DBUILD_PYTHON_BINDINGS:BOOL=OFF
