@@ -194,7 +194,7 @@ macro(crosscompile_flann tag)
 	      -DBUILD_PYTHON_BINDINGS:BOOL=OFF
 	      -DBUILD_MATLAB_BINDINGS:BOOL=OFF
 	  )
-  elseif(${tag} STREQUAL  "ios_device")
+  elseif(${tag} STREQUAL  "ios-device")
     set(ios_platform "OS")
 	  ExternalProject_Add(
 	    ${proj}
@@ -212,7 +212,7 @@ macro(crosscompile_flann tag)
 	      -DBUILD_PYTHON_BINDINGS:BOOL=OFF
 	      -DBUILD_MATLAB_BINDINGS:BOOL=OFF
 	  )
-  elseif(${tag} STREQUAL  "ios_simulator")
+  elseif(${tag} STREQUAL  "ios-simulator")
     set(ios_platform "SIMULATOR64")
 	  ExternalProject_Add(
 	    ${proj}
