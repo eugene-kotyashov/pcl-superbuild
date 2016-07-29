@@ -179,22 +179,58 @@ macro(crosscompile_flann tag)
   set(proj flann-${tag})
   get_toolchain_file(${tag})
   
-  ExternalProject_Add(
-    ${proj}
-    SOURCE_DIR ${source_prefix}/flann
-    DOWNLOAD_COMMAND ""
-    DEPENDS flann-fetch
-    CMAKE_ARGS
-      -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
-      -DCMAKE_BUILD_TYPE:STRING=${build_type}
-      -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
-     # -DCMAKE_IOS_DEVELOPER_ROOT:${ios_root}
-     # -DIOS_PLATFORM_LOCATION:${ios_platform}
-     # -DBUILD_SHARED_LIBS:BOOL=OFF
-      -DBUILD_EXAMPLES:BOOL=OFF
-      -DBUILD_PYTHON_BINDINGS:BOOL=OFF
-      -DBUILD_MATLAB_BINDINGS:BOOL=OFF
-  )
+  if(${tag} STREQUAL "android")
+	  ExternalProject_Add(
+	    ${proj}
+	    SOURCE_DIR ${source_prefix}/flann
+	    DOWNLOAD_COMMAND ""
+	    DEPENDS flann-fetch
+	    CMAKE_ARGS
+	      -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
+	      -DCMAKE_BUILD_TYPE:STRING=${build_type}
+	      -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
+	     # -DBUILD_SHARED_LIBS:BOOL=OFF
+	      -DBUILD_EXAMPLES:BOOL=OFF
+	      -DBUILD_PYTHON_BINDINGS:BOOL=OFF
+	      -DBUILD_MATLAB_BINDINGS:BOOL=OFF
+	  )
+  elseif(${tag} STREQUAL  "ios_device")
+    set(ios_platform "OS")
+	  ExternalProject_Add(
+	    ${proj}
+	    SOURCE_DIR ${source_prefix}/flann
+	    DOWNLOAD_COMMAND ""
+	    DEPENDS flann-fetch
+	    CMAKE_ARGS
+	      -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
+	      -DCMAKE_BUILD_TYPE:STRING=${build_type}
+	      -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
+	     # -DCMAKE_IOS_DEVELOPER_ROOT:${ios_root}
+	     -DIOS_PLATFORM_LOCATION:${ios_platform}
+	     # -DBUILD_SHARED_LIBS:BOOL=OFF
+	      -DBUILD_EXAMPLES:BOOL=OFF
+	      -DBUILD_PYTHON_BINDINGS:BOOL=OFF
+	      -DBUILD_MATLAB_BINDINGS:BOOL=OFF
+	  )
+  elseif(${tag} STREQUAL  "ios_simulator")
+    set(ios_platform "SIMULATOR64")
+	  ExternalProject_Add(
+	    ${proj}
+	    SOURCE_DIR ${source_prefix}/flann
+	    DOWNLOAD_COMMAND ""
+	    DEPENDS flann-fetch
+	    CMAKE_ARGS
+	      -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
+	      -DCMAKE_BUILD_TYPE:STRING=${build_type}
+	      -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
+	     # -DCMAKE_IOS_DEVELOPER_ROOT:${ios_root}
+	     -DIOS_PLATFORM_LOCATION:${ios_platform}
+	     # -DBUILD_SHARED_LIBS:BOOL=OFF
+	      -DBUILD_EXAMPLES:BOOL=OFF
+	      -DBUILD_PYTHON_BINDINGS:BOOL=OFF
+	      -DBUILD_MATLAB_BINDINGS:BOOL=OFF
+	  )
+  endif ()
 
   force_build(${proj})
 endmacro()
