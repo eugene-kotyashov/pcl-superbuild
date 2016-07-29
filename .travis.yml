@@ -52,7 +52,7 @@ before_install:
       cd ..;
       mkdir build;
       cd build;
-      cmake -DBUILD_IOS_DEVICE:BOOL=ON -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=ON ../;
+      cmake -DBUILD_IOS_DEVICE:BOOL=ON -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=ON -DIOS_PLATFORM_LOCATION="OS" ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
@@ -71,7 +71,7 @@ before_install:
       cd ..;
       mkdir build;
       cd build;
-      cmake -DIOS_PLATFORM_LOCATION="OS" ../;
+      cmake ../;
     fi
 
 
