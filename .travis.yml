@@ -55,7 +55,7 @@ before_install:
       cd ..;
       mkdir build;
       cd build;
-      export IOS_PLATFORM_LOCATION=OS;
+      export IOS_PLATFORM_LOCATION="OS";
       export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
       cmake -DBUILD_IOS_DEVICE:BOOL=ON -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=OFF ../;
     fi
