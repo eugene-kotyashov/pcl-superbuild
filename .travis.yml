@@ -45,19 +45,23 @@ cache:
 # if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7";
 # export IOS_PLATFORM_LOCATION="OS";
 # export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
+# if ng
+# cmake -DBUILD_ANDROID:BOOL=OFF -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=OFF ..;
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew update >/dev/null;
-
+      
       wget http://dl.google.com/android/repository/android-ndk-r11c-darwin-x86_64.zip;
       unzip -q android-ndk-r11c-darwin-x86_64.zip;
       cd android-ndk-r11c;
       export ANDROID_NDK=$PWD;
-
+      
       cd ..;
       mkdir build;
       cd build;
-      cmake -DBUILD_ANDROID:BOOL=OFF -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=OFF ../;
+      export IOS_PLATFORM_LOCATION=OS;
+      export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
+      cmake ../
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
