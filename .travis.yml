@@ -55,6 +55,9 @@ before_install:
       unzip -q android-ndk-r11c-darwin-x86_64.zip;
       cd android-ndk-r11c;
       export ANDROID_NDK=$PWD;
+      wget --no-check-certificate -qO- https://cmake.org/files/v3.5/cmake-3.5.2-Darwin-x86_64.tar.gz -O /tmp/cmake-3.5.2-Darwin-x86_64.tar.gz;
+      tar -xvf /tmp/cmake-3.5.2-Darwin-x86_64.tar.gz;
+      export PATH=$PWD/cmake-3.5.2-Darwin-x86_64/bin/:$PATH;
 
       cd ..;
       mkdir build;
