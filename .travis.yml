@@ -43,6 +43,8 @@ cache:
 # cmake --version;
 # if [ "$CXX" = "clang++" ]; then export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode6-Beta6.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk";
 # if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7";
+# export IOS_PLATFORM_LOCATION="OS";
+# export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew update >/dev/null;
@@ -55,8 +57,6 @@ before_install:
       cd ..;
       mkdir build;
       cd build;
-      export IOS_PLATFORM_LOCATION="OS";
-      export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
       cmake -DBUILD_ANDROID:BOOL=OFF -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=OFF ../;
     fi
 
