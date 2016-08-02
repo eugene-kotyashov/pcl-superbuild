@@ -1,6 +1,8 @@
 cache:
   apt: true
 
+# osx_image: xcode7.1
+
 matrix: 
    include: 
      - os: linux
@@ -45,7 +47,7 @@ cache:
 # export IOS_PLATFORM_LOCATION="OS";
 # export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
 # if ng
-# cmake -DBUILD_ANDROID:BOOL=OFF -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=OFF ..;
+# cmake -DBUILD_ANDROID:BOOL=OFF -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=OFF ../;
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew update >/dev/null;
@@ -54,14 +56,11 @@ before_install:
       unzip -q android-ndk-r11c-darwin-x86_64.zip;
       cd android-ndk-r11c;
       export ANDROID_NDK=$PWD;
-      wget --no-check-certificate -qO- https://cmake.org/files/v3.5/cmake-3.5.2-Darwin-x86_64.tar.gz -O /tmp/cmake-3.5.2-Darwin-x86_64.tar.gz;
-      tar -xvf /tmp/cmake-3.5.2-Darwin-x86_64.tar.gz;
-      export PATH=$PWD/cmake-3.5.2-Darwin-x86_64/bin/:$PATH;
 
       cd ..;
       mkdir build;
       cd build;
-      cmake ../;
+      cmake -DBUILD_ANDROID:BOOL=OFF -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=OFF ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
@@ -85,5 +84,5 @@ before_install:
 
 
 install:
-    - travis_wait 45 make -j4
+    - travis_wait 60 make -j4
 
