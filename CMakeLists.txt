@@ -19,10 +19,10 @@ fetch_flann()
 set(tags)
 
 # Add
-if(BUILD_ANDROID)
+if (BUILD_ANDROID)
  list(APPEND tags android)
 endif()
-if(BUILD_IOS_DEVICE)
+if (BUILD_IOS_DEVICE)
  list(APPEND tags ios-device)
 endif()
 if(BUILD_IOS_SIMULATOR)
