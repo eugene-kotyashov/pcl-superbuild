@@ -50,13 +50,15 @@ cache:
 # Travis CI osx image?
 # https://docs.travis-ci.com/user/osx-ci-environment/
 # brew update >/dev/null;
+# http://hkdnet.hatenablog.com/entry/2016/07/30/215925
+#       cd $(brew --repository);
+#       git fetch origin;
+#       git reset --hard origin/master;
+#       brew update;
 
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
-      cd $(brew --repository);
-      git fetch origin;
-      git reset --hard origin/master;
-      brew update;
+      brew prune;
 
       export IOS_PLATFORM_LOCATION="OS";
       export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
