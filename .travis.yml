@@ -55,10 +55,11 @@ cache:
 #       git fetch origin;
 #       git reset --hard origin/master;
 #       brew update;
-
+# cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -BUILD_IOS_SIMULATOR:BOOL="OFF" ../;
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       sudo brew prune;
+      brew update >/dev/null;
 
       export IOS_PLATFORM_LOCATION="OS";
       export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
@@ -66,9 +67,9 @@ before_install:
       sudo brew outdated cmake || brew upgrade cmake;
 
       cd ..;
-      sudo mkdir build;
+      mkdir build;
       cd build;
-      sudo cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -BUILD_IOS_SIMULATOR:BOOL="OFF" ../;
+      cmake ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
