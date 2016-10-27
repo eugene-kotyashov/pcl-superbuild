@@ -47,8 +47,9 @@ cache:
 # export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
 # if ng
 # cmake -DBUILD_ANDROID:BOOL=OFF -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=OFF ../;
-# osx image?
+# Travis CI osx image?
 # https://docs.travis-ci.com/user/osx-ci-environment/
+# 
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew update >/dev/null;
@@ -59,7 +60,7 @@ before_install:
       cd ..;
       mkdir build;
       cd build;
-      cmake -DBUILD_ANDROID:BOOL=OFF -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=OFF ../;
+      cmake ../ -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -BUILD_IOS_SIMULATOR:BOOL="OFF";
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
