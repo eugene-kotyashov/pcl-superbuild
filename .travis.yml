@@ -63,7 +63,7 @@ before_install:
       cd ..;
       mkdir build;
       cd build;
-      cmake ../;
+      cmake -DBUILD_ANDROID:BOOL=OFF -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=OFF ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
