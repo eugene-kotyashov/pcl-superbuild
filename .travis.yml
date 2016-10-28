@@ -10,26 +10,27 @@ matrix:
        osx_image: xcode7.1
        language: cpp
        compiler: clang++
+       addons: 
+       apt: 
+         packages: 
+           - cmake 
+           - cmake_data
+           - libgtest-dev 
+           - doxygen-latex 
+           - libusb-1.0-0-dev 
 
-addons: 
-   apt: 
-    sources: 
-      - kalakris-cmake 
-      - boost-latest 
-      - kubuntu-backports 
-    packages: 
-      - cmake 
-      - libgtest-dev 
-      - doxygen-latex 
-      - libusb-1.0-0-dev 
+# cache: 
+#        directories: 
+#          - $HOME/flann 
+#          - $HOME/vtk 
+#          - $HOME/qhull 
+#          - $HOME/doxygen 
 
-cache: 
-  directories: 
-  - $HOME/flann 
-  - $HOME/vtk 
-  - $HOME/qhull 
-  - $HOME/doxygen 
-
+# iOS Setting : 
+# https://blog.travis-ci.com/
+# https://github.com/timsutton/osx-vm-templates
+# 
+# Android NDK :
 # http://dl.google.com/android/repository/android-ndk-r11c-windows-x86.zip
 # http://dl.google.com/android/repository/android-ndk-r11c-windows-x86_64.zip
 # wget http://dl.google.com/android/ndk/android-ndk-r8c-darwin-x86.tar.bz2
@@ -58,13 +59,13 @@ cache:
 # cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -BUILD_IOS_SIMULATOR:BOOL="OFF" ../;
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
-      sudo brew prune;
+      brew prune;
       brew update >/dev/null;
 
       export IOS_PLATFORM_LOCATION="OS";
       export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
 
-      sudo brew outdated cmake || brew upgrade cmake;
+      brew outdated cmake || brew upgrade cmake;
 
       cd ..;
       mkdir build;
