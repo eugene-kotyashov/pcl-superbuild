@@ -110,6 +110,8 @@ before_install:
       tar -xvf /tmp/cmake-3.6.2-Darwin-x86_64.tar.gz;
       export PATH=$PWD/cmake-3.6.2-Darwin-x86_64/bin/:$PATH;
 
+      xcode-select -print-path;
+
       mkdir build && cd build;
       cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -BUILD_IOS_SIMULATOR:BOOL="OFF" ../;
     fi
