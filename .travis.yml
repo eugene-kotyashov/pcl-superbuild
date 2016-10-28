@@ -19,25 +19,25 @@ matrix:
 #              - doxygen-latex
 #              - libusb-1.0-0-dev
      - os: osx
-       osx_image: xcode7.3
+       osx_image: xcode7.1
        # language: objective-c
        # compiler: clang++
        compiler: gcc
        # compiler: clang
-#        addons:
-#          apt:
-#            sources:
-#              - ubuntu-toolchain-r-test
-#              - george-edison55-precise-backports
-#            packages: 
-#              - g++-4.9
-#              - cmake
-#              - cmake_data
-#              - libgtest-dev
-#              - doxygen-latex
-#              - libusb-1.0-0-dev
-#        env: COMPILER=g++-4.9
-#        # env: COMPILER=g++-5
+       addons:
+         apt:
+           sources:
+             - ubuntu-toolchain-r-test
+             - george-edison55-precise-backports
+           packages: 
+             - g++-4.9
+             - cmake
+             - cmake_data
+             - libgtest-dev
+             - doxygen-latex
+             - libusb-1.0-0-dev
+       env: COMPILER=g++-4.9
+       # env: COMPILER=g++-5
 
 #      - os: osx
 #        osx_image: xcode7.1
@@ -65,8 +65,10 @@ matrix:
 #          - $HOME/qhull 
 #          - $HOME/doxygen 
 
-# iOS Setting : 
+# iOS Image Setting : 
 # https://blog.travis-ci.com/
+# https://docs.travis-ci.com/user/osx-ci-environment/#Xcode-7.3.1
+# https://docs.travis-ci.com/user/languages/objective-c
 # https://github.com/timsutton/osx-vm-templates
 # 
 # Android NDK :
@@ -100,9 +102,6 @@ before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew prune;
       brew update >/dev/null;
-
-      export IOS_PLATFORM_LOCATION="OS";
-      export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
 
       wget --no-check-certificate -qO- https://cmake.org/files/v3.6/cmake-3.6.2-Darwin-x86_64.tar.gz -O /tmp/cmake-3.6.2-Darwin-x86_64.tar.gz;
       tar -xvf /tmp/cmake-3.6.2-Darwin-x86_64.tar.gz;
