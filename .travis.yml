@@ -131,5 +131,6 @@ before_install:
 
 
 install:
-    - travis_wait 60 make
+    - travis_wait 60 make -j4 VERBOSE=1 2>&1
+    - if [[ $TRAVIS_OS_NAME = "osx" ]]; then ../makeFramework.sh; fi
 
