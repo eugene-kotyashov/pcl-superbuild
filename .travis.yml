@@ -104,7 +104,9 @@ before_install:
       export IOS_PLATFORM_LOCATION="OS";
       export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
 
-      brew outdated cmake || brew upgrade cmake;
+      wget --no-check-certificate -qO- https://cmake.org/files/v3.6/cmake-3.6.2-Darwin-x86_64.tar.gz -O /tmp/cmake-3.6.2-Darwin-x86_64.tar.gz;
+      tar -xvf /tmp/cmake-3.6.2-Darwin-x86_64.tar.gz;
+      export PATH=$PWD/cmake-3.6.2-Darwin-x86_64/bin/:$PATH;
 
       cd ..;
       mkdir build;
@@ -113,6 +115,10 @@ before_install:
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
+      wget --no-check-certificate -qO- http://www.cmake.org/files/v3.6/cmake-3.6.2-Linux-x86_64.tar.gz -O /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
+      tar -xvf /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
+      export PATH=$PWD/cmake-3.6.2-Linux-x86_64/bin/:$PATH;
+      
       wget http://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip;
       unzip -q android-ndk-r11c-linux-x86_64.zip;
       cd android-ndk-r11c;
