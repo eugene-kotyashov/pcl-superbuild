@@ -3,9 +3,21 @@ cache:
 
 matrix: 
    include: 
-#     - os: linux
-#       language: cpp
-#       compiler: gcc
+     - os: linux
+       language: cpp
+       compiler: gcc
+       addons:
+         apt:
+           sources:
+             - ubuntu-toolchain-r-test
+             - george-edison55-precise-backports
+           packages: 
+             - g++-4.9
+             - cmake
+             - cmake_data
+             - libgtest-dev
+             - doxygen-latex
+             - libusb-1.0-0-dev
      - os: osx
        osx_image: xcode7.3
        # language: objective-c
@@ -97,17 +109,10 @@ before_install:
       cd ..;
       mkdir build;
       cd build;
-      cmake ../;
+      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -BUILD_IOS_SIMULATOR:BOOL="OFF" ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
-      sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test;
-      sudo apt-get -qq update;
-      sudo apt-get -qq install g++-4.9 -y;
-      wget --no-check-certificate -qO- http://www.cmake.org/files/v3.4/cmake-3.4.1-Linux-x86_64.tar.gz -O /tmp/cmake-3.4.1-Linux-x86_64.tar.gz;
-      tar -xvf /tmp/cmake-3.4.1-Linux-x86_64.tar.gz;
-      export PATH=$PWD/cmake-3.4.1-Linux-x86_64/bin/:$PATH;
-
       wget http://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip;
       unzip -q android-ndk-r11c-linux-x86_64.zip;
       cd android-ndk-r11c;
