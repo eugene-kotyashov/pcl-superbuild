@@ -8,16 +8,17 @@ matrix:
 #       compiler: gcc
      - os: osx
        osx_image: xcode7.1
-       language: cpp
-       compiler: clang++
+       # language: cpp
+       language: objective-c
+       # compiler: clang++
        addons: 
-       apt: 
-         packages: 
-           - cmake 
-           - cmake_data
-           - libgtest-dev 
-           - doxygen-latex 
-           - libusb-1.0-0-dev 
+         apt: 
+           packages: 
+             - cmake 
+             - cmake_data
+             - libgtest-dev 
+             - doxygen-latex 
+             - libusb-1.0-0-dev 
 
 # cache: 
 #        directories: 
