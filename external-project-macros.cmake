@@ -223,14 +223,12 @@ macro(crosscompile_flann tag)
     SOURCE_DIR ${source_prefix}/flann
     DOWNLOAD_COMMAND ""
     DEPENDS flann-fetch
-    CMAKE_ARGS
-      -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
-      -DCMAKE_BUILD_TYPE:STRING=${build_type}
-      -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
-     # -DBUILD_SHARED_LIBS:BOOL=OFF
-      -DBUILD_EXAMPLES:BOOL=OFF
-      -DBUILD_PYTHON_BINDINGS:BOOL=OFF
-      -DBUILD_MATLAB_BINDINGS:BOOL=OFF
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
+               -DCMAKE_BUILD_TYPE:STRING=${build_type}
+               -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
+               -DBUILD_EXAMPLES:BOOL="OFF"
+               -DBUILD_PYTHON_BINDINGS:BOOL="OFF"
+               -DBUILD_MATLAB_BINDINGS:BOOL="OFF"
   )
 
   force_build(${proj})
