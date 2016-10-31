@@ -40,7 +40,9 @@ set (IOS True)
 # set (XCODE_PRE_43_ROOT "/Developer/Platforms/${IOS_PLATFORM_LOCATION}/Developer")
 
 # TravisCI Fixed Path
-set(CMAKE_IOS_DEVELOPER_ROOT, "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk")
+# set(CMAKE_IOS_DEVELOPER_ROOT, "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk")
+#                                 Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Dev.
+set(CMAKE_IOS_DEVELOPER_ROOT, "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/")
 
 # Required as of cmake 2.8.10
 set (CMAKE_OSX_DEPLOYMENT_TARGET "" CACHE STRING "Force unset of the deployment target for iOS" FORCE)
