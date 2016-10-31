@@ -105,7 +105,7 @@ matrix:
 # 
 ##
 # export IOS_PLATFORM_LOCATION="OS";
-# export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
+# export CXXFLAGS="-std=c++11 -arch armv7 armv7s arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
 #
 before_install:
       brew prune;
