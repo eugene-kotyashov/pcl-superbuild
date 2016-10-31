@@ -84,10 +84,11 @@ set (CMAKE_CXX_OSX_COMPATIBILITY_VERSION_FLAG "${CMAKE_C_OSX_COMPATIBILITY_VERSI
 set (CMAKE_CXX_OSX_CURRENT_VERSION_FLAG "${CMAKE_C_OSX_CURRENT_VERSION_FLAG}")
 
 # Hidden visibilty is required for cxx on iOS 
-set (CMAKE_C_FLAGS_INIT "")
+# set (CMAKE_C_FLAGS_INIT "")
 # set (CMAKE_CXX_FLAGS_INIT "-fvisibility=hidden -fvisibility-inlines-hidden")
 # https://docs.travis-ci.com/user/osx-ci-environment/
 # xcode7.3 : OS X 10.11
+set (CMAKE_C_FLAGS_INIT "-isysroot ${CMAKE_IOS_SDK_ROOT}")
 set (CMAKE_CXX_FLAGS_INIT "-fvisibility=hidden -fvisibility-inlines-hidden -isysroot ${CMAKE_IOS_SDK_ROOT}")
 # set includePath
 # set (CMAKE_CXX_FLAGS_INIT "-fvisibility=hidden -fvisibility-inlines-hidden -isysroot ${CMAKE_IOS_SDK_ROOT} -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include")
@@ -178,7 +179,8 @@ set (CMAKE_OSX_SYSROOT ${CMAKE_IOS_SDK_ROOT} CACHE PATH "Sysroot used for iOS su
 
 # set the architecture for iOS 
 if (${IOS_PLATFORM} STREQUAL "OS")
-    set (IOS_ARCH armv7 armv7s arm64)
+#     set (IOS_ARCH armv7 armv7s arm64)
+    set (IOS_ARCH arm64)
 elseif (${IOS_PLATFORM} STREQUAL "SIMULATOR")
     set (IOS_ARCH i386)
 elseif (${IOS_PLATFORM} STREQUAL "SIMULATOR64")
