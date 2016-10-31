@@ -62,8 +62,8 @@ CMAKE_FORCE_CXX_COMPILER (/usr/bin/g++ Apple)
 set(CMAKE_AR ar CACHE FILEPATH "" FORCE)
 
 # 
-# set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang")
-# set(CMAKE_CXX_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++")
+set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang")
+set(CMAKE_CXX_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++")
 
 
 # Skip the platform compiler checks for cross compiling
