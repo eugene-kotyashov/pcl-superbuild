@@ -113,7 +113,7 @@ before_install:
       xcode-select -print-path;
 
       mkdir build && cd build;
-      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -BUILD_IOS_SIMULATOR:BOOL="OFF" ../;
+      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
