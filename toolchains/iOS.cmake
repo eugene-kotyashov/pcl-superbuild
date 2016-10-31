@@ -43,6 +43,7 @@ set (IOS True)
 # set(CMAKE_IOS_DEVELOPER_ROOT, "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk")
 #                                 Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Dev.
 set(CMAKE_IOS_DEVELOPER_ROOT, "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/")
+# set(CMAKE_IOS_SDK_ROOT, "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk"))
 
 # Required as of cmake 2.8.10
 set (CMAKE_OSX_DEPLOYMENT_TARGET "" CACHE STRING "Force unset of the deployment target for iOS" FORCE)
@@ -59,6 +60,11 @@ include (CMakeForceCompiler)
 CMAKE_FORCE_C_COMPILER (/usr/bin/gcc Apple)
 CMAKE_FORCE_CXX_COMPILER (/usr/bin/g++ Apple)
 set(CMAKE_AR ar CACHE FILEPATH "" FORCE)
+
+# 
+set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang")
+set(CMAKE_CXX_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++")
+
 
 # Skip the platform compiler checks for cross compiling
 set (CMAKE_CXX_COMPILER_WORKS TRUE)
