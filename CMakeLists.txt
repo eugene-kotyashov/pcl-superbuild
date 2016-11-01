@@ -32,7 +32,7 @@ endif()
 foreach(tag ${tags})
   # crosscompile_vtk(${tag})
   crosscompile_boost(${tag})
-  crosscompile_flann(${tag})
+  # crosscompile_flann(${tag})
   crosscompile_pcl(${tag})
 endforeach()
 
