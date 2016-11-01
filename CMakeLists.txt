@@ -33,7 +33,7 @@ foreach(tag ${tags})
   # crosscompile_vtk(${tag})
   crosscompile_boost(${tag})
   crosscompile_flann(${tag})
-  # crosscompile_pcl(${tag})
+  crosscompile_pcl(${tag})
 endforeach()
 
 # if (BUILD_IOS_DEVICE)
