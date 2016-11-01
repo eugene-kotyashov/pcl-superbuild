@@ -113,6 +113,9 @@ before_install:
       brew prune;
       brew update >/dev/null;
 
+      brew tap totakke/openni2;
+      brew install openni2;
+
       mkdir build && cd build;
       cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;
     fi
