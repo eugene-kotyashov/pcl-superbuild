@@ -226,9 +226,9 @@ macro(crosscompile_flann tag)
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
                -DCMAKE_BUILD_TYPE:STRING=${build_type}
                -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
-               -DBUILD_EXAMPLES:BOOL="OFF"
-               -DBUILD_PYTHON_BINDINGS:BOOL="OFF"
-               -DBUILD_MATLAB_BINDINGS:BOOL="OFF"
+               -DBUILD_EXAMPLES:BOOL=OFF
+               -DBUILD_PYTHON_BINDINGS:BOOL=OFF
+               -DBUILD_MATLAB_BINDINGS:BOOL=OFF
   )
 
   force_build(${proj})

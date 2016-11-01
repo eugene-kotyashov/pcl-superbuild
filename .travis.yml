@@ -107,11 +107,10 @@ matrix:
 # export IOS_PLATFORM_LOCATION="OS";
 # export CXXFLAGS="-std=c++11 -arch armv7 armv7s arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
 #
+# xcode-select -print-path;
 before_install:
       brew prune;
       brew update >/dev/null;
-
-      xcode-select -print-path;
 
       mkdir build && cd build;
       cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;
