@@ -15,7 +15,7 @@ fetch_boost()
 fetch_flann()
 
 # Build overTime(Travis)
-# compile_vtk()
+compile_vtk()
 
 set(tags)
 
