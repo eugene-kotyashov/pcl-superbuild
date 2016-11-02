@@ -14,7 +14,7 @@ fetch_pcl()
 fetch_boost()
 fetch_flann()
 
-# compile_vtk()
+compile_vtk()
 
 set(tags)
 
