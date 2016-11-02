@@ -14,7 +14,8 @@ fetch_pcl()
 fetch_boost()
 fetch_flann()
 
-compile_vtk()
+# Build overTime(Travis)
+# compile_vtk()
 
 set(tags)
 
@@ -33,7 +34,7 @@ foreach(tag ${tags})
   # crosscompile_vtk(${tag})
   crosscompile_boost(${tag})
   crosscompile_flann(${tag})
-  # crosscompile_pcl(${tag})
+  crosscompile_pcl(${tag})
 endforeach()
 
 # if (BUILD_IOS_DEVICE)
