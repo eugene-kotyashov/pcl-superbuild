@@ -15,7 +15,7 @@ fetch_boost()
 fetch_flann()
 
 # Build overTime(Travis)
-compile_vtk()
+# compile_vtk()
 
 set(tags)
 
@@ -31,7 +31,7 @@ if(BUILD_IOS_SIMULATOR)
 endif()
 
 foreach(tag ${tags})
-  # crosscompile_vtk(${tag})
+  crosscompile_vtk(${tag})
   crosscompile_boost(${tag})
   crosscompile_flann(${tag})
   crosscompile_pcl(${tag})
