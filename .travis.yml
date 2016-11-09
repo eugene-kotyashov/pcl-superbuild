@@ -136,8 +136,10 @@ before_install:
       cmake ../;
     fi
 
+# install:
+#   - travis_wait 60 make VERBOSE=1 2>&1
 
-install:
+script:
     - travis_wait 60 make VERBOSE=1 2>&1
 
 after_failure:
