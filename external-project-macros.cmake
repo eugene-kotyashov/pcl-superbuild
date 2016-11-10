@@ -323,6 +323,8 @@ macro(crosscompile_pcl tag)
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
       -DBUILD_SHARED_LIBS:BOOL=OFF
       -DPCL_SHARED_LIBS:BOOL=OFF
+      # Clang Build NG
+      -DPCL_ENABLE_SSE:BOOL=OFF
       -DWITH_OPENGL:BOOL=OFF
       -DWITH_FZAPI:BOOL=OFF
       -DWITH_LIBUSB:BOOL=OFF
