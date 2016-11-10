@@ -284,13 +284,13 @@ macro(fetch_pcl)
   ExternalProject_Add(
     pcl-fetch
     SOURCE_DIR ${source_prefix}/pcl
-    GIT_REPOSITORY git://github.com/patmarion/PCL.git
+    # GIT_REPOSITORY git://github.com/patmarion/PCL.git
     # GIT_REPOSITORY git://github.com/PointCloudLibrary/pcl.git
-    # GIT_REPOSITORY git://github.com/Sirokujira/pcl.git
-    GIT_TAG origin/android-tag
+    GIT_REPOSITORY git://github.com/Sirokujira/pcl.git
+    # GIT_TAG origin/android-tag
     # GIT_TAG origin/master
     # GIT_TAG pcl-1.8.0
-    # GIT_TAG Branch_pcl-1.7.2
+    GIT_TAG Branch_pcl-1.7.2
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
@@ -333,9 +333,11 @@ macro(crosscompile_pcl tag)
       -DWITH_PCAP:BOOL=OFF
       -DWITH_PNG:BOOL=OFF
       -DWITH_PXCAPI:BOOL=OFF
-      -DWITH_QHULL:BOOL=ON
+      # -DWITH_QHULL:BOOL=ON
+      -DWITH_QHULL:BOOL=OFF
       -DWITH_QT:BOOL=OFF
-      -DWITH_VTK:BOOL=ON
+      # -DWITH_VTK:BOOL=ON
+      -DWITH_VTK:BOOL=OFF
       -DBUILD_OPENNI:BOOL=OFF
       -DBUILD_OPENNI2:BOOL=OFF
       -DBUILD_all_in_one_installer:BOOL=OFF
