@@ -123,8 +123,6 @@ before_install:
       brew tap totakke/openni2;
       brew install openni2;
       
-      brew install llvm;
-      
       mkdir build && cd build;
       cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;
     fi
