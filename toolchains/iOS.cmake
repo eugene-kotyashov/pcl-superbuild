@@ -63,17 +63,17 @@ set(CMAKE_AR ar CACHE FILEPATH "" FORCE)
 
 # use clang
 # c
-#set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang")
+set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang")
 # NG
 ## set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++")
 # c++
-#set(CMAKE_CXX_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++")
+set(CMAKE_CXX_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++")
 
 # use clang + open-mp
 # set(CMAKE_C_COMPILER "/usr/local/bin/clang-omp")
 # set(CMAKE_CXX_COMPILER "/usr/local/bin/clang-omp++")
-set(CMAKE_C_COMPILER "/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib")
-set(CMAKE_CXX_COMPILER "/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib")
+# set(CMAKE_C_COMPILER "/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib")
+# set(CMAKE_CXX_COMPILER "/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib")
 # set alias
 # set(CMAKE_C_COMPILER "clang-omp")
 # set(CMAKE_CXX_COMPILER "clang-omp++")
