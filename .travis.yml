@@ -114,8 +114,6 @@ matrix:
 # export C_INCLUDE_PATH=/usr/local/Cellar/libiomp/!date!/include/libiomp:$C_INCLUDE_PATH;
 # export CPLUS_INCLUDE_PATH=/usr/local/Cellar/libiomp/!date!/include/libiomp:$CPLUS_INCLUDE_PATH;
 # export LIBRARY_PATH=/usr/local/Cellar/libiomp/!date!/lib:$LIBRARY_PATH;
-# alias clang-omp='/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib'
-# alias clang-omp++='/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib'
 
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
@@ -126,8 +124,6 @@ before_install:
       brew install openni2;
       
       brew install llvm;
-      # alias clang-omp='/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib';
-      # alias clang-omp++='/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib';
       
       mkdir build && cd build;
       cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;
