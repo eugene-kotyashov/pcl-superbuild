@@ -56,21 +56,21 @@ if (CMAKE_UNAME)
 endif (CMAKE_UNAME)
 
 # Force the compilers to gcc for iOS
-# include (CMakeForceCompiler)
-# CMAKE_FORCE_C_COMPILER (/usr/bin/gcc Apple)
-# CMAKE_FORCE_CXX_COMPILER (/usr/bin/g++ Apple)
-include(CMakeForceCompiler) 
-CMAKE_FORCE_C_COMPILER(clang clang) 
-CMAKE_FORCE_CXX_COMPILER(clang++ clang++) 
+include (CMakeForceCompiler)
+CMAKE_FORCE_C_COMPILER (/usr/bin/gcc Apple)
+CMAKE_FORCE_CXX_COMPILER (/usr/bin/g++ Apple)
+# include(CMakeForceCompiler) 
+# CMAKE_FORCE_C_COMPILER(clang clang) 
+# CMAKE_FORCE_CXX_COMPILER(clang++ clang++) 
 set(CMAKE_AR ar CACHE FILEPATH "" FORCE)
 
 # use clang
 # c
-# set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang")
+set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang")
 # NG
 ## set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++")
 # c++
-# set(CMAKE_CXX_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++")
+set(CMAKE_CXX_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++")
 
 # use clang + open-mp
 # set(CMAKE_C_COMPILER "/usr/local/bin/clang-omp")
@@ -200,7 +200,9 @@ set (CMAKE_OSX_SYSROOT ${CMAKE_IOS_SDK_ROOT} CACHE PATH "Sysroot used for iOS su
 
 # set the architecture for iOS 
 if (${IOS_PLATFORM} STREQUAL "OS")
-      set (IOS_ARCH armv7 armv7s arm64)
+#     set (IOS_ARCH armv7 armv7s arm64)
+# http://d.hatena.ne.jp/feb-hare/comment/20111013/1318506885
+      set (IOS_ARCH "armv7;armv7s;arm64")
 #     set (IOS_ARCH arm64)
 elseif (${IOS_PLATFORM} STREQUAL "SIMULATOR")
     set (IOS_ARCH i386)
