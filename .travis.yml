@@ -103,10 +103,11 @@ matrix:
 # tar -xvf /tmp/cmake-3.6.2-Darwin-x86_64.tar.gz;
 # export PATH=$PWD/cmake-3.6.2-Darwin-x86_64/bin/:$PATH;
 # 
-##
+###
+# 
 # export IOS_PLATFORM_LOCATION="OS";
 # export CXXFLAGS="-std=c++11 -arch armv7 armv7s arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
-#
+# 
 # xcode-select -print-path;
 # old()
 # brew tap homebrew/boneyard;
@@ -114,6 +115,11 @@ matrix:
 # export C_INCLUDE_PATH=/usr/local/Cellar/libiomp/!date!/include/libiomp:$C_INCLUDE_PATH;
 # export CPLUS_INCLUDE_PATH=/usr/local/Cellar/libiomp/!date!/include/libiomp:$CPLUS_INCLUDE_PATH;
 # export LIBRARY_PATH=/usr/local/Cellar/libiomp/!date!/lib:$LIBRARY_PATH;
+# 
+# brew install llvm;
+# travis-ci use ng alias
+# alias clang-omp='/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib';
+# alias clang-omp++='/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib';
 
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
@@ -122,8 +128,6 @@ before_install:
       
       brew tap totakke/openni2;
       brew install openni2;
-      
-      brew install llvm;
       
       mkdir build && cd build;
       cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;

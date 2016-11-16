@@ -56,26 +56,30 @@ if (CMAKE_UNAME)
 endif (CMAKE_UNAME)
 
 # Force the compilers to gcc for iOS
-include (CMakeForceCompiler)
-CMAKE_FORCE_C_COMPILER (/usr/bin/gcc Apple)
-CMAKE_FORCE_CXX_COMPILER (/usr/bin/g++ Apple)
+# include (CMakeForceCompiler)
+# CMAKE_FORCE_C_COMPILER (/usr/bin/gcc Apple)
+# CMAKE_FORCE_CXX_COMPILER (/usr/bin/g++ Apple)
+include(CMakeForceCompiler) 
+CMAKE_FORCE_C_COMPILER(clang clang) 
+CMAKE_FORCE_CXX_COMPILER(clang++ clang++) 
 set(CMAKE_AR ar CACHE FILEPATH "" FORCE)
 
 # use clang
 # c
-set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang")
+# set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang")
 # NG
 ## set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++")
 # c++
-set(CMAKE_CXX_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++")
+# set(CMAKE_CXX_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++")
 
 # use clang + open-mp
 # set(CMAKE_C_COMPILER "/usr/local/bin/clang-omp")
 # set(CMAKE_CXX_COMPILER "/usr/local/bin/clang-omp++")
 # set(CMAKE_C_COMPILER "/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib")
 # set(CMAKE_CXX_COMPILER "/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib")
-set(CMAKE_C_COMPILER "/usr/local/opt/llvm/bin/clang")
-set(CMAKE_CXX_COMPILER "/usr/local/opt/llvm/bin/clang++")
+# set(CMAKE_C_COMPILER "/usr/local/opt/llvm/bin/clang")
+# set(CMAKE_CXX_COMPILER "/usr/local/opt/llvm/bin/clang++")
+
 # set alias
 # set(CMAKE_C_COMPILER "clang-omp")
 # set(CMAKE_CXX_COMPILER "clang-omp++")
@@ -108,11 +112,11 @@ set (CMAKE_CXX_FLAGS_INIT "-fvisibility=hidden -fvisibility-inlines-hidden -isys
 # set (CMAKE_CXX_FLAGS_INIT "-fvisibility=hidden -fvisibility-inlines-hidden -isysroot ${CMAKE_IOS_SDK_ROOT} -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/include")
 
 # lib path set
-# set (CMAKE_C_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_C_LINK_FLAGS}")
-# set (CMAKE_CXX_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_CXX_LINK_FLAGS}")
+set (CMAKE_C_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_C_LINK_FLAGS}")
+set (CMAKE_CXX_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_CXX_LINK_FLAGS}")
 # add openmp library
-set (CMAKE_C_LINK_FLAGS "-L/usr/local/opt/llvm/lib -Wl,-search_paths_first -rpath,/usr/local/opt/llvm/lib, ${CMAKE_C_LINK_FLAGS}")
-set (CMAKE_CXX_LINK_FLAGS "-L/usr/local/opt/llvm/lib -Wl,-search_paths_first -rpath,/usr/local/opt/llvm/lib, ${CMAKE_CXX_LINK_FLAGS}")
+# set (CMAKE_C_LINK_FLAGS "-L/usr/local/opt/llvm/lib -Wl,-search_paths_first -rpath,/usr/local/opt/llvm/lib, ${CMAKE_C_LINK_FLAGS}")
+# set (CMAKE_CXX_LINK_FLAGS "-L/usr/local/opt/llvm/lib -Wl,-search_paths_first -rpath,/usr/local/opt/llvm/lib, ${CMAKE_CXX_LINK_FLAGS}")
 
 set (CMAKE_PLATFORM_HAS_INSTALLNAME 1)
 set (CMAKE_SHARED_LIBRARY_CREATE_C_FLAGS "-dynamiclib -headerpad_max_install_names")
