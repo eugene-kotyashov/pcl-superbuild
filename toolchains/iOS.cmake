@@ -74,6 +74,8 @@ set(CMAKE_CXX_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/Xc
 # set(CMAKE_CXX_COMPILER "/usr/local/bin/clang-omp++")
 # set(CMAKE_C_COMPILER "/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib")
 # set(CMAKE_CXX_COMPILER "/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib")
+set(CMAKE_C_COMPILER "/usr/local/opt/llvm/bin/clang")
+set(CMAKE_CXX_COMPILER "/usr/local/opt/llvm/bin/clang++")
 # set alias
 # set(CMAKE_C_COMPILER "clang-omp")
 # set(CMAKE_CXX_COMPILER "clang-omp++")
@@ -99,15 +101,18 @@ set (CMAKE_CXX_OSX_CURRENT_VERSION_FLAG "${CMAKE_C_OSX_CURRENT_VERSION_FLAG}")
 # set (CMAKE_C_FLAGS_INIT "")
 # set (CMAKE_CXX_FLAGS_INIT "-fvisibility=hidden -fvisibility-inlines-hidden")
 # https://docs.travis-ci.com/user/osx-ci-environment/
+# set includePath
 # xcode7.3 : OS X 10.11
 set (CMAKE_C_FLAGS_INIT "-isysroot ${CMAKE_IOS_SDK_ROOT}")
 set (CMAKE_CXX_FLAGS_INIT "-fvisibility=hidden -fvisibility-inlines-hidden -isysroot ${CMAKE_IOS_SDK_ROOT}")
-# set includePath
 # set (CMAKE_CXX_FLAGS_INIT "-fvisibility=hidden -fvisibility-inlines-hidden -isysroot ${CMAKE_IOS_SDK_ROOT} -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/include")
 
-
-set (CMAKE_C_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_C_LINK_FLAGS}")
-set (CMAKE_CXX_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_CXX_LINK_FLAGS}")
+# lib path set
+# set (CMAKE_C_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_C_LINK_FLAGS}")
+# set (CMAKE_CXX_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_CXX_LINK_FLAGS}")
+# add openmp library
+set (CMAKE_C_LINK_FLAGS "-L/usr/local/opt/llvm/lib -Wl,-search_paths_first -rpath,/usr/local/opt/llvm/lib, ${CMAKE_C_LINK_FLAGS}")
+set (CMAKE_CXX_LINK_FLAGS "-L/usr/local/opt/llvm/lib -Wl,-search_paths_first -rpath,/usr/local/opt/llvm/lib, ${CMAKE_CXX_LINK_FLAGS}")
 
 set (CMAKE_PLATFORM_HAS_INSTALLNAME 1)
 set (CMAKE_SHARED_LIBRARY_CREATE_C_FLAGS "-dynamiclib -headerpad_max_install_names")
