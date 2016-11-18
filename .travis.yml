@@ -120,6 +120,9 @@ matrix:
 # travis-ci use ng alias
 # alias clang-omp='/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib';
 # alias clang-omp++='/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib';
+# Boost Build?
+# http://blog.livedoor.jp/tek_nishi/archives/7603570.html
+# sudo ln -s /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/usr/include /usr/include/arm
 
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then

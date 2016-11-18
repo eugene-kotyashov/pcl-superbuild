@@ -276,6 +276,21 @@ macro(crosscompile_boost tag)
   force_build(${proj})
 endmacro()
 
+#
+# Boost crosscompile(use b2.exe)
+#
+macro(crosscompile_boost_on_b2 tag)
+
+  set(proj boost-${tag})
+  
+  # ./b2 toolset=clang cflags="-arch arm64 -fvisibility=default -miphoneos-version-min=5.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/include/
+  # --prefix=(インストールしたいディレクトリ)
+  execute_process(
+    COMMAND ./b2 toolset=clang cflags="-arch arm64 -fvisibility=default -miphoneos-version-min=7.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/include/
+    WORKING_DIRECTORY ${source_prefix}/boost
+  )
+endmacro()
+
 
 #
 # PCL fetch
