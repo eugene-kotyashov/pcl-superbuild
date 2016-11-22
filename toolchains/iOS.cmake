@@ -204,6 +204,7 @@ if (${IOS_PLATFORM} STREQUAL "OS")
 # http://d.hatena.ne.jp/feb-hare/comment/20111013/1318506885
 #       set (IOS_ARCH "armv7;armv7s;arm64")
 # iOS10 SDK not support armv7
+# must use lipo(combine a librarys)
 #     set (IOS_ARCH "armv7s;arm64")
       set (IOS_ARCH "arm64")
 elseif (${IOS_PLATFORM} STREQUAL "SIMULATOR")
