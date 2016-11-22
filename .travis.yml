@@ -159,7 +159,7 @@ script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
 
 after_success:
-	- zip -r pcl-superbuild_ios_library.zip ./CMakeExternals/Install
+    - zip -r pcl-superbuild_ios_library.zip ./CMakeExternals/Install
 
 after_failure:
     - cat ./CMakeExternals/Build/pcl-ios-device/CMakeFiles/CMakeOutput.log
