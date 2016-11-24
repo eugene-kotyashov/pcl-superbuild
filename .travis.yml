@@ -157,6 +157,8 @@ before_install:
 
 script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
+    - cd ../apps/ios/HelloPCL
+    - ./cmake_command.sh
 
 after_success:
     - zip -r pcl-superbuild_ios_library.zip ./CMakeExternals/Install
