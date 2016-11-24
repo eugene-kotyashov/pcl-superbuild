@@ -160,8 +160,8 @@ script:
     - cd ../apps/ios/HelloPCL
     - ./cmake_command.sh
 
-after_success:
-    - zip -r pcl-superbuild_ios_library.zip ./CMakeExternals/Install
+# after_success:
+#     - zip -r pcl-superbuild_ios_library.zip ./CMakeExternals/Install
 
 after_failure:
     - cat ./CMakeExternals/Build/pcl-ios-device/CMakeFiles/CMakeOutput.log
