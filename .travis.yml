@@ -155,8 +155,6 @@ before_install:
 # install:
 #   - travis_wait 60 make -j4 VERBOSE=1 2>&1
 
-# - cd ../apps/ios/HelloPCL
-# - ./cmake_command.sh
 script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
 
@@ -168,16 +166,14 @@ after_failure:
     - cat ./CMakeExternals/Build/pcl-ios-device/CMakeFiles/CMakeError.log
 
 before_deploy:
-  # ƒfƒvƒƒC‚Ì€”õ
-  - zip -q pcl-superbuild_ios_library.zip -r ./CMakeExternals/Install
+    - zip -q pcl-superbuild_ios_library.zip -r ./CMakeExternals/Install
 
 deploy:
-  provider: releases
-  skip_cleanup: true
-  api_key: e6657f1b7c914a776ce5c75fd0526309fcd868bf
-  file: 
-    - pcl-superbuild_ios_library.zip
-  on:
-    tags: true
-    branch: master
+    provider: releases
+    skip_cleanup: true
+    api_key: e6657f1b7c914a776ce5c75fd0526309fcd868bf
+    file: pcl-superbuild_ios_library.zip
+    on:
+        tags: true
+        branch: master
 
