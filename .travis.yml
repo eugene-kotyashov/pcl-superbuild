@@ -165,15 +165,20 @@ after_failure:
     - cat ./CMakeExternals/Build/pcl-ios-device/CMakeFiles/CMakeOutput.log
     - cat ./CMakeExternals/Build/pcl-ios-device/CMakeFiles/CMakeError.log
 
+# - zip -q packages/pcl-rleases-$GIT_TAG.zip -r ./CMakeExternals/Install
 before_deploy:
-    - zip -q pcl-superbuild_ios_library.zip -r ./CMakeExternals/Install
+    - mkdir packages
+    - tar czf packages/pcl-releases-$GIT_TAG.tar.gz $(ls -I packages)
+    - zip -q packages/pcl-releases-$GIT_TAG.zip -r $(ls -I packages)
 
 deploy:
-    provider: releases
-    skip_cleanup: true
-    api_key: e6657f1b7c914a776ce5c75fd0526309fcd868bf
-    file: pcl-superbuild_ios_library.zip
-    on:
-        tags: true
-        branch: master
+  provider: releases
+  skip_cleanup: true
+  api_key: e6657f1b7c914a776ce5c75fd0526309fcd868bf
+  file:
+    - packages/pcl-releases-$GIT_TAG.tar.gz
+    - packages/pcl-releases-$GIT_TAG.zip
+  on:
+    tags: true
+    branch: master
 
