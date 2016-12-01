@@ -174,11 +174,10 @@ before_deploy:
 deploy:
   provider: releases
   skip_cleanup: true
-  api_key: e6657f1b7c914a776ce5c75fd0526309fcd868bf
+  api_key: 53f0b73b21865bea8e66e5389087cd019c169882
   file:
     - packages/pcl-releases-$GIT_TAG.tar.gz
     - packages/pcl-releases-$GIT_TAG.zip
   on:
     tags: true
-    branch: master
 
