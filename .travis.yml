@@ -176,8 +176,8 @@ after_failure:
 # - zip -q packages/pcl-rleases-$GIT_TAG.zip -r ./CMakeExternals/Install
 before_deploy:
     - mkdir packages
-    - tar czf packages/pcl-releases-$GIT_TAG.tar.gz $(ls -I packages)
-    - zip -q packages/pcl-releases-$GIT_TAG.zip -r $(ls -I packages)
+    - tar czf packages/pcl-releases-$GIT_TAG.tar.gz ./CMakeExternals/Install
+    - zip -q packages/pcl-releases-$GIT_TAG.zip -r ./CMakeExternals/Install
 
 deploy:
   provider: releases
