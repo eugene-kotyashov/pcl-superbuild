@@ -1,6 +1,7 @@
 # Copyright (c) 2010-2011, Ethan Rublee
 # Copyright (c) 2011-2014, Andrey Kamaev
 # Copyright (c) 2016,      Andrew Gunnerson
+# https://github.com/taka-no-me/android-cmake/pull/54/files?diff=split
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -30,7 +31,7 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 # ------------------------------------------------------------------------------
-#  Android CMake toolchain file, for use with the Android NDK r5-r10
+#  Android CMake toolchain file, for use with the Android NDK r5-r11
 #  Requires cmake 2.6.3 or newer (2.8.5 or newer is recommended).
 #  See home page: https://github.com/taka-no-me/android-cmake
 #
