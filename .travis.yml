@@ -157,7 +157,7 @@ before_install:
       cd ..;
       mkdir build;
       cd build;
-      cmake ../;
+      cmake -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;
     fi
 
 # install:
@@ -178,7 +178,6 @@ before_deploy:
     - mkdir packages
     - tar czf packages/pcl-releases-$GIT_TAG.tar.gz ./CMakeExternals/Install
     - zip -q packages/pcl-releases-$GIT_TAG.zip -r ./CMakeExternals/Install
-    # Git Settimg
     - git config --global user.name "Sirokujira"
     - git config --global user.email "toru753@gmail.com"
     - git tag $GIT_TAG -a -m "Commit from Travis CI for build $TRAVIS_BUILD_NUMBER"
@@ -196,10 +195,4 @@ deploy:
   on:
     tags: false
     branch: master
-    condition: "other conditions"
-
-##
-#  on:
-#    tags: true
-#    all_branches: true
 
