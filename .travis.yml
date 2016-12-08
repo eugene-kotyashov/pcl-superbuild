@@ -6,7 +6,7 @@ cache:
 #   - secure: <encrypted_gh_token>
 env:
   global:
-    - GIT_TAG=ios_librarytest2
+    - GIT_TAG="ios_librarytest3"
     - secure: "kF66P+xYUADGdu9Yjty7DCeUIQbV10BdaSO5MoiiYy0hgItltPXeJdsqlkyFfcH7y4LWTwPfhdTEE5tCez+BL0yYJn9fqRGm2BDO5xaEDOaIEiwh98KpXAEUuhs5hRnZ5kFVEfI6kdTYwrYKTJQABr2PeBXZWWc51lGyC8aC18PAlFr4LC3d3vRa+e3IeSVyiYoScoZlacGe25UU4PVKI2KIsh6n9RUm6oEk4ptjanqhZjzF7JlbPsFly/3mxmMekQZMjW8KuX5BF+ZiO4KnFZ49pxs+6+68lf2kPtY3KeIZjrRak3mLucgN3bXnrRsAFrW3iXMftF7pFarRLeyupfKtwZMEv7LNGVfg/DivNCqCFKGAU+p1BCJJ3ae1bujMEF0qGSn2yT3ItFsEk0VPDFP5b76eEQpwqOt/R5vNE1+wox+lhJHTJVK1BctS1AT9ygKDKhkQvSCDUBX1OMdymB0KpualW16slj05asLyqPRXXxXtPWY0Wziil+z5B4A7Dk67D5GATrwR4ecINuaAu+PxB3ReqVAhLTGXuEZHEMd45Zv8KeJPcddbsqLvLiHJIYrcUtvOJLp4Iv+ZFFE2BNeoe/P1WGKd1x3w1Mc3nLr3ZQ6UZaSRVPtlZB6CLSxj3QsL74moW0EZ5iUzYzteoYV2aLeeKWsFrfbkzm01qJY="
 
 matrix: 
