@@ -4,10 +4,10 @@ cache:
 # global:
 #   - GIT_TAG=<your version string>
 #   - secure: <encrypted_gh_token>
-
-global:
-    - GIT_TAG="ios_librarytest1"
-
+env:
+  global:
+    - GIT_TAG="ios_librarytest2"
+    - secure: "kF66P+xYUADGdu9Yjty7DCeUIQbV10BdaSO5MoiiYy0hgItltPXeJdsqlkyFfcH7y4LWTwPfhdTEE5tCez+BL0yYJn9fqRGm2BDO5xaEDOaIEiwh98KpXAEUuhs5hRnZ5kFVEfI6kdTYwrYKTJQABr2PeBXZWWc51lGyC8aC18PAlFr4LC3d3vRa+e3IeSVyiYoScoZlacGe25UU4PVKI2KIsh6n9RUm6oEk4ptjanqhZjzF7JlbPsFly/3mxmMekQZMjW8KuX5BF+ZiO4KnFZ49pxs+6+68lf2kPtY3KeIZjrRak3mLucgN3bXnrRsAFrW3iXMftF7pFarRLeyupfKtwZMEv7LNGVfg/DivNCqCFKGAU+p1BCJJ3ae1bujMEF0qGSn2yT3ItFsEk0VPDFP5b76eEQpwqOt/R5vNE1+wox+lhJHTJVK1BctS1AT9ygKDKhkQvSCDUBX1OMdymB0KpualW16slj05asLyqPRXXxXtPWY0Wziil+z5B4A7Dk67D5GATrwR4ecINuaAu+PxB3ReqVAhLTGXuEZHEMd45Zv8KeJPcddbsqLvLiHJIYrcUtvOJLp4Iv+ZFFE2BNeoe/P1WGKd1x3w1Mc3nLr3ZQ6UZaSRVPtlZB6CLSxj3QsL74moW0EZ5iUzYzteoYV2aLeeKWsFrfbkzm01qJY="
 
 matrix: 
    include: 
@@ -178,14 +178,28 @@ before_deploy:
     - mkdir packages
     - tar czf packages/pcl-releases-$GIT_TAG.tar.gz ./CMakeExternals/Install
     - zip -q packages/pcl-releases-$GIT_TAG.zip -r ./CMakeExternals/Install
+    # Git Settimg
+    - git config --global user.name "Sirokujira"
+    - git config --global user.email "toru753@gmail.com"
+    - git tag $GIT_TAG -a -m "Commit from Travis CI for build $TRAVIS_BUILD_NUMBER"
+    - git push --quiet https://$GH_TOKEN@github.com/Sirokujira/pcl-superbuild.git --tags 2> /dev/null
+
 
 deploy:
   provider: releases
   skip_cleanup: true
-  api_key: 53f0b73b21865bea8e66e5389087cd019c169882
+  api_key: 
+    secure: "nVLOBizFgvnJvKssHPJfeN5AtQKrdZE/EDHtr1UC5PJNqZNdCAr8DcQS0hj6bRZ3iYfb+qn4OZV/HOfG/GY46N4CoFuNaOVFqajSZsheF01zvHob3/7bK7EXCybk8QzUIDAV77JjZiQacXJtX0asHPDAgJBScxU1KEC4osaxRy2p3ebw5JURFQArpt8vvK0180ZkH6E0A6qrsBBvaXUPTQ7gM0t/sDhSrPunu0zjKeHPe8VeUp/ELx4fohdiQGSRzf7X7Jmph3dXNSgJb4UBULWvBoQnmUlRCMfqPOkpsbEWWo/ZaaWb0N48GH0RtSIHX+Oampu8SFRvcQVNBSZMPbw+CTaA0Ij1mMhRQgqgjEroiX3y1WOxcT7eiZtwDToUQnm2CqbiTszm5d/bWY4Z3ln4CyiFLUDjTrjD/z4FJi6sgRNMOybo4tAYixuhI4f4wdRRwYOdM9a919LEgM8XltxO+H0KgqDeVjOdmLinxQ9XefZs3k6uRQuEfDIkoyRopt7wKmbhzgs9tOZuEVySxJAFOU17iPvn/BrjU9/g+MRRbnxuajPSPia7/09uHZ7IJJSMK35qvlBjohnVbY6ZHKjTFw3QjOrH7DYATAHvr9XyKlmKIzeubVRzeK9k932WweCa1ySro+kpoJVxwxDs6XnyPe/nnjkt4FovGJNIJLA="
   file:
     - packages/pcl-releases-$GIT_TAG.tar.gz
     - packages/pcl-releases-$GIT_TAG.zip
   on:
-    tags: true
+    tags: false
+    branch: master
+    condition: "other conditions"
+
+##
+#  on:
+#    tags: true
+#    all_branches: true
 
