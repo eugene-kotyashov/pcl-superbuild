@@ -31,8 +31,10 @@ if(BUILD_IOS_SIMULATOR)
 endif()
 
 foreach(tag ${tags})
-  # crosscompile_vtk(${tag})
+  # NG?
+  crosscompile_vtk(${tag})
   crosscompile_boost(${tag})
+  # NG
   # crosscompile_boost_on_b2(${tag})
   crosscompile_flann(${tag})
   crosscompile_pcl(${tag})
