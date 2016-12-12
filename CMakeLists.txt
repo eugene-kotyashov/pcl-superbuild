@@ -8,7 +8,38 @@ include(setup-project-variables.cmake)
 include(external-project-macros.cmake)
 
 
+install_eigen()
 fetch_vtk()
+fetch_pcl()
+fetch_boost()
+fetch_flann()
 
 # Build overTime(Travis)
-compile_vtk()
+# compile_vtk()
+
+set(tags)
+
+# Add
+if (BUILD_ANDROID)
+ list(APPEND tags android)
+endif()
+if (BUILD_IOS_DEVICE)
+ list(APPEND tags ios-device)
+endif()
+if(BUILD_IOS_SIMULATOR)
+ list(APPEND tags ios-simulator)
+endif()
+
+foreach(tag ${tags})
+  # NG
+  # crosscompile_vtk(${tag})
+  crosscompile_boost(${tag})
+  # NG
+  # crosscompile_boost_on_b2(${tag})
+  crosscompile_flann(${tag})
+  crosscompile_pcl(${tag})
+endforeach()
+
+# if (BUILD_IOS_DEVICE)
+#  create_pcl_framework()
+# endif()
