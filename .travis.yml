@@ -167,7 +167,7 @@ before_install:
 script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
     - cd ../apps/ios/HelloPCL
-    - ./cmake_command.sh
+    - sudo ./cmake_command.sh
     - open build/HelloPCL.xcodeproj
 
 # after_success:
