@@ -163,12 +163,12 @@ before_install:
 # install:
 #   - travis_wait 60 make -j4 VERBOSE=1 2>&1
 
+# - ls
 # http://www.vtk.org/Wiki/VES/Point_Cloud_Library
 script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
     - cd ../apps/ios/HelloPCL
-    - ls
-    - sudo ./cmake_command.sh
+    - bash cmake_command.sh
     - open build/HelloPCL.xcodeproj
 
 # after_success:
