@@ -16,6 +16,7 @@ cmake \
 -DVES_DIR=${superbuildDir}/CMakeExternals/Install/ves-ios-device \
 -DVTK_DIR=${superbuildDir}/CMakeExternals/Install/vtk-ios-device \
 -DPCL_DIR=${superbuildDir}/CMakeExternals/Install/pcl-ios-device \
--DEIGEN_INCLUDE_DIRS:PATH=${superbuildDir}/CMakeExternals/Install/eigen  \
+-DBOOST_DIR=${superbuildDir}/CMakeExternals/Install/boost-ios-device \
+-DEIGEN_INCLUDE_DIRS:PATH=${superbuildDir}/CMakeExternals/Install/eigen \
 ${appDir}
 

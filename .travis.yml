@@ -165,11 +165,14 @@ before_install:
 
 # - ls
 # http://www.vtk.org/Wiki/VES/Point_Cloud_Library
+# - open build/HelloPCL.xcodeproj
+# xcodebuild
+# http://blog.ch3cooh.jp/entry/20150210/1423573065
 script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
     - cd ../apps/ios/HelloPCL
     - bash cmake_command.sh
-    - open build/HelloPCL.xcodeproj
+	- xcodebuild -project build/HelloPCL.xcodeproj -target HelloPCL -sdk iphoneos -configuration Release build
 
 # after_success:
 #     - zip -r pcl-superbuild_ios_library.zip ./CMakeExternals/Install
