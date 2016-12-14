@@ -26,12 +26,15 @@ list(APPEND CMAKE_FIND_ROOT_PATH
   ${cmakeexternals}/Install/flann-ios-device
   ${cmakeexternals}/Install/pcl-ios-device)
 
+# http://tomokop.hatenablog.com/entry/2014/04/24/045553
+# http://www.vtk.org/Wiki/VTK/Tutorials/CMakeListsFile
+# VTK_DIR
+# find_package(VTK REQUIRED)
+# include(${VTK_USE_FILE})
 
-find_package(VTK REQUIRED)
-include(${VTK_USE_FILE})
-
-find_package(VES REQUIRED)
-include_directories(${VES_INCLUDE_DIRS})
+# VES_DIR
+# find_package(VES REQUIRED)
+# include_directories(${VES_INCLUDE_DIRS})
 
 find_package(PCL REQUIRED)
 include_directories(${PCL_INCLUDE_DIRS})
