@@ -172,7 +172,7 @@ script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
     - cd ../apps/ios/HelloPCL
     - bash cmake_command.sh
-	- xcodebuild -project build/HelloPCL.xcodeproj -target HelloPCL -sdk iphoneos -configuration Release build
+    - xcodebuild -project build/HelloPCL.xcodeproj -target HelloPCL -sdk iphoneos -configuration Release build
 
 # after_success:
 #     - zip -r pcl-superbuild_ios_library.zip ./CMakeExternals/Install
