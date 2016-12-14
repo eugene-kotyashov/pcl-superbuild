@@ -12,10 +12,10 @@ cd ${buildDir}
 
 cmake \
 -G Xcode \
--DSUPERBUILD_DIR=${superbuildDir} \
--DVES_DIR=${superbuildDir}/build/CMakeExternals/Install/ves-ios-device \
--DVTK_DIR=${superbuildDir}/build/CMakeExternals/Install/vtk-ios-device \
--DPCL_DIR=${superbuildDir}/build/CMakeExternals/Install/pcl-ios-device \
--DEIGEN_INCLUDE_DIRS:PATH=${superbuildDir}/build/CMakeExternals/Install/eigen  \
+-DSUPERBUILD_DIR=${superbuildDir}/build \
+-DVES_DIR=${superbuildDir}/CMakeExternals/Install/ves-ios-device \
+-DVTK_DIR=${superbuildDir}/CMakeExternals/Install/vtk-ios-device \
+-DPCL_DIR=${superbuildDir}/CMakeExternals/Install/pcl-ios-device \
+-DEIGEN_INCLUDE_DIRS:PATH=${superbuildDir}/CMakeExternals/Install/eigen  \
 ${appDir}
 
