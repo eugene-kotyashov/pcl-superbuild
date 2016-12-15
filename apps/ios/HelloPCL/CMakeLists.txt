@@ -40,7 +40,8 @@ list(APPEND CMAKE_FIND_ROOT_PATH
 # find_package(BOOST REQUIRED)
 include_directories(${BOOST_INCLUDE_DIRS})
 
-find_package(PCL REQUIRED)
+# NG
+# find_package(PCL REQUIRED)
 include_directories(${PCL_INCLUDE_DIRS})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
