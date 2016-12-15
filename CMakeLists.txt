@@ -40,6 +40,7 @@ foreach(tag ${tags})
   crosscompile_pcl(${tag})
 endforeach()
 
-# if (BUILD_IOS_DEVICE)
-#  create_pcl_framework()
-# endif()
+if (BUILD_IOS_DEVICE)
+    create_pcl_framework()
+endif()
+
