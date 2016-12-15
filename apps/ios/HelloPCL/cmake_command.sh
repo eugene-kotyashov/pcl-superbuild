@@ -18,5 +18,6 @@ cmake \
 -DPCL_DIR=${superbuildDir}/CMakeExternals/Install/pcl-ios-device \
 -DBOOST_DIR=${superbuildDir}/CMakeExternals/Install/boost-ios-device \
 -DEIGEN_INCLUDE_DIRS:PATH=${superbuildDir}/CMakeExternals/Install/eigen \
+-DBOOST_INCLUDE_DIRS:PATH=${superbuildDir}/CMakeExternals/boost-ios-device/include \
 ${appDir}
 
