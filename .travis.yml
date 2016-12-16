@@ -204,6 +204,6 @@ deploy:
     - packages/pcl-releases-$GIT_TAG.zip
     - packages/pcl-example-$GIT_TAG.zip
   on:
-    tags: true
+    tags: false
     branch: master
 
