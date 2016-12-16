@@ -168,11 +168,12 @@ before_install:
 # - open build/HelloPCL.xcodeproj
 # xcodebuild
 # http://blog.ch3cooh.jp/entry/20150210/1423573065
+# - xcodebuild -project build/HelloPCL.xcodeproj -target HelloPCL -sdk iphoneos -configuration Release build
 script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
     - cd ../apps/ios/HelloPCL
     - bash cmake_command.sh
-    - xcodebuild -project build/HelloPCL.xcodeproj -target HelloPCL -sdk iphoneos -configuration Release build
+    - cd ../../../build
 
 # after_success:
 #     - zip -r pcl-superbuild_ios_library.zip ./CMakeExternals/Install
@@ -186,6 +187,7 @@ before_deploy:
     - mkdir packages
     - tar czf packages/pcl-releases-$GIT_TAG.tar.gz ./CMakeExternals/Install
     - zip -q packages/pcl-releases-$GIT_TAG.zip -r ./CMakeExternals/Install
+    - zip -q packages/pcl-example-$GIT_TAG.zip -r ../apps/ios/HelloPCL/build
     - git config --global user.name "Sirokujira"
     - git config --global user.email "toru753@gmail.com"
     - git tag $GIT_TAG -a -m "Commit from Travis CI for build $TRAVIS_BUILD_NUMBER"
@@ -200,6 +202,7 @@ deploy:
   file:
     - packages/pcl-releases-$GIT_TAG.tar.gz
     - packages/pcl-releases-$GIT_TAG.zip
+    - packages/pcl-example-$GIT_TAG.zip
   on:
     tags: true
     branch: master
