@@ -169,8 +169,16 @@ before_install:
 # xcodebuild
 # http://blog.ch3cooh.jp/entry/20150210/1423573065
 # - xcodebuild -project build/HelloPCL.xcodeproj -target HelloPCL -sdk iphoneos -configuration Release build
+# ves install
+# http://www.vtk.org/Wiki/VES/Developers_Guide#iOS_instructions
 script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
+    - git clone git://vtk.org/VES.git
+    - cd Apps/iOS/CMakeBuild
+    - cmake -P configure.cmake
+    - cd build
+    - travis_wait 60 make -j4 VERBOSE=1 2>&1
+    - xcodebuild -project Apps/iOS/Kiwi/Kiwi.xcodeproj -target Kiwi -sdk iphoneos -configuration Release build
     - cd ../apps/ios/HelloPCL
     - bash cmake_command.sh
     - cd ../../../build
