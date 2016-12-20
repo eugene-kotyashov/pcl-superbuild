@@ -174,7 +174,8 @@ before_install:
 script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
     - git clone git://vtk.org/VES.git
-    - cd Apps/iOS/CMakeBuild
+    - ls
+    - cd VES/Apps/iOS/CMakeBuild
     - cmake -P configure.cmake
     - cd build
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
