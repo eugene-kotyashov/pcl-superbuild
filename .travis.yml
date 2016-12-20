@@ -180,9 +180,11 @@ script:
     - git clone git://vtk.org/VES.git
     - ls
     - cd VES/Apps/iOS
-    - mkdir build    - cmake -DVES_IOS_SUPERBUILD=1 ../
+    - mkdir build
+    - cd build    - cmake -DVES_IOS_SUPERBUILD=1 ../
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
     - ln -s /Users/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Install/frameworks ./frameworks
+    - cd ..
     - cd ../apps/ios/HelloPCL
     - bash cmake_command.sh
     - cd ../../../build
