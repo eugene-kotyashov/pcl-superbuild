@@ -179,7 +179,8 @@ script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
     - git clone git://vtk.org/VES.git
     - ls
-    - cd VES/Apps/iOS/Kiwi
+    - cd VES/Apps/iOS
+    - cd KiwiViewer
     - ls
     - mkdir build
     - cd build    - cmake -DVES_IOS_SUPERBUILD=1 ../
