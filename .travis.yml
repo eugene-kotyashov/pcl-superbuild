@@ -131,7 +131,8 @@ matrix:
 # Boost Build?
 # http://blog.livedoor.jp/tek_nishi/archives/7603570.html
 # sudo ln -s /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/usr/include /usr/include/arm
-
+# build Timeout 
+# cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew prune;
@@ -141,7 +142,7 @@ before_install:
       brew install openni2;
       
       mkdir build && cd build;
-      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
+      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
