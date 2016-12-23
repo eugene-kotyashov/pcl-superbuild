@@ -213,7 +213,6 @@ deploy:
   file:
     - packages/pcl-releases-$GIT_TAG.tar.gz
     - packages/pcl-releases-$GIT_TAG.zip
-    - packages/pcl-example-$GIT_TAG.zip
   on:
     tags: false
     branch: master
