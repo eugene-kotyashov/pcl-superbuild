@@ -47,12 +47,6 @@ include_directories(${PCL_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 set(M_SRCS
-  EAGLView.mm
-  ES2Renderer.mm
-  GLViewController.m
-  InfoView.m
-  LoadDataController.m
-  TitleBarViewContainer.m
   kiwiAppDelegate.mm
   main.m
   )
@@ -67,10 +61,7 @@ set(cpp_sources
   )
 
 set(HEADERS
-  InfoView.h
   Kiwi-Prefix.pch
-  LoadDataController.h
-  TitleBarViewContainer.h
   kiwiAppDelegate.h
   )
 
