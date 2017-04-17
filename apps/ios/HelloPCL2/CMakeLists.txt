@@ -26,15 +26,13 @@ list(APPEND CMAKE_FIND_ROOT_PATH
   ${cmakeexternals}/Install/flann-ios-device
   ${cmakeexternals}/Install/pcl-ios-device)
 
+# ${cmakeexternals}/Install/vtk-ios-device
+
 # http://tomokop.hatenablog.com/entry/2014/04/24/045553
 # http://www.vtk.org/Wiki/VTK/Tutorials/CMakeListsFile
 # VTK_DIR
 # find_package(VTK REQUIRED)
 # include(${VTK_USE_FILE})
-
-# VES_DIR
-# find_package(VES REQUIRED)
-# include_directories(${VES_INCLUDE_DIRS})
 
 # pcl use(check ng)
 # find_package(BOOST REQUIRED)
@@ -46,7 +44,13 @@ include_directories(${PCL_INCLUDE_DIRS})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
+# AppDelegate.mm or kiwiAppDelegate.mm
 set(M_SRCS
+  MyGLKViewController.mm 
+  GLViewController.m
+  InfoView.m
+  LoadDataController.m
+  TitleBarViewContainer.m
   kiwiAppDelegate.mm
   main.m
   )
@@ -60,35 +64,52 @@ set(cpp_sources
   vtkPCLVoxelGrid.h
   )
 
+# AppDelegate.h or kiwiAppDelegate.h
 set(HEADERS
-  Kiwi-Prefix.pch
+  MyGLKViewController.h 
+  GLViewController.h
+  InfoView.h
+  pcl-proxy-Prefix.pch
+  LoadDataController.h
+  TitleBarViewContainer.h
   kiwiAppDelegate.h
   )
 
+# change story board?
 set(XIB_FILES
+  InfoView.xib
   MainWindow.xib
+  TitleBarViewContainer.xib
 )
 
 set(RESOURCES
   ${XIB_FILES}
 
+  images/Kiwi_K.png
+  images/fullscreen_32.png
   images/opendata_32.png
   images/Default-Landscape~ipad.png
   images/Default-Portrait~ipad.png
+  images/kiwi_icon_57.png
+  images/kiwi_icon_72.png
+  images/kiwi_icon_114.png
 
   data/pointcloud.pcd
   )
 
 add_executable(HelloPCL2 MACOSX_BUNDLE ${M_SRCS} ${cpp_sources} ${HEADERS} ${RESOURCES})
 
+# pcl.framework
+# ${PCL_SEGMENTATION_LIBRARY}
+# ${PCL_SAMPLE_CONSENSUS_LIBRARY}
+# ${PCL_FILTERS_LIBRARY}
+# ${PCL_KDTREE_LIBRARY}
+# ${PCL_IO_LIBRARY}
+# ${PCL_COMMON_LIBRARY}
+# ${BOOST_LIBRARIES}
+
 target_link_libraries(HelloPCL2
-  ${PCL_SEGMENTATION_LIBRARY}
-  ${PCL_SAMPLE_CONSENSUS_LIBRARY}
-  ${PCL_FILTERS_LIBRARY}
-  ${PCL_KDTREE_LIBRARY}
-  ${PCL_IO_LIBRARY}
-  ${PCL_COMMON_LIBRARY}
-  ${BOOST_LIBRARIES}
+  "-framework pcl.framework"
   "-framework CoreGraphics"
   "-framework Foundation"
   "-framework UIKit"

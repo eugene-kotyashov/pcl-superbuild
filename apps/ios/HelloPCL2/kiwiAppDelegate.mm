@@ -20,10 +20,10 @@
 
 #import "kiwiAppDelegate.h"
 
-#include "vesKiwiPCLApp.h"
-#include "vesKiwiPCLDemo.h"
-#include "vesKiwiPolyDataRepresentation.h"
-#include "vesActor.h"
+// #include "vesKiwiPCLApp.h"
+// #include "vesKiwiPCLDemo.h"
+// #include "vesKiwiPolyDataRepresentation.h"
+// #include "vesActor.h"
 
 @implementation kiwiAppDelegate
 

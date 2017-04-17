@@ -18,13 +18,19 @@
   limitations under the License.
  ========================================================================*/
 
-#import <Availability.h>
-
-#ifndef __IPHONE_3_0
-#warning "This project uses features only available in iPhone SDK 3.0 and later."
-#endif
-
-#ifdef __OBJC__
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#endif
+
+@class UIPopoverController;
+
+@interface GLViewController : UIViewController {
+
+}
+
+@property (nonatomic, retain) IBOutlet UIButton *infoButton;
+@property (nonatomic, retain) IBOutlet UIButton *loadButton;
+
+
+@property (nonatomic, retain) UIPopoverController *infoPopover;
+@property (nonatomic, retain) UIPopoverController *loadPopover;
+
+@end
