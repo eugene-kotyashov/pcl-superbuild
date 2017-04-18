@@ -50,7 +50,7 @@ vtkSmartPointer<vtkPolyData> vtkPCLConversions::PolyDataFromPCDFile(const std::s
     int type;
     unsigned int idx;
 
-    sensor_msgs::PointCloud2 cloud;
+    pcl::PCLPointCloud2 cloud;
     Eigen::Vector4f origin;
     Eigen::Quaternionf orientation;
     pcl::PCDReader reader;

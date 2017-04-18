@@ -21,14 +21,7 @@
 #include "vtkKiwiPCLDemo.h"
 
 
-// #include "vtkRenderer.h"
-// #include "vtkCamera.h"
-// #include "vtkMapper.h"
-// #include "vtkGeometryData.h"
-// #include "vtkActor.h"
-// #include "vtkShaderProgram.h"
-// #include "vtkKiwiDataConversionTools.h"
-// #include "vtkKiwiPolyDataRepresentation.h"
+#include "vtkShaderProgram.h"
 #include "vtkNew.h"
 #include "vtkActor.h"
 #include "vtkCamera.h"
@@ -42,15 +35,17 @@
 #include "vtkRenderer.h"
 #include "vtkSphereSource.h"
 #include "vtkCommand.h"
-#include "vtkInteractorStyleMultiTouchCamera.h"
+// #include "vtkInteractorStyleMultiTouchCamera.h"
+#include "vtkMapper.h"
+#include "vtkGeometryData.h"
 
+// pcl
 #include "vtkPCLConversions.h"
 #include "vtkPCLSACSegmentationPlane.h"
 #include "vtkPCLVoxelGrid.h"
 
-#include <vtkPolyData.h>
+//use?
 #include <vtkTimerLog.h>
-#include <vtkNew.h>
 #include <vtkPoints.h>
 #include <vtkPointData.h>
 #include <vtkUnsignedCharArray.h>
@@ -78,7 +73,6 @@ public:
   double LeafSize;
   double PlaneDistanceThreshold;
   vtkSmartPointer<vtkPolyData> PolyData;
-  vtkKiwiPolyDataRepresentation::Ptr PolyDataRep;
   vtkShaderProgram::Ptr GeometryShader;
 };
 
@@ -95,17 +89,10 @@ vtkKiwiPCLDemo::~vtkKiwiPCLDemo()
 }
 
 //----------------------------------------------------------------------------
-vtkKiwiPolyDataRepresentation::Ptr vtkKiwiPCLDemo::cloudRepresentation()
-{
-  return this->Internal->PolyDataRep;
-}
-
-//----------------------------------------------------------------------------
 void vtkKiwiPCLDemo::setLeafSize(double value)
 {
   if (this->Internal->LeafSize != value) {
     this->Internal->LeafSize = value;
-    this->Internal->PolyDataRep->mapper()->setGeometryData(this->updateGeometryData());
   }
 }
 
@@ -114,7 +101,6 @@ void vtkKiwiPCLDemo::setPlaneDistanceThreshold(double value)
 {
   if (this->Internal->PlaneDistanceThreshold != value) {
     this->Internal->PlaneDistanceThreshold = value;
-    this->Internal->PolyDataRep->mapper()->setGeometryData(this->updateGeometryData());
   }
 }
 
@@ -124,9 +110,6 @@ void vtkKiwiPCLDemo::initialize(const std::string& filename, vtkSharedPtr<vtkSha
   this->Internal->PolyData = vtkPCLConversions::PolyDataFromPCDFile(filename);
 
   this->Internal->GeometryShader = shader;
-  this->Internal->PolyDataRep = vtkKiwiPolyDataRepresentation::Ptr(new vtkKiwiPolyDataRepresentation);
-  this->Internal->PolyDataRep->initializeWithShader(this->Internal->GeometryShader);
-  this->Internal->PolyDataRep->mapper()->setGeometryData(this->updateGeometryData());
 }
 
 namespace {
@@ -234,41 +217,28 @@ void vtkKiwiPCLDemo::willRender(vtkSharedPtr<vtkRenderer> renderer)
 void vtkKiwiPCLDemo::addSelfToRenderer(vtkSharedPtr<vtkRenderer> renderer)
 {
   this->Superclass::addSelfToRenderer(renderer);
-  this->Internal->PolyDataRep->addSelfToRenderer(renderer);
 }
 
 //----------------------------------------------------------------------------
 void vtkKiwiPCLDemo::removeSelfFromRenderer(vtkSharedPtr<vtkRenderer> renderer)
 {
   this->Superclass::removeSelfFromRenderer(renderer);
-  if (this->Internal->PolyDataRep) {
-    this->Internal->PolyDataRep->removeSelfFromRenderer(renderer);
-  }
 }
 
 //----------------------------------------------------------------------------
 int vtkKiwiPCLDemo::numberOfFacets()
 {
-  if (this->Internal->PolyDataRep) {
-    return this->Internal->PolyDataRep->numberOfFacets();
-  }
   return 0;
 }
 
 //----------------------------------------------------------------------------
 int vtkKiwiPCLDemo::numberOfVertices()
 {
-  if (this->Internal->PolyDataRep) {
-    return this->Internal->PolyDataRep->numberOfVertices();
-  }
   return 0;
 }
 
 //----------------------------------------------------------------------------
 int vtkKiwiPCLDemo::numberOfLines()
 {
-  if (this->Internal->PolyDataRep) {
-    return this->Internal->PolyDataRep->numberOfLines();
-  }
   return 0;
 }

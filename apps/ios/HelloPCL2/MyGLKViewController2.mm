@@ -161,18 +161,6 @@ PURPOSE.  See the above copyright notice for more information.
   std::vector<vtkSmartPointer<vtkPolyDataMapper> > mappers;
   std::vector<vtkSmartPointer<vtkActor> > actors;
 
-  // No text mappers/actors in VTK GL2 yet
-#if 0
-  //std::vector<vtkSmartPointer<vtkTextMapper> > textmappers;
-  //std::vector<vtkSmartPointer<vtkActor2D> > textactors;
-
-  // Create one text property for all
-  //vtkSmartPointer<vtkTextProperty> textProperty =
-  //vtkSmartPointer<vtkTextProperty>::New();
-  //textProperty->SetFontSize(10);
-  //textProperty->SetJustificationToCentered();
-#endif
-
   // Create a parametric function source, renderer, mapper, and actor
   // for each object
   for(unsigned int i = 0; i < parametricObjects.size(); i++)
@@ -189,16 +177,6 @@ PURPOSE.  See the above copyright notice for more information.
     actors.push_back(vtkSmartPointer<vtkActor>::New());
     actors[i]->SetMapper(mappers[i]);
 
-    // No text mappers/actors in VTK GL2 yet
-#if 0
-    textmappers.push_back(vtkSmartPointer<vtkTextMapper>::New());
-    textmappers[i]->SetInput(parametricObjects[i]->GetClassName());
-    textmappers[i]->SetTextProperty(textProperty);
-
-    textactors.push_back(vtkSmartPointer<vtkActor2D>::New());
-    textactors[i]->SetMapper(textmappers[i]);
-    textactors[i]->SetPosition(100, 16);
-#endif
     renderers.push_back(vtkSmartPointer<vtkRenderer>::New());
   }
   unsigned int gridDimensions = 4;

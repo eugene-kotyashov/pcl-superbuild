@@ -22,31 +22,19 @@
 #ifndef __vtkPCLDemo_h
 #define __vtkPCLDemo_h
 
-// #include "vtkWidgetRepresentation.h"
-
-// class vtkShaderProgram;
-// class vtkPolyDataRepresentation;
-// class vtkGeometryData;
+#include <vtkWidgetRepresentation.h>
 
 class vtkPCLDemo : public vtkWidgetRepresentation
 {
 public:
-
-  vtkTypeMacro(vtkPCLDemo);
-  // typedef vtkWidgetRepresentation Superclass;
-
   vtkPCLDemo();
   ~vtkPCLDemo();
 
-  // void initialize(const std::string& filename, vtkSharedPtr<vtkShaderProgram> shader);
   void initialize(const std::string& filename, vtkSharedPtr<vtkShaderProgram> shader);
 
   void setLeafSize(double value);
 
   void setPlaneDistanceThreshold(double value);
-
-
-  vtkSharedPtr<vtkPolyDataRepresentation> cloudRepresentation();
 
   virtual void addSelfToRenderer(vtkSharedPtr<vtkRenderer> renderer);
   virtual void removeSelfFromRenderer(vtkSharedPtr<vtkRenderer> renderer);
