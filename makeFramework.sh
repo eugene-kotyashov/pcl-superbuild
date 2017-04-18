@@ -10,14 +10,16 @@ fi
 #------------------------------------------------------------------------------
 make_pcl_framework ()
 {
-  pcl_device_libs=`find $install/pcl-ios-device $install/flann-ios-device $install/boost-ios-device -name *.a`
-  pcl_sim_libs=`find $install/pcl-ios-simulator $install/flann-ios-simulator $install/boost-ios-simulator -name *.a`
-
+  # header files
   # args -> version
   # version 1.7
   pcl_header_dir=$install/pcl-ios-device/include/pcl-1.7
   # version 1.8
   # pcl_header_dir=$install/pcl-ios-device/include/pcl-1.8
+
+  # libraries
+  pcl_device_libs=`find $install/pcl-ios-device $install/flann-ios-device $install/boost-ios-device -name *.a`
+  # pcl_sim_libs=`find $install/pcl-ios-simulator $install/flann-ios-simulator $install/boost-ios-simulator -name *.a`
 
   pcl_framework=$install/frameworks/pcl.framework
   mkdir -p $pcl_framework
@@ -25,11 +27,13 @@ make_pcl_framework ()
   mkdir $pcl_framework/Headers
   cp -r $pcl_header_dir/* $pcl_framework/Headers/
   
+  # combine
+  # device
   libtool -static -o $pcl_framework/pcl_device $pcl_device_libs
   lipo -create $pcl_framework/pcl_device -output $pcl_framework/pcl
   # Simulation
-  libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs
-  lipo -create $pcl_framework/pcl_device $pcl_framework/pcl_sim -output $pcl_framework/pcl
+  # libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs
+  # lipo -create $pcl_framework/pcl_device $pcl_framework/pcl_sim -output $pcl_framework/pcl
   
   rm $pcl_framework/pcl_*
 }

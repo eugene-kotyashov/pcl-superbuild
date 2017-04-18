@@ -449,11 +449,14 @@ macro(crosscompile_pcl tag)
 endmacro()
 
 
+# macro(create_pcl_framework tags)
 macro(create_pcl_framework)
+    # message (STATUS ${tags})
     add_custom_target(pclFramework ALL
       COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh pcl
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-      DEPENDS pcl-ios-device pcl-ios-simulator
-      # DEPENDS pcl-ios-device
+      # DEPENDS pcl-ios-device pcl-ios-simulator
+      DEPENDS pcl-ios-device
+      # DEPENDS ${tags}
       COMMENT "Creating pcl.framework")
 endmacro()

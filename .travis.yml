@@ -136,8 +136,10 @@ matrix:
 # use?
 # brew tap totakke/openni2;
 # brew install openni2;
+###
 # sdk check 8.0
 # git clone -b v6.3.0 https://github.com/Kitware/VTK.git;
+###
 # sdk check contains 9.3(Timeout 50 min ...)
 # git clone -b v7.0.0 https://github.com/Kitware/VTK.git;
 # cd VTK;
@@ -151,7 +153,7 @@ before_install:
       brew update >/dev/null;
       
       mkdir build && cd build;
-      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
+      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then

@@ -42,6 +42,7 @@ foreach(tag ${tags})
 endforeach()
 
 if (BUILD_IOS_DEVICE)
+    # create_pcl_framework(${tags})
     create_pcl_framework()
 endif()
 
