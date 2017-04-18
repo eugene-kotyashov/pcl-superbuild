@@ -30,9 +30,10 @@ list(APPEND CMAKE_FIND_ROOT_PATH
 
 # http://tomokop.hatenablog.com/entry/2014/04/24/045553
 # http://www.vtk.org/Wiki/VTK/Tutorials/CMakeListsFile
-# VTK_DIR
-# find_package(VTK REQUIRED)
+# before set VTK_DIR
+find_package(VTK REQUIRED)
 # include(${VTK_USE_FILE})
+include_directories(${VTK_USE_FILE})
 
 # pcl use(check ng)
 # find_package(BOOST REQUIRED)
@@ -44,14 +45,14 @@ include_directories(${PCL_INCLUDE_DIRS})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-# AppDelegate.mm or kiwiAppDelegate.mm
+# kiwiAppDelegate.mm changed AppDelegate.mm
+# GLViewController delete
 set(M_SRCS
   MyGLKViewController.mm 
-  GLViewController.m
   InfoView.m
   LoadDataController.m
   TitleBarViewContainer.m
-  kiwiAppDelegate.mm
+  AppDelegate.mm
   main.m
   )
 
@@ -64,15 +65,15 @@ set(cpp_sources
   vtkPCLVoxelGrid.h
   )
 
-# AppDelegate.h or kiwiAppDelegate.h
+# kiwiAppDelegate.h changed AppDelegate.h
+# GLViewController.h delete
 set(HEADERS
   MyGLKViewController.h 
-  GLViewController.h
   InfoView.h
   pcl-proxy-Prefix.pch
   LoadDataController.h
   TitleBarViewContainer.h
-  kiwiAppDelegate.h
+  AppDelegate.h
   )
 
 # change story board?
@@ -107,8 +108,10 @@ add_executable(HelloPCL2 MACOSX_BUNDLE ${M_SRCS} ${cpp_sources} ${HEADERS} ${RES
 # ${PCL_IO_LIBRARY}
 # ${PCL_COMMON_LIBRARY}
 # ${BOOST_LIBRARIES}
+# ${VTK_LIBRARY}
 
 target_link_libraries(HelloPCL2
+  ${VTK_LIBRARIES}
   "-framework pcl.framework"
   "-framework CoreGraphics"
   "-framework Foundation"

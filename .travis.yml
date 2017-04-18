@@ -133,24 +133,22 @@ matrix:
 # sudo ln -s /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/usr/include /usr/include/arm
 # build Timeout 
 # cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
+# use?
+# brew tap totakke/openni2;
+# brew install openni2;
 # sdk check 8.0
 # git clone -b v6.3.0 https://github.com/Kitware/VTK.git;
-# sdk check contains 9.3
+# sdk check contains 9.3(Timeout 50 min ...)
 # git clone -b v7.0.0 https://github.com/Kitware/VTK.git;
+# cd VTK;
+# mkdir build && cd build;
+# cmake -DVTK_IOS_BUILD=BOOL="ON" ../;
+# travis_wait 60 make -j4 VERBOSE=1 2>&1;
+# cd ../..;
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew prune;
       brew update >/dev/null;
-      
-      brew tap totakke/openni2;
-      brew install openni2;
-      
-      git clone -b v7.0.0 https://github.com/Kitware/VTK.git;
-      cd VTK;
-      mkdir build && cd build;
-      cmake -DVTK_IOS_BUILD=BOOL="ON" ../;
-      travis_wait 60 make -j4 VERBOSE=1 2>&1;
-      cd ../..;
       
       mkdir build && cd build;
       cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
@@ -188,7 +186,7 @@ before_install:
 # xcodebuild
 # http://blog.ch3cooh.jp/entry/20150210/1423573065
 # - xcodebuild -project build/HelloPCL.xcodeproj -target HelloPCL -sdk iphoneos -configuration Release build
-# ves install
+# ves install(no use reason : old module)
 # git clone git://vtk.org/VES.git
 # iOS Sample
 # git clone -b pcl-ios-app git://vtk.org/stage/VES.git
@@ -209,6 +207,7 @@ before_install:
 # simulation build
 # - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphonesimulator -configuration Debug build
 # - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphoneos -configuration Release build
+# before vtk build module copy?
 script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
     - cd ../apps/ios/HelloPCL2

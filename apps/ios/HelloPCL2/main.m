@@ -18,8 +18,8 @@ PURPOSE.  See the above copyright notice for more information.
 int main(int argc, char *argv[]) 
 {
     @autoreleasepool { 
-        // int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class])); 
-        int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([kiwiAppDelegate class])); 
+        int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class])); 
+        // int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([kiwiAppDelegate class])); 
         return retVal; 
     } 
 } 
