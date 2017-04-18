@@ -419,7 +419,10 @@
 			</dict>
 		</dict>
 	</array>
-
+	<key>UIMainStoryboardFile</key>
+	<string>MainStoryboard_iPhone</string>
+	<key>UIMainStoryboardFile~ipad</key>
+	<string>MainStoryboard_iPad</string>
 	<key>UTImportedTypeDeclarations</key>
 	<array/>
 

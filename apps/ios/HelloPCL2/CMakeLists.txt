@@ -128,3 +128,29 @@ set_target_properties(HelloPCL2 PROPERTIES
   XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS YES
   XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET 9.3
   )
+
+# sysroot
+# if (NOT CMAKE_OSX_SYSROOT)
+#   set(possible_sdk_roots
+#     "${XCODE_DEVELOPER_DIR}/Platforms/iPhoneOS.platform/Developer/SDKs"
+#     /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs
+#     /Developer/Platforms/iPhoneOS.platform/Developer/SDKs
+#     )
+#   foreach(sdk_root ${possible_sdk_roots})
+#     foreach(sdk iPhoneOS4.3.sdk iPhoneOS5.0.sdk iPhoneOS5.1.sdk iPhoneOS6.0.sdk
+#                 iPhoneOS6.1.sdk iPhoneOS7.0.sdk iPhoneOS7.1.sdk iPhoneOS8.0.sdk iPhoneOS9.3.sdk)
+#       if (EXISTS ${sdk_root}/${sdk} AND IS_DIRECTORY ${sdk_root}/${sdk})
+#         set(CMAKE_OSX_SYSROOT ${sdk_root}/${sdk})
+#       endif()
+#     endforeach()
+#   endforeach()
+#   if (NOT CMAKE_OSX_SYSROOT)
+#     message(FATAL_ERROR "Could not find a usable iOS SDK in ${sdk_root}")
+#   endif()
+# endif()
+
+# Debug
+# message(STATUS "-- gcc found at: ${CMAKE_C_COMPILER}")
+# message(STATUS "-- g++ found at: ${CMAKE_CXX_COMPILER}")
+message(STATUS "-- Using iOS SDK: ${CMAKE_OSX_SYSROOT}")
+

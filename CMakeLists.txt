@@ -9,6 +9,7 @@ include(external-project-macros.cmake)
 
 
 install_eigen()
+# pcl build only?
 fetch_vtk()
 fetch_pcl()
 fetch_boost()

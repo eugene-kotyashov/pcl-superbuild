@@ -133,6 +133,10 @@ matrix:
 # sudo ln -s /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/usr/include /usr/include/arm
 # build Timeout 
 # cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
+# sdk check 8.0
+# git clone -b v6.3.0 https://github.com/Kitware/VTK.git;
+# sdk check contains 9.3
+# git clone -b v7.0.0 https://github.com/Kitware/VTK.git;
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew prune;
@@ -141,14 +145,28 @@ before_install:
       brew tap totakke/openni2;
       brew install openni2;
       
+      git clone -b v7.0.0 https://github.com/Kitware/VTK.git;
+      cd VTK;
       mkdir build && cd build;
-      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
+      cmake -DVTK_IOS_BUILD=BOOL="ON" ../;
+      travis_wait 60 make -j4 VERBOSE=1 2>&1;
+      cd ../..;
+      
+      mkdir build && cd build;
+      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
       wget --no-check-certificate -qO- http://www.cmake.org/files/v3.6/cmake-3.6.2-Linux-x86_64.tar.gz -O /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
       tar -xvf /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
       export PATH=$PWD/cmake-3.6.2-Linux-x86_64/bin/:$PATH;
+      
+      git clone -b v7.0.0 https://github.com/Kitware/VTK.git;
+      cd VTK;
+      mkdir build && cd build;
+      cmake -DVTK_ANDROID_BUILD=BOOL="ON" ../;
+      travis_wait 60 make -j4 VERBOSE=1 2>&1;
+      cd ../..;
       
       wget http://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip;
       unzip -q android-ndk-r11c-linux-x86_64.zip;
@@ -176,17 +194,26 @@ before_install:
 # git clone -b pcl-ios-app git://vtk.org/stage/VES.git
 # http://www.vtk.org/Wiki/VES/Developers_Guide#iOS_instructions
 # - mkdir build
-# - cd build# - cmake -DVES_IOS_SUPERBUILD=1 ../
+# - cd build
+# - cmake -DVES_IOS_SUPERBUILD=1 ../
 # - travis_wait 60 make -j4 VERBOSE=1 2>&1
 # - ln -s /Users/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Install/frameworks ./frameworks
 # - cd ..
 # - cd ../apps/ios/HelloPCL
 # - bash cmake_command.sh
 # - cd ../../../build
+# xcode open
+# - open build/HelloPCL.xcodeproj
+# xcode command line build
+# http://blog.ch3cooh.jp/entry/20150210/1423573065
+# simulation build
+# - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphonesimulator -configuration Debug build
+# - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphoneos -configuration Release build
 script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
     - cd ../apps/ios/HelloPCL2
     - bash cmake_command.sh
+    - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphoneos -configuration Release build
     - cd ../../../build
 
 

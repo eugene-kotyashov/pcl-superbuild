@@ -27,6 +27,7 @@ make_pcl_framework ()
   
   libtool -static -o $pcl_framework/pcl_device $pcl_device_libs
   lipo -create $pcl_framework/pcl_device -output $pcl_framework/pcl
+  # Simulation
   libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs
   lipo -create $pcl_framework/pcl_device $pcl_framework/pcl_sim -output $pcl_framework/pcl
   
