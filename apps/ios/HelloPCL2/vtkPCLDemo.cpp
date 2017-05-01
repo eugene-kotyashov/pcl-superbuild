@@ -18,45 +18,15 @@
   limitations under the License.
  ========================================================================*/
 
-#include "vtkKiwiPCLDemo.h"
-
-
-#include "vtkShaderProgram.h"
-#include "vtkNew.h"
-#include "vtkActor.h"
-#include "vtkCamera.h"
-#include "vtkConeSource.h"
-#include "vtkDebugLeaks.h"
-#include "vtkGlyph3D.h"
-#include "vtkPolyData.h"
-#include "vtkPolyDataMapper.h"
-#include "vtkIOSRenderWindow.h"
-#include "vtkIOSRenderWindowInteractor.h"
-#include "vtkRenderer.h"
-#include "vtkSphereSource.h"
-#include "vtkCommand.h"
-// #include "vtkInteractorStyleMultiTouchCamera.h"
-#include "vtkMapper.h"
-#include "vtkGeometryData.h"
+#include "vtkPCLDemo.h"
 
 // pcl
 #include "vtkPCLConversions.h"
 #include "vtkPCLSACSegmentationPlane.h"
 #include "vtkPCLVoxelGrid.h"
 
-//use?
-#include <vtkTimerLog.h>
-#include <vtkPoints.h>
-#include <vtkPointData.h>
-#include <vtkUnsignedCharArray.h>
-#include <vtkLookupTable.h>
-
-#include <vector>
-#include <cassert>
-#include <sstream>
-
 //----------------------------------------------------------------------------
-class vtkKiwiPCLDemo::vtkInternal
+class vtkPCLDemo::vtkInternal
 {
 public:
 
@@ -73,23 +43,28 @@ public:
   double LeafSize;
   double PlaneDistanceThreshold;
   vtkSmartPointer<vtkPolyData> PolyData;
-  vtkShaderProgram::Ptr GeometryShader;
 };
 
 //----------------------------------------------------------------------------
-vtkKiwiPCLDemo::vtkKiwiPCLDemo()
+vtkPCLDemo::vtkPCLDemo()
 {
   this->Internal = new vtkInternal();
 }
 
 //----------------------------------------------------------------------------
-vtkKiwiPCLDemo::~vtkKiwiPCLDemo()
+vtkPCLDemo::~vtkPCLDemo()
 {
   delete this->Internal;
 }
 
 //----------------------------------------------------------------------------
-void vtkKiwiPCLDemo::setLeafSize(double value)
+vtkSmartPointer<vtkPolyData> vtkPCLDemo::GetPolyData()
+{
+    return this->Internal->PolyData;
+}
+
+//----------------------------------------------------------------------------
+void vtkPCLDemo::setLeafSize(double value)
 {
   if (this->Internal->LeafSize != value) {
     this->Internal->LeafSize = value;
@@ -97,7 +72,7 @@ void vtkKiwiPCLDemo::setLeafSize(double value)
 }
 
 //----------------------------------------------------------------------------
-void vtkKiwiPCLDemo::setPlaneDistanceThreshold(double value)
+void vtkPCLDemo::setPlaneDistanceThreshold(double value)
 {
   if (this->Internal->PlaneDistanceThreshold != value) {
     this->Internal->PlaneDistanceThreshold = value;
@@ -105,140 +80,94 @@ void vtkKiwiPCLDemo::setPlaneDistanceThreshold(double value)
 }
 
 //----------------------------------------------------------------------------
-void vtkKiwiPCLDemo::initialize(const std::string& filename, vtkSharedPtr<vtkShaderProgram> shader)
+void vtkPCLDemo::initialize(const std::string& filename)
 {
   this->Internal->PolyData = vtkPCLConversions::PolyDataFromPCDFile(filename);
-
-  this->Internal->GeometryShader = shader;
 }
 
-namespace {
+// vtkPolyData::Ptr vtkPCLDemo::()
+// {
+//      return this->Internal->PolyData;
+// }
 
-void ConvertVertexArrays(vtkDataSet* dataSet, vtkSharedPtr<vtkGeometryData> geometryData, vtkScalarsToColors* scalarsToColors=NULL)
-{
-  vtkUnsignedCharArray* colors = vtkKiwiDataConversionTools::FindRGBColorsArray(dataSet);
-  vtkDataArray* scalars = vtkKiwiDataConversionTools::FindScalarsArray(dataSet);
-  vtkDataArray* tcoords = vtkKiwiDataConversionTools::FindTextureCoordinatesArray(dataSet);
-  if (colors)
-    {
-    vtkKiwiDataConversionTools::SetVertexColors(colors, geometryData);
-    }
-  else if (scalars)
-    {
-    vtkSmartPointer<vtkScalarsToColors> colorMap = scalarsToColors;
-    if (!colorMap)
-      {
-      colorMap = vtkKiwiDataConversionTools::GetRedToBlueLookupTable(scalars->GetRange());
-      }
-    vtkKiwiDataConversionTools::SetVertexColors(scalars, colorMap, geometryData);
-    }
-  else if (tcoords)
-    {
-    vtkKiwiDataConversionTools::SetTextureCoordinates(tcoords, geometryData);
-    }
-}
-
-}
+// namespace {
+//
+// void ConvertVertexArrays(vtkDataSet* dataSet, vtkSharedPtr<vtkGeometryData> geometryData, vtkScalarsToColors* scalarsToColors=NULL)
+// {
+//   vtkUnsignedCharArray* colors = vtkKiwiDataConversionTools::FindRGBColorsArray(dataSet);
+//   vtkDataArray* scalars = vtkKiwiDataConversionTools::FindScalarsArray(dataSet);
+//   vtkDataArray* tcoords = vtkKiwiDataConversionTools::FindTextureCoordinatesArray(dataSet);
+//   if (colors)
+//     {
+//     vtkKiwiDataConversionTools::SetVertexColors(colors, geometryData);
+//     }
+//   else if (scalars)
+//     {
+//     vtkSmartPointer<vtkScalarsToColors> colorMap = scalarsToColors;
+//     if (!colorMap)
+//       {
+//       colorMap = vtkKiwiDataConversionTools::GetRedToBlueLookupTable(scalars->GetRange());
+//       }
+//     vtkKiwiDataConversionTools::SetVertexColors(scalars, colorMap, geometryData);
+//     }
+//   else if (tcoords)
+//     {
+//     vtkKiwiDataConversionTools::SetTextureCoordinates(tcoords, geometryData);
+//     }
+// }
+//
+// }
 
 
 //----------------------------------------------------------------------------
-vtkGeometryData::Ptr vtkKiwiPCLDemo::updateGeometryData()
-{
-  if (!this->Internal->PolyData) {
-    return vtkGeometryData::Ptr(new vtkGeometryData);
-  }
-
-  vtkSmartPointer<vtkPolyData> polyData = this->Internal->PolyData;
-
-  if (this->Internal->LeafSize != 0.0) {
-    vtkSmartPointer<vtkPCLVoxelGrid> voxelGrid = vtkSmartPointer<vtkPCLVoxelGrid>::New();
-    voxelGrid->SetInputData(this->Internal->PolyData);
-    voxelGrid->SetLeafSize(this->Internal->LeafSize, this->Internal->LeafSize, this->Internal->LeafSize);
-    voxelGrid->Update();
-    polyData = voxelGrid->GetOutput();
-  }
-
-  if (this->Internal->PlaneDistanceThreshold != 0.0) {
-    vtkSmartPointer<vtkPCLSACSegmentationPlane> fitPlane = vtkSmartPointer<vtkPCLSACSegmentationPlane>::New();
-    fitPlane->SetInputData(polyData);
-    fitPlane->SetMaxIterations(200);
-    fitPlane->SetDistanceThreshold(this->Internal->PlaneDistanceThreshold);
-    fitPlane->Update();
-    polyData = fitPlane->GetOutput();
-    polyData->GetPointData()->RemoveArray("rgb_colors");
-  }
-
-  vtkGeometryData::Ptr geometryData = vtkKiwiDataConversionTools::ConvertPoints(polyData);
-
-  ConvertVertexArrays(polyData, geometryData);
-
-  return geometryData;
-
-}
-
-//----------------------------------------------------------------------------
-bool vtkKiwiPCLDemo::handleSingleTouchDown(int displayX, int displayY)
-{
-  vtkNotUsed(displayX);
-  vtkNotUsed(displayY);
-  return false;
-}
+// vtkGeometryData::Ptr vtkPCLDemo::updateGeometryData()
+// {
+//   if (!this->Internal->PolyData) {
+//     return vtkGeometryData::Ptr(new vtkGeometryData);
+//   }
+//
+//   vtkNew<vtkPolyData> polyData = this->Internal->PolyData;
+//
+//   if (this->Internal->LeafSize != 0.0) {
+//     vtkNew<vtkPCLVoxelGrid> voxelGrid = vtkNew<vtkPCLVoxelGrid>::New();
+//    voxelGrid->SetInputData(this->Internal->PolyData);
+//    voxelGrid->SetLeafSize(this->Internal->LeafSize, this->Internal->LeafSize, this->Internal->LeafSize);
+//    voxelGrid->Update();
+//    polyData = voxelGrid->GetOutput();
+//  }
+//
+//  if (this->Internal->PlaneDistanceThreshold != 0.0) {
+//    vtkNew<vtkPCLSACSegmentationPlane> fitPlane = vtkNew<vtkPCLSACSegmentationPlane>::New();
+//    fitPlane->SetInputData(polyData);
+//    fitPlane->SetMaxIterations(200);
+//    fitPlane->SetDistanceThreshold(this->Internal->PlaneDistanceThreshold);
+//    fitPlane->Update();
+//    polyData = fitPlane->GetOutput();
+//    polyData->GetPointData()->RemoveArray("rgb_colors");
+//  }
+//
+//  vtkGeometryData::Ptr geometryData = vtkKiwiDataConversionTools::ConvertPoints(polyData);
+//
+//  // ConvertVertexArrays(polyData, geometryData);
+//
+//  return geometryData;
+//
+//}
 
 //----------------------------------------------------------------------------
-bool vtkKiwiPCLDemo::handleSingleTouchUp()
-{
-  return false;
-}
-
-//----------------------------------------------------------------------------
-bool vtkKiwiPCLDemo::handleSingleTouchTap(int displayX, int displayY)
-{
-  vtkNotUsed(displayX);
-  vtkNotUsed(displayY);
-
-  return false;
-}
-
-//----------------------------------------------------------------------------
-bool vtkKiwiPCLDemo::handleSingleTouchPanGesture(double deltaX, double deltaY)
-{
-  vtkNotUsed(deltaX);
-  vtkNotUsed(deltaY);
-  return false;
-}
-
-//----------------------------------------------------------------------------
-void vtkKiwiPCLDemo::willRender(vtkSharedPtr<vtkRenderer> renderer)
-{
-  vtkNotUsed(renderer);
-}
-
-//----------------------------------------------------------------------------
-void vtkKiwiPCLDemo::addSelfToRenderer(vtkSharedPtr<vtkRenderer> renderer)
-{
-  this->Superclass::addSelfToRenderer(renderer);
-}
-
-//----------------------------------------------------------------------------
-void vtkKiwiPCLDemo::removeSelfFromRenderer(vtkSharedPtr<vtkRenderer> renderer)
-{
-  this->Superclass::removeSelfFromRenderer(renderer);
-}
-
-//----------------------------------------------------------------------------
-int vtkKiwiPCLDemo::numberOfFacets()
+int vtkPCLDemo::numberOfFacets()
 {
   return 0;
 }
 
 //----------------------------------------------------------------------------
-int vtkKiwiPCLDemo::numberOfVertices()
+int vtkPCLDemo::numberOfVertices()
 {
   return 0;
 }
 
 //----------------------------------------------------------------------------
-int vtkKiwiPCLDemo::numberOfLines()
+int vtkPCLDemo::numberOfLines()
 {
   return 0;
 }

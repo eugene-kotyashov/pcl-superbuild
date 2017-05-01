@@ -36,7 +36,7 @@ protected:
   double PlaneOrigin[3];
   double PlaneNormal[3];
 
-  virtual int RequestData();
+  // virtual int RequestData();
 
   vtkPCLSACSegmentationPlane();
   virtual ~vtkPCLSACSegmentationPlane();

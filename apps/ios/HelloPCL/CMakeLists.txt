@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 2.8.5)
 project(HelloPCL)
 
-set(CMAKE_OSX_SYSROOT iPhoneOS9.3)
+# set(CMAKE_OSX_SYSROOT iPhoneOS9.3)
+set(CMAKE_OSX_SYSROOT iPhoneOS10.2)
 set(CMAKE_OSX_ARCHITECTURES "arm64")
 # set(CMAKE_XCODE_EFFECTIVE_PLATFORMS "-iphoneos;-iphonesimulator")
 set(CMAKE_XCODE_EFFECTIVE_PLATFORMS "-iphoneos")
@@ -16,7 +17,7 @@ if(NOT DEFINED SUPERBUILD_DIR)
   message(FATAL_ERROR "Please set the cmake variable SUPERBUILD_DIR")
 endif()
 
-set(cmakeexternals ${SUPERBUILD_DIR}/CMakeExternals)
+set(cmakeexternals ${SUPERBUILD_DIR}/build/CMakeExternals)
 if(NOT IS_DIRECTORY ${cmakeexternals})
   message(FATAL_ERROR "The directory ${cmakeexternals} does not exist.  Check the value of SUPERBUILD_DIR.")
 endif()
@@ -26,23 +27,16 @@ list(APPEND CMAKE_FIND_ROOT_PATH
   ${cmakeexternals}/Install/flann-ios-device
   ${cmakeexternals}/Install/pcl-ios-device)
 
-# http://tomokop.hatenablog.com/entry/2014/04/24/045553
-# http://www.vtk.org/Wiki/VTK/Tutorials/CMakeListsFile
-# VTK_DIR
-# find_package(VTK REQUIRED)
-# include(${VTK_USE_FILE})
 
-# VES_DIR
-# find_package(VES REQUIRED)
-# include_directories(${VES_INCLUDE_DIRS})
+find_package(VTK REQUIRED)
+include(${VTK_USE_FILE})
 
-# pcl use(check ng)
-# find_package(BOOST REQUIRED)
-include_directories(${BOOST_INCLUDE_DIRS})
+find_package(VES REQUIRED)
+include_directories(${VES_INCLUDE_DIRS})
 
-# NG
-# find_package(PCL REQUIRED)
+find_package(PCL REQUIRED)
 include_directories(${PCL_INCLUDE_DIRS})
+
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -129,5 +123,5 @@ set_target_properties(HelloPCL PROPERTIES
   XCODE_ATTRIBUTE_GCC_PRECOMPILE_PREFIX_HEADER YES
   XCODE_ATTRIBUTE_GCC_PREFIX_HEADER ${CMAKE_CURRENT_LIST_DIR}/Kiwi-Prefix.pch
   XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS YES
-  XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET 9.3
+  XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET 10.2
   )

@@ -40,10 +40,12 @@ set (IOS True)
 # set (XCODE_PRE_43_ROOT "/Developer/Platforms/${IOS_PLATFORM_LOCATION}/Developer")
 
 # Travis CI Fixed Path
-# set(CMAKE_IOS_DEVELOPER_ROOT, "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk")
+# set(CMAKE_IOS_DEVELOPER_ROOT, "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk")
 #                                 Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Dev.
 set(CMAKE_IOS_DEVELOPER_ROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer)
-set(CMAKE_IOS_SDK_ROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk)
+set(CMAKE_IOS_SDK_ROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk)
+# NG
+# set(CMAKE_IOS_SDK_ROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk)
 
 # Required as of cmake 2.8.10
 set (CMAKE_OSX_DEPLOYMENT_TARGET "" CACHE STRING "Force unset of the deployment target for iOS" FORCE)
@@ -57,19 +59,21 @@ endif (CMAKE_UNAME)
 
 # Force the compilers to gcc for iOS
 include (CMakeForceCompiler)
-CMAKE_FORCE_C_COMPILER (/usr/bin/gcc Apple)
-CMAKE_FORCE_CXX_COMPILER (/usr/bin/g++ Apple)
+# sdk 9.3
+# CMAKE_FORCE_C_COMPILER (/usr/bin/gcc Apple)
+# CMAKE_FORCE_CXX_COMPILER (/usr/bin/g++ Apple)
 # include(CMakeForceCompiler) 
-# CMAKE_FORCE_C_COMPILER(clang clang) 
-# CMAKE_FORCE_CXX_COMPILER(clang++ clang++) 
+CMAKE_FORCE_C_COMPILER(clang clang) 
+CMAKE_FORCE_CXX_COMPILER(clang++ clang++) 
 set(CMAKE_AR ar CACHE FILEPATH "" FORCE)
 
 # use clang
-# ios-device
-# c/c++
+# c
 set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang")
+# NG
+## set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++")
+# c++
 set(CMAKE_CXX_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++")
-# ios-simulator?
 
 # use clang + open-mp
 # set(CMAKE_C_COMPILER "/usr/local/bin/clang-omp")
@@ -108,11 +112,14 @@ set (CMAKE_CXX_OSX_CURRENT_VERSION_FLAG "${CMAKE_C_OSX_CURRENT_VERSION_FLAG}")
 # xcode7.3 : OS X 10.11
 set (CMAKE_C_FLAGS_INIT "-isysroot ${CMAKE_IOS_SDK_ROOT}")
 set (CMAKE_CXX_FLAGS_INIT "-fvisibility=hidden -fvisibility-inlines-hidden -isysroot ${CMAKE_IOS_SDK_ROOT}")
-# set (CMAKE_CXX_FLAGS_INIT "-fvisibility=hidden -fvisibility-inlines-hidden -isysroot ${CMAKE_IOS_SDK_ROOT} -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/include")
+# set (CMAKE_CXX_FLAGS_INIT "-fvisibility=hidden -fvisibility-inlines-hidden -isysroot ${CMAKE_IOS_SDK_ROOT} -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/include")
+# #  -stdlib=libc++,
+
 
 # lib path set
 set (CMAKE_C_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_C_LINK_FLAGS}")
 set (CMAKE_CXX_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_CXX_LINK_FLAGS}")
+
 # add openmp library
 # set (CMAKE_C_LINK_FLAGS "-L/usr/local/opt/llvm/lib -Wl,-search_paths_first -rpath,/usr/local/opt/llvm/lib, ${CMAKE_C_LINK_FLAGS}")
 # set (CMAKE_CXX_LINK_FLAGS "-L/usr/local/opt/llvm/lib -Wl,-search_paths_first -rpath,/usr/local/opt/llvm/lib, ${CMAKE_CXX_LINK_FLAGS}")
@@ -204,11 +211,12 @@ if (${IOS_PLATFORM} STREQUAL "OS")
 #       set (IOS_ARCH "armv7;armv7s;arm64")
 # iOS10 SDK not support armv7
 # must use lipo(combine a librarys)
-      set (IOS_ARCH "arm64;armv7s")
+#     set (IOS_ARCH "armv7s;arm64")
+      set (IOS_ARCH "arm64")
 elseif (${IOS_PLATFORM} STREQUAL "SIMULATOR")
-    set (IOS_ARCH "i386;x86_64")
+    set (IOS_ARCH i386)
 elseif (${IOS_PLATFORM} STREQUAL "SIMULATOR64")
-    set (IOS_ARCH "i386;x86_64")
+    set (IOS_ARCH x86_64)
 endif (${IOS_PLATFORM} STREQUAL "OS")
 
 set (CMAKE_OSX_ARCHITECTURES ${IOS_ARCH} CACHE string  "Build architecture for iOS")

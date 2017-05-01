@@ -12,8 +12,8 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkPCLSACSegmentationPlane.h"
 #include "vtkPCLConversions.h"
+#include "vtkPCLSACSegmentationPlane.h"
 
 #include <pcl/sample_consensus/method_types.h>
 #include <pcl/sample_consensus/model_types.h>
@@ -94,49 +94,49 @@ void ComputeSACSegmentationPerpendicularPlane(pcl::PointCloud<pcl::PointXYZ>::Co
 
 
 //----------------------------------------------------------------------------
-int vtkPCLSACSegmentationPlane::RequestData()
-{
-  // perform plane model fit
-  pcl::PointIndices::Ptr inlierIndices;
-  pcl::ModelCoefficients::Ptr modelCoefficients;
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = vtkPCLConversions::PointCloudFromPolyData(input);
-
-  if (this->PerpendicularConstraintEnabled)
-    {
-    ComputeSACSegmentationPerpendicularPlane(
-                                cloud,
-                                this->DistanceThreshold,
-                                Eigen::Vector3f(this->PerpendicularAxis[0],
-                                                this->PerpendicularAxis[1],
-                                                this->PerpendicularAxis[2]),
-                                this->AngleEpsilon,
-                                this->MaxIterations,
-                                modelCoefficients,
-                                inlierIndices);
-    }
-  else
-    {
-    ComputeSACSegmentationPlane(cloud,
-                                this->DistanceThreshold,
-                                this->MaxIterations,
-                                modelCoefficients,
-                                inlierIndices);
-    }
-
-  // store plane coefficients
-  for (size_t i = 0; i < modelCoefficients->values.size(); ++i)
-    {
-    this->PlaneCoefficients[i] = modelCoefficients->values[i];
-    }
-
-  // compute origin and normal
-  Eigen::Vector4d coeffs(this->PlaneCoefficients); 
-  if (coeffs[2] < 0)
-    {
-    coeffs *= -1.0;
-    }
-  Eigen::Vector3d normal(coeffs.data());
-
-  return 1;
-}
+// int vtkPCLSACSegmentationPlane::RequestData()
+// {
+//   // perform plane model fit
+//   pcl::PointIndices::Ptr inlierIndices;
+//   pcl::ModelCoefficients::Ptr modelCoefficients;
+//   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = vtkPCLConversions::PointCloudFromPolyData(input);
+//
+//   if (this->PerpendicularConstraintEnabled)
+//     {
+//     ComputeSACSegmentationPerpendicularPlane(
+//                                 cloud,
+//                                 this->DistanceThreshold,
+//                                 Eigen::Vector3f(this->PerpendicularAxis[0],
+//                                                 this->PerpendicularAxis[1],
+//                                                 this->PerpendicularAxis[2]),
+//                                 this->AngleEpsilon,
+//                                 this->MaxIterations,
+//                                 modelCoefficients,
+//                                 inlierIndices);
+//     }
+//   else
+//     {
+//     ComputeSACSegmentationPlane(cloud,
+//                                 this->DistanceThreshold,
+//                                 this->MaxIterations,
+//                                 modelCoefficients,
+//                                 inlierIndices);
+//     }
+//
+//   // store plane coefficients
+//   for (size_t i = 0; i < modelCoefficients->values.size(); ++i)
+//     {
+//     this->PlaneCoefficients[i] = modelCoefficients->values[i];
+//     }
+//
+//   // compute origin and normal
+//   Eigen::Vector4d coeffs(this->PlaneCoefficients);
+//   if (coeffs[2] < 0)
+//     {
+//     coeffs *= -1.0;
+//     }
+//   Eigen::Vector3d normal(coeffs.data());
+//
+//  return 1;
+//}
 

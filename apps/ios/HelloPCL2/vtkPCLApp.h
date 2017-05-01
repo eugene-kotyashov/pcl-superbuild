@@ -24,6 +24,8 @@
 
 #include "vtkPCLDemo.h"
 
+#include "vtkShaderProgram.h"
+
 class vtkPCLApp
 {
 public:
@@ -43,23 +45,24 @@ public:
   //   return vtkKiwiViewerApp::loadDatasetWithCustomBehavior(filename);
   // }
 
-  bool loadPCLDemo(const std::string& filename, vtkSharedPtr<vtkRenderer> renderer, vtkSharedPtr<vtkShaderProgram> shader)
+  bool loadPCLDemo(const std::string& filename)
   {
-    this->mRep = vtkPCLDemo::Ptr(new vtkPCLDemo);
-  	this->mRep->initialize(filename, shaderProgram);
-    this->mRep->addSelfToRenderer(this->renderer());
+    // this->mRep = vtkPCLDemo::Ptr(new vtkPCLDemo);
+    this->mRep = new vtkPCLDemo;
+  	this->mRep->initialize(filename);
+    // this->mRep->addSelfToRenderer(renderer);
     // this->setBackgroundColor(0., 0., 0.);
     return true;
   }
 
-  vtkPCLDemo::Ptr getPCLDemo()
+  vtkPCLDemo* getPCLDemo()
   {
     return this->mRep;
   }
 
 
 protected:
-  vtkPCLDemo::Ptr mRep;
+  vtkPCLDemo* mRep;
 
 
 private:

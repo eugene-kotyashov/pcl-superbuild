@@ -72,7 +72,7 @@ macro(compile_vtk)
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
       -DBUILD_SHARED_LIBS:BOOL=ON
       -DBUILD_TESTING:BOOL=OFF
-      -DVTK_ANDROID_BUILD:BOOL=ON
+      -DVTK_ANDROID_BUILD:BOOL=OFF
       -DANDROID_ARCH_NAME:STRING=armeabi-v7a
       -DANDROID_NATIVE_API_LEVEL:STRING=21
       -DOPENGL_ES_VERSION:STRING=2.0
@@ -156,63 +156,6 @@ macro(crosscompile_vtk tag)
   )
 endmacro()
 
-# 
-# VES fetch
-# 
-macro(fetch_ves)
-  ExternalProject_Add(
-    ves-fetch
-    SOURCE_DIR ${source_prefix}/ves
-    GIT_REPOSITORY git://vtk.org/stage/VES.git
-    # GIT_TAG pcl-ios-app
-    CONFIGURE_COMMAND ""
-    BUILD_COMMAND ""
-    INSTALL_COMMAND ""
-  )
-endmacro()
-
-#
-# VTK compile
-#
-macro(compile_ves)
-  set(proj ves-host)
-  ExternalProject_Add(
-    ${proj}
-    SOURCE_DIR ${source_prefix}/ves
-    DOWNLOAD_COMMAND ""
-    INSTALL_COMMAND ""
-    DEPENDS ves-fetch
-    CMAKE_ARGS
-      -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
-      -DCMAKE_BUILD_TYPE:STRING=${build_type}
-      -DBUILD_SHARED_LIBS:BOOL=ON
-      -DBUILD_TESTING:BOOL=OFF
-      -DVTK_ANDROID_BUILD:BOOL=ON
-      -DANDROID_ARCH_NAME:STRING=armeabi-v7a
-      -DANDROID_NATIVE_API_LEVEL:STRING=21
-      -DOPENGL_ES_VERSION:STRING=2.0
-      -DVTK_EXTRA_COMPILER_WARNINGS:BOOL=OFF
-      -DVTK_Group_Imaging:BOOL=OFF
-      -DVTK_Group_MPI:BOOL=OFF
-      -DVTK_Group_Qt:BOOL=OFF
-      -DVTK_Group_Rendering:BOOL=OFF
-      -DVTK_Group_StandAlone:BOOL=ON
-      -DVTK_Group_Tk:BOOL=OFF
-      -DVTK_Group_Views:BOOL=OFF
-      -DVTK_Group_Web:BOOL=OFF
-      -DVTK_IOS_BUILD:BOOL=ON
-      -DVTK_PYTHON_VERSION:STRING=2
-      -DVTK_RENDERING_BACKEND:STRING=OpenGL
-      -DVTK_SMP_IMPLEMENTATION_TYPE:STRING=Sequential
-      -DVTK_USE_LARGE_DATA:BOOL=OFF
-      -DVTK_WRAP_JAVA:BOOL=OFF
-      -DVTK_WRAP_PYTHON:BOOL=OFF
-      -DVTK_WRAP_TCL:BOOL=OFF
-      ${vtk_module_defaults}
-  )
-endmacro()
-
-
 #
 # FLANN fetch
 #
@@ -242,40 +185,40 @@ macro(crosscompile_flann tag)
 #   if(${tag} STREQUAL "android")
 #   elseif(${tag} STREQUAL  "ios-device")
 #     set(ios_platform "OS")
-#     ExternalProject_Add(
-#       ${proj}
-#       SOURCE_DIR ${source_prefix}/flann
-#       DOWNLOAD_COMMAND ""
-#       DEPENDS flann-fetch
-#       CMAKE_ARGS
-#         -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
-#         -DCMAKE_BUILD_TYPE:STRING=${build_type}
-#         -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
-#        # -DCMAKE_IOS_DEVELOPER_ROOT:${ios_root}
-#        # -DIOS_PLATFORM_LOCATION:${ios_platform}
-#        # -DBUILD_SHARED_LIBS:BOOL=OFF
-#         -DBUILD_EXAMPLES:BOOL=OFF
-#         -DBUILD_PYTHON_BINDINGS:BOOL=OFF
-#         -DBUILD_MATLAB_BINDINGS:BOOL=OFF
-#     )
+# 	  ExternalProject_Add(
+# 	    ${proj}
+# 	    SOURCE_DIR ${source_prefix}/flann
+# 	    DOWNLOAD_COMMAND ""
+# 	    DEPENDS flann-fetch
+# 	    CMAKE_ARGS
+# 	      -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
+# 	      -DCMAKE_BUILD_TYPE:STRING=${build_type}
+# 	      -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
+# 	     # -DCMAKE_IOS_DEVELOPER_ROOT:${ios_root}
+# 	     # -DIOS_PLATFORM_LOCATION:${ios_platform}
+# 	     # -DBUILD_SHARED_LIBS:BOOL=OFF
+# 	      -DBUILD_EXAMPLES:BOOL=OFF
+# 	      -DBUILD_PYTHON_BINDINGS:BOOL=OFF
+# 	      -DBUILD_MATLAB_BINDINGS:BOOL=OFF
+# 	  )
 #   elseif(${tag} STREQUAL  "ios-simulator")
 #     set(ios_platform "SIMULATOR64")
-#     ExternalProject_Add(
-#       ${proj}
-#       SOURCE_DIR ${source_prefix}/flann
-#       DOWNLOAD_COMMAND ""
-#       DEPENDS flann-fetch
-#       CMAKE_ARGS
-#         -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
-#         -DCMAKE_BUILD_TYPE:STRING=${build_type}
-#         -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
-#        # -DCMAKE_IOS_DEVELOPER_ROOT:${ios_root}
-#        # -DIOS_PLATFORM_LOCATION:${ios_platform}
-#        # -DBUILD_SHARED_LIBS:BOOL=OFF
-#         -DBUILD_EXAMPLES:BOOL=OFF
-#         -DBUILD_PYTHON_BINDINGS:BOOL=OFF
-#         -DBUILD_MATLAB_BINDINGS:BOOL=OFF
-#     )
+# 	  ExternalProject_Add(
+# 	    ${proj}
+# 	    SOURCE_DIR ${source_prefix}/flann
+# 	    DOWNLOAD_COMMAND ""
+# 	    DEPENDS flann-fetch
+# 	    CMAKE_ARGS
+# 	      -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
+# 	      -DCMAKE_BUILD_TYPE:STRING=${build_type}
+# 	      -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
+# 	     # -DCMAKE_IOS_DEVELOPER_ROOT:${ios_root}
+# 	     # -DIOS_PLATFORM_LOCATION:${ios_platform}
+# 	     # -DBUILD_SHARED_LIBS:BOOL=OFF
+# 	      -DBUILD_EXAMPLES:BOOL=OFF
+# 	      -DBUILD_PYTHON_BINDINGS:BOOL=OFF
+# 	      -DBUILD_MATLAB_BINDINGS:BOOL=OFF
+# 	  )
 #   endif ()
 
   ExternalProject_Add(
@@ -449,14 +392,10 @@ macro(crosscompile_pcl tag)
 endmacro()
 
 
-# macro(create_pcl_framework tags)
 macro(create_pcl_framework)
-    # message (STATUS ${tags})
     add_custom_target(pclFramework ALL
       COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh pcl
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-      # DEPENDS pcl-ios-device pcl-ios-simulator
       DEPENDS pcl-ios-device
-      # DEPENDS ${tags}
       COMMENT "Creating pcl.framework")
 endmacro()

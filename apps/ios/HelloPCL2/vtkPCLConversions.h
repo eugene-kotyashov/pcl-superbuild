@@ -21,10 +21,25 @@
 #ifndef __vtkPCLConversions_h
 #define __vtkPCLConversions_h
 
+#include "vtkNew.h"
+#include "vtkPolyData.h"
+#include "vtkSmartPointer.h"
+
 #include <pcl/point_cloud.h>
 #include <pcl/point_types.h>
 #include <pcl/PointIndices.h>
 #include <pcl/ModelCoefficients.h>
+
+//use?
+#include <vtkIntArray.h>
+#include <vtkFloatArray.h>
+#include <vtkDoubleArray.h>
+#include <vtkTimerLog.h>
+#include <vtkPoints.h>
+#include <vtkPointData.h>
+#include <vtkUnsignedCharArray.h>
+#include <vtkLookupTable.h>
+
 
 class vtkPCLConversions
 {
@@ -32,15 +47,15 @@ public:
         
   static vtkPCLConversions* New();
      
-  static void PolyDataFromPCDFile(const std::string& filename);
-  static void PolyDataFromPointCloud(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud);
-  static void PolyDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud);
-  static void PolyDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr cloud);
-  static void PointCloudFromPolyData(vtkPolyData* polyData);
-  static void NewVertexCells(vtkIdType numberOfVerts);
+  static vtkSmartPointer<vtkPolyData> PolyDataFromPCDFile(const std::string& filename);
+  static vtkSmartPointer<vtkPolyData> PolyDataFromPointCloud(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud);
+  static vtkSmartPointer<vtkPolyData> PolyDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud);
+  static vtkSmartPointer<vtkPolyData> PolyDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr cloud);
+  static pcl::PointCloud<pcl::PointXYZ>::Ptr  PointCloudFromPolyData(vtkPolyData* polyData);
+  static vtkSmartPointer<vtkCellArray> NewVertexCells(vtkIdType numberOfVerts);
 
-  static void NewLabelsArray(pcl::IndicesConstPtr indices, vtkIdType length);
-  static void NewLabelsArray(pcl::PointIndices::ConstPtr indices, vtkIdType length);
+  // static void NewLabelsArray(pcl::IndicesConstPtr indices, vtkIdType length);
+  // static void NewLabelsArray(pcl::PointIndices::ConstPtr indices, vtkIdType length);
   static void NewLabelsArray(const std::vector<pcl::PointIndices>& indices, vtkIdType length);
 
   static void PerformPointCloudConversionBenchmark(vtkPolyData* polyData);

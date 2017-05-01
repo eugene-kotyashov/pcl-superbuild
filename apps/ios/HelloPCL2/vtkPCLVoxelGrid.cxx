@@ -35,11 +35,11 @@ namespace {
 }
 
 //----------------------------------------------------------------------------
-int vtkPCLVoxelGrid::RequestData()
-{
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = vtkPCLConversions::PointCloudFromPolyData(input);
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloudFiltered = ApplyVoxelGrid(cloud, this->LeafSize);
-
-  output->ShallowCopy(vtkPCLConversions::PolyDataFromPointCloud(cloudFiltered));
-  return 1;
-}
+// int vtkPCLVoxelGrid::RequestData()
+// {
+//  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = vtkPCLConversions::PointCloudFromPolyData(input);
+//  pcl::PointCloud<pcl::PointXYZ>::Ptr cloudFiltered = ApplyVoxelGrid(cloud, this->LeafSize);
+//
+//  output->ShallowCopy(vtkPCLConversions::PolyDataFromPointCloud(cloudFiltered));
+//  return 1;
+// }
