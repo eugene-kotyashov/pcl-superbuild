@@ -155,7 +155,7 @@ before_install:
       brew install llvm;
       
       mkdir build && cd build;
-      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;
+      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
@@ -213,12 +213,12 @@ before_install:
 # - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphoneos -configuration Release build
 # before vtk build module copy?
 # - bash cmake_command.sh
+# TestCode
+# - cd ../apps/ios/HelloPCL2
+# - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphoneos -configuration Release build
+# - cd ../../../build
 script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
-    - cd ../apps/ios/HelloPCL2
-    - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphoneos -configuration Release build
-    - cd ../../../build
-
 
 # after_success:
 #     - zip -r pcl-superbuild_ios_library.zip ./CMakeExternals/Install
