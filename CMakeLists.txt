@@ -9,7 +9,6 @@ include(external-project-macros.cmake)
 
 
 install_eigen()
-# pcl build only?
 fetch_vtk()
 fetch_pcl()
 fetch_boost()
@@ -32,7 +31,7 @@ if(BUILD_IOS_SIMULATOR)
 endif()
 
 foreach(tag ${tags})
-  # NG
+  # NG?
   # crosscompile_vtk(${tag})
   crosscompile_boost(${tag})
   # NG
@@ -42,7 +41,5 @@ foreach(tag ${tags})
 endforeach()
 
 if (BUILD_IOS_DEVICE)
-    # create_pcl_framework(${tags})
-    create_pcl_framework()
+  create_pcl_framework()
 endif()
-

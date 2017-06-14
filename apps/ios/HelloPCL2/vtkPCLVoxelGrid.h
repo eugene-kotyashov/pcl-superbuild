@@ -30,7 +30,7 @@ public:
 protected:
   double LeafSize[3];
 
-  virtual int RequestData();
+  // virtual int RequestData();
 
   vtkPCLVoxelGrid();
   virtual ~vtkPCLVoxelGrid();

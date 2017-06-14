@@ -22,6 +22,13 @@
 		AF877F9417272C2F002D08B8 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF877F9317272C2F002D08B8 /* GLKit.framework */; };
 		AFCEBA2511D96215001AA22A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AFCEBA1E11D96215001AA22A /* Icon.png */; };
 		AFCEBA2711D96215001AA22A /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = AFCEBA2011D96215001AA22A /* iTunesArtwork */; };
+		C8B2CE361EA62ED00064B007 /* vtkPCLConversions.cxx in Sources */ = {isa = PBXBuildFile; fileRef = C8B2CE2E1EA62ED00064B007 /* vtkPCLConversions.cxx */; };
+		C8B2CE371EA62ED00064B007 /* vtkPCLDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8B2CE301EA62ED00064B007 /* vtkPCLDemo.cpp */; };
+		C8B2CE381EA62ED00064B007 /* vtkPCLSACSegmentationPlane.cxx in Sources */ = {isa = PBXBuildFile; fileRef = C8B2CE321EA62ED00064B007 /* vtkPCLSACSegmentationPlane.cxx */; };
+		C8B2CE391EA62ED00064B007 /* vtkPCLVoxelGrid.cxx in Sources */ = {isa = PBXBuildFile; fileRef = C8B2CE341EA62ED00064B007 /* vtkPCLVoxelGrid.cxx */; };
+		C8B2CE3E1EA62FE30064B007 /* pcl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B2CE3D1EA62FE30064B007 /* pcl.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		C8BA4FAD1EA785E40021F388 /* data in Resources */ = {isa = PBXBuildFile; fileRef = C8BA4FAC1EA785E40021F388 /* data */; };
+		C8BA4FAF1EA786240021F388 /* pointcloud.pcd in Resources */ = {isa = PBXBuildFile; fileRef = C8BA4FAE1EA786240021F388 /* pointcloud.pcd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +52,18 @@
 		AF877F9317272C2F002D08B8 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		AFCEBA1E11D96215001AA22A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Images/Icon.png; sourceTree = "<group>"; };
 		AFCEBA2011D96215001AA22A /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Images/iTunesArtwork; sourceTree = "<group>"; };
+		C8B2CE2D1EA62ED00064B007 /* vtkPCLApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vtkPCLApp.h; sourceTree = "<group>"; };
+		C8B2CE2E1EA62ED00064B007 /* vtkPCLConversions.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vtkPCLConversions.cxx; sourceTree = "<group>"; };
+		C8B2CE2F1EA62ED00064B007 /* vtkPCLConversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vtkPCLConversions.h; sourceTree = "<group>"; };
+		C8B2CE301EA62ED00064B007 /* vtkPCLDemo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vtkPCLDemo.cpp; sourceTree = "<group>"; };
+		C8B2CE311EA62ED00064B007 /* vtkPCLDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vtkPCLDemo.h; sourceTree = "<group>"; };
+		C8B2CE321EA62ED00064B007 /* vtkPCLSACSegmentationPlane.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vtkPCLSACSegmentationPlane.cxx; sourceTree = "<group>"; };
+		C8B2CE331EA62ED00064B007 /* vtkPCLSACSegmentationPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vtkPCLSACSegmentationPlane.h; sourceTree = "<group>"; };
+		C8B2CE341EA62ED00064B007 /* vtkPCLVoxelGrid.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vtkPCLVoxelGrid.cxx; sourceTree = "<group>"; };
+		C8B2CE351EA62ED00064B007 /* vtkPCLVoxelGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vtkPCLVoxelGrid.h; sourceTree = "<group>"; };
+		C8B2CE3D1EA62FE30064B007 /* pcl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pcl.framework; path = ../../../../../../usr/local/Frameworks/pcl.framework; sourceTree = "<group>"; };
+		C8BA4FAC1EA785E40021F388 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
+		C8BA4FAE1EA786240021F388 /* pointcloud.pcd */ = {isa = PBXFileReference; lastKnownFileType = file; name = pointcloud.pcd; path = data/pointcloud.pcd; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +78,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				1D3623EC0D0F72F000981E51 /* CoreGraphics.framework in Frameworks */,
 				2D500B940D5A79C200DBA0E3 /* OpenGLES.framework in Frameworks */,
+				C8B2CE3E1EA62FE30064B007 /* pcl.framework in Frameworks */,
 				2D500B9A0D5A79CF00DBA0E3 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,6 +109,15 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C8B2CE2D1EA62ED00064B007 /* vtkPCLApp.h */,
+				C8B2CE2E1EA62ED00064B007 /* vtkPCLConversions.cxx */,
+				C8B2CE2F1EA62ED00064B007 /* vtkPCLConversions.h */,
+				C8B2CE301EA62ED00064B007 /* vtkPCLDemo.cpp */,
+				C8B2CE311EA62ED00064B007 /* vtkPCLDemo.h */,
+				C8B2CE321EA62ED00064B007 /* vtkPCLSACSegmentationPlane.cxx */,
+				C8B2CE331EA62ED00064B007 /* vtkPCLSACSegmentationPlane.h */,
+				C8B2CE341EA62ED00064B007 /* vtkPCLVoxelGrid.cxx */,
+				C8B2CE351EA62ED00064B007 /* vtkPCLVoxelGrid.h */,
 				32CA4F630368D1EE00C91783 /* Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -98,6 +127,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C8BA4FAE1EA786240021F388 /* pointcloud.pcd */,
+				C8BA4FAC1EA785E40021F388 /* data */,
 				13B73C8F19E2D5C000A42447 /* MainStoryboard_iPad.storyboard */,
 				13B73C9119E2D5C000A42447 /* MainStoryboard_iPhone.storyboard */,
 				AFCEBA1E11D96215001AA22A /* Icon.png */,
@@ -110,8 +141,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				13328B8519C77938006A473C /* libstdc++.6.0.9.dylib */,
 				13328B8319C77700006A473C /* vtk.framework */,
+				13328B8519C77938006A473C /* libstdc++.6.0.9.dylib */,
+				C8B2CE3D1EA62FE30064B007 /* pcl.framework */,
 				AF877F9317272C2F002D08B8 /* GLKit.framework */,
 				1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */,
 				2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */,
@@ -159,7 +191,15 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				KnownAssetTags = (
+					New,
+				);
+				LastUpgradeCheck = 0830;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = 78DZ8RW2TV;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "HelloPCL2" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -186,6 +226,8 @@
 				AFCEBA2511D96215001AA22A /* Icon.png in Resources */,
 				13B73C9419E2D5C000A42447 /* MainStoryboard_iPhone.storyboard in Resources */,
 				AFCEBA2711D96215001AA22A /* iTunesArtwork in Resources */,
+				C8BA4FAF1EA786240021F388 /* pointcloud.pcd in Resources */,
+				C8BA4FAD1EA785E40021F388 /* data in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +240,11 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				13B73C8E19DEE9B800A42447 /* MyGLKViewController.mm in Sources */,
+				C8B2CE371EA62ED00064B007 /* vtkPCLDemo.cpp in Sources */,
+				C8B2CE391EA62ED00064B007 /* vtkPCLVoxelGrid.cxx in Sources */,
 				13B73C8D19DEE9B800A42447 /* AppDelegate.mm in Sources */,
+				C8B2CE381EA62ED00064B007 /* vtkPCLSACSegmentationPlane.cxx in Sources */,
+				C8B2CE361EA62ED00064B007 /* vtkPCLConversions.cxx in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,13 +274,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ADDRESS_SANITIZER_CONTAINER_OVERFLOW = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 78DZ8RW2TV;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/frameworks,
+					"$(PROJECT_DIR)",
+					/usr/local/Frameworks,
 				);
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -242,12 +295,17 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/frameworks/pcl.framework/Headers,
 					/usr/local/frameworks/vtk.framework/Headers,
+					"/Users/T_O/pcl-superbuild/build/CMakeExternals/Install/eigen",
+					"/Users/T_O/pcl-superbuild/build/CMakeExternals/Install/boost_ios_device/include",
+					"/Users/T_O/pcl-superbuild/build/CMakeExternals/Install/flann-ios-device/include",
 				);
 				INFOPLIST_FILE = "HelloPCL2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kitware.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = HelloPCL2;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -259,24 +317,36 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ADDRESS_SANITIZER_CONTAINER_OVERFLOW = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 78DZ8RW2TV;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/frameworks,
+					"$(PROJECT_DIR)",
+					/usr/local/Frameworks,
 				);
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/frameworks/pcl.framework/Headers,
 					/usr/local/frameworks/vtk.framework/Headers,
+					"/Users/T_O/pcl-superbuild/build/CMakeExternals/Install/eigen",
+					"/Users/T_O/pcl-superbuild/build/CMakeExternals/Install/boost_ios_device/include",
+					"/Users/T_O/pcl-superbuild/build/CMakeExternals/Install/flann-ios-device/include",
 				);
 				INFOPLIST_FILE = "HelloPCL2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kitware.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = HelloPCL2;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -288,13 +358,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -304,11 +390,26 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				SDKROOT = iphoneos;
 			};
 			name = Release;

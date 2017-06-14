@@ -13,6 +13,8 @@
 
 =========================================================================*/
 
+#include "vtkPCLConversions.h"
+
 #include <pcl/io/pcd_io.h>
 
 #include <cassert>
@@ -29,7 +31,7 @@ vtkPCLConversions::~vtkPCLConversions()
 
 namespace {
     template <typename T>
-    void TemplatedPolyDataFromPCDFile(const std::string& filename)
+    vtkSmartPointer<vtkPolyData> TemplatedPolyDataFromPCDFile(const std::string& filename)
     {
         typename pcl::PointCloud<T>::Ptr cloud(new pcl::PointCloud<T>);
         if (pcl::io::loadPCDFile(filename, *cloud) == -1)
@@ -71,7 +73,7 @@ vtkSmartPointer<vtkPolyData> vtkPCLConversions::PolyDataFromPCDFile(const std::s
 }
 
 //----------------------------------------------------------------------------
-void vtkPCLConversions::PolyDataFromPointCloud(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud)
+vtkSmartPointer<vtkPolyData> vtkPCLConversions::PolyDataFromPointCloud(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud)
 {
     vtkIdType nr_points = cloud->points.size();
 
@@ -270,12 +272,12 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr vtkPCLConversions::PointCloudFromPolyData(vt
 vtkSmartPointer<vtkCellArray> vtkPCLConversions::NewVertexCells(vtkIdType numberOfVerts)
 {
     vtkNew<vtkIdTypeArray> cells;
-    cells->SetNumberOfValues(numberOfVerts*2);
+    cells->SetNumberOfValues(numberOfVerts * 2);
     vtkIdType* ids = cells->GetPointer(0);
     for (vtkIdType i = 0; i < numberOfVerts; ++i)
     {
-        ids[i*2] = 1;
-        ids[i*2+1] = i;
+        ids[i * 2] = 1;
+        ids[i * 2 + 1] = i;
     }
 
     vtkSmartPointer<vtkCellArray> cellArray = vtkSmartPointer<vtkCellArray>::New();
@@ -349,40 +351,40 @@ namespace {
 }
 
 //----------------------------------------------------------------------------
-vtkSmartPointer<vtkIntArray> vtkPCLConversions::NewLabelsArray(pcl::IndicesConstPtr indices, vtkIdType length)
-{
-    vtkSmartPointer<vtkIntArray> labels = ::NewLabelsArray(length);
-    if (indices)
-    {
-        LabelIndices(*indices, labels, 1);
-    }
-    
-    return labels;
-}
+// vtkSmartPointer<vtkIntArray> vtkPCLConversions::NewLabelsArray(pcl::IndicesConstPtr indices, vtkIdType length)
+// {
+//     vtkSmartPointer<vtkIntArray> labels = ::NewLabelsArray(length);
+//     if (indices)
+//     {
+//         LabelIndices(*indices, labels, 1);
+//     }
+//
+//     return labels;
+// }
 
 //----------------------------------------------------------------------------
-vtkSmartPointer<vtkIntArray> vtkPCLConversions::NewLabelsArray(pcl::PointIndices::ConstPtr indices, vtkIdType length)
-{
-    vtkSmartPointer<vtkIntArray> labels = ::NewLabelsArray(length);
-    if (indices)
-    {
-        LabelIndices(indices->indices, labels, 1);
-    }
-    
-    return labels;
-}
+// vtkSmartPointer<vtkIntArray> vtkPCLConversions::NewLabelsArray(pcl::PointIndices::ConstPtr indices, vtkIdType length)
+// {
+//     vtkSmartPointer<vtkIntArray> labels = ::NewLabelsArray(length);
+//     if (indices)
+//     {
+//         LabelIndices(indices->indices, labels, 1);
+//     }
+//
+//     return labels;
+// }
 
 //----------------------------------------------------------------------------
-vtkSmartPointer<vtkIntArray> vtkPCLConversions::NewLabelsArray(const std::vector<pcl::PointIndices>& indices, vtkIdType length)
-{
-    vtkSmartPointer<vtkIntArray> labels = ::NewLabelsArray(length);
-    
-    for (size_t i = 0; i < indices.size(); ++i)
-    {
-        const int labelValue = i + 1;
-        LabelIndices(indices[i].indices, labels, labelValue);
-    }
-    
-    return labels;
-}
+// vtkSmartPointer<vtkIntArray> vtkPCLConversions::NewLabelsArray(const std::vector<pcl::PointIndices>& indices, vtkIdType length)
+// {
+//     vtkSmartPointer<vtkIntArray> labels = ::NewLabelsArray(length);
+//
+//     for (size_t i = 0; i < indices.size(); ++i)
+//     {
+//         const int labelValue = i + 1;
+//         LabelIndices(indices[i].indices, labels, labelValue);
+//     }
+//
+//     return labels;
+// }
 

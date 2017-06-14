@@ -27,11 +27,10 @@ matrix:
 #              - doxygen-latex
 #              - libusb-1.0-0-dev
      - os: osx
-       osx_image: xcode7.3
+       osx_image: xcode8.3
        language: objective-c
-       # compiler: clang++
-       compiler: gcc
-       # compiler: clang
+       compiler: clang
+       # compiler: gcc
 #        addons:
 #          apt:
 #            sources:
@@ -174,9 +173,10 @@ before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew prune;
       brew update >/dev/null;
+      brew install llvm;
       
       mkdir build && cd build;
-      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;
+      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
@@ -234,13 +234,13 @@ before_install:
 # - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphonesimulator -configuration Debug build
 # - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphoneos -configuration Release build
 # before vtk build module copy?
+# - bash cmake_command.sh
+# TestCode
+# - cd ../apps/ios/HelloPCL2
+# - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphoneos -configuration Release build
+# - cd ../../../build
 script:
     - travis_wait 60 make -j4 VERBOSE=1 2>&1
-    - cd ../apps/ios/HelloPCL2
-    - bash cmake_command.sh
-    - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphoneos -configuration Release build
-    - cd ../../../build
-
 
 # after_success:
 #     - zip -r pcl-superbuild_ios_library.zip ./CMakeExternals/Install

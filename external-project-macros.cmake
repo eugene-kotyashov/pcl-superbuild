@@ -73,7 +73,7 @@ macro(compile_vtk)
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
       -DBUILD_SHARED_LIBS:BOOL=ON
       -DBUILD_TESTING:BOOL=OFF
-      -DVTK_ANDROID_BUILD:BOOL=ON
+      -DVTK_ANDROID_BUILD:BOOL=OFF
       -DANDROID_ARCH_NAME:STRING=armeabi-v7a
       -DANDROID_NATIVE_API_LEVEL:STRING=21
       -DOPENGL_ES_VERSION:STRING=2.0
@@ -450,14 +450,11 @@ macro(crosscompile_pcl tag)
 endmacro()
 
 
-# macro(create_pcl_framework tags)
 macro(create_pcl_framework)
-    # message (STATUS ${tags})
     add_custom_target(pclFramework ALL
       COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh pcl
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
       # DEPENDS pcl-ios-device pcl-ios-simulator
       DEPENDS pcl-ios-device
-      # DEPENDS ${tags}
       COMMENT "Creating pcl.framework")
 endmacro()

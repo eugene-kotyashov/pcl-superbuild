@@ -22,38 +22,60 @@
 #ifndef __vtkPCLDemo_h
 #define __vtkPCLDemo_h
 
-#include <vtkWidgetRepresentation.h>
+// #include <vtkWidgetRepresentation.h>
+#include "vtkShaderProgram.h"
+#include "vtkNew.h"
+#include "vtkActor.h"
+#include "vtkCamera.h"
+#include "vtkConeSource.h"
+#include "vtkDebugLeaks.h"
+#include "vtkGlyph3D.h"
+#include "vtkPolyData.h"
+#include "vtkPolyDataMapper.h"
+#include "vtkIOSRenderWindow.h"
+#include "vtkIOSRenderWindowInteractor.h"
+#include "vtkRenderer.h"
+#include "vtkSphereSource.h"
+#include "vtkCommand.h"
+// #include "vtkInteractorStyleMultiTouchCamera.h"
+#include "vtkMapper.h"
+//#include "vtkGeometryData.h"
 
-class vtkPCLDemo : public vtkWidgetRepresentation
+//use?
+#include <vtkTimerLog.h>
+#include <vtkPoints.h>
+#include <vtkPointData.h>
+#include <vtkUnsignedCharArray.h>
+#include <vtkLookupTable.h>
+
+#include <vector>
+#include <cassert>
+#include <sstream>
+
+// class vtkPCLDemo : public vtkWidgetRepresentation
+class vtkPCLDemo
 {
 public:
   vtkPCLDemo();
   ~vtkPCLDemo();
 
-  void initialize(const std::string& filename, vtkSharedPtr<vtkShaderProgram> shader);
+  void initialize(const std::string& filename);
 
   void setLeafSize(double value);
 
   void setPlaneDistanceThreshold(double value);
-
-  virtual void addSelfToRenderer(vtkSharedPtr<vtkRenderer> renderer);
-  virtual void removeSelfFromRenderer(vtkSharedPtr<vtkRenderer> renderer);
-  virtual void willRender(vtkSharedPtr<vtkRenderer> renderer);
-
+  vtkSmartPointer<vtkPolyData> GetPolyData();
+    
   virtual int numberOfFacets();
   virtual int numberOfVertices();
   virtual int numberOfLines();
-
-  virtual bool handleSingleTouchTap(int displayX, int displayY);
-  virtual bool handleSingleTouchDown(int displayX, int displayY);
-  virtual bool handleSingleTouchPanGesture(double deltaX, double deltaY);
-  virtual bool handleSingleTouchUp();
 
   class vtkInternal;
 
 protected:
 
-  vtkSharedPtr<vtkGeometryData> updateGeometryData();
+  // vtkSharedPtr<vtkGeometryData> updateGeometryData();
+  // void updateGeometryData();
 
 private:
 

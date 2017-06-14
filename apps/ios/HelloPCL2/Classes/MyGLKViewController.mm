@@ -30,7 +30,7 @@ PURPOSE.  See the above copyright notice for more information.
 #include "vtkRenderer.h"
 #include "vtkSphereSource.h"
 #include "vtkCommand.h"
-#include "vtkInteractorStyleMultiTouchCamera.h"
+// #include "vtkInteractorStyleMultiTouchCamera.h"
 
 #include "vtkPCLApp.h"
 #include "vtkPCLDemo.h"
@@ -77,52 +77,83 @@ PURPOSE.  See the above copyright notice for more information.
   vtkObjectFactory::RegisterFactory(of);
 
   vtkIOSRenderWindow *renWin = vtkIOSRenderWindow::New();
-  //renWin->DebugOn();
+  // renWin->DebugOn();
   [self setVTKRenderWindow:renWin];
 
   vtkNew<vtkRenderer> renderer;
   renWin->AddRenderer(renderer.Get());
 
-
+    
   // this example uses VTK's built in interaction but you could choose
   // to use your own instead.
   vtkRenderWindowInteractor *iren = vtkRenderWindowInteractor::New();
   iren->SetRenderWindow(renWin);
 
-  vtkInteractorStyleMultiTouchCamera *ismt = vtkInteractorStyleMultiTouchCamera::New();
-  iren->SetInteractorStyle(ismt);
-  ismt->Delete();
+  // vtkInteractorStyleMultiTouchCamera *ismt = vtkInteractorStyleMultiTouchCamera::New();
+  // iren->SetInteractorStyle(ismt);
+  // ismt->Delete();
 
+  vtkNew<vtkSphereSource> sphere;
+  sphere->SetThetaResolution(8);
+  sphere->SetPhiResolution(8);
+    
+  vtkNew<vtkPolyDataMapper> sphereMapper;
+  sphereMapper->SetInputConnection(sphere->GetOutputPort());
+  vtkNew<vtkActor> sphereActor;
+  sphereActor->SetMapper(sphereMapper.Get());
+    
   // add Renderer
   // pcl point add?
-  // vtkNew<vtkConeSource> cone;
-  // cone->SetResolution(6);
+  vtkNew<vtkConeSource> cone;
+  cone->SetResolution(6);
   // 
-  // vtkNew<vtkGlyph3D> glyph;
-  // glyph->SetInputConnection(sphere->GetOutputPort());
-  // glyph->SetSourceConnection(cone->GetOutputPort());
-  // glyph->SetVectorModeToUseNormal();
-  // glyph->SetScaleModeToScaleByVector();
-  // glyph->SetScaleFactor(0.25);
-  // 
-  // vtkNew<vtkPolyDataMapper> spikeMapper;
-  // spikeMapper->SetInputConnection(glyph->GetOutputPort());
-  // vtkNew<vtkActor> spikeActor;
-  // spikeActor->SetMapper(spikeMapper.Get());
-  // renderer->AddActor(spikeActor.Get());
+  vtkNew<vtkGlyph3D> glyph;
+  glyph->SetInputConnection(sphere->GetOutputPort());
+  glyph->SetSourceConnection(cone->GetOutputPort());
+  glyph->SetVectorModeToUseNormal();
+  glyph->SetScaleModeToScaleByVector();
+  glyph->SetScaleFactor(0.25);
+  
+  vtkNew<vtkPolyDataMapper> spikeMapper;
+  spikeMapper->SetInputConnection(glyph->GetOutputPort());
+    
+  vtkNew<vtkActor> spikeActor;
+  spikeActor->SetMapper(spikeMapper.Get());
+    
+    renderer->AddActor(sphereActor.Get());
+    renderer->AddActor(spikeActor.Get());
   
   // Start modified module
-  // 
   // self->mApp->initGL();
-  vtkPCLApp* app = new vtkPCLApp;// [self.glView getApp];
-  vtkPCLDemo::Ptr rep = app->getPCLDemo();
-  vtkSmartPointer<vtkShaderProgram> shaderProgram = vtkShaderProgram::New();
-  
-  rep->initialize("data/pointcloud.pcd", renderer, shaderProgram);
-  rep->addSelfToRenderer(renderer);
-  rep->updateGeometryData();
-
-  renderer->SetBackground(0.4, 0.5, 0.6);
+  //vtkPCLApp* app = new vtkPCLApp;// [self.glView getApp];
+  // vtkPCLDemo* rep = app->getPCLDemo();
+    // NSBundle *bundle = [NSBundle mainBundle];
+    // NSString *path1 = [bundle pathForResource:@"pointcloud" ofType:@"pcd"];
+    // NSString *path1 = [bundle pathForResource:@"pointcloud" ofType:@"pcd"];
+    
+    // NSString *resourceDirectoryPath = [bundle bundlePath];
+    // std::string strDst = [path1 UTF8String];
+    
+    // app->loadPCLDemo(strDst);
+    // app->loadPCLDemo("data/pointcloud.pcd");
+    // app->loadPCLDemo("pointcloud.pcd");
+    // rep->initialize("data/pointcloud.pcd");
+  // rep->addSelfToRenderer(renderer);
+  // rep->updateGeometryData();
+    
+    // Display the control mesh
+    // vtkSmartPointer<vtkPolyDataMapper> meshMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
+    // meshMapper->SetInputData(app->getPCLDemo()->GetPolyData());
+    // vtkSmartPointvtkActor> meshActor = vtkSmartPointer<vtkActor>::New();
+    // meshActor->SetMapper(meshMapper);
+    // meshActor->GetProperty()->SetRepresentationToWireframe();
+    // meshActor->GetProperty()->SetColor(0,0,0);
+    
+    // renderer->SetBackground(0.4, 0.5, 0.6);
+    // renderer->AddActor(meshActor.Get());
+    renderer->SetBackground(0.4, 0.5, 0.6);
+    
+    // renderer->ResetCamera();
 }
 
 
@@ -234,21 +265,21 @@ PURPOSE.  See the above copyright notice for more information.
     CGPoint location = [touch locationInView:self.view];
     location.y = bounds.size.height - location.y;
 
-    int index = interactor->GetContactIndex((__bridge void *)touch);
-    if (index < VTKI_MAX_POINTERS)
-      {
-      interactor->SetEventInformation((int)round(location.x),
-                                  (int)round(location.y),
-                                  0, 0,
-                                  0, 0, 0, index);
-      }
+    // int index = interactor->GetContactIndex((__bridge void *)touch);
+    // if (index < VTKI_MAX_POINTERS)
+    //   {
+    //   interactor->SetEventInformation((int)round(location.x),
+    //                               (int)round(location.y),
+    //                               0, 0,
+    //                               0, 0, 0, index);
+    //   }
     }
 
   // handle begin events
   for (UITouch *touch in touches)
     {
-    int index = interactor->GetContactIndex((__bridge void *)touch);
-    interactor->SetPointerIndex(index);
+    // int index = interactor->GetContactIndex((__bridge void *)touch);
+    // interactor->SetPointerIndex(index);
     interactor->InvokeEvent(vtkCommand::LeftButtonPressEvent,NULL);
     NSLog(@"Starting left mouse");
     }
@@ -283,18 +314,18 @@ PURPOSE.  See the above copyright notice for more information.
     CGPoint location = [touch locationInView:self.view];
     location.y = bounds.size.height - location.y;
 
-    index = interactor->GetContactIndex((__bridge void *)touch);
-    if (index < VTKI_MAX_POINTERS)
-    {
-      interactor->SetEventInformation((int)round(location.x),
-                                  (int)round(location.y),
-                                  0, 0,
-                                  0, 0, 0, index);
-    }
+    // index = interactor->GetContactIndex((__bridge void *)touch);
+    // if (index < VTKI_MAX_POINTERS)
+    // {
+    //   interactor->SetEventInformation((int)round(location.x),
+    //                               (int)round(location.y),
+    //                               0, 0,
+    //                               0, 0, 0, index);
+    // }
   }
 
   // fire move event on last index
-  interactor->SetPointerIndex(index);
+  // interactor->SetPointerIndex(index);
   interactor->InvokeEvent(vtkCommand::MouseMoveEvent, NULL);
   //  NSLog(@"Moved left mouse");
 
@@ -326,23 +357,23 @@ PURPOSE.  See the above copyright notice for more information.
     CGPoint location = [touch locationInView:self.view];
     location.y = bounds.size.height - location.y;
 
-    int index = interactor->GetContactIndex((__bridge void *)touch);
-    if (index < VTKI_MAX_POINTERS)
-      {
-      interactor->SetEventInformation((int)round(location.x),
-                                  (int)round(location.y),
-                                  0, 0,
-                                  0, 0, 0, index);
-      }
+    // int index = interactor->GetContactIndex((__bridge void *)touch);
+    // if (index < VTKI_MAX_POINTERS)
+    //   {
+    //   interactor->SetEventInformation((int)round(location.x),
+    //                               (int)round(location.y),
+    //                               0, 0,
+    //                               0, 0, 0, index);
+    //   }
     }
 
   // handle begin events
   for (UITouch *touch in touches)
     {
-    int index = interactor->GetContactIndex((__bridge void *)touch);
-    interactor->SetPointerIndex(index);
+    // int index = interactor->GetContactIndex((__bridge void *)touch);
+    // interactor->SetPointerIndex(index);
     interactor->InvokeEvent(vtkCommand::LeftButtonReleaseEvent,NULL);
-    interactor->ClearContactIndex((__bridge void *)touch);
+    // interactor->ClearContactIndex((__bridge void *)touch);
     NSLog(@"lifting left mouse");
     }
 
