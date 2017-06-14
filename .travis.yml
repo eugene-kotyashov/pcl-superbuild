@@ -147,6 +147,29 @@ matrix:
 # cmake -DVTK_IOS_BUILD=BOOL="ON" ../;
 # travis_wait 60 make -j4 VERBOSE=1 2>&1;
 # cd ../..;
+# mac on android?
+# start
+# wget http://dl.google.com/android/android-sdk_r24.0.2-linux.tgz;
+# tar zxvf android-sdk_r24.0.2-linux.tgz;
+# sudo mv android-sdk-linux/ /opt/;
+# rm android-sdk_r24.0.2-linux.tgz;
+# export ANDROID_HOME=/opt/android-sdk-linux;
+# export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools;
+# 
+# wget https://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip;
+# unzip -q android-ndk-r14b-linux-x86_64.zip;
+# sudo mv android-ndk-r14b /opt/;
+# rm android-ndk-r14b-linux-x86_64.zip;
+# export ANDROID_NDK_HOME=/opt/android-ndk-r14b;
+# export PATH=${PATH}:$ANDROID_NDK_HOME;
+# 
+# git clone -b v7.0.0 https://github.com/Kitware/VTK.git;
+# cd VTK;
+# mkdir build && cd build;
+# cmake -DVTK_IOS_BUILD="ON" ../;
+# travis_wait 60 make -j4 VERBOSE=1 2>&1;
+# cd ../..;
+# end
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew prune;
@@ -161,19 +184,20 @@ before_install:
       tar -xvf /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
       export PATH=$PWD/cmake-3.6.2-Linux-x86_64/bin/:$PATH;
       
+      wget http://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip;
+      unzip -q android-ndk-r10e-linux-x86_64.zip;
+      cd android-ndk-r10e;
+      export ANDROID_NDK=$PWD;
+      cd ..;
+      
       git clone -b v7.0.0 https://github.com/Kitware/VTK.git;
       cd VTK;
       mkdir build && cd build;
-      cmake -DVTK_ANDROID_BUILD=BOOL="ON" ../;
+      cmake -DVTK_ANDROID_BUILD="ON" ../;
       travis_wait 60 make -j4 VERBOSE=1 2>&1;
       cd ../..;
       
-      wget http://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip;
-      unzip -q android-ndk-r11c-linux-x86_64.zip;
-      cd android-ndk-r11c;
-      export ANDROID_NDK=$PWD;
-      
-      cd ..;
+
       mkdir build;
       cd build;
       cmake -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;

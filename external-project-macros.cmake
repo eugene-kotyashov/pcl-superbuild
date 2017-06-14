@@ -46,6 +46,7 @@ macro(fetch_vtk)
     GIT_REPOSITORY git://github.com/Kitware/VTK.git
     # Version 1.8.0
     # GIT_TAG origin/master
+    # GIT_TAG v7.0.0
     # Version 1.7.2
     GIT_TAG v6.3.0
     # GIT_REPOSITORY git://github.com/patmarion/VTK.git
@@ -157,7 +158,7 @@ macro(crosscompile_vtk tag)
 endmacro()
 
 # 
-# VES fetch
+# VES fetch(no use)
 # 
 macro(fetch_ves)
   ExternalProject_Add(
@@ -172,7 +173,7 @@ macro(fetch_ves)
 endmacro()
 
 #
-# VTK compile
+# VES compile(no_use)
 #
 macro(compile_ves)
   set(proj ves-host)
