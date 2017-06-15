@@ -1,5 +1,12 @@
-cache:
-  apt: true
+sudo: false
+
+# cache:
+#  apt: true
+
+addons:
+  apt:
+    packages:
+    - cmake
 
 # global:
 #   - GIT_TAG=<your version string>
@@ -84,12 +91,8 @@ matrix:
 # wget http://dl.google.com/android/ndk/android-ndk-r8c-darwin-x86.tar.bz2
 # tar -jxvf android-ndk-r8c-darwin-x86.tar.bz2
 # cd android-ndk-r8c
-# CMake Update(NG)
-# sudo apt-get install software-properties-common;
-# sudo add-apt-repository ppa:george-edison55/cmake-3.x;
-# sudo apt-get update;
-# travis_wait 45 sudo apt-get install cmake;
-# cmake --version;
+###
+# iOS?
 # if [ "$CXX" = "clang++" ]; then export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode6-Beta6.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk";
 # if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7";
 # export IOS_PLATFORM_LOCATION="OS";
@@ -168,7 +171,7 @@ matrix:
 # cmake -DVTK_IOS_BUILD="ON" ../;
 # travis_wait 60 make -j4 VERBOSE=1 2>&1;
 # cd ../..;
-# end
+###
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew prune;
@@ -190,14 +193,6 @@ before_install:
       export ANDROID_NDK=$PWD;
       cd ..;
       
-      git clone -b v7.0.0 https://github.com/Kitware/VTK.git;
-      cd VTK;
-      mkdir build && cd build;
-      cmake -DVTK_ANDROID_BUILD="ON" ../;
-      travis_wait 60 make -j4 VERBOSE=1 2>&1;
-      cd ../..;
-      
-
       mkdir build;
       cd build;
       cmake -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;
