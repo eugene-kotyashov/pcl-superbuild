@@ -2,9 +2,9 @@
 # Authors: 
 # License: CC0 1.0 Universal: http://creativecommons.org/publicdomain/zero/1.0/
 
-# http://dl.google.com/android/repository/android-ndk-r12-windows-x86_64.zip
-$BASE_ANDROIDNDK_URL = "http://dl.google.com/android/repository/"
-                        
+# https://dl.google.com/android/repository/android-ndk-r10e-windows-x86.zip
+$BASE_ANDROIDNDK_URL = "https://dl.google.com/android/repository/"
+
 
 function Download ($filename, $url) 
 {
@@ -101,17 +101,14 @@ function InstallAndroidNDK ($ndk_version, $architecture, $ndk_home)
 {
     if ($architecture -eq "32")
     {
-        # $platform_suffix = "win32"
         $platform_suffix = "x86"
     }
     else
     {
-        # $platform_suffix = "win64"
         $platform_suffix = "x86_64"
     }
     
-    # http://dl.google.com/android/ndk/android-ndk-r8c-darwin-x86.tar.bz2
-    # tar -jxvf android-ndk-r8c-darwin-x86.tar.bz2
+    # https://dl.google.com/android/repository/android-ndk-r10e-windows-x86.zip
     $installer_path = DownloadAndroidNDK $ndk_version $platform_suffix
     $installer_ext = [System.IO.Path]::GetExtension($installer_path)
     
@@ -139,35 +136,8 @@ function InstallAndroidNDK ($ndk_version, $architecture, $ndk_home)
     }
 }
 
-function InstallCMake ($cmake_home)
-{
-	$installer_path = DownloadCMake
-
-    InstallCMake_ZIP $installer_path $cmake_home
-}
-
-function InstallCMake_ZIP ($zippath, $cmake_home)
-{
-	New-ZipExtract -source $zippath -destination $cmake_home -force -verbose
-}
-
-function DownloadCMake () 
-{
-    $filename = "VCMDDAndroid.zip"
-    $url = "https://github.com/Microsoft/CMake/archive/feature/VCMDDAndroid.zip"
-
-    # (plan modified function)
-    $filepath = Download $filename $url
-    return $filepath
-}
-
-
 function main () 
 {
     # Android NDK
     InstallAndroidNDK $env:NDK_VERSION $env:ARCH $env:ANDROID_NDK
-    # CMake(Microsoft)
-    InstallCMake ("")
 }
-
-main
