@@ -8,7 +8,7 @@ install:
     
     cmake -G "MinGW Makefiles" -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
 
-build:
+build_script:
 - cmd: >-
     mingw32-make
     
