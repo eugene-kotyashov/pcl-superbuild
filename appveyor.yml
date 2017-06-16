@@ -57,7 +57,7 @@ before_build:
 
 build_script:
 - cmd: >-
-    mingw32-make
+    mingw32-make -j4
     
     zip -q pcl-superbuild.zip -r ./CMakeExternals/Install
 
