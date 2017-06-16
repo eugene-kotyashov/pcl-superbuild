@@ -22,7 +22,9 @@ environment:
 
 install:
 - cmd: >-
-    set PATH=%PATH%;%MinGW_ROOT%;%MinGW%;%MSYS_ROOT%
+    set PATH=%MinGW_ROOT%;%MinGW%;%MSYS_ROOT%;%PATH%
+    
+    set PATH
     
     mkdir build
     
