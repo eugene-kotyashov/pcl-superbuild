@@ -1,6 +1,5 @@
 version: 1.0.{build}
 
-
 image: Visual Studio 2015
 
 # Appveyor Build environment 
@@ -8,24 +7,22 @@ image: Visual Studio 2015
 environment:
     matrix:
     # 32 bit
-    - ROOT: "C:\\"
       MinGW_ROOT: "C:\\MinGW"
       MinGW: "C:\\MinGW\\bin"
       MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
       # CC="%MINGW%\\gcc"
       # CXX="%MINGW%\g++"
 
-
     # 64 bit?
     # - MinGW_ROOT: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1"
     #   MinGW: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1\\bin"
     #   MSYS_ROOT: "C:\\msys64"
 
+# CMake building for MinGW issue with Git sh.exe 
+# http://help.appveyor.com/discussions/problems/3193-cmake-building-for-mingw-issue-with-git-shexe
 install:
 - cmd: >-
-    set PATH=%ROOT%;%MinGW_ROOT%;%MinGW%;%MSYS_ROOT%;%PATH%
-    
-    set PATH
+    set PATH=%PATH:C:\Program Files (x86)\Git\bin;=%
     
     mkdir build
     
