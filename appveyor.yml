@@ -23,7 +23,11 @@ environment:
 # https://github.com/jibsen/brieflz/blob/0c6fb73984f11e697dfaade5cdc5e291c1655c67/appveyor.yml
 # 32bit?
 # set PATH=%PATH:C:\Program Files (x86)\Git\bin;=%
+# long path(boost)
+# https://stackoverflow.com/questions/22575662/filename-too-long-in-git-for-windows
+# git config --system core.longpaths true
 before_build:
+    - git config --system core.longpaths true
     - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
     - set PATH=C:\MinGW\bin;%PATH%
     - mkdir build
