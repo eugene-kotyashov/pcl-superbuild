@@ -1,0 +1,17 @@
+version: 1.0.{build}
+
+install:
+- cmd: 
+    - mkdir build
+    - cd build
+    - cmake -G "MinGW Makefiles" -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
+
+install:
+- cmd: 
+    - mingw32-make
+    - zip -q pcl-superbuild.zip -r ./CMakeExternals/Install
+
+artifacts:
+- path: build\pcl-superbuild.zip
+  name: Release
+

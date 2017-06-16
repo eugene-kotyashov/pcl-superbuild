@@ -249,7 +249,6 @@ before_deploy:
     - mkdir packages
     - tar czf packages/pcl-releases-$GIT_TAG.tar.gz ./CMakeExternals/Install
     - zip -q packages/pcl-releases-$GIT_TAG.zip -r ./CMakeExternals/Install
-    - zip -q packages/pcl-example-$GIT_TAG.zip -r ../apps/ios/HelloPCL2
     - git config --global user.name "Sirokujira"
     - git config --global user.email "toru753@gmail.com"
     - git tag $GIT_TAG -a -m "Commit from Travis CI for build $TRAVIS_BUILD_NUMBER"
