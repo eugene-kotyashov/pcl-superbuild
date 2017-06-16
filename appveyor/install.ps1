@@ -139,5 +139,5 @@ function InstallAndroidNDK ($ndk_version, $architecture, $ndk_home)
 function main () 
 {
     # Android NDK
-    InstallAndroidNDK $env:NDK_VERSION $env:ARCH $env:ANDROID_NDK
+    InstallAndroidNDK $env:NDK_VERSION $env:OS_ARCH $env:ANDROID_NDK
 }

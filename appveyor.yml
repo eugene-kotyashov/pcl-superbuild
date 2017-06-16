@@ -14,7 +14,7 @@ environment:
       # CXX="%MINGW%\g++"
       ANDROID_NDK: "C:\\projects\\android-ndk-r10e"
       NDK_VERSION: "r10e"
-      ARCH: 32
+      OS_ARCH: "32"
 
     # 64 bit?
     # - MinGW_ROOT: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1"
@@ -22,7 +22,14 @@ environment:
     #   MSYS_ROOT: "C:\\msys64"
     #   ANDROID_NDK: "C:\\projects\\android-ndk-r10e"
     #   NDK_VERSION: "r10e"
-    #   ARCH: 64
+    #   OS_ARCH: "64"
+
+install:
+- ps: >-
+    Import-Module ".\appveyor\PS-Zip\PS-Zip.psm1" -Force
+    
+    .\appveyor\install.ps1
+
 
 # CMake building for MinGW issue with Git sh.exe 
 # http://help.appveyor.com/discussions/problems/3193-cmake-building-for-mingw-issue-with-git-shexe
@@ -39,13 +46,6 @@ before_build:
     - mkdir build
     - cd build
     - cmake -G "MinGW Makefiles" -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
-
-install:
-- ps: >-
-    Import-Module ".\appveyor\PS-Zip\PS-Zip.psm1" -Force
-    
-    .\appveyor\install.ps1
-
 
 build_script:
 - cmd: >-
