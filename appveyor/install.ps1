@@ -100,8 +100,8 @@ function DownloadAndroidNDK ($version, $platform_suffix)
 
 function InstallAndroidNDK ($ndk_version, $architecture, $ndk_home) 
 {
-	Write-Host "InstallAndroidNDK"
-	
+    Write-Host "InstallAndroidNDK"
+    
     if ($architecture -eq "32")
     {
         $platform_suffix = "x86"
@@ -141,6 +141,10 @@ function InstallAndroidNDK ($ndk_version, $architecture, $ndk_home)
 
 function main () 
 {
+    Write-Host "main - enter"
+    
     # Android NDK
     InstallAndroidNDK $env:NDK_VERSION $env:OS_ARCH $env:ANDROID_NDK
+    
+    Write-Host "main - exit"
 }
