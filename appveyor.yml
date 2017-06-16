@@ -8,7 +8,8 @@ image: Visual Studio 2015
 environment:
     matrix:
     # 32 bit
-    - MinGW_ROOT: "C:\\MinGW"
+    - ROOT: "C:\\"
+      MinGW_ROOT: "C:\\MinGW"
       MinGW: "C:\\MinGW\\bin"
       MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
       # CC="%MINGW%\\gcc"
@@ -22,7 +23,7 @@ environment:
 
 install:
 - cmd: >-
-    set PATH=%MinGW_ROOT%;%MinGW%;%MSYS_ROOT%;%PATH%
+    set PATH=%ROOT%;%MinGW_ROOT%;%MinGW%;%MSYS_ROOT%;%PATH%
     
     set PATH
     
