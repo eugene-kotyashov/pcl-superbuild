@@ -20,9 +20,15 @@ environment:
 
 # CMake building for MinGW issue with Git sh.exe 
 # http://help.appveyor.com/discussions/problems/3193-cmake-building-for-mingw-issue-with-git-shexe
+# 32bit?
+# set PATH=%PATH:C:\Program Files (x86)\Git\bin;=%
 install:
 - cmd: >-
     set PATH=%PATH:C:\Program Files (x86)\Git\bin;=%
+    
+    set PATH=%PATH:C:\Program Files\Git\bin;=%
+    
+    set PATH=%MinGW%;%PATH%
     
     mkdir build
     
