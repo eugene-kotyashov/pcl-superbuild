@@ -7,7 +7,7 @@ image: Visual Studio 2015
 environment:
     matrix:
     # 32 bit
-      MinGW_ROOT: "C:\\MinGW"
+    - MinGW_ROOT: "C:\\MinGW"
       MinGW: "C:\\MinGW\\bin"
       MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
       # CC="%MINGW%\\gcc"
@@ -29,7 +29,7 @@ install:
     cd build
     
     cmake -G "MinGW Makefiles" -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
-
+    
 build_script:
 - cmd: >-
     mingw32-make
