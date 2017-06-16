@@ -28,8 +28,7 @@ before_build:
     - set PATH=C:\MinGW\bin;%PATH%
     - mkdir build
     - cd build
-    
-    cmake -G "MinGW Makefiles" -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
+    - cmake -G "MinGW Makefiles" -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
     
 build_script:
 - cmd: >-
