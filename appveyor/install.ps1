@@ -3,7 +3,7 @@
 # License: CC0 1.0 Universal: http://creativecommons.org/publicdomain/zero/1.0/
 
 # https://dl.google.com/android/repository/android-ndk-r10e-windows-x86.zip
-$BASE_ANDROIDNDK_URL = "https://dl.google.com/android/repository/"
+$BASE_ANDROIDNDK_URL = "https://dl.google.com/android/repository"
 
 
 function Download ($filename, $url) 
@@ -34,6 +34,7 @@ function Download ($filename, $url)
     if (Test-Path $filepath) 
     {
         Write-Host "File saved at" $filepath
+        Write-Host $(Get-ChildItem $filepath).Length
     }
     else 
     {
@@ -99,6 +100,8 @@ function DownloadAndroidNDK ($version, $platform_suffix)
 
 function InstallAndroidNDK ($ndk_version, $architecture, $ndk_home) 
 {
+	Write-Host "InstallAndroidNDK"
+	
     if ($architecture -eq "32")
     {
         $platform_suffix = "x86"

@@ -2,7 +2,9 @@ version: 1.0.{build}
 
 image: Visual Studio 2015
 
-# Appveyor Build environment 
+# mingw + 
+# https://hcteq.wordpress.com/2014/07/14/compiling-pcl-for-android-in-windows-cmake-gui/
+# Compiling PCL for android(windows)
 # https://www.appveyor.com/docs/build-environment/
 environment:
     matrix:
@@ -25,10 +27,9 @@ environment:
     #   OS_ARCH: "64"
 
 install:
-- ps: >-
-    Import-Module ".\appveyor\PS-Zip\PS-Zip.psm1" -Force
-    
-    .\appveyor\install.ps1
+    - ps: Start-FileDownload "https://dl.google.com/android/repository/android-ndk-r10e-windows-x86.zip"
+    - ps : Import-Module ".\appveyor\PS-Zip\PS-Zip.psm1" -Force
+    - ps : .\appveyor\install.ps1
 
 
 # CMake building for MinGW issue with Git sh.exe 
