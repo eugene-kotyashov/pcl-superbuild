@@ -2,6 +2,9 @@ version: 1.0.{build}
 
 image: Visual Studio 2015
 
+cache:
+- cachebuild
+
 # mingw + windows
 # https://hcteq.wordpress.com/2014/07/14/compiling-pcl-for-android-in-windows-cmake-gui/
 # Compiling PCL for android(windows)
@@ -14,6 +17,7 @@ environment:
       MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
       # CC="%MINGW%\\gcc"
       # CXX="%MINGW%\g++"
+      ROOT: "C:\\projects"
       ANDROID_NDK: "C:\\projects\\android-ndk-r10e"
       NDK_VERSION: "r10e"
       OS_ARCH: "32"
@@ -42,12 +46,13 @@ install:
 # long path(boost)
 # https://stackoverflow.com/questions/22575662/filename-too-long-in-git-for-windows
 # git config --system core.longpaths true
+# - mkdir build
+# - cd build
 before_build:
     - git config --system core.longpaths true
     - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
     - set PATH=%MinGW%;%PATH%
-    - mkdir build
-    - cd build
+    - cd cachebuild
     - cmake -G "MinGW Makefiles" -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
 
 build_script:
@@ -57,6 +62,6 @@ build_script:
     zip -q pcl-superbuild.zip -r ./CMakeExternals/Install
 
 artifacts:
-- path: build\pcl-superbuild.zip
+- path: cachebuild\pcl-superbuild.zip
   name: Release
 

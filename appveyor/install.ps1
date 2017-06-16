@@ -144,7 +144,8 @@ function main ()
     Write-Host "main - enter"
     
     # Android NDK
-    InstallAndroidNDK $env:NDK_VERSION $env:OS_ARCH $env:ANDROID_NDK
+    # InstallAndroidNDK $env:NDK_VERSION $env:OS_ARCH $env:ANDROID_NDK
+    InstallAndroidNDK $env:NDK_VERSION $env:OS_ARCH $env:ROOT
     
     Write-Host "main - exit"
 }
