@@ -1,7 +1,26 @@
 version: 1.0.{build}
 
+
+image: Visual Studio 2015
+
+# Appveyor Build environment 
+# https://www.appveyor.com/docs/build-environment/
+environment:
+    matrix:
+    # 32 bit
+    - MinGW_ROOT: "C:\MinGW"
+      MinGW_BIN: "C:\MinGW\bin"
+      MSYS_ROOT: "C:\MinGW\msys\1.0"
+
+    # 64 bit?
+    # - MinGW_ROOT: "C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1"
+    #   MinGW_BIN: "C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\bin"
+    #   MSYS_ROOT: "C:\msys64"
+
 install:
 - cmd: >-
+    set PATH=%PATH%;%MinGW_BIN%;%MSYS_ROOT%
+    
     mkdir build
     
     cd build
