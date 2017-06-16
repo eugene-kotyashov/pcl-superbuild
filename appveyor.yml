@@ -20,19 +20,14 @@ environment:
 
 # CMake building for MinGW issue with Git sh.exe 
 # http://help.appveyor.com/discussions/problems/3193-cmake-building-for-mingw-issue-with-git-shexe
+# https://github.com/jibsen/brieflz/blob/0c6fb73984f11e697dfaade5cdc5e291c1655c67/appveyor.yml
 # 32bit?
 # set PATH=%PATH:C:\Program Files (x86)\Git\bin;=%
-install:
-- cmd: >-
-    set PATH=%PATH:C:\Program Files (x86)\Git\bin;=%
-    
-    set PATH=%PATH:C:\Program Files\Git\bin;=%
-    
-    set PATH=%MinGW%;%PATH%
-    
-    mkdir build
-    
-    cd build
+before_build:
+    - set PATH=%PATH:C:\Program Files\Git\bin;=%
+    - set PATH=C:\MinGW\bin;%PATH%
+    - mkdir build
+    - cd build
     
     cmake -G "MinGW Makefiles" -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
     
