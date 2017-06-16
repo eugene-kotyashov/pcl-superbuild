@@ -6,7 +6,7 @@ install:
     - cd build
     - cmake -G "MinGW Makefiles" -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
 
-install:
+build:
 - cmd: 
     - mingw32-make
     - zip -q pcl-superbuild.zip -r ./CMakeExternals/Install
