@@ -51,7 +51,7 @@ before_build:
     - git config --system core.longpaths true
     - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
     - set PATH=%MinGW%;%PATH%
-    - copy %MinGW%/mingw32-make.exe %MinGW%/make.exe
+    - copy C:/MinGW/bin/mingw32-make.exe C:/MinGW/bin/make.exe
     - cd cachebuild
     - cmake -G "MinGW Makefiles" -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
 
