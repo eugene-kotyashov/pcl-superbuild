@@ -59,7 +59,7 @@ build_script:
 - cmd: >-
     mingw32-make -j4
     
-    zip -q pcl-superbuild.zip -r ./CMakeExternals/Install
+    7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*.*
 
 artifacts:
 - path: cachebuild\pcl-superbuild.zip
