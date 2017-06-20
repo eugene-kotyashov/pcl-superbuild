@@ -21,6 +21,7 @@ environment:
       ANDROID_NDK: "C:\\projects\\android-ndk-r10e"
       NDK_VERSION: "r10e"
       OS_ARCH: "32"
+      CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
 
     # 64 bit?
     # - MinGW_ROOT: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1"
@@ -29,6 +30,7 @@ environment:
     #   ANDROID_NDK: "C:\\projects\\android-ndk-r10e"
     #   NDK_VERSION: "r10e"
     #   OS_ARCH: "64"
+    #   CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
 
 # - ps: Import-Module ".\appveyor\PS-Zip\PS-Zip.psm1" -Force
 # - ps: .\appveyor\install.ps1
