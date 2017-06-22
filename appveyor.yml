@@ -37,6 +37,32 @@ environment:
       CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
       ANDROID_ABIs: "mips64"
 
+    # (x86_64)(simulation?)
+    - MinGW_ROOT: "C:\\MinGW"
+      MinGW: "C:\\MinGW\\bin"
+      MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
+      # CC="%MINGW%\\gcc"
+      # CXX="%MINGW%\g++"
+      ROOT: "C:\\projects"
+      ANDROID_NDK: "C:\\projects\\android-ndk-r14b"
+      NDK_VERSION: "r14b"
+      OS_ARCH: "32"
+      CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
+      ANDROID_ABIs: "x86_64"
+
+    # (x86)(simulation?)
+    - MinGW_ROOT: "C:\\MinGW"
+      MinGW: "C:\\MinGW\\bin"
+      MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
+      # CC="%MINGW%\\gcc"
+      # CXX="%MINGW%\g++"
+      ROOT: "C:\\projects"
+      ANDROID_NDK: "C:\\projects\\android-ndk-r14b"
+      NDK_VERSION: "r14b"
+      OS_ARCH: "32"
+      CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
+      ANDROID_ABIs: "x86"
+
     # 64 bit?
     # - MinGW_ROOT: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1"
     #   MinGW: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1\\bin"
@@ -80,9 +106,10 @@ before_build:
 
 # make -j4
 # cmake.exe --build .
+# cmake.exe --build . -- -j4
 build_script:
 - cmd: >-
-    mingw32-make -j4
+    cmake.exe --build . -- -j4
     
     7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*.*
 
