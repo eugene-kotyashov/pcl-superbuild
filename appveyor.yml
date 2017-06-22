@@ -107,11 +107,14 @@ before_build:
 # make -j4
 # cmake.exe --build .
 # cmake.exe --build . -- -j4
+# NG
+# Eigen files no ext
+# 7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*.*
 build_script:
 - cmd: >-
     cmake.exe --build . -- -j4
     
-    7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*.*
+    7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*
 
 artifacts:
 - path: cachebuild\pcl-superbuild.zip
