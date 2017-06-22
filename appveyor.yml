@@ -75,7 +75,7 @@ before_build:
     - set PATH=%MinGW%;%PATH%
     - copy "C:\MinGW\bin\mingw32-make.exe" "C:\MinGW\bin\make.exe"
     - cd cachebuild
-    - cmake -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE="%ANDROID_NDK%\build\cmake\android.toolchain.cmake -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows-x86_64\bin\make.exe" -DANDROID_ABI="%ANDROID_ABIs%" ..
+    - cmake -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE="%ANDROID_NDK%\build\cmake\android.toolchain.cmake" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows-x86_64\bin\make.exe" -DANDROID_ABI="%ANDROID_ABIs%" ..
 
 # make -j4
 build_script:
