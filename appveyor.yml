@@ -24,7 +24,7 @@ environment:
       CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
       ANDROID_ABIs: "arm64-v8a"
 
-    # (mips64)(simulation)
+    # (mips64)(simulation?)
     - MinGW_ROOT: "C:\\MinGW"
       MinGW: "C:\\MinGW\\bin"
       MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
@@ -69,6 +69,7 @@ install:
 # r15? over?
 #  -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows-x86_64\bin\make.exe"
 # C:\Users\v050493\AppData\Local\Android\Sdk\ndk-bundle\build\cmake
+# - cmake -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE="%ANDROID_NDK%\build\cmake\android.toolchain.cmake" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows\bin\make.exe" -DANDROID_ABI="%ANDROID_ABIs%" ..
 before_build:
     - git config --system core.longpaths true
     - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
@@ -78,9 +79,10 @@ before_build:
     - cmake -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE="%ANDROID_NDK%\build\cmake\android.toolchain.cmake" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows\bin\make.exe" -DANDROID_ABI="%ANDROID_ABIs%" ..
 
 # make -j4
+# cmake.exe --build .
 build_script:
 - cmd: >-
-    cmake.exe --build .
+    mingw32-make -j4
     
     7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*.*
 
