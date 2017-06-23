@@ -96,11 +96,14 @@ install:
 #  -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows-x86_64\bin\make.exe"
 # C:\Users\v050493\AppData\Local\Android\Sdk\ndk-bundle\build\cmake
 # - cmake -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE="%ANDROID_NDK%\build\cmake\android.toolchain.cmake" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows\bin\make.exe" -DANDROID_ABI="%ANDROID_ABIs%" ..
+# MinGW
+# - set PATH=%MinGW%;%PATH%
+# - copy "C:\MinGW\bin\mingw32-make.exe" "C:\MinGW\bin\make.exe"
+# use Android_NDK make.exe
 before_build:
     - git config --system core.longpaths true
     - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
-    - set PATH=%MinGW%;%PATH%
-    - copy "C:\MinGW\bin\mingw32-make.exe" "C:\MinGW\bin\make.exe"
+    - set PATH=%ANDROID_NDK%\prebuilt\windows\bin;%PATH%
     - cd cachebuild
     - cmake -G "MinGW Makefiles" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%\prebuilt\windows\bin\make.exe" -DANDROID_ABI="%ANDROID_ABIs%" -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
 
