@@ -340,8 +340,8 @@ macro(crosscompile_boost tag)
       -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
-      -DCMAKE_C_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc.exe"
-      -DCMAKE_CXX_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
+      -DCMAKE_C_COMPILER:STRING="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc.exe"
+      -DCMAKE_CXX_COMPILER:STRING="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
       -DBUILD_SHARED_LIBS:BOOL=OFF
   )
 
