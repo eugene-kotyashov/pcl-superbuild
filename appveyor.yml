@@ -107,8 +107,8 @@ install:
 # - set PATH=%MinGW%;%PATH%
 # - copy "C:\MinGW\bin\mingw32-make.exe" "C:\MinGW\bin\make.exe"
 # use Android_NDK make.exe
-# CMAKE_C_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc.exe"
-# CMAKE_CXX_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
+# -DCMAKE_C_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc.exe"
+# -DCMAKE_CXX_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
 before_build:
     - git config --system core.longpaths true
     - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
@@ -116,7 +116,7 @@ before_build:
     - set PATH=%ANDROID_NDK%/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin;%PATH%
     - copy "C:\MinGW\bin\mingw32-make.exe" "C:\MinGW\bin\make.exe"
     - cd cachebuild
-    - cmake -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE="%ANDROID_NDK%/build/cmake/android.toolchain.cmake" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%/prebuilt/windows/bin/make.exe" -DANDROID_ABI="%ANDROID_ABIs%" -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
+    - cmake -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE="%ANDROID_NDK%/build/cmake/android.toolchain.cmake" -DCMAKE_MAKE_PROGRAM="%ANDROID_NDK%/prebuilt/windows/bin/make.exe" -DANDROID_ABI="%ANDROID_ABIs%" -DCMAKE_C_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc.exe" -DCMAKE_CXX_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe" -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
 
 # make -j4
 # cmake.exe --build .
