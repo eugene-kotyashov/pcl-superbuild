@@ -9,14 +9,16 @@ cache:
 # https://hcteq.wordpress.com/2014/07/14/compiling-pcl-for-android-in-windows-cmake-gui/
 # Compiling PCL for android(windows)
 # https://www.appveyor.com/docs/build-environment/
+# -DCMAKE_C_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc.exe"
+# -DCMAKE_CXX_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
 environment:
     matrix:
     # arm64-v8a
     - MinGW_ROOT: "C:\\MinGW"
       MinGW: "C:\\MinGW\\bin"
       MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
-      # CC="%MINGW%\\gcc"
-      # CXX="%MINGW%\g++"
+      CC="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc.exe"
+      CXX="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
       ROOT: "C:\\projects"
       ANDROID_NDK: "C:/projects/android-ndk-r14b"
       NDK_VERSION: "r14b"
