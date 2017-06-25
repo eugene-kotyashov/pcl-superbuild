@@ -126,9 +126,15 @@ before_build:
 # 7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*.*
 build_script:
 - cmd: >-
-    make -j4
-    
-    7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*
+    cmake.exe --build .
+
+# on successful build
+on_success:
+  - 7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*
+
+# on build failure
+on_failure:
+  - 7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*
 
 artifacts:
 - path: cachebuild\pcl-superbuild.zip
