@@ -16,6 +16,16 @@ macro(get_toolchain_file tag)
   set(toolchain_file ${toolchain_${tag_with_underscore}})
 endmacro()
 
+macro(get_compiler_c_tool tag)
+  string(REPLACE "-" "_" tag_with_underscore ${tag})
+  set(compiler_c_tool ${compiler_c_tool_${tag_with_underscore}})
+endmacro()
+
+macro(get_compiler_cpp_tool tag)
+  string(REPLACE "-" "_" tag_with_underscore ${tag})
+  set(compiler_cpp_tool ${compiler_cpp_tool_${tag_with_underscore}})
+endmacro()
+
 macro(get_try_run_results_file tag)
   string(REPLACE "-" "_" tag_with_underscore ${tag})
   set(try_run_results_file ${try_run_results_${tag_with_underscore}})
@@ -290,6 +300,8 @@ macro(crosscompile_flann tag)
                -DBUILD_EXAMPLES:BOOL=OFF
                -DBUILD_PYTHON_BINDINGS:BOOL=OFF
                -DBUILD_MATLAB_BINDINGS:BOOL=OFF
+               -DCMAKE_C_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc.exe"
+               -DCMAKE_CXX_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
   )
 
   force_build(${proj})
@@ -328,6 +340,8 @@ macro(crosscompile_boost tag)
       -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
+      -DCMAKE_C_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc.exe"
+      -DCMAKE_CXX_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
       -DBUILD_SHARED_LIBS:BOOL=OFF
   )
 
