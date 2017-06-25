@@ -28,9 +28,9 @@ environment:
       ANDROID_TARGET_API: "21"
 
     # (mips64)(simulation?)
-    - MinGW_ROOT: "C:\\MinGW"
-      MinGW: "C:\\MinGW\\bin"
-      MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
+    - MinGW_ROOT: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1"
+      MinGW: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1\\bin"
+      MSYS_ROOT: "C:\\msys64"
       # CC: "%MINGW%\\gcc"
       # CXX: "%MINGW%\g++"
       ROOT: "C:\\projects"
@@ -43,9 +43,9 @@ environment:
 
 
     # (x86_64)(simulation?)
-    - MinGW_ROOT: "C:\\MinGW"
-      MinGW: "C:\\MinGW\\bin"
-      MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
+    - MinGW_ROOT: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1"
+      MinGW: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1\\bin"
+      MSYS_ROOT: "C:\\msys64"
       # CC="%MINGW%\\gcc"
       # CXX="%MINGW%\g++"
       ROOT: "C:\\projects"
@@ -120,7 +120,7 @@ install:
 before_build:
     - git config --system core.longpaths true
     - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
-    - set PATH=%PATH:C:\MinGW\bin;=%
+    - set PATH=%MINGW%;%PATH%
     - set PATH=%ANDROID_NDK%/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin;%PATH%
     - copy "C:\MinGW\bin\mingw32-make.exe" "C:\MinGW\bin\make.exe"
     - cd cachebuild
