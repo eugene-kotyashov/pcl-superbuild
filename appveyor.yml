@@ -116,6 +116,7 @@ before_build:
     - git config --system core.longpaths true
     - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
     - set PATH=%PATH:C:\MinGW\bin;=%
+    - set PATH=%PATH:C:\Program Files (x86)\cmake\bin;=%
     - set PATH=%ANDROID_NDK%/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin;%PATH%
     - copy "C:\MinGW\bin\mingw32-make.exe" "C:\MinGW\bin\make.exe"
     - cd cachebuild
