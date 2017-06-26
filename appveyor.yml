@@ -137,6 +137,7 @@ before_build:
 build_script:
 - cmd: >-
     make -j4
+    
     7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*
 
 # on successful build
