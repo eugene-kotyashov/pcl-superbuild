@@ -88,6 +88,22 @@ environment:
 # - ps: Import-Module ".\appveyor\PS-Zip\PS-Zip.psm1" -Force
 # - ps: .\appveyor\install.ps1
 install:
+    ############################################################################
+    # All external dependencies are installed in C:\projects\deps
+    ############################################################################
+    - mkdir C:\projects\deps
+    - cd C:\projects\deps
+
+    ############################################################################
+    # Install Ninja
+    ############################################################################
+    - set NINJA_URL="https://github.com/ninja-build/ninja/releases/download/v1.6.0/ninja-win.zip"
+    - appveyor DownloadFile %NINJA_URL% -FileName ninja.zip
+    - 7z x ninja.zip -oC:\projects\deps\ninja > nul
+    - set PATH=C:\projects\deps\ninja;%PATH%
+    - ninja --version
+    - cd ..
+    
     - ps: Start-FileDownload "https://dl.google.com/android/repository/android-ndk-r14b-windows-x86_64.zip"
     - ps: Expand-Archive -Path android-ndk-r14b-windows-x86_64.zip -DestinationPath "C:\\projects"
 
@@ -119,6 +135,7 @@ install:
 # - set PATH=%PATH:C:\Program Files (x86)\cmake\bin;=%
 # command 
 # - C:\\projects\\tools\\android list sdk -a
+# - cmake -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE=%ANDROID_NDK%/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM=%ANDROID_NDK%/prebuilt/windows-x86_64/bin/make.exe -DANDROID_TOOLCHAIN_NAME=%TOOLCHAIN_NAME% -DANDROID_NATIVE_API_LEVEL=%ANDROID_TARGET_API% -DANDROID_ABI=%ANDROID_ABIs% -DANDROID_TOOLCHAIN=gcc -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
 before_build:
     - git config --system core.longpaths true
     - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
@@ -126,7 +143,7 @@ before_build:
     - set PATH=%ANDROID_NDK%/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin;%PATH%
     - copy "C:\MinGW\bin\mingw32-make.exe" "C:\MinGW\bin\make.exe"
     - cd cachebuild
-    - cmake -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE=%ANDROID_NDK%/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM=%ANDROID_NDK%/prebuilt/windows-x86_64/bin/make.exe -DANDROID_TOOLCHAIN_NAME=%TOOLCHAIN_NAME% -DANDROID_NATIVE_API_LEVEL=%ANDROID_TARGET_API% -DANDROID_ABI=%ANDROID_ABIs% -DANDROID_TOOLCHAIN=gcc -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
+    - cmake -G "Ninja" -DCMAKE_TOOLCHAIN_FILE=%ANDROID_NDK%/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM=%ANDROID_NDK%/prebuilt/windows-x86_64/bin/make.exe -DANDROID_TOOLCHAIN_NAME=%TOOLCHAIN_NAME% -DANDROID_NATIVE_API_LEVEL=%ANDROID_TARGET_API% -DANDROID_ABI=%ANDROID_ABIs% -DANDROID_TOOLCHAIN=gcc -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
 
 # make -j4
 # cmake.exe --build .
@@ -136,7 +153,7 @@ before_build:
 # 7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*.*
 build_script:
 - cmd: >-
-    make -j4
+    cmake.exe --build . -- -j4
     
     7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*
 
