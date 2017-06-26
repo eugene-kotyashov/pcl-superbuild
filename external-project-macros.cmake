@@ -395,7 +395,7 @@ macro(crosscompile_pcl tag)
   # copy the toolchain file and append the boost install dir to CMAKE_FIND_ROOT_PATH
   set(original_toolchain_file ${toolchain_file})
   get_filename_component(toolchain_file ${original_toolchain_file} NAME)
-  set(toolchain_file ${build_prefix}/${proj}/${toolchain_file})
+  # set(toolchain_file ${build_prefix}/${proj}/${toolchain_file})
   configure_file(${original_toolchain_file} ${toolchain_file} COPYONLY)
   file(APPEND ${toolchain_file}
     "\nlist(APPEND CMAKE_FIND_ROOT_PATH ${install_prefix}/boost-${tag})\n")
@@ -409,6 +409,8 @@ macro(crosscompile_pcl tag)
       -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
+      -DANDROID_NATIVE_API_LEVEL=21
+      -DANDROID_TOOLCHAIN=gcc
       -DBUILD_SHARED_LIBS:BOOL=OFF
       -DPCL_SHARED_LIBS:BOOL=OFF
       # Clang Build NG
@@ -457,8 +459,6 @@ macro(crosscompile_pcl tag)
       -DFLANN_INCLUDE_DIR=${install_prefix}/flann-${tag}/include
       -DFLANN_LIBRARY=${install_prefix}/flann-${tag}/lib/libflann_cpp_s.a
       -DFLANN_LIBRARY_DEBUG=${install_prefix}/flann-${tag}/lib/libflann_cpp_s-gd.lib
-      -DANDROID_NATIVE_API_LEVEL=21
-      -DANDROID_TOOLCHAIN=gcc
       -DBOOST_ROOT=${install_prefix}/boost-${tag}
       -C ${try_run_results_file}
   )
