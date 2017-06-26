@@ -300,6 +300,7 @@ macro(crosscompile_flann tag)
                -DBUILD_EXAMPLES:BOOL=OFF
                -DANDROID_NATIVE_API_LEVEL=21
                -DANDROID_TOOLCHAIN=gcc
+               -DBUILD_TESTS:BOOL=OFF
                -DBUILD_PYTHON_BINDINGS:BOOL=OFF
                -DBUILD_MATLAB_BINDINGS:BOOL=OFF
   )
