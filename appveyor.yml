@@ -92,7 +92,6 @@ install:
     # All external dependencies are installed in C:\projects\deps
     ############################################################################
     - mkdir C:\projects\deps
-    - cd C:\projects\deps
 
     ############################################################################
     # Install Ninja
@@ -102,7 +101,6 @@ install:
     - 7z x ninja.zip -oC:\projects\deps\ninja > nul
     - set PATH=C:\projects\deps\ninja;%PATH%
     - ninja --version
-    - cd ..
     
     - ps: Start-FileDownload "https://dl.google.com/android/repository/android-ndk-r14b-windows-x86_64.zip"
     - ps: Expand-Archive -Path android-ndk-r14b-windows-x86_64.zip -DestinationPath "C:\\projects"
