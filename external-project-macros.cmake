@@ -338,6 +338,8 @@ macro(crosscompile_boost tag)
       -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
+      -DANDROID_NATIVE_API_LEVEL=21
+      -DANDROID_TOOLCHAIN=gcc
       -DBUILD_SHARED_LIBS:BOOL=OFF
   )
 
