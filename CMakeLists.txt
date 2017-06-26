@@ -9,7 +9,7 @@ include(external-project-macros.cmake)
 
 
 install_eigen()
-fetch_vtk()
+# fetch_vtk()
 fetch_pcl()
 fetch_boost()
 fetch_flann()
