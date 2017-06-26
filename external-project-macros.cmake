@@ -298,6 +298,8 @@ macro(crosscompile_flann tag)
                -DCMAKE_BUILD_TYPE:STRING=${build_type}
                -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
                -DBUILD_EXAMPLES:BOOL=OFF
+               -DANDROID_NATIVE_API_LEVEL=21
+               -DANDROID_TOOLCHAIN=gcc
                -DBUILD_PYTHON_BINDINGS:BOOL=OFF
                -DBUILD_MATLAB_BINDINGS:BOOL=OFF
   )
@@ -454,6 +456,8 @@ macro(crosscompile_pcl tag)
       -DFLANN_INCLUDE_DIR=${install_prefix}/flann-${tag}/include
       -DFLANN_LIBRARY=${install_prefix}/flann-${tag}/lib/libflann_cpp_s.a
       -DFLANN_LIBRARY_DEBUG=${install_prefix}/flann-${tag}/lib/libflann_cpp_s-gd.lib
+      -DANDROID_NATIVE_API_LEVEL=21
+      -DANDROID_TOOLCHAIN=gcc
       -DBOOST_ROOT=${install_prefix}/boost-${tag}
       -C ${try_run_results_file}
   )
