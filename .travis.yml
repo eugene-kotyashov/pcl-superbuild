@@ -21,13 +21,13 @@ matrix:
      - os: linux
        language: cpp
        compiler: gcc
-       ANDROID_TARGET_API: 25
-       ANDROID_ABIs: x86_64
+       ANDROID_TARGET_API: "25"
+       ANDROID_ABIs: "x86_64"
      - os: linux
        language: cpp
        compiler: gcc
-       ANDROID_TARGET_API: 25
-       ANDROID_ABIs: armeabi-v7a
+       ANDROID_TARGET_API: "25"
+       ANDROID_ABIs: "armeabi-v7a"
 #      - os: osx
 #        osx_image: xcode8.3
 #        language: objective-c
@@ -137,7 +137,7 @@ matrix:
 # cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
 ###
 before_install:
-  - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
+  - if [ ${TRAVIS_OS_NAME} = "osx" ]; then
       brew prune;
       brew update >/dev/null;
       brew install llvm;
@@ -146,7 +146,7 @@ before_install:
       cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
     fi
 
-  - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
+  - if [ ${TRAVIS_OS_NAME} = "linux" ]; then
       wget --no-check-certificate -qO- http://www.cmake.org/files/v3.6/cmake-3.6.2-Linux-x86_64.tar.gz -O /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
       tar -xvf /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
       export PATH=$PWD/cmake-3.6.2-Linux-x86_64/bin/:$PATH;
