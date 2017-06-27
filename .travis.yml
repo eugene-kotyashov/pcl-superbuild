@@ -18,66 +18,29 @@ env:
 
 matrix: 
    include: 
-#      - os: linux
-#        language: cpp
+     - os: linux
+       language: cpp
+       compiler: gcc
+       ANDROID_TARGET_API: 25
+       ANDROID_ABIs: x86_64
+
+     - os: linux
+       language: cpp
+       compiler: gcc
+       ANDROID_TARGET_API: 25
+       ANDROID_ABIs: armeabi-v7a
+
+#      - os: osx
+#        osx_image: xcode8.3
+#        language: objective-c
+#        # compiler: clang
 #        compiler: gcc
-#        addons:
-#          apt:
-#            sources:
-#              - ubuntu-toolchain-r-test
-#              - george-edison55-precise-backports
-#            packages: 
-#              - g++-4.9
-#              - cmake
-#              - cmake_data
-#              - libgtest-dev
-#              - doxygen-latex
-#              - libusb-1.0-0-dev
-     - os: osx
-       osx_image: xcode8.3
-       language: objective-c
-       compiler: clang
-       # compiler: gcc
-#        addons:
-#          apt:
-#            sources:
-#              - ubuntu-toolchain-r-test
-#              - george-edison55-precise-backports
-#            packages: 
-#              - g++-4.9
-#              - cmake
-#              - cmake_data
-#              - libgtest-dev
-#              - doxygen-latex
-#              - libusb-1.0-0-dev
-#        env: COMPILER=g++-4.9
-#        # env: COMPILER=g++-5
+#        # ANDROID_TARGET_API: 25
+#        # ANDROID_ABIs: armeabi-v7a
 
 #      - os: osx
 #        osx_image: xcode7.1
 #        compiler: clang
-#        addons: 
-#          apt: 
-#           sources:
-#             - ubuntu-toolchain-r-test
-#             - llvm-toolchain-precise-3.6
-#             - george-edison55-precise-backports
-#           packages:
-#             - clang-3.6
-#             - cmake
-#             - cmake_data
-#             - libgtest-dev
-#             - doxygen-latex
-#             - libusb-1.0-0-dev
-#        env: COMPILER=clang++-3.6
-#        # env: COMPILER=clang++-3.7
-
-# cache: 
-#        directories: 
-#          - $HOME/flann 
-#          - $HOME/vtk 
-#          - $HOME/qhull 
-#          - $HOME/doxygen 
 
 # iOS Image Setting : 
 # https://blog.travis-ci.com/
@@ -171,12 +134,22 @@ matrix:
 # cmake -DVTK_IOS_BUILD="ON" ../;
 # travis_wait 60 make -j4 VERBOSE=1 2>&1;
 # cd ../..;
+# Android
+# cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK}/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM=${ANDROID_NDK}/prebuilt/linux-x86_64/bin/make.exe -DANDROID_NATIVE_API_LEVEL=${ANDROID_TARGET_API} -DANDROID_ABI=${ANDROID_ABIs} -DANDROID_TOOLCHAIN=${compiler} ..
+# ios(macosx only)
+# cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
 ###
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       brew prune;
       brew update >/dev/null;
       brew install llvm;
+      
+      wget http://dl.google.com/android/repository/android-ndk-r14b-macosx-x86_64.zip;
+      unzip -q android-ndk-r14b-macosx-x86_64.zip;
+      cd android-ndk-r14b;
+      export PATH=$PWD/cmake-3.6.2-Linux-x86_64/bin/:$PATH;
+      cd ..;
       
       mkdir build && cd build;
       cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
@@ -187,15 +160,16 @@ before_install:
       tar -xvf /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
       export PATH=$PWD/cmake-3.6.2-Linux-x86_64/bin/:$PATH;
       
-      wget http://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip;
-      unzip -q android-ndk-r10e-linux-x86_64.zip;
-      cd android-ndk-r10e;
+      wget http://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip;
+      unzip -q android-ndk-r14b-linux-x86_64.zip;
+      cd android-ndk-r14b;
       export ANDROID_NDK=$PWD;
       cd ..;
       
       mkdir build;
       cd build;
-      cmake -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;
+      # cmake -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;
+      cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK}/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM=${ANDROID_NDK}/prebuilt/linux-x86_64/bin/make.exe -DANDROID_NATIVE_API_LEVEL=${ANDROID_TARGET_API} -DANDROID_ABI=${ANDROID_ABIs} -DANDROID_TOOLCHAIN=${compiler} ..
     fi
 
 # install:
