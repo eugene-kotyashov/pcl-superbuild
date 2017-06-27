@@ -22,7 +22,13 @@ matrix:
        language: cpp
        compiler: gcc
        env: ANDROID_ABIs="x86_64"
-       env: ANDROID_TARGET_API="25"
+       env: ANDROID_TARGET_API="21"
+
+     - os: linux
+       language: cpp
+       compiler: gcc
+       env: ANDROID_ABIs="armeabi-v7a"
+       env: ANDROID_TARGET_API="21"
 
      - os: osx
        osx_image: xcode8.3
