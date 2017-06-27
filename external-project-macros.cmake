@@ -448,14 +448,14 @@ macro(crosscompile_pcl tag)
       -DBUILD_kdtree:BOOL=ON
       -DBUILD_keypoints:BOOL=ON
       -DBUILD_outofcore:BOOL=ON
-      -DBUILD_people:BOOL=ON
+      -DBUILD_people:BOOL=OFF
       -DBUILD_recognition:BOOL=ON
       -DBUILD_registration:BOOL=ON
       -DBUILD_sample_consensus:BOOL=ON
       -DBUILD_search:BOOL=ON
       -DBUILD_segmentation:BOOL=ON
       -DBUILD_surface:BOOL=ON
-      -DBUILD_surface_on_nurbs:BOOL=ON
+      -DBUILD_surface_on_nurbs:BOOL=OFF
       -DBUILD_tools:BOOL=ON
       -DBUILD_tracking:BOOL=ON
       # -DBUILD_visualization:BOOL=ON
