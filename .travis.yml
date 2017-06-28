@@ -8,6 +8,11 @@ addons:
     packages:
     - cmake
 
+branches:
+  only: 
+    - master
+    - CITest
+
 # global:
 #   - GIT_TAG=<your version string>
 #   - secure: <encrypted_gh_token>
