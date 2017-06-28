@@ -184,7 +184,7 @@ before_install:
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
-      wget --no-check-certificate --quite http://www.cmake.org/files/v3.6/cmake-3.6.2-Linux-x86_64.tar.gz --quite /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
+      wget --no-check-certificate --quite http://www.cmake.org/files/v3.6/cmake-3.6.2-Linux-x86_64.tar.gz -qO- /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
       tar -xvf /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
       export PATH=$PWD/cmake-3.6.2-Linux-x86_64/bin/:$PATH;
       
