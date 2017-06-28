@@ -27,13 +27,13 @@ matrix:
        language: cpp
        compiler: gcc
        env: ANDROID_ABIs="x86_64"
-       env: ANDROID_TARGET_API="21"
+       env: ANDROID_TARGET_API="22"
 
      - os: linux
        language: cpp
        compiler: gcc
        env: ANDROID_ABIs="armeabi-v7a"
-       env: ANDROID_TARGET_API="21"
+       env: ANDROID_TARGET_API="22"
 
      - os: osx
        osx_image: xcode8.3
@@ -194,7 +194,7 @@ before_install:
       export PATH=$PWD/cmake-3.6.2-Linux-x86_64/bin/:$PATH;
       
       wget -qO- http://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip -O /tmp/android-ndk-r14b-linux-x86_64.zip;
-      unzip /tmp/android-ndk-r14b-linux-x86_64.zip;
+      unzip -q /tmp/android-ndk-r14b-linux-x86_64.zip;
       cd android-ndk-r14b;
       export ANDROID_NDK=$PWD;
       cd ..;
