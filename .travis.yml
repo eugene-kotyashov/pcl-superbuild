@@ -189,11 +189,11 @@ before_install:
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
-      wget --no-check-certificate -q http://www.cmake.org/files/v3.6/cmake-3.6.2-Linux-x86_64.tar.gz -qO- /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
-      tar -xvf /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
+      wget --no-check-certificate -qO- http://www.cmake.org/files/v3.6/cmake-3.6.2-Linux-x86_64.tar.gz -O /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
+      tar -xf /tmp/cmake-3.6.2-Linux-x86_64.tar.gz;
       export PATH=$PWD/cmake-3.6.2-Linux-x86_64/bin/:$PATH;
       
-      wget -q http://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip;
+      wget -qO- http://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip;
       unzip -q android-ndk-r14b-linux-x86_64.zip;
       cd android-ndk-r14b;
       export ANDROID_NDK=$PWD;
