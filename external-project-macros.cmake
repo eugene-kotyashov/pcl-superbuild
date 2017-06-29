@@ -438,7 +438,8 @@ macro(crosscompile_pcl tag)
       -DBUILD_OPENNI2:BOOL=OFF
       -DBUILD_all_in_one_installer:BOOL=OFF
       -DBUILD_apps:BOOL=OFF
-      -DBUILD_common:BOOL=ON
+      # -DBUILD_common:BOOL=ON
+      -DBUILD_common:BOOL=OFF
       -DBUILD_example:BOOL=OFF
       -DBUILD_features:BOOL=ON
       -DBUILD_filters:BOOL=ON
@@ -448,6 +449,7 @@ macro(crosscompile_pcl tag)
       -DBUILD_kdtree:BOOL=ON
       -DBUILD_keypoints:BOOL=ON
       -DBUILD_outofcore:BOOL=ON
+      # -DBUILD_people:BOOL=ON
       -DBUILD_people:BOOL=OFF
       -DBUILD_recognition:BOOL=ON
       -DBUILD_registration:BOOL=ON
@@ -455,8 +457,10 @@ macro(crosscompile_pcl tag)
       -DBUILD_search:BOOL=ON
       -DBUILD_segmentation:BOOL=ON
       -DBUILD_surface:BOOL=ON
+      # -DBUILD_surface_on_nurbs:BOOL=ON
       -DBUILD_surface_on_nurbs:BOOL=OFF
-      -DBUILD_tools:BOOL=ON
+      # -DBUILD_tools:BOOL=ON
+      -DBUILD_tools:BOOL=OFF
       -DBUILD_tracking:BOOL=ON
       # -DBUILD_visualization:BOOL=ON
       -DBUILD_visualization:BOOL=OFF
