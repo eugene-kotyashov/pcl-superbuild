@@ -206,7 +206,6 @@ before_install:
 
 # install:
 #   - travis_wait 60 make -j4 VERBOSE=1 2>&1
-
 # - ls
 # http://www.vtk.org/Wiki/VES/Point_Cloud_Library
 # - open build/HelloPCL.xcodeproj
@@ -245,7 +244,7 @@ before_install:
 # https://www.google.co.jp/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiEhOiJyN_UAhXHgrwKHV2BCL8QFggiMAA&url=https%3A%2F%2Fgithub.com%2Ftravis-ci%2Ftravis-ci%2Fissues%2F1382&usg=AFQjCNHunsY-8__7zqF6zQwurd-CKnqq6w&cad=rja
 # - travis_wait 60 make -j4 VERBOSE=1 2>&1
 script:
-    - travis_wait 60 make -j4
+    - travis_wait 60 make -j4 2>&1
 
 # after_success:
 #     - zip -r pcl-superbuild_ios_library.zip ./CMakeExternals/Install
