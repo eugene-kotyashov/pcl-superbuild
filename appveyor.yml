@@ -155,22 +155,22 @@ before_build:
 # cmake.exe --build . -- -j4
 # NG
 # Eigen files no ext
-# 7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*.*
+# 7z a pcl-superbuild-%ANDROID_ABIs%.zip -r ./CMakeExternals/Install/*.*
 build_script:
 - cmd: >-
     make -j4
     
-    7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*
+    7z a pcl-superbuild-%ANDROID_ABIs%.zip -r ./CMakeExternals/Install/*
 
 # on successful build
 # on_success:
-#  - 7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*
+#  - 7z a pcl-superbuild-%ANDROID_ABIs%.zip -r ./CMakeExternals/Install/*
 
 # on build failure
 # on_failure:
-#   - 7z a pcl-superbuild.zip -r ./CMakeExternals/Install/*
+#   - 7z a pcl-superbuild-%ANDROID_ABIs%.zip -r ./CMakeExternals/Install/*
 
 artifacts:
-- path: cachebuild\pcl-superbuild.zip
+- path: cachebuild\pcl-superbuild-%ANDROID_ABIs%.zip
   name: Release
 
