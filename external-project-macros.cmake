@@ -368,8 +368,8 @@ macro(crosscompile_pcl tag)
       -DWITH_PCAP:BOOL=OFF
       -DWITH_PNG:BOOL=OFF
       -DWITH_PXCAPI:BOOL=OFF
-      # -DWITH_QHULL:BOOL=ON
-      -DWITH_QHULL:BOOL=OFF
+      -DWITH_QHULL:BOOL=ON
+      # -DWITH_QHULL:BOOL=OFF
       -DWITH_QT:BOOL=OFF
       # -DWITH_VTK:BOOL=ON
       -DWITH_VTK:BOOL=OFF
