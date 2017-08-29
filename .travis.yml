@@ -40,10 +40,10 @@ matrix:
        language: objective-c
        compiler: clang
 
-     - os: osx
-       osx_image: xcode9
-       language: objective-c
-       compiler: clang
+     # - os: osx
+     #   osx_image: xcode9
+     #   language: objective-c
+     #   compiler: clang
 
 
 # iOS Image Setting : 
@@ -142,6 +142,12 @@ matrix:
 # cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK}/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM=${ANDROID_NDK}/prebuilt/linux-x86_64/bin/make.exe -DANDROID_NATIVE_API_LEVEL=${ANDROID_TARGET_API} -DANDROID_ABI=${ANDROID_ABIs} -DANDROID_TOOLCHAIN=${compiler} ..
 # ios(macosx only)
 # cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
+# Xcode 9.0
+# iphoneos11.0
+# set(CMAKE_IOS_SDK_ROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk)
+# Xcode 8.3
+# iphoneos10.3
+# set(CMAKE_IOS_SDK_ROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk)
 ###
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
@@ -150,7 +156,7 @@ before_install:
       brew install llvm;
       
       mkdir build && cd build;
-      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
+      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" -DCMAKE_IOS_SDK_ROOT:FILEPATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk" ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
@@ -163,6 +169,10 @@ before_install:
       cd android-ndk-r14b;
       export ANDROID_NDK=$PWD;
       cd ..;
+      
+      dd if=/dev/zero of=/swapfile bs=1024 count=4194304
+      mkswap /swapfile
+      swapon /swapfile
       
       mkdir build;
       cd build;
@@ -208,6 +218,10 @@ before_install:
 # 4MB maximum log size a little low
 # https://www.google.co.jp/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiEhOiJyN_UAhXHgrwKHV2BCL8QFggiMAA&url=https%3A%2F%2Fgithub.com%2Ftravis-ci%2Ftravis-ci%2Fissues%2F1382&usg=AFQjCNHunsY-8__7zqF6zQwurd-CKnqq6w&cad=rja
 # - travis_wait 60 make -j4 VERBOSE=1 2>&1
+# add swapfile
+# dd if=/dev/zero of=/swapfile bs=1024 count=4194304
+# mkswap /swapfile
+# swapon /swapfile
 script:
     - travis_wait 60 make -j4 2>&1
 
