@@ -155,6 +155,10 @@ before_install:
       brew update >/dev/null;
       brew install llvm;
       
+      dd if=/dev/zero of=/swapfile bs=1024 count=16777216
+      mkswap /swapfile
+      swapon /swapfile
+      
       mkdir build && cd build;
       cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" -DCMAKE_IOS_SDK_ROOT:FILEPATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk" ../;
     fi
@@ -170,7 +174,7 @@ before_install:
       export ANDROID_NDK=$PWD;
       cd ..;
       
-      dd if=/dev/zero of=/swapfile bs=1024 count=4194304
+      dd if=/dev/zero of=/swapfile bs=1024 count=16777216
       mkswap /swapfile
       swapon /swapfile
       
