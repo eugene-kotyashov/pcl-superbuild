@@ -40,6 +40,11 @@ matrix:
        language: objective-c
        compiler: clang
 
+     - os: osx
+       osx_image: xcode8.3
+       language: objective-c
+       compiler: gcc
+
      # - os: osx
      #   osx_image: xcode9
      #   language: objective-c
@@ -155,9 +160,9 @@ before_install:
       brew update >/dev/null;
       brew install llvm;
       
-      dd if=/dev/zero of=/swapfile bs=1024 count=16777216
-      mkswap /swapfile
-      swapon /swapfile
+      dd if=/dev/zero of=/swapfile bs=1024 count=16777216;
+      mkswap /swapfile;
+      swapon /swapfile;
       
       mkdir build && cd build;
       cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" -DCMAKE_IOS_SDK_ROOT:FILEPATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk" ../;
@@ -174,13 +179,13 @@ before_install:
       export ANDROID_NDK=$PWD;
       cd ..;
       
-      dd if=/dev/zero of=/swapfile bs=1024 count=16777216
-      mkswap /swapfile
-      swapon /swapfile
+      dd if=/dev/zero of=/swapfile bs=1024 count=16777216;
+      mkswap /swapfile;
+      swapon /swapfile;
       
       mkdir build;
       cd build;
-      cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK}/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM=${ANDROID_NDK}/prebuilt/linux-x86_64/bin/make.exe -DANDROID_NATIVE_API_LEVEL=${ANDROID_TARGET_API} -DANDROID_ABI=${ANDROID_ABIs} -DANDROID_TOOLCHAIN=${compiler} ..;
+      cmake -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK}/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM=${ANDROID_NDK}/prebuilt/linux-x86_64/bin/make.exe -DANDROID_NATIVE_API_LEVEL=${ANDROID_TARGET_API} -DANDROID_ABI=${ANDROID_ABIs} -DANDROID_TOOLCHAIN=${compiler} ..;
     fi
 
 # install:
@@ -227,7 +232,7 @@ before_install:
 # mkswap /swapfile
 # swapon /swapfile
 script:
-    - travis_wait 60 make -j4 2>&1
+    - travis_wait 60 make -j4 VERBOSE=1 2>&1
 
 # after_success:
 #     - zip -r pcl-superbuild_ios_library.zip ./CMakeExternals/Install
