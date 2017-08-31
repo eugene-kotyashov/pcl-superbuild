@@ -29,21 +29,21 @@ matrix:
      #   env: ANDROID_ABIs="x86_64"
      #   env: ANDROID_TARGET_API="23"
      #   env: TOOLCHAIN_NAME="x86_64-4.9"
-	 # 
+     # 
      # - os: linux
      #   language: cpp
      #   compiler: gcc
      #   env: ANDROID_ABIs="armeabi-v7a"
      #   env: ANDROID_TARGET_API="23"
      #   env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
-	 # 
+     # 
      # - os: linux
      #   language: cpp
      #   compiler: gcc
      #   env: ANDROID_ABIs="x86"
      #   env: ANDROID_TARGET_API="23"
      #   env: TOOLCHAIN_NAME="x86-4.9"
-	 # 
+     # 
      # - os: linux
      #   language: cpp
      #   compiler: gcc
