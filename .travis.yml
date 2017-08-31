@@ -18,24 +18,44 @@ branches:
 #   - secure: <encrypted_gh_token>
 env:
   global:
-    - GIT_TAG="ios_librarytest6"
+    - GIT_TAG="librarytest7"
     - secure: "kF66P+xYUADGdu9Yjty7DCeUIQbV10BdaSO5MoiiYy0hgItltPXeJdsqlkyFfcH7y4LWTwPfhdTEE5tCez+BL0yYJn9fqRGm2BDO5xaEDOaIEiwh98KpXAEUuhs5hRnZ5kFVEfI6kdTYwrYKTJQABr2PeBXZWWc51lGyC8aC18PAlFr4LC3d3vRa+e3IeSVyiYoScoZlacGe25UU4PVKI2KIsh6n9RUm6oEk4ptjanqhZjzF7JlbPsFly/3mxmMekQZMjW8KuX5BF+ZiO4KnFZ49pxs+6+68lf2kPtY3KeIZjrRak3mLucgN3bXnrRsAFrW3iXMftF7pFarRLeyupfKtwZMEv7LNGVfg/DivNCqCFKGAU+p1BCJJ3ae1bujMEF0qGSn2yT3ItFsEk0VPDFP5b76eEQpwqOt/R5vNE1+wox+lhJHTJVK1BctS1AT9ygKDKhkQvSCDUBX1OMdymB0KpualW16slj05asLyqPRXXxXtPWY0Wziil+z5B4A7Dk67D5GATrwR4ecINuaAu+PxB3ReqVAhLTGXuEZHEMd45Zv8KeJPcddbsqLvLiHJIYrcUtvOJLp4Iv+ZFFE2BNeoe/P1WGKd1x3w1Mc3nLr3ZQ6UZaSRVPtlZB6CLSxj3QsL74moW0EZ5iUzYzteoYV2aLeeKWsFrfbkzm01qJY="
 
 matrix: 
    include: 
-     - os: linux
-       language: cpp
-       compiler: gcc
-       env: ANDROID_ABIs="x86_64"
-       env: ANDROID_TARGET_API="23"
-       env: TOOLCHAIN_NAME="x86-4.9"
-
-     - os: linux
-       language: cpp
-       compiler: gcc
-       env: ANDROID_ABIs="armeabi-v7a"
-       env: ANDROID_TARGET_API="23"
-       env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
+     # - os: linux
+     #   language: cpp
+     #   compiler: gcc
+     #   env: ANDROID_ABIs="x86_64"
+     #   env: ANDROID_TARGET_API="23"
+     #   env: TOOLCHAIN_NAME="x86_64-4.9"
+	 # 
+     # - os: linux
+     #   language: cpp
+     #   compiler: gcc
+     #   env: ANDROID_ABIs="armeabi-v7a"
+     #   env: ANDROID_TARGET_API="23"
+     #   env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
+	 # 
+     # - os: linux
+     #   language: cpp
+     #   compiler: gcc
+     #   env: ANDROID_ABIs="x86"
+     #   env: ANDROID_TARGET_API="23"
+     #   env: TOOLCHAIN_NAME="x86-4.9"
+	 # 
+     # - os: linux
+     #   language: cpp
+     #   compiler: gcc
+     #   env: ANDROID_ABIs="armeabi"
+     #   env: ANDROID_TARGET_API="23"
+     #   env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
+     # - os: linux
+     #   language: cpp
+     #   compiler: gcc
+     #   env: ANDROID_ABIs="arm64-v8a"
+     #   env: ANDROID_TARGET_API="23"
+     #   env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
 
      # - os: osx
      #   osx_image: xcode8.3
@@ -46,12 +66,18 @@ matrix:
        osx_image: xcode8.3
        language: objective-c
        compiler: gcc
+       IOS_SDK_VERSION: "iPhoneOS10.3.sdk"
 
      # - os: osx
      #   osx_image: xcode9
      #   language: objective-c
      #   compiler: clang
 
+     - os: osx
+       osx_image: xcode9
+       language: objective-c
+       compiler: gcc
+       IOS_SDK_VERSION: "iPhoneOS11.0.sdk"
 
 # iOS Image Setting : 
 # https://blog.travis-ci.com/
@@ -166,7 +192,7 @@ before_install:
       brew install openni2;
       
       mkdir build && cd build;
-      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" -DCMAKE_IOS_SDK_ROOT:FILEPATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk" ../;
+      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" -DCMAKE_IOS_SDK_ROOT:FILEPATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/$IOS_SDK_VERSION" ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
@@ -238,32 +264,34 @@ script:
     - travis_wait 60 make -j2 VERBOSE=1 2>&1
 
 # after_success:
-#     - zip -r pcl-superbuild_ios_library.zip ./CMakeExternals/Install
+#     - zip -r pcl-releases-$TRAVIS_OS_NAME-$GIT_TAG.zip ./CMakeExternals/Install
 
-# after_failure:
-#     - cat ./CMakeExternals/Build/pcl-ios-device/CMakeFiles/CMakeOutput.log
-#     - cat ./CMakeExternals/Build/pcl-ios-device/CMakeFiles/CMakeError.log
-# 
+after_failure:
+    - cat ./CMakeExternals/Build/pcl-ios-device/CMakeFiles/CMakeOutput.log
+    - cat ./CMakeExternals/Build/pcl-ios-device/CMakeFiles/CMakeError.log
+    - cat ./CMakeExternals/Build/pcl-ios-simulator/CMakeFiles/CMakeOutput.log
+    - cat ./CMakeExternals/Build/pcl-ios-simulator/CMakeFiles/CMakeError.log
+
 # - zip -q packages/pcl-rleases-$GIT_TAG.zip -r ./CMakeExternals/Install
-# before_deploy:
-#     - mkdir packages
-#     - tar czf packages/pcl-releases-$GIT_TAG.tar.gz ./CMakeExternals/Install
-#     - zip -q packages/pcl-releases-$GIT_TAG.zip -r ./CMakeExternals/Install
-#     - git config --global user.name "Sirokujira"
-#     - git config --global user.email "toru753@gmail.com"
-#     - git tag $GIT_TAG -a -m "Commit from Travis CI for build $TRAVIS_BUILD_NUMBER"
-#     - git push --quiet https://$GH_TOKEN@github.com/Sirokujira/pcl-superbuild.git --tags 2> /dev/null
-# 
-# 
-# deploy:
-#   provider: releases
-#   skip_cleanup: true
-#   api_key: 
-#     secure: "nVLOBizFgvnJvKssHPJfeN5AtQKrdZE/EDHtr1UC5PJNqZNdCAr8DcQS0hj6bRZ3iYfb+qn4OZV/HOfG/GY46N4CoFuNaOVFqajSZsheF01zvHob3/7bK7EXCybk8QzUIDAV77JjZiQacXJtX0asHPDAgJBScxU1KEC4osaxRy2p3ebw5JURFQArpt8vvK0180ZkH6E0A6qrsBBvaXUPTQ7gM0t/sDhSrPunu0zjKeHPe8VeUp/ELx4fohdiQGSRzf7X7Jmph3dXNSgJb4UBULWvBoQnmUlRCMfqPOkpsbEWWo/ZaaWb0N48GH0RtSIHX+Oampu8SFRvcQVNBSZMPbw+CTaA0Ij1mMhRQgqgjEroiX3y1WOxcT7eiZtwDToUQnm2CqbiTszm5d/bWY4Z3ln4CyiFLUDjTrjD/z4FJi6sgRNMOybo4tAYixuhI4f4wdRRwYOdM9a919LEgM8XltxO+H0KgqDeVjOdmLinxQ9XefZs3k6uRQuEfDIkoyRopt7wKmbhzgs9tOZuEVySxJAFOU17iPvn/BrjU9/g+MRRbnxuajPSPia7/09uHZ7IJJSMK35qvlBjohnVbY6ZHKjTFw3QjOrH7DYATAHvr9XyKlmKIzeubVRzeK9k932WweCa1ySro+kpoJVxwxDs6XnyPe/nnjkt4FovGJNIJLA="
-#   file:
-#     - packages/pcl-releases-$GIT_TAG.tar.gz
-#     - packages/pcl-releases-$GIT_TAG.zip
-#   on:
-#     tags: false
-#     branch: master
+before_deploy:
+    - mkdir packages
+    - tar czf packages/pcl-releases-$TRAVIS_OS_NAME-$IOS_SDK_VERSION-$GIT_TAG.tar.gz ./CMakeExternals/Install
+    - zip -q packages/pcl-releases-$TRAVIS_OS_NAME-$IOS_SDK_VERSION-$GIT_TAG.zip -r ./CMakeExternals/Install
+    - git config --global user.name "Sirokujira"
+    - git config --global user.email "toru753@gmail.com"
+    - git tag $GIT_TAG -a -m "Commit from Travis CI for build $TRAVIS_BUILD_NUMBER"
+    - git push --quiet https://$GH_TOKEN@github.com/Sirokujira/pcl-superbuild.git --tags 2> /dev/null
+
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key: 
+    secure: "nVLOBizFgvnJvKssHPJfeN5AtQKrdZE/EDHtr1UC5PJNqZNdCAr8DcQS0hj6bRZ3iYfb+qn4OZV/HOfG/GY46N4CoFuNaOVFqajSZsheF01zvHob3/7bK7EXCybk8QzUIDAV77JjZiQacXJtX0asHPDAgJBScxU1KEC4osaxRy2p3ebw5JURFQArpt8vvK0180ZkH6E0A6qrsBBvaXUPTQ7gM0t/sDhSrPunu0zjKeHPe8VeUp/ELx4fohdiQGSRzf7X7Jmph3dXNSgJb4UBULWvBoQnmUlRCMfqPOkpsbEWWo/ZaaWb0N48GH0RtSIHX+Oampu8SFRvcQVNBSZMPbw+CTaA0Ij1mMhRQgqgjEroiX3y1WOxcT7eiZtwDToUQnm2CqbiTszm5d/bWY4Z3ln4CyiFLUDjTrjD/z4FJi6sgRNMOybo4tAYixuhI4f4wdRRwYOdM9a919LEgM8XltxO+H0KgqDeVjOdmLinxQ9XefZs3k6uRQuEfDIkoyRopt7wKmbhzgs9tOZuEVySxJAFOU17iPvn/BrjU9/g+MRRbnxuajPSPia7/09uHZ7IJJSMK35qvlBjohnVbY6ZHKjTFw3QjOrH7DYATAHvr9XyKlmKIzeubVRzeK9k932WweCa1ySro+kpoJVxwxDs6XnyPe/nnjkt4FovGJNIJLA="
+  file:
+    - packages/pcl-releases-$TRAVIS_OS_NAME-$IOS_SDK_VERSION-$GIT_TAG.tar.gz
+    - packages/pcl-releases-$TRAVIS_OS_NAME-$IOS_SDK_VERSION-$GIT_TAG.zip
+  on:
+    tags: false
+    branch: master
 
