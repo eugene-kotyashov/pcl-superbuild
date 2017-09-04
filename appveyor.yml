@@ -11,21 +11,23 @@ cache:
 # https://www.appveyor.com/docs/build-environment/
 # -DCMAKE_C_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc.exe"
 # -DCMAKE_CXX_COMPILER="C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
+# Toolchain
+# https://developer.android.com/ndk/guides/standalone_toolchain.html
 environment:
     matrix:
     # "arm64-v8a"
-    # - MinGW_ROOT: "C:\\MinGW"
-    #   MinGW: "C:\\MinGW\\bin"
-    #   MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
-    #   # CC: "C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc-4.9.exe"
-    #   # CXX: "C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
-    #   ANDROID_NDK: "C:/projects/android-ndk-r14b"
-    #   NDK_VERSION: "r14b"
-    #   OS_ARCH: "64"
-    #   CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
-    #   ANDROID_ABIs: "arm64-v8a"
-    #   ANDROID_TARGET_API: "23"
-    #   TOOLCHAIN_NAME: "arm-linux-androideabi-4.9"
+    - MinGW_ROOT: "C:\\MinGW"
+      MinGW: "C:\\MinGW\\bin"
+      MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
+      # CC: "C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc-4.9.exe"
+      # CXX: "C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
+      ANDROID_NDK: "C:/projects/android-ndk-r14b"
+      NDK_VERSION: "r14b"
+      OS_ARCH: "64"
+      CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
+      ANDROID_ABIs: "arm64-v8a"
+      ANDROID_TARGET_API: "23"
+      TOOLCHAIN_NAME: "aarch64-linux-android-4.9"
 
     # armeabi-v7a
     - MinGW_ROOT: "C:\\MinGW"
