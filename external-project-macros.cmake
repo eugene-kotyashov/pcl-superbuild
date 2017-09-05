@@ -245,6 +245,7 @@ macro(crosscompile_flann tag)
                -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
                -DANDROID_TOOLCHAIN=gcc
                -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
+               -DANDROID_STL=gnustl_static
                -DBUILD_TESTS:BOOL=OFF
                -DBUILD_PYTHON_BINDINGS:BOOL=OFF
                -DBUILD_MATLAB_BINDINGS:BOOL=OFF
@@ -289,7 +290,8 @@ macro(crosscompile_boost tag)
       -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
       -DANDROID_TOOLCHAIN=gcc
       -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
-      -DBUILD_SHARED_LIBS:BOOL=OFF
+      -DANDROID_STL=gnustl_static
+      -DBUILD_SHARED_LIBS:BOOL=ON
   )
 
   force_build(${proj})
