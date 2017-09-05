@@ -74,12 +74,12 @@ matrix:
      #   language: objective-c
      #   compiler: clang
 
-     - os: osx
-       osx_image: xcode9
-       language: objective-c
-       compiler: gcc
-       env: IOS_SDK_VERSION="iPhoneOS11.0.sdk"
-       xcode_sdk: iOS 11.0
+     # - os: osx
+     #   osx_image: xcode9
+     #   language: objective-c
+     #   compiler: gcc
+     #   env: IOS_SDK_VERSION="iPhoneOS11.0.sdk"
+     #   xcode_sdk: iOS 11.0
 
 # iOS Image Setting : 
 # https://blog.travis-ci.com/
