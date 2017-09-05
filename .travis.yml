@@ -193,8 +193,6 @@ before_install:
       brew tap totakke/openni2;
       brew install openni2;
       
-      - echo $TRAVIS_XCODE_SDK
-      
       mkdir build && cd build;
       cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" -DCMAKE_IOS_SDK_ROOT:FILEPATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/$IOS_SDK_VERSION" ../;
     fi
@@ -209,10 +207,6 @@ before_install:
       cd android-ndk-r14b;
       export ANDROID_NDK=$PWD;
       cd ..;
-      
-      dd if=/dev/zero of=/swapfile bs=1024 count=4194304;
-      mkswap /swapfile;
-      swapon /swapfile;
       
       export PATH=$ANDROID_NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:$PATH;
       
@@ -265,7 +259,10 @@ before_install:
 # mkswap /swapfile
 # swapon /swapfile
 script:
-    - travis_wait 60 make -j2 VERBOSE=1 2>&1
+    - dd if=/dev/zero of=/swapfile bs=1024 count=4194304
+    - mkswap /swapfile
+    - swapon /swapfile
+    - travis_wait 60 make -j8 VERBOSE=1 2>&1
 
 # after_success:
 #     - zip -r pcl-releases-$TRAVIS_OS_NAME-$GIT_TAG.zip ./CMakeExternals/Install
