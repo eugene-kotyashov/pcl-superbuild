@@ -16,7 +16,8 @@ cache:
 environment:
     matrix:
     # "arm64-v8a"
-    - MinGW_ROOT: "C:\\MinGW"
+    # - MinGW_ROOT: "C:\\MinGW"
+    - MinGW_ROOT: "C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1"
       MinGW: "C:\\MinGW\\bin"
       MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
       # CC: "C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc-4.9.exe"
@@ -44,7 +45,8 @@ environment:
       TOOLCHAIN_NAME: "arm-linux-androideabi-4.9"
 
     # (mips64)(simulation?)
-    - MinGW_ROOT: "C:\\MinGW"
+    # - MinGW_ROOT: "C:\\MinGW"
+    - MinGW_ROOT: "C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1"
       MinGW: "C:\\MinGW\\bin"
       MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
       # CC: "C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc-4.9.exe"
@@ -58,7 +60,8 @@ environment:
       TOOLCHAIN_NAME: "mips64el-linux-android-4.9"
 
     # (x86_64)(simulation?)
-    - MinGW_ROOT: "C:\\MinGW"
+    # - MinGW_ROOT: "C:\\MinGW"
+    - MinGW_ROOT: "C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1"
       MinGW: "C:\\MinGW\\bin"
       MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
       # CC="%MINGW%\\gcc"
