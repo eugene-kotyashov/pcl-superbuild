@@ -397,8 +397,7 @@ macro(crosscompile_pcl tag)
       -DBUILD_OPENNI2:BOOL=OFF
       -DBUILD_all_in_one_installer:BOOL=OFF
       -DBUILD_apps:BOOL=OFF
-      # -DBUILD_common:BOOL=ON
-      -DBUILD_common:BOOL=OFF
+      -DBUILD_common:BOOL=ON
       -DBUILD_example:BOOL=OFF
       -DBUILD_features:BOOL=ON
       -DBUILD_filters:BOOL=ON
