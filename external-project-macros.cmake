@@ -433,22 +433,6 @@ macro(crosscompile_pcl tag)
       -DFLANN_LIBRARY=${install_prefix}/flann-${tag}/lib/libflann_cpp_s.a
       -DFLANN_LIBRARY_DEBUG=${install_prefix}/flann-${tag}/lib/libflann_cpp_s-gd.lib
       -DBOOST_ROOT=${install_prefix}/boost-${tag}
-      -DBoost_DATE_TIME_LIBRARY=${install_prefix}/boost-${tag}/lib/libboost_date_time.a \ 
-      -DBoost_DATE_TIME_LIBRARY_DEBUG=${install_prefix}/boost-${tag}/lib/libboost_date_time.a \ 
-      -DBoost_DATE_TIME_LIBRARY_RELEASE=${install_prefix}/boost-${tag}/lib/libboost_date_time.a \ 
-      -DBoost_FILESYSTEM_LIBRARY=${install_prefix}/boost-${tag}/lib/libboost_filesystem.a \ 
-      -DBoost_FILESYSTEM_LIBRARY_DEBUG=${install_prefix}/boost-${tag}/lib/libboost_filesystem.a \ 
-      -DBoost_FILESYSTEM_LIBRARY_RELEASE=${install_prefix}/boost-${tag}/lib/libboost_filesystem.a \ 
-      -DBoost_IOSTREAMS_LIBRARY=${install_prefix}/boost-${tag}/lib/libboost_iostreams.a \ 
-      -DBoost_IOSTREAMS_LIBRARY_DEBUG=${install_prefix}/boost-${tag}/lib/libboost_iostreams.a \ 
-      -DBoost_IOSTREAMS_LIBRARY_RELEASE=${install_prefix}/boost-${tag}/lib/libboost_iostreams.a \ 
-      -DBoost_SYSTEM_LIBRARY=${install_prefix}/boost-${tag}/lib/libboost_system.a \ 
-      -DBoost_SYSTEM_LIBRARY_DEBUG=${install_prefix}/boost-${tag}/lib/libboost_system.a \ 
-      -DBoost_SYSTEM_LIBRARY_RELEASE=${install_prefix}/boost-${tag}/lib/libboost_system.a \ 
-      -DBoost_THREAD_LIBRARY=${install_prefix}/boost-${tag}/lib/libboost_thread.a \ 
-      -DBoost_THREAD_LIBRARY_DEBUGBoost_INCLUDE_DIRS=${install_prefix}/boost-${tag}/lib/libboost_thread.a \ 
-      -DBoost_THREAD_LIBRARY_RELEASE=${install_prefix}/boost-${tag}/lib/libboost_thread.a \ 
-      -DBoost_LIBRARY_DIRS=${install_prefix}/boost-${tag}/lib
       -C ${try_run_results_file}
   )
 
