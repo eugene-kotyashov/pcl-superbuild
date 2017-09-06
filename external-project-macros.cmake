@@ -291,7 +291,7 @@ macro(crosscompile_boost tag)
       -DANDROID_TOOLCHAIN=gcc
       -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
       -DANDROID_STL=gnustl_static
-      -DBUILD_SHARED_LIBS:BOOL=ON
+      -DBUILD_SHARED_LIBS:BOOL=OFF
   )
 
   force_build(${proj})
