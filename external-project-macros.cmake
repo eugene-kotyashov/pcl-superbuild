@@ -181,6 +181,7 @@ macro(fetch_flann)
     # build NG(check : ndk14r)(test.py)
     # GIT_TAG 1.8.4
     GIT_TAG 1.8.5
+    # GIT_TAG 1.9.1
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
@@ -342,15 +343,15 @@ macro(fetch_pcl)
     pcl-fetch
     SOURCE_DIR ${source_prefix}/pcl
     # GIT_REPOSITORY git://github.com/patmarion/PCL.git
-    # GIT_REPOSITORY git://github.com/PointCloudLibrary/pcl.git
-    GIT_REPOSITORY git://github.com/Sirokujira/pcl.git
+    GIT_REPOSITORY git://github.com/PointCloudLibrary/pcl.git
+    # GIT_REPOSITORY git://github.com/Sirokujira/pcl.git
     # GIT_TAG origin/android-tag
     # GIT_TAG origin/master
     # official tags
     # GIT_TAG pcl-1.8.1
-    # GIT_TAG pcl-1.8.0
+    GIT_TAG pcl-1.8.0
     # check tags
-    GIT_TAG Branch_pcl-1.7.2
+    # GIT_TAG Branch_pcl-1.7.2
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
