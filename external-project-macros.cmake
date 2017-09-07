@@ -178,8 +178,9 @@ macro(fetch_flann)
     # old(no use LZ4?)
     # GIT_TAG cee08ec38a8df7bc70397f10a4d30b9b33518bb4
     # use LZ4?
-    GIT_TAG 1.8.4
-    # GIT_TAG 1.8.5
+    # build NG(check : ndk14r)(test.py)
+    # GIT_TAG 1.8.4
+    GIT_TAG 1.8.5
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
