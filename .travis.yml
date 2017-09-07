@@ -154,13 +154,6 @@ matrix:
 # export ANDROID_HOME=/opt/android-sdk-linux;
 # export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools;
 # 
-# wget https://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip;
-# unzip -q android-ndk-r14b-linux-x86_64.zip;
-# sudo mv android-ndk-r14b /opt/;
-# rm android-ndk-r14b-linux-x86_64.zip;
-# export ANDROID_NDK_HOME=/opt/android-ndk-r14b;
-# export PATH=${PATH}:$ANDROID_NDK_HOME;
-# 
 # git clone -b v7.0.0 https://github.com/Kitware/VTK.git;
 # cd VTK;
 # mkdir build && cd build;
@@ -177,6 +170,7 @@ matrix:
 # Xcode 8.3
 # iphoneos10.3
 # set(CMAKE_IOS_SDK_ROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk)
+# export PATH=$ANDROID_NDK/toolchains/${TOOLCHAIN_NAME}/prebuilt/linux-x86_64/bin:$PATH;
 ###
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
@@ -202,8 +196,6 @@ before_install:
       export ANDROID_NDK=$PWD;
       cd ..;
       
-      export PATH=$ANDROID_NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:$PATH;
-      
       - dd if=/dev/zero of=/swapfile bs=1024 count=4194304;
       - mkswap /swapfile;
       - swapon /swapfile;
@@ -216,25 +208,9 @@ before_install:
 # install:
 #   - travis_wait 60 make -j4 VERBOSE=1 2>&1
 # - ls
-# http://www.vtk.org/Wiki/VES/Point_Cloud_Library
-# - open build/HelloPCL.xcodeproj
 # xcodebuild
 # http://blog.ch3cooh.jp/entry/20150210/1423573065
 # - xcodebuild -project build/HelloPCL.xcodeproj -target HelloPCL -sdk iphoneos -configuration Release build
-# ves install(no use reason : old module)
-# git clone git://vtk.org/VES.git
-# iOS Sample
-# git clone -b pcl-ios-app git://vtk.org/stage/VES.git
-# http://www.vtk.org/Wiki/VES/Developers_Guide#iOS_instructions
-# - mkdir build
-# - cd build
-# - cmake -DVES_IOS_SUPERBUILD=1 ../
-# - travis_wait 60 make -j4 VERBOSE=1 2>&1
-# - ln -s /Users/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Install/frameworks ./frameworks
-# - cd ..
-# - cd ../apps/ios/HelloPCL
-# - bash cmake_command.sh
-# - cd ../../../build
 # xcode open
 # - open build/HelloPCL.xcodeproj
 # xcode command line build
@@ -244,10 +220,6 @@ before_install:
 # - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphoneos -configuration Release build
 # before vtk build module copy?
 # - bash cmake_command.sh
-# TestCode
-# - cd ../apps/ios/HelloPCL2
-# - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphoneos -configuration Release build
-# - cd ../../../build
 # warning
 # 4MB maximum log size a little low
 # https://www.google.co.jp/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiEhOiJyN_UAhXHgrwKHV2BCL8QFggiMAA&url=https%3A%2F%2Fgithub.com%2Ftravis-ci%2Ftravis-ci%2Fissues%2F1382&usg=AFQjCNHunsY-8__7zqF6zQwurd-CKnqq6w&cad=rja
