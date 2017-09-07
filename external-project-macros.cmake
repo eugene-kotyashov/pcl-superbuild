@@ -176,9 +176,9 @@ macro(fetch_flann)
     SOURCE_DIR ${source_prefix}/flann
     GIT_REPOSITORY git://github.com/mariusmuja/flann
     # old(no use LZ4?)
-    GIT_TAG cee08ec38a8df7bc70397f10a4d30b9b33518bb4
+    # GIT_TAG cee08ec38a8df7bc70397f10a4d30b9b33518bb4
     # use LZ4?
-    # GIT_TAG 1.8.4
+    GIT_TAG 1.8.4
     # GIT_TAG 1.8.5
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
@@ -358,6 +358,7 @@ endmacro()
 
 #
 # PCL crosscompile
+# 
 macro(crosscompile_pcl tag)
   set(proj pcl-${tag})
   get_toolchain_file(${tag})
@@ -431,13 +432,26 @@ macro(crosscompile_pcl tag)
       -DBUILD_tracking:BOOL=ON
       -DBUILD_visualization:BOOL=OFF
       -DBUILD_examples:BOOL=OFF
-      -DEIGEN_INCLUDE_DIR=${install_prefix}/eigen
-      -DFLANN_INCLUDE_DIR=${install_prefix}/flann-${tag}/include
-      -DFLANN_LIBRARY=${install_prefix}/flann-${tag}/lib/libflann_cpp_s.a
-      -DFLANN_LIBRARY_DEBUG=${install_prefix}/flann-${tag}/lib/libflann_cpp_s-gd.lib
+      -DEIGEN_INCLUDE_DIR:PATH=${install_prefix}/eigen
+      -DFLANN_INCLUDE_DIR:PATH=${install_prefix}/flann-${tag}/include
+      -DFLANN_LIBRARY:FILEPATH=${install_prefix}/flann-${tag}/lib/libflann_cpp_s.a
+      -DFLANN_LIBRARY_DEBUG:FILEPATH=${install_prefix}/flann-${tag}/lib/libflann_cpp_s-gd.lib
       -DBOOST_ROOT=${install_prefix}/boost-${tag}
       -DBoost_INCLUDE_DIR:PATH=${install_prefix}/boost-${tag}/include
-      -DBoost_LIBRARY_DIRS=${install_prefix}/boost-${tag}/lib
+      -DBoost_LIBRARY_DIRS:PATH=${install_prefix}/boost-${tag}/lib
+      # http://pointclouds.org/documentation/tutorials/building_pcl.php
+      -DBoost_DATE_TIME_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_date_time.a
+      -DBoost_DATE_TIME_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_date_time-gd.a
+      -DBoost_DATE_TIME_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_date_time.a
+      -DBoost_FILESYSTEM_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_filesystem.a
+      -DBoost_FILESYSTEM_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_filesystem-gd.a
+      -DBoost_FILESYSTEM_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_filesystem.a
+      -DBoost_SYSTEM_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system.so 
+      -DBoost_SYSTEM_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system-gd.so 
+      -DBoost_SYSTEM_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system.so 
+      -DBoost_THREAD_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread.so 
+      -DBoost_THREAD_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread-gd.so 
+      -DBoost_THREAD_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread.so 
       -C ${try_run_results_file}
   )
 
