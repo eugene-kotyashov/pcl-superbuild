@@ -246,6 +246,7 @@ macro(crosscompile_flann tag)
                -DANDROID_TOOLCHAIN=gcc
                -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
                -DANDROID_STL=gnustl_static
+               -DANDROID_STL_FORCE_FEATURES:BOOL=ON
                -DBUILD_TESTS:BOOL=OFF
                -DBUILD_PYTHON_BINDINGS:BOOL=OFF
                -DBUILD_MATLAB_BINDINGS:BOOL=OFF
@@ -291,6 +292,7 @@ macro(crosscompile_boost tag)
       -DANDROID_TOOLCHAIN=gcc
       -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
       -DANDROID_STL=gnustl_static
+      -DANDROID_STL_FORCE_FEATURES:BOOL=ON
       -DBUILD_SHARED_LIBS:BOOL=OFF
   )
 
@@ -381,6 +383,8 @@ macro(crosscompile_pcl tag)
       -DANDROID_ABI=$ENV{ANDROID_ABIs}
       -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
       -DANDROID_TOOLCHAIN=gcc
+      -DANDROID_STL=gnustl_static
+      -DANDROID_STL_FORCE_FEATURES:BOOL=ON
       -DBUILD_SHARED_LIBS:BOOL=OFF
       -DPCL_SHARED_LIBS:BOOL=OFF
       # Clang Build NG
@@ -393,8 +397,8 @@ macro(crosscompile_pcl tag)
       -DWITH_PCAP:BOOL=OFF
       -DWITH_PNG:BOOL=OFF
       -DWITH_PXCAPI:BOOL=OFF
-      -DWITH_QHULL:BOOL=ON
-      # -DWITH_QHULL:BOOL=OFF
+      # -DWITH_QHULL:BOOL=ON
+      -DWITH_QHULL:BOOL=OFF
       -DWITH_QT:BOOL=OFF
       # -DWITH_VTK:BOOL=ON
       -DWITH_VTK:BOOL=OFF
@@ -425,7 +429,6 @@ macro(crosscompile_pcl tag)
       # -DBUILD_tools:BOOL=ON
       -DBUILD_tools:BOOL=OFF
       -DBUILD_tracking:BOOL=ON
-      # -DBUILD_visualization:BOOL=ON
       -DBUILD_visualization:BOOL=OFF
       -DBUILD_examples:BOOL=OFF
       -DEIGEN_INCLUDE_DIR=${install_prefix}/eigen
@@ -433,6 +436,8 @@ macro(crosscompile_pcl tag)
       -DFLANN_LIBRARY=${install_prefix}/flann-${tag}/lib/libflann_cpp_s.a
       -DFLANN_LIBRARY_DEBUG=${install_prefix}/flann-${tag}/lib/libflann_cpp_s-gd.lib
       -DBOOST_ROOT=${install_prefix}/boost-${tag}
+      -DBoost_INCLUDE_DIR:PATH=${install_prefix}/boost-${tag}/include
+      -DBoost_LIBRARY_DIRS=${install_prefix}/boost-${tag}/lib
       -C ${try_run_results_file}
   )
 
