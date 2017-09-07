@@ -30,38 +30,38 @@ matrix:
      #   env: ANDROID_TARGET_API="23"
      #   env: TOOLCHAIN_NAME="aarch64-linux-android-4.9"
      
-     - os: linux
-       language: cpp
-       compiler: gcc
-       env: ANDROID_ABIs="armeabi-v7a"
-       env: ANDROID_TARGET_API="23"
-       env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
-     
-     - os: linux
-       language: cpp
-       compiler: gcc
-       env: ANDROID_ABIs="x86_64"
-       env: ANDROID_TARGET_API="23"
-       env: TOOLCHAIN_NAME="x86_64-4.9"
-     
-     - os: linux
-       language: cpp
-       compiler: gcc
-       env: ANDROID_ABIs="x86"
-       env: ANDROID_TARGET_API="23"
-       env: TOOLCHAIN_NAME="x86-4.9"
+     # - os: linux
+     #   language: cpp
+     #   compiler: gcc
+     #   env: ANDROID_ABIs="armeabi-v7a"
+     #   env: ANDROID_TARGET_API="23"
+     #   env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
+     # 
+     # - os: linux
+     #   language: cpp
+     #   compiler: gcc
+     #   env: ANDROID_ABIs="x86_64"
+     #   env: ANDROID_TARGET_API="23"
+     #   env: TOOLCHAIN_NAME="x86_64-4.9"
+     # 
+     # - os: linux
+     #   language: cpp
+     #   compiler: gcc
+     #   env: ANDROID_ABIs="x86"
+     #   env: ANDROID_TARGET_API="23"
+     #   env: TOOLCHAIN_NAME="x86-4.9"
      
      # - os: osx
      #   osx_image: xcode8.3
      #   language: objective-c
      #   compiler: clang
 
-     # - os: osx
-     #   osx_image: xcode8.3
-     #   language: objective-c
-     #   compiler: gcc
-     #   env: IOS_SDK_VERSION="iPhoneOS10.3.sdk"
-     #   xcode_sdk: iOS 10.3
+     - os: osx
+       osx_image: xcode8.3
+       language: objective-c
+       compiler: gcc
+       env: IOS_SDK_VERSION="iPhoneOS10.3.sdk"
+       xcode_sdk: iOS 10.3
 
      # - os: osx
      #   osx_image: xcode9
