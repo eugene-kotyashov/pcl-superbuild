@@ -171,6 +171,8 @@ matrix:
 # iphoneos10.3
 # set(CMAKE_IOS_SDK_ROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk)
 # export PATH=$ANDROID_NDK/toolchains/${TOOLCHAIN_NAME}/prebuilt/linux-x86_64/bin:$PATH;
+# add virtual memory
+# - dd if=/dev/zero of=/swapfile bs=1024 count=4194304;
 ###
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
@@ -196,7 +198,7 @@ before_install:
       export ANDROID_NDK=$PWD;
       cd ..;
       
-      - dd if=/dev/zero of=/swapfile bs=1024 count=4194304;
+      - dd if=/dev/zero of=/swapfile bs=1024 count=8388608;
       - mkswap /swapfile;
       - swapon /swapfile;
       
