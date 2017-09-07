@@ -361,6 +361,8 @@ endmacro()
 #
 # PCL crosscompile
 # 
+# use official
+# https://gist.github.com/UnaNancyOwen/59319050d53c137ca8f3#file-pcl1-8-1-md
 macro(crosscompile_pcl tag)
   set(proj pcl-${tag})
   get_toolchain_file(${tag})
@@ -405,6 +407,8 @@ macro(crosscompile_pcl tag)
       -DWITH_QT:BOOL=OFF
       # -DWITH_VTK:BOOL=ON
       -DWITH_VTK:BOOL=OFF
+      -DBUILD_CUDA:BOOL=OFF
+      -DBUILD_GPU:BOOL=OFF
       -DBUILD_OPENNI:BOOL=OFF
       -DBUILD_OPENNI2:BOOL=OFF
       -DBUILD_all_in_one_installer:BOOL=OFF
