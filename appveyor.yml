@@ -102,7 +102,7 @@ environment:
 # ############################################################################ 
 # # Install a recent CMake 
 # ############################################################################ 
-# - set CMAKE_URL="https://cmake.org/files/v3.8/cmake-3.8.0-win64-x64.zip" 
+# - set CMAKE_URL="https://cmake.org/files/v3.10/cmake-3.10.0-win64-x64.zip" 
 # - appveyor DownloadFile %CMAKE_URL% -FileName cmake.zip 
 # - 7z x cmake.zip -oC:\projects\deps > nul 
 # - move C:\projects\deps\cmake-* C:\projects\deps\cmake # Move to a version-agnostic directory 
@@ -120,14 +120,6 @@ environment:
 install:
     - ps: Start-FileDownload "https://dl.google.com/android/repository/android-ndk-r14b-windows-x86_64.zip"
     - ps: Expand-Archive -Path android-ndk-r14b-windows-x86_64.zip -DestinationPath "C:\\projects"
-
-    - mkdir C:\projects\deps
-    - set CMAKE_URL="https://cmake.org/files/v3.9/cmake-3.9.1-win64-x64.zip" 
-    - appveyor DownloadFile %CMAKE_URL% -FileName cmake.zip 
-    - 7z x cmake.zip -oC:\projects\deps > nul 
-    - move C:\projects\deps\cmake-* C:\projects\deps\cmake # Move to a version-agnostic directory 
-    - set PATH=C:\projects\deps\cmake\bin;%PATH% 
-    - cmake --version 
 
 # CMake building for MinGW issue with Git sh.exe 
 # http://help.appveyor.com/discussions/problems/3193-cmake-building-for-mingw-issue-with-git-shexe
