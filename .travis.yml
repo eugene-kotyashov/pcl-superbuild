@@ -8,8 +8,8 @@ addons:
     sources:
       - george-edison55-precise-backports
     packages:
-    - cmake-data
-    - cmake
+      - cmake-data
+      - cmake
 
 branches:
   only: 
@@ -179,6 +179,7 @@ matrix:
 ###
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
+      rvm get stable;
       brew prune;
       brew update >/dev/null;
       brew install llvm;
