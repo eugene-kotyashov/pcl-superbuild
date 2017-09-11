@@ -10,18 +10,21 @@ fi
 #------------------------------------------------------------------------------
 make_pcl_framework ()
 {
-  pcl_device_libs=`find $install/pcl-ios-device $install/flann-ios-device $install/boost-ios-device -name *.a`
+  # pcl_device_libs=`find $install/pcl-ios-device $install/flann-ios-device $install/boost-ios-device -name *.a`
+  pcl_device_libs=`find $install/pcl-ios-device -name *.a`
+  boost_device_libs=`find $install/boost-ios-device -name *.a`
+  flann_device_libs=`find $install/flann-ios-device -name *.a`
   # pcl_sim_libs=`find $install/pcl-ios-simulator $install/flann-ios-simulator $install/boost-iso-simulator -name *.a`
 
   # args -> version
   # version 1.7
-  pcl_header_dir=$install/pcl-ios-device/include/pcl-1.7
+  # pcl_header_dir=$install/pcl-ios-device/include/pcl-1.7
+  # version 1.8
+  pcl_header_dir=$install/pcl-ios-device/include/pcl-1.8
   boost_header_dir=$install/boost-ios-device/include/
   eigen_header_dir=$install/eigen
   flann_header_dir=$install/flann-ios-device/include/
-  # version 1.8
-  # pcl_header_dir=$install/pcl-ios-device/include/pcl-1.8
-
+  
   pcl_framework=$install/frameworks/pcl.framework
   mkdir -p $pcl_framework
   rm -rf $pcl_framework/*
@@ -31,7 +34,7 @@ make_pcl_framework ()
   cp -r $eigen_header_dir/* $pcl_framework/Headers/
   cp -r $flann_header_dir/* $pcl_framework/Headers/
 
-  libtool -static -o $pcl_framework/pcl_device $pcl_device_libs
+  libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs
   lipo -create $pcl_framework/pcl_device -output $pcl_framework/pcl
   # libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs
   # lipo -create $pcl_framework/pcl_device $pcl_framework/pcl_sim -output $pcl_framework/pcl
