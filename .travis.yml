@@ -26,20 +26,27 @@ env:
 
 matrix: 
    include: 
-     # - os: linux
-     #   language: cpp
-     #   compiler: gcc
-     #   env: ANDROID_ABIs="arm64-v8a"
-     #   env: ANDROID_TARGET_API="23"
-     #   env: TOOLCHAIN_NAME="aarch64-linux-android-4.9"
+     - os: linux
+       language: cpp
+       compiler: gcc
+       env: ANDROID_ABIs="arm64-v8a"
+       env: ANDROID_TARGET_API="23"
+       env: TOOLCHAIN_NAME="aarch64-linux-android-4.9"
      
-     # - os: linux
-     #   language: cpp
-     #   compiler: gcc
-     #   env: ANDROID_ABIs="armeabi-v7a"
-     #   env: ANDROID_TARGET_API="23"
-     #   env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
-     # 
+     - os: linux
+       language: cpp
+       compiler: gcc
+       env: ANDROID_ABIs="armeabi-v7a"
+       env: ANDROID_TARGET_API="23"
+       env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
+     
+     - os: linux
+       language: cpp
+       compiler: gcc
+       env: ANDROID_ABIs="armeabi"
+       env: ANDROID_TARGET_API="23"
+       env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
+     
      # - os: linux
      #   language: cpp
      #   compiler: gcc
@@ -202,9 +209,9 @@ before_install:
       export ANDROID_NDK=$PWD;
       cd ..;
       
-      - dd if=/dev/zero of=/swapfile bs=1024 count=8388608;
-      - mkswap /swapfile;
-      - swapon /swapfile;
+      sudo dd if=/dev/zero of=/swapfile bs=1024 count=8388608;
+      sudo mkswap /swapfile;
+      sudo swapon /swapfile;
       
       mkdir build;
       cd build;
