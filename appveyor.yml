@@ -205,6 +205,8 @@ build_script:
     
     7z a pcl-superbuild-%ANDROID_ABIs%.zip -r ./CMakeExternals/Install/*
 
+    mv pcl-superbuild-%ANDROID_ABIs%.zip ../
+
 # on successful build
 # on_success:
 #  - 7z a pcl-superbuild-%ANDROID_ABIs%.zip -r ./CMakeExternals/Install/*
@@ -213,7 +215,8 @@ build_script:
 # on_failure:
 #   - 7z a pcl-superbuild-%ANDROID_ABIs%.zip -r ./CMakeExternals/Install/*
 
+# - path: cachebuild\pcl-superbuild-%ANDROID_ABIs%.zip
 artifacts:
-- path: cachebuild\pcl-superbuild-%ANDROID_ABIs%.zip
+- path: pcl-superbuild-%ANDROID_ABIs%.zip
   name: Release
 
