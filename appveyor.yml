@@ -142,6 +142,7 @@ install:
     - set PATH=C:\projects\deps\cmake\bin;%PATH% 
     - cmake --version 
 
+
 # CMake building for MinGW issue with Git sh.exe 
 # http://help.appveyor.com/discussions/problems/3193-cmake-building-for-mingw-issue-with-git-shexe
 # https://github.com/jibsen/brieflz/blob/0c6fb73984f11e697dfaade5cdc5e291c1655c67/appveyor.yml
@@ -183,13 +184,20 @@ install:
 # - cmake -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE:FILEPATH=%ANDROID_NDK%/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=%ANDROID_NDK%/prebuilt/windows-x86_64/bin/make.exe -DANDROID_TOOLCHAIN_NAME=%TOOLCHAIN_NAME% -DANDROID_NATIVE_API_LEVEL=%ANDROID_TARGET_API% -DANDROID_ABI=%ANDROID_ABIs% -DANDROID_TOOLCHAIN=gcc -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
 # pcl 1.8.0(official) build error(cc1plus.exe: out of memory allocating 1507008 bytes)
 # - wmic pagefileset where NAME="C:\\pagefile.sys" set INITIALSIZE=2048, MAXIMUMSIZE=8192
+# g++ error
+# https://sourceforge.net/p/mingw-w64/mailman/message/33182613/
+# -ftrack-macro-expansion=0
+# other 
+# https://stackoverflow.com/questions/29194247/how-to-diagnose-g-error-cc1plus-exe-out-of-memory-allocating-838860800-bytes
+
 before_build:
+    - chcp 65001
     - git config --system core.longpaths true
     - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
     - set PATH=%MINGW%;%PATH%
     - set PATH=%ANDROID_NDK%/toolchains/%TOOLCHAIN_NAME%/prebuilt/windows-x86_64/bin;%PATH%
     - copy "C:\MinGW\bin\mingw32-make.exe" "C:\MinGW\bin\make.exe"
-    - wmic pagefileset where NAME="C:\\pagefile.sys" set INITIALSIZE=8192, MAXIMUMSIZE=16384
+    - wmic pagefileset where NAME="C:\\pagefile.sys" set INITIALSIZE=4096, MAXIMUMSIZE=8192
     - cd cachebuild
     - cmake -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE:FILEPATH=%ANDROID_NDK%/build/cmake/android.toolchain.cmake -DANDROID_TOOLCHAIN_NAME=%TOOLCHAIN_NAME% -DANDROID_NATIVE_API_LEVEL=%ANDROID_TARGET_API% -DANDROID_ABI=%ANDROID_ABIs% -DANDROID_TOOLCHAIN=gcc -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
 
@@ -202,7 +210,7 @@ before_build:
 build_script:
 - cmd: >-
     make -j4
-    
+
     7z a pcl-superbuild-%ANDROID_ABIs%.zip -r ./CMakeExternals/Install/*
 
     mv pcl-superbuild-%ANDROID_ABIs%.zip ../
