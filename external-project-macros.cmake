@@ -79,8 +79,9 @@ macro(fetch_flann)
     # use LZ4?
     # build NG(check : ndk14r)(test.py)
     # GIT_TAG 1.8.4
-    # GIT_TAG 1.8.5
-    GIT_TAG 1.9.1
+    GIT_TAG 1.8.5
+    # build NG(xcode - clang)
+    # GIT_TAG 1.9.1
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
