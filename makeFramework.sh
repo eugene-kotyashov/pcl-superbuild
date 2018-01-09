@@ -24,7 +24,7 @@ make_pcl_framework ()
   boost_header_dir=$install/boost-ios-device/include/
   eigen_header_dir=$install/eigen
   flann_header_dir=$install/flann-ios-device/include/
-  
+
   pcl_framework=$install/frameworks/pcl.framework
   mkdir -p $pcl_framework
   rm -rf $pcl_framework/*
@@ -33,6 +33,9 @@ make_pcl_framework ()
   cp -r $boost_header_dir/* $pcl_framework/Headers/
   cp -r $eigen_header_dir/* $pcl_framework/Headers/
   cp -r $flann_header_dir/* $pcl_framework/Headers/
+
+  # mkdir $pcl_framework/Modules
+  # cp module.modulemap $pcl_framework/Modules/
 
   libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs
   lipo -create $pcl_framework/pcl_device -output $pcl_framework/pcl

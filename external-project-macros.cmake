@@ -35,7 +35,7 @@ endmacro()
 # Eigen fetch and install
 #
 macro(install_eigen)
-  set(eigen_url http://bitbucket.org/eigen/eigen/get/3.2.8.tar.bz2)
+  set(eigen_url http://bitbucket.org/eigen/eigen/get/3.3.4.tar.bz2)
   ExternalProject_Add(
     eigen
     SOURCE_DIR ${source_prefix}/eigen
@@ -58,7 +58,8 @@ macro(fetch_vtk)
     # GIT_TAG origin/master
     # GIT_TAG v7.0.0
     # Version 1.7.2
-    GIT_TAG v6.3.0
+    # GIT_TAG v6.3.0
+    GIT_TAG v8.0.1
     # GIT_REPOSITORY git://github.com/patmarion/VTK.git
     # GIT_TAG ce4a267
     CONFIGURE_COMMAND ""
@@ -78,8 +79,8 @@ macro(fetch_flann)
     # use LZ4?
     # build NG(check : ndk14r)(test.py)
     # GIT_TAG 1.8.4
-    GIT_TAG 1.8.5
-    # GIT_TAG 1.9.1
+    # GIT_TAG 1.8.5
+    GIT_TAG 1.9.1
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
