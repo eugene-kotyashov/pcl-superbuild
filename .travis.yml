@@ -184,18 +184,20 @@ matrix:
 # add virtual memory
 # - dd if=/dev/zero of=/swapfile bs=1024 count=4194304;
 ###
+# before cmake file(osx)
+# cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" -DCMAKE_IOS_SDK_ROOT:FILEPATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/$IOS_SDK_VERSION" ../;
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       rvm get stable;
       brew prune;
       brew update >/dev/null;
       brew install llvm;
-      
+
       brew tap totakke/openni2;
       brew install openni2;
-      
+
       mkdir build && cd build;
-      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" -DCMAKE_IOS_SDK_ROOT:FILEPATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/$IOS_SDK_VERSION" ../;
+      cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
