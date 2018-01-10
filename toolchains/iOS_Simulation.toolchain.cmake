@@ -77,6 +77,7 @@
 #   command.
 
 set(IOS_PLATFORM "SIMULATOR64")
+set(ENABLE_BITCODE 0)
 
 # Fix for PThread library not in path
 set(CMAKE_THREAD_LIBS_INIT "-lpthread")
