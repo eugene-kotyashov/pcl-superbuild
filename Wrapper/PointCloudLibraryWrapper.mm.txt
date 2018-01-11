@@ -1,0 +1,13 @@
+#import <pcl/point_cloud.h>
+#import <pcl/point_types.h>
+#import <pcl/PointIndices.h>
+#import <pcl/ModelCoefficients.h>
+#import <pcl/sample_consensus/method_types.h>
+#import <pcl/sample_consensus/model_types.h>
+#import <pcl/segmentation/sac_segmentation.h>
+
+#import "PointCloudLibraryWrapper.h"
+
+@implementation PointCloudLibraryWrapper
+
+@end
