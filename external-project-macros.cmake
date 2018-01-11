@@ -326,7 +326,7 @@ macro(crosscompile_pcl tag)
       -DBUILD_people:BOOL=OFF
       -DBUILD_recognition:BOOL=ON
       -DBUILD_registration:BOOL=ON
-      -DBUILD_sample_consensus:BOOL=ON
+      -DBUILD_sample_consensus:BOOL=OFF
       -DBUILD_search:BOOL=ON
       -DBUILD_segmentation:BOOL=ON
       -DBUILD_surface:BOOL=ON
