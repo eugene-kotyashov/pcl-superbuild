@@ -215,7 +215,7 @@ before_build:
 # 7z a pcl-superbuild-%ANDROID_ABIs%.zip -r ./CMakeExternals/Install/*.*
 build_script:
 - cmd: >-
-    make -j4
+    cmake.exe --build .
 
     7z a pcl-superbuild-%ANDROID_ABIs%.zip -r ./CMakeExternals/Install/*
 
