@@ -79,9 +79,9 @@ macro(fetch_flann)
     # use LZ4?
     # build NG(check : ndk14r)(test.py)
     # GIT_TAG 1.8.4
-    GIT_TAG 1.8.5
+    # GIT_TAG 1.8.5
     # build NG(xcode - clang)
-    # GIT_TAG 1.9.1
+    GIT_TAG 1.9.1
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
@@ -165,8 +165,12 @@ macro(fetch_boost)
   ExternalProject_Add(
     boost-fetch
     SOURCE_DIR ${source_prefix}/boost
+    # 1.60.0
     GIT_REPOSITORY git://github.com/Sirokujira/boost-build.git
     GIT_TAG origin/master
+    # official(not cmake file)
+    # GIT_REPOSITORY git://github.com/boostorg/boost.git
+    # GIT_TAG boost-1.64.0
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
@@ -207,9 +211,8 @@ endmacro()
 macro(crosscompile_boost_on_b2 tag)
 
   set(proj boost-${tag})
-  
+
   if (tag eq "android")
-    # patch -p0 boost_1_52_0.patch
     # ./b2 toolset=clang cxxflags="-stdlib=libc++" threading=multi threadapi=pthread link=shared runtime-link=shared -j 6
     execute_process(
       COMMAND ./b2 toolset=gcc-android4.9 link=static runtime-link=static target-os=linux -stagedir
@@ -218,20 +221,20 @@ macro(crosscompile_boost_on_b2 tag)
   endif()
   if (tag eq "ios-device")
     execute_process(
-      COMMAND ./b2 toolset=clang cflags="-arch arm64 -fvisibility=default -miphoneos-version-min=7.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/include/
+      COMMAND ./b2 toolset=clang cflags="-arch arm64 -fvisibility=default -miphoneos-version-min=8.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/include/
       WORKING_DIRECTORY ${source_prefix}/boost
     )
   endif()
   if(tag eq "ios-simulator")
     execute_process(
-      COMMAND ./b2 toolset=clang cflags="-arch i386 -fvisibility=default -miphoneos-version-min=7.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/include/
+      COMMAND ./b2 toolset=clang cflags="-arch i386 -fvisibility=default -miphoneos-version-min=8.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/include/
       WORKING_DIRECTORY ${source_prefix}/boost
     )
   endif()
-  
+
   # ./b2 toolset=clang cflags="-arch arm64 -fvisibility=default -miphoneos-version-min=5.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/include/
   # --prefix=(インストールしたいディレクトリ)
-  
+
 endmacro()
 
 

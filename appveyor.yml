@@ -21,7 +21,7 @@ environment:
       MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
       # CC: "C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc-4.9.exe"
       # CXX: "C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
-      ANDROID_NDK: "C:/projects/android-ndk-r15c"
+      ANDROID_NDK: "C:/projects/android-ndk-r14b"
       OS_ARCH: "64"
       CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
       ANDROID_ABIs: "armeabi"
@@ -34,7 +34,7 @@ environment:
       MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
       # CC: "C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc-4.9.exe"
       # CXX: "C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
-      ANDROID_NDK: "C:/projects/android-ndk-r15c"
+      ANDROID_NDK: "C:/projects/android-ndk-r14b"
       OS_ARCH: "64"
       CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
       ANDROID_ABIs: "armeabi-v7a"
@@ -48,7 +48,7 @@ environment:
       MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
       # CC: "C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc-4.9.exe"
       # CXX: "C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
-      ANDROID_NDK: "C:/projects/android-ndk-r15c"
+      ANDROID_NDK: "C:/projects/android-ndk-r14b"
       OS_ARCH: "64"
       CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
       ANDROID_ABIs: "arm64-v8a"
@@ -62,7 +62,7 @@ environment:
     #   MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
     #   # CC: "C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc-4.9.exe"
     #   # CXX: "C:/projects/android-ndk-r14b/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++.exe"
-    #   ANDROID_NDK: "C:\\projects\\android-ndk-r15c"
+    #   ANDROID_NDK: "C:\\projects\\android-ndk-r14b"
     #   OS_ARCH: "64"
     #   CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
     #   ANDROID_ABIs: "mips64"
@@ -76,7 +76,7 @@ environment:
       MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
       # CC="%MINGW%\\gcc"
       # CXX="%MINGW%\g++"
-      ANDROID_NDK: "C:\\projects\\android-ndk-r15c"
+      ANDROID_NDK: "C:\\projects\\android-ndk-r14b"
       OS_ARCH: "64"
       CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
       ANDROID_ABIs: "x86_64"
@@ -89,7 +89,7 @@ environment:
       MSYS_ROOT: "C:\\MinGW\\msys\\1.0"
       # CC="%MINGW%\\gcc"
       # CXX="%MINGW%\g++"
-      ANDROID_NDK: "C:\\projects\\android-ndk-r15c"
+      ANDROID_NDK: "C:\\projects\\android-ndk-r14b"
       OS_ARCH: "64"
       CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
       ANDROID_ABIs: "x86"
@@ -100,7 +100,7 @@ environment:
     # - MinGW_ROOT: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1"
     #   MinGW: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1\\bin"
     #   MSYS_ROOT: "C:\\msys64"
-    #   ANDROID_NDK: "C:\\projects\\android-ndk-r15c"
+    #   ANDROID_NDK: "C:\\projects\\android-ndk-r14b"
     #   OS_ARCH: "64"
     #   CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
 
@@ -131,8 +131,8 @@ environment:
 # - set PATH=C:\projects\deps\ninja;%PATH%
 # - ninja --version
 install:
-    - ps: Start-FileDownload "https://dl.google.com/android/repository/android-ndk-r15c-windows-x86_64.zip"
-    - ps: Expand-Archive -Path android-ndk-r15c-windows-x86_64.zip -DestinationPath "C:\\projects"
+    - ps: Start-FileDownload "https://dl.google.com/android/repository/android-ndk-r14b-windows-x86_64.zip"
+    - ps: Expand-Archive -Path android-ndk-r14b-windows-x86_64.zip -DestinationPath "C:\\projects"
     
     - mkdir C:\projects\deps
     - set CMAKE_URL="https://cmake.org/files/v3.10/cmake-3.10.1-win64-x64.zip"
