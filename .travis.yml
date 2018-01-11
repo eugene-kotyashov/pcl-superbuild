@@ -187,12 +187,18 @@ matrix:
 # cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" -DCMAKE_IOS_SDK_ROOT:FILEPATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/$IOS_SDK_VERSION" ../;
 # cmake 3.9 FindCUDA Error
 # /usr/local/Cellar/cmake/3.9.4/share/cmake/Modules/FindCUDA.cmake:694 (cuda_find_host_program)
+# use ccache?
+# https://docs.travis-ci.com/user/caching/
+# http://www.brianlheim.com/2017/08/20/supercollider-travisci.html
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       rvm get stable;
       brew prune;
       brew update >/dev/null;
       brew install llvm;
+
+      brew install ccache;
+      export PATH="/usr/local/opt/ccache/libexec:$PATH";
 
       wget --no-check-certificate -qO- https://cmake.org/files/v3.10/cmake-3.10.1-Darwin-x86_64.tar.gz -O /tmp/cmake-3.10.1-Darwin-x86_64.tar.gz;
       tar -xf /tmp/cmake-3.10.1-Darwin-x86_64.tar.gz;
@@ -206,13 +212,6 @@ before_install:
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
-      wget --no-check-certificate -qO- http://www.cmake.org/files/v3.10/cmake-3.10.1-Linux-x86_64.tar.gz -O /tmp/cmake-3.10.1-Linux-x86_64.tar.gz;
-      tar -xf /tmp/cmake-3.10.1-Linux-x86_64.tar.gz;
-      export PATH=$PWD/cmake-3.10.1-Linux-x86_64/bin/:$PATH;
-      source ~/.bashrc;
-      source ~/.bash_profile;
-      cmake --version;
-
       wget -qO- http://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip -O /tmp/android-ndk-r14b-linux-x86_64.zip;
       unzip -q /tmp/android-ndk-r14b-linux-x86_64.zip;
       cd android-ndk-r14b;
