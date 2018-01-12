@@ -219,9 +219,9 @@ build_script:
 - cmd: >-
     cmake.exe --build .
 
-    7z a pcl-superbuild-%ANDROID_ABIs%.zip -r ./CMakeExternals/Install/*
+    cd ..
 
-    mv pcl-superbuild-%ANDROID_ABIs%.zip ../
+    7z a ./build/pcl-superbuild-%ANDROID_ABIs%.zip -r ./build/CMakeExternals/Install/*
 
 # on successful build
 # on_success:
