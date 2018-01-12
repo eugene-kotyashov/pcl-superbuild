@@ -221,7 +221,7 @@ build_script:
 
     cd ..
 
-    7z a ./build/pcl-superbuild-%ANDROID_ABIs%.zip -r ./build/CMakeExternals/Install/*
+    7z a ./pcl-superbuild-%ANDROID_ABIs%.zip -r ./cachebuild/CMakeExternals/Install/*
 
 # on successful build
 # on_success:
