@@ -62,7 +62,7 @@ environment:
     #   ANDROID_ABIs: "mips64"
     #   ANDROID_TARGET_API: "23"
     #   TOOLCHAIN_NAME: "mips64el-linux-android-4.9"
-      TARGET_COMPILER: "gcc"
+    #   TARGET_COMPILER: "gcc"
     
     # (x86_64)(simulation?)
     - MinGW_ROOT: "C:\\MinGW"
@@ -73,7 +73,7 @@ environment:
       CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
       ANDROID_ABIs: "x86_64"
       ANDROID_TARGET_API: "23"
-      TOOLCHAIN_NAME: "x86_64-4.9"
+      TOOLCHAIN_NAME: "x86_64-linux-android-4.9"
       TARGET_COMPILER: "gcc"
     
     # (x86)(simulation?)
@@ -84,7 +84,7 @@ environment:
       CMAKE_COMMAND: "C:\\Program Files (x86)\\cmake\\bin"
       ANDROID_ABIs: "x86"
       ANDROID_TARGET_API: "23"
-      TOOLCHAIN_NAME: "x86-4.9"
+      TOOLCHAIN_NAME: "x86-linux-android-4.9"
       TARGET_COMPILER: "gcc"
     
     # 64 bit?
