@@ -185,6 +185,8 @@ macro(crosscompile_boost tag)
       # https://github.com/android-ndk/ndk/issues/480
       # -DANDROID_STL=gnustl_static
       -DANDROID_STL=c++_static
+      # ndk r14
+      # -D_FILE_OFFSET_BITS=64
       -DANDROID_STL_FORCE_FEATURES:BOOL=ON
       -DANDROID_CPP_FEATURES=rtti exceptions
       -DBUILD_SHARED_LIBS:BOOL=OFF
