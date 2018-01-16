@@ -124,7 +124,7 @@ macro(crosscompile_flann tag)
                -DBUILD_EXAMPLES:BOOL=OFF
                -DANDROID_ABI=$ENV{ANDROID_ABIs}
                -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
-               -DANDROID_TOOLCHAIN=gcc
+               -DANDROID_TOOLCHAIN=clang
                -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
                -DANDROID_STL=gnustl_static
                -DANDROID_STL_FORCE_FEATURES:BOOL=ON
@@ -176,7 +176,7 @@ macro(crosscompile_boost tag)
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
       -DANDROID_ABI=$ENV{ANDROID_ABIs}
       -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
-      -DANDROID_TOOLCHAIN=gcc
+      -DANDROID_TOOLCHAIN=clang
       -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
       -DANDROID_STL=gnustl_static
       -DANDROID_STL_FORCE_FEATURES:BOOL=ON
@@ -276,13 +276,12 @@ macro(crosscompile_pcl tag)
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
       -DANDROID_ABI=$ENV{ANDROID_ABIs}
       -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
-      -DANDROID_TOOLCHAIN=gcc
+      -DANDROID_TOOLCHAIN=clang
       -DANDROID_STL=gnustl_static
       -DANDROID_STL_FORCE_FEATURES:BOOL=ON
       -DANDROID_CPP_FEATURES="rtti exceptions"
       -DBUILD_SHARED_LIBS:BOOL=OFF
       -DPCL_SHARED_LIBS:BOOL=OFF
-      # Clang Build NG
       -DPCL_ENABLE_SSE:BOOL=OFF
       -DWITH_CUDA:BOOL=OFF
       -DWITH_OPENGL:BOOL=OFF

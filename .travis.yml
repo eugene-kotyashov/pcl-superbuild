@@ -17,6 +17,8 @@ branches:
     - master
     - CITest
 
+# Android NDK Toolchains
+# https://developer.android.com/ndk/guides/standalone_toolchain.html?hl=ja
 # global:
 #   - GIT_TAG=<your version string>
 #   - secure: <encrypted_gh_token>
@@ -27,57 +29,95 @@ env:
 
 matrix: 
    include: 
-     - os: linux
-       language: cpp
-       compiler: gcc
-       env: ANDROID_ABIs="arm64-v8a"
-       env: ANDROID_TARGET_API="23"
-       env: TOOLCHAIN_NAME="aarch64-linux-android-4.9"
-     
-     - os: linux
-       language: cpp
-       compiler: gcc
-       env: ANDROID_ABIs="armeabi-v7a"
-       env: ANDROID_TARGET_API="23"
-       env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
-     
-     - os: linux
-       language: cpp
-       compiler: gcc
-       env: ANDROID_ABIs="armeabi"
-       env: ANDROID_TARGET_API="23"
-       env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
-     
      # - os: linux
      #   language: cpp
      #   compiler: gcc
-     #   env: ANDROID_ABIs="x86_64"
+     #   env: ANDROID_ABIs="arm64-v8a"
      #   env: ANDROID_TARGET_API="23"
-     #   env: TOOLCHAIN_NAME="x86_64-4.9"
+     #   env: TOOLCHAIN_NAME="aarch64-linux-android-4.9"
      # 
      # - os: linux
      #   language: cpp
      #   compiler: gcc
+     #   env: ANDROID_ABIs="armeabi-v7a"
+     #   env: ANDROID_TARGET_API="23"
+     #   env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
+     # 
+     # - os: linux
+     #   language: cpp
+     #   compiler: gcc
+     #   env: ANDROID_ABIs="armeabi"
+     #   env: ANDROID_TARGET_API="23"
+     #   env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
+     # 
+     # # - os: linux
+     # #   language: cpp
+     # #   compiler: gcc
+     # #   env: ANDROID_ABIs="x86_64"
+     # #   env: ANDROID_TARGET_API="23"
+     # #   env: TOOLCHAIN_NAME="x86_64-linux-android-4.9"
+     # # 
+     # # - os: linux
+     # #   language: cpp
+     # #   compiler: gcc
+     # #   env: ANDROID_ABIs="x86"
+     # #   env: ANDROID_TARGET_API="23"
+     # #   env: TOOLCHAIN_NAME="x86-4.9"
+
+     - os: linux
+       language: cpp
+       compiler: clang
+       env: ANDROID_ABIs="arm64-v8a"
+       env: ANDROID_TARGET_API="23"
+       env: TOOLCHAIN_NAME="aarch64-linux-android-clang3.6"
+     
+     - os: linux
+       language: cpp
+       compiler: clang
+       env: ANDROID_ABIs="armeabi-v7a"
+       env: ANDROID_TARGET_API="23"
+       env: TOOLCHAIN_NAME="arm-linux-android-clang3.6"
+     
+     - os: linux
+       language: cpp
+       compiler: clang
+       env: ANDROID_ABIs="armeabi"
+       env: ANDROID_TARGET_API="23"
+       env: TOOLCHAIN_NAME="arm-linux-android-clang3.6"
+     # - os: linux
+     #   language: cpp
+     #   compiler: clang
+     #   env: ANDROID_ABIs="x86_64"
+     #   env: ANDROID_TARGET_API="23"
+     #   env: TOOLCHAIN_NAME="x86_64-linux-android-clang3.6"
+     # 
+     # - os: linux
+     #   language: cpp
+     #   compiler: clang
      #   env: ANDROID_ABIs="x86"
      #   env: ANDROID_TARGET_API="23"
-     #   env: TOOLCHAIN_NAME="x86-4.9"
-     
-     # - os: osx
-     #   osx_image: xcode8.3
-     #   language: objective-c
-     #   compiler: clang
+     #   env: TOOLCHAIN_NAME="x86-linux-android-clang3.6"
 
      - os: osx
        osx_image: xcode8.3
        language: objective-c
-       compiler: gcc
+       compiler: clang
        env: IOS_SDK_VERSION="iPhoneOS10.3.sdk"
        xcode_sdk: iOS 10.3
+
+     # - os: osx
+     #   osx_image: xcode8.3
+     #   language: objective-c
+     #   compiler: gcc
+     #   env: IOS_SDK_VERSION="iPhoneOS10.3.sdk"
+     #   xcode_sdk: iOS 10.3
 
      # - os: osx
      #   osx_image: xcode9
      #   language: objective-c
      #   compiler: clang
+     #   env: IOS_SDK_VERSION="iPhoneOS11.0.sdk"
+     #   xcode_sdk: iOS 11.0
 
      # - os: osx
      #   osx_image: xcode9
@@ -145,16 +185,6 @@ matrix:
 # brew tap totakke/openni2;
 # brew install openni2;
 ###
-# sdk check 8.0
-# git clone -b v6.3.0 https://github.com/Kitware/VTK.git;
-###
-# sdk check contains 9.3(Timeout 50 min ...)
-# git clone -b v7.0.0 https://github.com/Kitware/VTK.git;
-# cd VTK;
-# mkdir build && cd build;
-# cmake -DVTK_IOS_BUILD=BOOL="ON" ../;
-# travis_wait 60 make -j4 VERBOSE=1 2>&1;
-# cd ../..;
 # mac on android?
 # start
 # wget http://dl.google.com/android/android-sdk_r24.0.2-linux.tgz;
@@ -164,12 +194,6 @@ matrix:
 # export ANDROID_HOME=/opt/android-sdk-linux;
 # export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools;
 # 
-# git clone -b v7.0.0 https://github.com/Kitware/VTK.git;
-# cd VTK;
-# mkdir build && cd build;
-# cmake -DVTK_IOS_BUILD="ON" ../;
-# travis_wait 60 make -j4 VERBOSE=1 2>&1;
-# cd ../..;
 # Android
 # cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK}/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM=${ANDROID_NDK}/prebuilt/linux-x86_64/bin/make.exe -DANDROID_NATIVE_API_LEVEL=${ANDROID_TARGET_API} -DANDROID_ABI=${ANDROID_ABIs} -DANDROID_TOOLCHAIN=${compiler} ..
 # ios(macosx only)
@@ -213,9 +237,9 @@ before_install:
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
-      wget -qO- http://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip -O /tmp/android-ndk-r14b-linux-x86_64.zip;
-      unzip -q /tmp/android-ndk-r14b-linux-x86_64.zip;
-      cd android-ndk-r14b;
+      wget -qO- http://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip -O /tmp/android-ndk-r15c-linux-x86_64.zip;
+      unzip -q /tmp/android-ndk-r15c-linux-x86_64.zip;
+      cd android-ndk-r15c;
       export ANDROID_NDK=$PWD;
       cd ..;
 
@@ -254,7 +278,7 @@ before_install:
 # - travis_wait 50 make -j4 VERBOSE=1 2>&1
 # - travis_wait 50 cmake --build .
 script:
-    - travis_wait 50 make VERBOSE=1 2>&1
+    - travis_wait 50 make -j4 VERBOSE=1 2>&1
 
 # after_success:
 #     - zip -r pcl-releases-$TRAVIS_OS_NAME-$GIT_TAG.zip ./CMakeExternals/Install
