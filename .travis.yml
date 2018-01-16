@@ -1,4 +1,5 @@
-sudo: false
+dist: trusty
+sudo: required
 
 cache:
   apt: true
@@ -251,8 +252,9 @@ before_install:
 # mkswap /swapfile
 # swapon /swapfile
 # - travis_wait 50 make -j4 VERBOSE=1 2>&1
+# - travis_wait 50 cmake --build .
 script:
-    - travis_wait 50 cmake --build .
+    - travis_wait 50 make -j4 VERBOSE=1 2>&1
 
 # after_success:
 #     - zip -r pcl-releases-$TRAVIS_OS_NAME-$GIT_TAG.zip ./CMakeExternals/Install
