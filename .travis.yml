@@ -195,7 +195,7 @@ matrix:
 # export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools;
 # 
 # Android
-# cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK}/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM=${ANDROID_NDK}/prebuilt/linux-x86_64/bin/make.exe -DANDROID_NATIVE_API_LEVEL=${ANDROID_TARGET_API} -DANDROID_ABI=${ANDROID_ABIs} -DANDROID_TOOLCHAIN=${compiler} ..
+# cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK}/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM=${ANDROID_NDK}/prebuilt/linux-x86_64/bin/make -DANDROID_NATIVE_API_LEVEL=${ANDROID_TARGET_API} -DANDROID_ABI=${ANDROID_ABIs} -DANDROID_TOOLCHAIN=${compiler} ..
 # ios(macosx only)
 # cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
 # Xcode 9.0
@@ -243,7 +243,7 @@ before_install:
       export ANDROID_NDK=$PWD;
       cd ..;
 
-      sudo dd if=/dev/zero of=/swapfile bs=1024 count=8388608;
+      sudo dd if=/dev/zero of=/swapfile bs=1024 count=4194304;
       sudo mkswap /swapfile;
       sudo swapon /swapfile;
 
@@ -278,7 +278,7 @@ before_install:
 # - travis_wait 50 make -j4 VERBOSE=1 2>&1
 # - travis_wait 50 cmake --build .
 script:
-    - travis_wait 50 make -j4 VERBOSE=1 2>&1
+    - travis_wait 50 cmake --build .
 
 # after_success:
 #     - zip -r pcl-releases-$TRAVIS_OS_NAME-$GIT_TAG.zip ./CMakeExternals/Install
