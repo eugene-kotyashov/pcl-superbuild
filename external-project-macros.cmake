@@ -247,15 +247,18 @@ macro(fetch_pcl)
     SOURCE_DIR ${source_prefix}/pcl
     # cmake release 3.10.0 or 3.6.x(3.8/3.9 NG)
     GIT_REPOSITORY git://github.com/PointCloudLibrary/pcl.git
-    # GIT_REPOSITORY git://github.com/patmarion/PCL.git
-    # GIT_REPOSITORY git://github.com/Sirokujira/pcl.git
-    # GIT_TAG origin/android-tag
-    # GIT_TAG origin/master
     # official tags
     GIT_TAG pcl-1.8.1
     # GIT_TAG pcl-1.8.0
+    # Test
+    # Start
+    # GIT_REPOSITORY git://github.com/Sirokujira/pcl.git
     # check tags
     # GIT_TAG Branch_pcl-1.7.2
+    # GIT_REPOSITORY git://github.com/patmarion/PCL.git
+    # GIT_TAG origin/android-tag
+    # GIT_TAG origin/master
+    # End
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
@@ -324,11 +327,14 @@ macro(crosscompile_pcl tag)
       -DBUILD_io:BOOL=ON
       -DBUILD_kdtree:BOOL=ON
       -DBUILD_keypoints:BOOL=ON
-      -DBUILD_outofcore:BOOL=ON
+      # use vtk?
+      # -DBUILD_outofcore:BOOL=ON
       # -DBUILD_people:BOOL=ON
+      -DBUILD_outofcore:BOOL=OFF
       -DBUILD_people:BOOL=OFF
       -DBUILD_recognition:BOOL=ON
       -DBUILD_registration:BOOL=ON
+      # build error
       -DBUILD_sample_consensus:BOOL=OFF
       -DBUILD_search:BOOL=ON
       -DBUILD_segmentation:BOOL=ON
@@ -337,7 +343,8 @@ macro(crosscompile_pcl tag)
       -DBUILD_surface_on_nurbs:BOOL=OFF
       # -DBUILD_tools:BOOL=ON
       -DBUILD_tools:BOOL=OFF
-      -DBUILD_tracking:BOOL=ON
+      # -DBUILD_tracking:BOOL=ON
+      -DBUILD_tracking:BOOL=OFF
       -DBUILD_visualization:BOOL=OFF
       -DBUILD_examples:BOOL=OFF
       -DEIGEN_INCLUDE_DIR:PATH=${install_prefix}/eigen
