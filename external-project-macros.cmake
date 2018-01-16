@@ -131,6 +131,7 @@ macro(crosscompile_flann tag)
                -DANDROID_CPP_FEATURES=rtti exceptions
                -DBUILD_TESTS:BOOL=OFF
                -DBUILD_DOC:BOOL=OFF
+               -DBUILD_C_BINDINGS:BOOL=OFF
                -DBUILD_PYTHON_BINDINGS:BOOL=OFF
                -DBUILD_MATLAB_BINDINGS:BOOL=OFF
   )
