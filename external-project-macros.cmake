@@ -46,27 +46,6 @@ macro(install_eigen)
   )
 endmacro()
 
-#
-# VTK fetch
-#
-macro(fetch_vtk)
-  ExternalProject_Add(
-    vtk-fetch
-    SOURCE_DIR ${source_prefix}/vtk
-    GIT_REPOSITORY git://github.com/Kitware/VTK.git
-    # Version 1.8.0
-    # GIT_TAG origin/master
-    # GIT_TAG v7.0.0
-    # Version 1.7.2
-    # GIT_TAG v6.3.0
-    GIT_TAG v8.0.1
-    # GIT_REPOSITORY git://github.com/patmarion/VTK.git
-    # GIT_TAG ce4a267
-    CONFIGURE_COMMAND ""
-    BUILD_COMMAND ""
-    INSTALL_COMMAND ""
-  )
-endmacro()
 
 # FLANN fetch
 macro(fetch_flann)
@@ -233,7 +212,7 @@ macro(crosscompile_boost_on_b2 tag)
   endif()
 
   # ./b2 toolset=clang cflags="-arch arm64 -fvisibility=default -miphoneos-version-min=5.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/include/
-  # --prefix=(ƒCƒ“ƒXƒg[ƒ‹‚µ‚½‚¢ƒfƒBƒŒƒNƒgƒŠ)
+  # --prefix=(ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ãŸã„ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª)
 
 endmacro()
 
@@ -361,12 +340,12 @@ macro(crosscompile_pcl tag)
       -DBoost_FILESYSTEM_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_filesystem.a
       -DBoost_FILESYSTEM_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_filesystem-gd.a
       -DBoost_FILESYSTEM_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_filesystem.a
-      -DBoost_SYSTEM_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system.so 
-      -DBoost_SYSTEM_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system-gd.so 
-      -DBoost_SYSTEM_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system.so 
-      -DBoost_THREAD_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread.so 
-      -DBoost_THREAD_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread-gd.so 
-      -DBoost_THREAD_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread.so 
+      -DBoost_SYSTEM_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system.so
+      -DBoost_SYSTEM_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system-gd.so
+      -DBoost_SYSTEM_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system.so
+      -DBoost_THREAD_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread.so
+      -DBoost_THREAD_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread-gd.so
+      -DBoost_THREAD_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread.so
       -C ${try_run_results_file}
   )
 
