@@ -128,7 +128,6 @@ macro(crosscompile_flann tag)
                -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
                -DANDROID_STL=gnustl_static
                -DANDROID_STL_FORCE_FEATURES:BOOL=ON
-               -DANDROID_CPP_FEATURES=rtti exceptions
                -DBUILD_TESTS:BOOL=OFF
                -DBUILD_DOC:BOOL=OFF
                -DBUILD_C_BINDINGS:BOOL=OFF
@@ -188,7 +187,6 @@ macro(crosscompile_boost tag)
       # ndk r14
       # -D_FILE_OFFSET_BITS=64
       -DANDROID_STL_FORCE_FEATURES:BOOL=ON
-      -DANDROID_CPP_FEATURES=rtti exceptions
       -DBUILD_SHARED_LIBS:BOOL=OFF
   )
 
@@ -287,7 +285,6 @@ macro(crosscompile_pcl tag)
       -DANDROID_TOOLCHAIN=$ENV{TARGET_COMPILER}
       -DANDROID_STL=gnustl_static
       -DANDROID_STL_FORCE_FEATURES:BOOL=ON
-      -DANDROID_CPP_FEATURES="rtti exceptions"
       -DBUILD_SHARED_LIBS:BOOL=OFF
       -DPCL_SHARED_LIBS:BOOL=OFF
       -DPCL_ENABLE_SSE:BOOL=OFF
