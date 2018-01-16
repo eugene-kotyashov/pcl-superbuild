@@ -129,6 +129,7 @@ macro(crosscompile_flann tag)
                -DANDROID_STL=gnustl_static
                -DANDROID_STL_FORCE_FEATURES:BOOL=ON
                -DBUILD_TESTS:BOOL=OFF
+               -DBUILD_DOC:BOOL=OFF
                -DBUILD_PYTHON_BINDINGS:BOOL=OFF
                -DBUILD_MATLAB_BINDINGS:BOOL=OFF
   )
@@ -144,7 +145,7 @@ macro(fetch_boost)
   ExternalProject_Add(
     boost-fetch
     SOURCE_DIR ${source_prefix}/boost
-    # 1.60.0
+    # 1.64.0
     GIT_REPOSITORY git://github.com/Sirokujira/boost-build.git
     GIT_TAG origin/master
     # official(not cmake file)
