@@ -27,6 +27,7 @@ environment:
     #   ANDROID_ABIs: "armeabi"
     #   ANDROID_TARGET_API: "23"
     #   TOOLCHAIN_NAME: "arm-linux-androideabi-4.9"
+    #   TARGET_COMPILER: "gcc"
     # 
     # # armeabi-v7a
     # - MinGW_ROOT: "C:\\MinGW"
@@ -37,6 +38,7 @@ environment:
     #   ANDROID_ABIs: "armeabi-v7a"
     #   ANDROID_TARGET_API: "23"
     #   TOOLCHAIN_NAME: "arm-linux-androideabi-4.9"
+    #   TARGET_COMPILER: "gcc"
     # 
     # # "arm64-v8a"
     # # - MinGW_ROOT: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1"
@@ -48,6 +50,7 @@ environment:
     #   ANDROID_ABIs: "arm64-v8a"
     #   ANDROID_TARGET_API: "23"
     #   TOOLCHAIN_NAME: "aarch64-linux-android-4.9"
+    #   TARGET_COMPILER: "gcc"
     # 
     # # (mips64)(simulation?)
     # # - MinGW_ROOT: "C:\\MinGW"
@@ -59,6 +62,7 @@ environment:
     # #   ANDROID_ABIs: "mips64"
     # #   ANDROID_TARGET_API: "23"
     # #   TOOLCHAIN_NAME: "mips64el-linux-android-4.9"
+    #   TARGET_COMPILER: "gcc"
     # 
     # # (x86_64)(simulation?)
     # - MinGW_ROOT: "C:\\MinGW"
@@ -70,6 +74,7 @@ environment:
     #   ANDROID_ABIs: "x86_64"
     #   ANDROID_TARGET_API: "23"
     #   TOOLCHAIN_NAME: "x86_64-4.9"
+    #   TARGET_COMPILER: "gcc"
     # 
     # # (x86)(simulation?)
     # - MinGW_ROOT: "C:\\MinGW"
@@ -80,6 +85,7 @@ environment:
     #   ANDROID_ABIs: "x86"
     #   ANDROID_TARGET_API: "23"
     #   TOOLCHAIN_NAME: "x86-4.9"
+    #   TARGET_COMPILER: "gcc"
     # 
     # # 64 bit?
     # # - MinGW_ROOT: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1"
@@ -98,6 +104,7 @@ environment:
       ANDROID_ABIs: "armeabi"
       ANDROID_TARGET_API: "23"
       TOOLCHAIN_NAME: "arm-linux-android-clang3.6"
+      TARGET_COMPILER: "clang"
     
     # armeabi-v7a
     - MinGW_ROOT: "C:\\MinGW"
@@ -108,6 +115,7 @@ environment:
       ANDROID_ABIs: "armeabi-v7a"
       ANDROID_TARGET_API: "23"
       TOOLCHAIN_NAME: "arm-linux-android-clang3.6"
+      TARGET_COMPILER: "clang"
     
     # "arm64-v8a"
     # - MinGW_ROOT: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1"
@@ -119,6 +127,7 @@ environment:
       ANDROID_ABIs: "arm64-v8a"
       ANDROID_TARGET_API: "23"
       TOOLCHAIN_NAME: "aarch64-linux-android-clang3.6"
+      TARGET_COMPILER: "clang"
     
     # (mips64)(simulation?)
     # - MinGW_ROOT: "C:\\MinGW"
@@ -130,6 +139,7 @@ environment:
     #   ANDROID_ABIs: "mips64"
     #   ANDROID_TARGET_API: "23"
     #   TOOLCHAIN_NAME: "mips64el-linux-android-clang3.6"
+    #   TARGET_COMPILER: "clang"
     
     # (x86_64)(simulation?)
     - MinGW_ROOT: "C:\\MinGW"
@@ -141,6 +151,7 @@ environment:
       ANDROID_ABIs: "x86_64"
       ANDROID_TARGET_API: "23"
       TOOLCHAIN_NAME: "x86_64-linux-android-clang3.6"
+      TARGET_COMPILER: "clang"
     
     # (x86)(simulation?)
     - MinGW_ROOT: "C:\\MinGW"
@@ -151,6 +162,7 @@ environment:
       ANDROID_ABIs: "x86"
       ANDROID_TARGET_API: "23"
       TOOLCHAIN_NAME: "x86-linux-android-clang3.6"
+      TARGET_COMPILER: "clang"
     
     # 64 bit?
     # - MinGW_ROOT: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1"
@@ -260,8 +272,7 @@ before_build:
     - copy "C:\MinGW\bin\mingw32-make.exe" "C:\MinGW\bin\make.exe"
     - wmic pagefileset where NAME="C:\\pagefile.sys" set INITIALSIZE=4096, MAXIMUMSIZE=8192
     - cd cachebuild
-    # - cmake -G "Ninja" -DCMAKE_TOOLCHAIN_FILE:FILEPATH=%ANDROID_NDK%/build/cmake/android.toolchain.cmake -DANDROID_TOOLCHAIN_NAME=%TOOLCHAIN_NAME% -DANDROID_NATIVE_API_LEVEL=%ANDROID_TARGET_API% -DANDROID_ABI=%ANDROID_ABIs% -DANDROID_TOOLCHAIN=gcc -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
-    - cmake -G "Ninja" -DCMAKE_TOOLCHAIN_FILE:FILEPATH=%ANDROID_NDK%/build/cmake/android.toolchain.cmake -DANDROID_TOOLCHAIN_NAME=%TOOLCHAIN_NAME% -DANDROID_NATIVE_API_LEVEL=%ANDROID_TARGET_API% -DANDROID_ABI=%ANDROID_ABIs% -DANDROID_TOOLCHAIN=clang -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
+    - cmake -G "Ninja" -DCMAKE_TOOLCHAIN_FILE:FILEPATH=%ANDROID_NDK%/build/cmake/android.toolchain.cmake -DANDROID_TOOLCHAIN_NAME=%TOOLCHAIN_NAME% -DANDROID_NATIVE_API_LEVEL=%ANDROID_TARGET_API% -DANDROID_ABI=%ANDROID_ABIs% -DANDROID_TOOLCHAIN=%TARGET_COMPILER% -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
     # - cmake -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE:FILEPATH=%ANDROID_NDK%/build/cmake/android.toolchain.cmake -DANDROID_TOOLCHAIN_NAME=%TOOLCHAIN_NAME% -DANDROID_NATIVE_API_LEVEL=%ANDROID_TARGET_API% -DANDROID_ABI=%ANDROID_ABIs% -DANDROID_TOOLCHAIN=gcc -DBUILD_ANDROID:BOOL="ON" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../
 
 # make -j4

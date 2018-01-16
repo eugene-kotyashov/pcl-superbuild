@@ -124,7 +124,7 @@ macro(crosscompile_flann tag)
                -DBUILD_EXAMPLES:BOOL=OFF
                -DANDROID_ABI=$ENV{ANDROID_ABIs}
                -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
-               -DANDROID_TOOLCHAIN=clang
+               -DANDROID_TOOLCHAIN=$ENV{TARGET_COMPILER}
                -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
                -DANDROID_STL=gnustl_static
                -DANDROID_STL_FORCE_FEATURES:BOOL=ON
@@ -176,7 +176,7 @@ macro(crosscompile_boost tag)
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
       -DANDROID_ABI=$ENV{ANDROID_ABIs}
       -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
-      -DANDROID_TOOLCHAIN=clang
+      -DANDROID_TOOLCHAIN=$ENV{TARGET_COMPILER}
       -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
       -DANDROID_STL=gnustl_static
       -DANDROID_STL_FORCE_FEATURES:BOOL=ON
@@ -195,7 +195,7 @@ macro(crosscompile_boost_on_b2 tag)
   set(proj boost-${tag})
 
   if (tag eq "android")
-    # ./b2 toolset=clang cxxflags="-stdlib=libc++" threading=multi threadapi=pthread link=shared runtime-link=shared -j 6
+    # ./b2 toolset=$ENV{TARGET_COMPILER} cxxflags="-stdlib=libc++" threading=multi threadapi=pthread link=shared runtime-link=shared -j 6
     execute_process(
       COMMAND ./b2 toolset=gcc-android4.9 link=static runtime-link=static target-os=linux -stagedir
       WORKING_DIRECTORY ${source_prefix}/boost
@@ -203,18 +203,18 @@ macro(crosscompile_boost_on_b2 tag)
   endif()
   if (tag eq "ios-device")
     execute_process(
-      COMMAND ./b2 toolset=clang cflags="-arch arm64 -fvisibility=default -miphoneos-version-min=8.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/include/
+      COMMAND ./b2 toolset=$ENV{TARGET_COMPILER} cflags="-arch arm64 -fvisibility=default -miphoneos-version-min=8.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/include/
       WORKING_DIRECTORY ${source_prefix}/boost
     )
   endif()
   if(tag eq "ios-simulator")
     execute_process(
-      COMMAND ./b2 toolset=clang cflags="-arch i386 -fvisibility=default -miphoneos-version-min=8.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/include/
+      COMMAND ./b2 toolset=$ENV{TARGET_COMPILER} cflags="-arch i386 -fvisibility=default -miphoneos-version-min=8.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/include/
       WORKING_DIRECTORY ${source_prefix}/boost
     )
   endif()
 
-  # ./b2 toolset=clang cflags="-arch arm64 -fvisibility=default -miphoneos-version-min=5.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/include/
+  # ./b2 toolset=$ENV{TARGET_COMPILER} cflags="-arch arm64 -fvisibility=default -miphoneos-version-min=5.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/include/
   # --prefix=(インストールしたいディレクトリ)
 
 endmacro()
@@ -276,7 +276,7 @@ macro(crosscompile_pcl tag)
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
       -DANDROID_ABI=$ENV{ANDROID_ABIs}
       -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
-      -DANDROID_TOOLCHAIN=clang
+      -DANDROID_TOOLCHAIN=$ENV{TARGET_COMPILER}
       -DANDROID_STL=gnustl_static
       -DANDROID_STL_FORCE_FEATURES:BOOL=ON
       -DANDROID_CPP_FEATURES="rtti exceptions"
