@@ -128,6 +128,7 @@ macro(crosscompile_flann tag)
                -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
                -DANDROID_STL=gnustl_static
                -DANDROID_STL_FORCE_FEATURES:BOOL=ON
+               -DANDROID_CPP_FEATURES=rtti exceptions
                -DBUILD_TESTS:BOOL=OFF
                -DBUILD_DOC:BOOL=OFF
                -DBUILD_PYTHON_BINDINGS:BOOL=OFF
@@ -179,6 +180,7 @@ macro(crosscompile_boost tag)
       -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
       -DANDROID_STL=gnustl_static
       -DANDROID_STL_FORCE_FEATURES:BOOL=ON
+      -DANDROID_CPP_FEATURES=rtti exceptions
       -DBUILD_SHARED_LIBS:BOOL=OFF
   )
 
@@ -277,10 +279,12 @@ macro(crosscompile_pcl tag)
       -DANDROID_TOOLCHAIN=gcc
       -DANDROID_STL=gnustl_static
       -DANDROID_STL_FORCE_FEATURES:BOOL=ON
+      -DANDROID_CPP_FEATURES="rtti exceptions"
       -DBUILD_SHARED_LIBS:BOOL=OFF
       -DPCL_SHARED_LIBS:BOOL=OFF
       # Clang Build NG
       -DPCL_ENABLE_SSE:BOOL=OFF
+      -DWITH_CUDA:BOOL=OFF
       -DWITH_OPENGL:BOOL=OFF
       -DWITH_FZAPI:BOOL=OFF
       -DWITH_LIBUSB:BOOL=OFF
