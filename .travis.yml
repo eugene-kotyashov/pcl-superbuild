@@ -250,8 +250,9 @@ before_install:
 # dd if=/dev/zero of=/swapfile bs=1024 count=4194304
 # mkswap /swapfile
 # swapon /swapfile
+# - travis_wait 50 make -j4 VERBOSE=1 2>&1
 script:
-    - travis_wait 60 make -j4 VERBOSE=1 2>&1
+    - travis_wait 50 cmake --build .
 
 # after_success:
 #     - zip -r pcl-releases-$TRAVIS_OS_NAME-$GIT_TAG.zip ./CMakeExternals/Install

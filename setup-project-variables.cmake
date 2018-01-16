@@ -1,30 +1,5 @@
-
-
-
 find_package(PythonInterp REQUIRED)
 find_package(Git REQUIRED)
-
-
-
-set(vtk_module_defaults
-  -DVTK_Group_StandAlone:BOOL=OFF
-  -DVTK_Group_Rendering:BOOL=OFF
-  -DModule_vtkFiltersCore:BOOL=ON
-  -DModule_vtkFiltersModeling:BOOL=ON
-  -DModule_vtkFiltersSources:BOOL=ON
-  -DModule_vtkFiltersGeometry:BOOL=ON
-  -DModule_vtkIOGeometry:BOOL=ON
-  -DModule_vtkIOLegacy:BOOL=ON
-  -DModule_vtkIOXML:BOOL=ON
-  -DModule_vtkIOImage:BOOL=ON
-  -DModule_vtkIOPLY:BOOL=ON
-  -DModule_vtkIOInfovis:BOOL=ON
-  -DModule_vtkImagingCore:BOOL=ON
-  -DModule_vtkParallelCore:BOOL=ON
-  -DModule_vtkRenderingCore:BOOL=ON
-  -DModule_vtkRenderingFreeType:BOOL=ON
-)
-
 
 option(BUILD_ANDROID "Build for Android" ON)
 option(BUILD_IOS_DEVICE "Build for iOS device" OFF)
