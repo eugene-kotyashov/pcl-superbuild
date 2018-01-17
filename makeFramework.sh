@@ -15,6 +15,9 @@ make_pcl_framework ()
   boost_device_libs=`find $install/boost-ios-device -name *.a`
   flann_device_libs=`find $install/flann-ios-device -name *.a`
   # pcl_sim_libs=`find $install/pcl-ios-simulator $install/flann-ios-simulator $install/boost-iso-simulator -name *.a`
+  pcl_sim_libs=`find $install/pcl-ios-simulator -name *.a`
+  boost_sim_libs=`find $install/boost-iso-simulator -name *.a`
+  flann_sim_libs=`find $install/flann-ios-simulator -name *.a`
 
   # args -> version
   # version 1.7
@@ -38,8 +41,11 @@ make_pcl_framework ()
   # cp module.modulemap $pcl_framework/Modules/
 
   libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs
-  lipo -create $pcl_framework/pcl_device -output $pcl_framework/pcl
   # libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs
+  # libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs
+
+  # 
+  lipo -create $pcl_framework/pcl_device -output $pcl_framework/pcl
   # lipo -create $pcl_framework/pcl_device $pcl_framework/pcl_sim -output $pcl_framework/pcl
   rm $pcl_framework/pcl_*
 }

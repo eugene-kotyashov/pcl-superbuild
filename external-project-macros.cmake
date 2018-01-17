@@ -121,13 +121,13 @@ macro(crosscompile_flann tag)
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
                -DCMAKE_BUILD_TYPE:STRING=${build_type}
                -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
-               -DBUILD_EXAMPLES:BOOL=OFF
                -DANDROID_ABI=$ENV{ANDROID_ABIs}
                -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
                -DANDROID_TOOLCHAIN=$ENV{TARGET_COMPILER}
                -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
                -DANDROID_STL=gnustl_static
                -DANDROID_STL_FORCE_FEATURES:BOOL=ON
+               -DBUILD_EXAMPLES:BOOL=OFF
                -DBUILD_TESTS:BOOL=OFF
                -DBUILD_DOC:BOOL=OFF
                -DBUILD_C_BINDINGS:BOOL=OFF
@@ -233,7 +233,6 @@ macro(fetch_pcl)
   ExternalProject_Add(
     pcl-fetch
     SOURCE_DIR ${source_prefix}/pcl
-    # cmake release 3.10.0 or 3.6.x(3.8/3.9 NG)
     GIT_REPOSITORY git://github.com/PointCloudLibrary/pcl.git
     # official tags
     GIT_TAG pcl-1.8.1
@@ -288,6 +287,7 @@ macro(crosscompile_pcl tag)
       -DBUILD_SHARED_LIBS:BOOL=OFF
       -DPCL_SHARED_LIBS:BOOL=OFF
       -DPCL_ENABLE_SSE:BOOL=OFF
+      # Set Off Parameter(CMake Error)
       -DWITH_CUDA:BOOL=OFF
       -DWITH_OPENGL:BOOL=OFF
       -DWITH_FZAPI:BOOL=OFF
