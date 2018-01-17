@@ -126,8 +126,7 @@ macro(crosscompile_flann tag)
                -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
                -DANDROID_TOOLCHAIN=$ENV{TARGET_COMPILER}
                -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
-               # -DANDROID_STL=gnustl_static
-               -DANDROID_STL=c++_static
+               -DANDROID_STL=gnustl_static
                -DANDROID_STL_FORCE_FEATURES:BOOL=ON
                -DBUILD_TESTS:BOOL=OFF
                -DBUILD_DOC:BOOL=OFF
@@ -284,8 +283,7 @@ macro(crosscompile_pcl tag)
       -DANDROID_ABI=$ENV{ANDROID_ABIs}
       -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
       -DANDROID_TOOLCHAIN=$ENV{TARGET_COMPILER}
-      # -DANDROID_STL=gnustl_static
-      -DANDROID_STL=c++_static
+      -DANDROID_STL=gnustl_static
       -DANDROID_STL_FORCE_FEATURES:BOOL=ON
       -DBUILD_SHARED_LIBS:BOOL=OFF
       -DPCL_SHARED_LIBS:BOOL=OFF
