@@ -4,11 +4,13 @@ Windows
 [![Build status](https://ci.appveyor.com/api/projects/status/u8l4ixwdpysbx45h/branch/master?svg=true)](https://ci.appveyor.com/project/Sirokujira/pcl-superbuild/branch/master)
 
 Ubuntu/MacOSX
+[![Build Status](https://travis-ci.org/Sirokujira/pcl-superbuild.svg?branch=master)](https://travis-ci.org/Sirokujira/pcl-superbuild)
 
 pcl use libraries
-boost 1.60.0
+boost 1.60.0 [!custom boost](https://svn.boost.org/trac10/ticket/13230), [!source code](https://github.com/sirokujira/boost-build/)
 eigen 3.3.4
 flann 1.9.1
+qhull(2015.2?)
 
 
 Requirements:

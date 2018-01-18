@@ -203,20 +203,20 @@ macro(crosscompile_boost_on_b2 tag)
 
   set(proj boost-${tag})
 
-  if (tag eq "android")
+  if (${tag} eq "android")
     # ./b2 toolset=$ENV{TARGET_COMPILER} cxxflags="-stdlib=libc++" threading=multi threadapi=pthread link=shared runtime-link=shared -j 6
     execute_process(
       COMMAND ./b2 toolset=gcc-android4.9 link=static runtime-link=static target-os=linux -stagedir
       WORKING_DIRECTORY ${source_prefix}/boost
     )
   endif()
-  if (tag eq "ios-device")
+  if (${tag} eq "ios-device")
     execute_process(
       COMMAND ./b2 toolset=$ENV{TARGET_COMPILER} cflags="-arch arm64 -fvisibility=default -miphoneos-version-min=8.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/include/
       WORKING_DIRECTORY ${source_prefix}/boost
     )
   endif()
-  if(tag eq "ios-simulator")
+  if(${tag} eq "ios-simulator")
     execute_process(
       COMMAND ./b2 toolset=$ENV{TARGET_COMPILER} cflags="-arch i386 -fvisibility=default -miphoneos-version-min=8.0" architecture=arm target-os=iphone link=static threading=multi define=_LITTLE_ENDIAN include=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/include/
       WORKING_DIRECTORY ${source_prefix}/boost
@@ -273,12 +273,25 @@ macro(crosscompile_pcl tag)
   file(APPEND ${toolchain_file}
     "\nlist(APPEND CMAKE_FIND_ROOT_PATH ${install_prefix}/boost-${tag})\n")
 
+  # if (${tag} eq "ios-device")
+  #   # ios only
+  #   # framework wrapper
+  #   set(FRAMEWORK_BUNDLE_IDENTIFIER "com.company.framework")    # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
+  #   set(CODE_SIGN_IDENTITY "iPhone Developer")                  # <== Set to your preferred code sign identity, to see list:
+  #                                                               # /usr/bin/env xcrun security find-identity -v -p codesigning
+  #   set(DEPLOYMENT_TARGET 8.0)                                  # <== Set your deployment target version of iOS
+  #   set(DEVICE_FAMILY "1")                                      # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
+  #   file(APPEND ${toolchain_file}
+  #       "\nlist(APPEND CMAKE_FIND_ROOT_PATH ${CMAKE_SOURCE_DIR}/pclframeworks)\n")
+  #   )
+  # endif()
+
   ExternalProject_Add(
     ${proj}
     SOURCE_DIR ${source_prefix}/pcl
     DOWNLOAD_COMMAND ""
-    DEPENDS pcl-fetch boost-${tag} flann-${tag} eigen
-    # DEPENDS pcl-fetch boost-${tag} flann-${tag} qhull-${tag} eigen
+    # DEPENDS pcl-fetch boost-${tag} flann-${tag} eigen
+    DEPENDS pcl-fetch boost-${tag} flann-${tag} qhull-${tag} eigen
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
@@ -300,8 +313,8 @@ macro(crosscompile_pcl tag)
       -DWITH_OPENNI2:BOOL=OFF
       -DWITH_PCAP:BOOL=OFF
       -DWITH_PNG:BOOL=OFF
-      # -DWITH_QHULL:BOOL=ON
-      -DWITH_QHULL:BOOL=OFF
+      -DWITH_QHULL:BOOL=ON
+      # -DWITH_QHULL:BOOL=OFF
       -DWITH_QT:BOOL=OFF
       -DWITH_VTK:BOOL=OFF
       -DBUILD_CUDA:BOOL=OFF
@@ -326,7 +339,7 @@ macro(crosscompile_pcl tag)
       -DBUILD_people:BOOL=OFF
       -DBUILD_recognition:BOOL=ON
       -DBUILD_registration:BOOL=ON
-      # build error
+      # build error(files not UTF-8 or BOM Check ON?)
       -DBUILD_sample_consensus:BOOL=OFF
       -DBUILD_search:BOOL=ON
       -DBUILD_segmentation:BOOL=ON
@@ -374,3 +387,35 @@ macro(create_pcl_framework)
       DEPENDS pcl-ios-device
       COMMENT "Creating pcl.framework")
 endmacro()
+
+
+# macro(create_pcl_framework2)
+#     add_subdirectory(pclframeworks)
+# 
+#     set(FRAMEWORK_BUNDLE_IDENTIFIER "com.company.framework")    # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
+#     set(CODE_SIGN_IDENTITY "iPhone Developer")                  # <== Set to your preferred code sign identity, to see list:
+#                                                                 # /usr/bin/env xcrun security find-identity -v -p codesigning
+#     set(DEPLOYMENT_TARGET 8.0)                                  # <== Set your deployment target version of iOS
+#     set(DEVICE_FAMILY "1")                                      # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
+#     ExternalProject_Add(
+#       ${proj}
+#       SOURCE_DIR ${CMAKE_SOURCE_DIR}/pclframeworks
+#       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+#       CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
+#                  -DCMAKE_BUILD_TYPE:STRING=${build_type}
+#                  -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
+#     )
+# 
+#     add_custom_command(
+#       TARGET ${FRAMEWORK_NAME}
+#       POST_BUILD
+#       COMMAND /bin/bash -c "${CMAKE_CURRENT_LIST_DIR}/install_name.sh \${CMAKE_BINARY_DIR}/\${PRODUCT_NAME}.framework/\${PRODUCT_NAME}"
+#     )
+# 
+#     add_custom_command(
+#         TARGET ${FRAMEWORK_NAME}
+#         POST_BUILD
+#         COMMAND install_name_tool -id \"@rpath/\${PRODUCT_NAME}.framework/\${PRODUCT_NAME}\"
+#         \${BUILT_PRODUCTS_DIR}/\${PRODUCT_NAME}.framework/\${PRODUCT_NAME}
+#     )
+# endmacro()
