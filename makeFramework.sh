@@ -14,9 +14,9 @@ make_pcl_framework ()
   pcl_device_libs=`find $install/pcl-ios-device -name *.a`
   boost_device_libs=`find $install/boost-ios-device -name *.a`
   flann_device_libs=`find $install/flann-ios-device -name *.a`
-  # pcl_sim_libs=`find $install/pcl-ios-simulator $install/flann-ios-simulator $install/boost-iso-simulator -name *.a`
+  # pcl_sim_libs=`find $install/pcl-ios-simulator $install/flann-ios-simulator $install/boost-ios-simulator -name *.a`
   pcl_sim_libs=`find $install/pcl-ios-simulator -name *.a`
-  boost_sim_libs=`find $install/boost-iso-simulator -name *.a`
+  boost_sim_libs=`find $install/boost-ios-simulator -name *.a`
   flann_sim_libs=`find $install/flann-ios-simulator -name *.a`
 
   # args -> version

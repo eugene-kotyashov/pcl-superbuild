@@ -14,6 +14,7 @@ install_eigen()
 fetch_pcl()
 fetch_boost()
 fetch_flann()
+fetch_qhull()
 
 # Build overTime
 # compile_vtk()
@@ -32,12 +33,14 @@ if(BUILD_IOS_SIMULATOR)
 endif()
 
 foreach(tag ${tags})
-  # NG?
+  # Build overTime
   # crosscompile_vtk(${tag})
   crosscompile_boost(${tag})
-  # NG
   # crosscompile_boost_on_b2(${tag})
   crosscompile_flann(${tag})
+  crosscompile_qhull(${tag})
+
+  # use pcl
   crosscompile_pcl(${tag})
 endforeach()
 

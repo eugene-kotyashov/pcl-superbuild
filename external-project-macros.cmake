@@ -73,45 +73,6 @@ endmacro()
 macro(crosscompile_flann tag)
   set(proj flann-${tag})
   get_toolchain_file(${tag})
-  
-#   if(${tag} STREQUAL "android")
-#   elseif(${tag} STREQUAL  "ios-device")
-#     set(ios_platform "OS")
-#     ExternalProject_Add(
-#       ${proj}
-#       SOURCE_DIR ${source_prefix}/flann
-#       DOWNLOAD_COMMAND ""
-#       DEPENDS flann-fetch
-#       CMAKE_ARGS
-#         -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
-#         -DCMAKE_BUILD_TYPE:STRING=${build_type}
-#         -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
-#        # -DCMAKE_IOS_DEVELOPER_ROOT:${ios_root}
-#        # -DIOS_PLATFORM_LOCATION:${ios_platform}
-#        # -DBUILD_SHARED_LIBS:BOOL=OFF
-#         -DBUILD_EXAMPLES:BOOL=OFF
-#         -DBUILD_PYTHON_BINDINGS:BOOL=OFF
-#         -DBUILD_MATLAB_BINDINGS:BOOL=OFF
-#     )
-#   elseif(${tag} STREQUAL  "ios-simulator")
-#     set(ios_platform "SIMULATOR64")
-#     ExternalProject_Add(
-#       ${proj}
-#       SOURCE_DIR ${source_prefix}/flann
-#       DOWNLOAD_COMMAND ""
-#       DEPENDS flann-fetch
-#       CMAKE_ARGS
-#         -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
-#         -DCMAKE_BUILD_TYPE:STRING=${build_type}
-#         -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
-#        # -DCMAKE_IOS_DEVELOPER_ROOT:${ios_root}
-#        # -DIOS_PLATFORM_LOCATION:${ios_platform}
-#        # -DBUILD_SHARED_LIBS:BOOL=OFF
-#         -DBUILD_EXAMPLES:BOOL=OFF
-#         -DBUILD_PYTHON_BINDINGS:BOOL=OFF
-#         -DBUILD_MATLAB_BINDINGS:BOOL=OFF
-#     )
-#   endif ()
 
   ExternalProject_Add(
     ${proj}
@@ -138,6 +99,48 @@ macro(crosscompile_flann tag)
   force_build(${proj})
 endmacro()
 
+
+# qhull fetch
+macro(fetch_qhull)
+  ExternalProject_Add(
+    qhull-fetch
+    SOURCE_DIR ${source_prefix}/qhull
+    GIT_REPOSITORY git://github.com/qhull/qhull.git
+    # 
+    # GIT_TAG master
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND ""
+    INSTALL_COMMAND ""
+  )
+endmacro()
+
+#
+# qhull crosscompile
+#
+macro(crosscompile_qhull tag)
+  set(proj qhull-${tag})
+  get_toolchain_file(${tag})
+
+  ExternalProject_Add(
+    ${proj}
+    SOURCE_DIR ${source_prefix}/qhull
+    DOWNLOAD_COMMAND ""
+    DEPENDS qhull-fetch
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
+               -DCMAKE_BUILD_TYPE:STRING=${build_type}
+               -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
+               -DANDROID_ABI=$ENV{ANDROID_ABIs}
+               -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
+               -DANDROID_TOOLCHAIN=$ENV{TARGET_COMPILER}
+               -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
+               -DANDROID_STL=gnustl_static
+               -DANDROID_STL_FORCE_FEATURES:BOOL=ON
+               -DBUILD_PYTHON_BINDINGS:BOOL=OFF
+               -DBUILD_MATLAB_BINDINGS:BOOL=OFF
+  )
+
+  force_build(${proj})
+endmacro()
 
 #
 # Boost fetch
@@ -275,6 +278,7 @@ macro(crosscompile_pcl tag)
     SOURCE_DIR ${source_prefix}/pcl
     DOWNLOAD_COMMAND ""
     DEPENDS pcl-fetch boost-${tag} flann-${tag} eigen
+    # DEPENDS pcl-fetch boost-${tag} flann-${tag} qhull-${tag} eigen
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
@@ -360,7 +364,6 @@ macro(crosscompile_pcl tag)
 
   force_build(${proj})
 endmacro()
-
 
 
 macro(create_pcl_framework)
