@@ -159,11 +159,6 @@ matrix:
 # cd android-ndk-r8c
 ###
 # iOS?
-# if [ "$CXX" = "clang++" ]; then export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode6-Beta6.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk";
-# if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7";
-# export IOS_PLATFORM_LOCATION="OS";
-# export CXXFLAGS="-std=c++11 -arch armv7s -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
-# if ng
 # cmake -DBUILD_ANDROID:BOOL=OFF -DBUILD_IOS_DEVICE:BOOL=ON -BUILD_IOS_SIMULATOR:BOOL=OFF ../;
 # Travis CI osx image?
 # https://docs.travis-ci.com/user/osx-ci-environment/
@@ -174,17 +169,7 @@ matrix:
 #       git reset --hard origin/master;
 #       brew update;
 # cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -BUILD_IOS_SIMULATOR:BOOL="OFF" ../;
-# CMake 3.6.2
-# wget --no-check-certificate -qO- https://cmake.org/files/v3.6/cmake-3.6.2-Darwin-x86_64.tar.gz -O /tmp/cmake-3.6.2-Darwin-x86_64.tar.gz;
-# tar -xvf /tmp/cmake-3.6.2-Darwin-x86_64.tar.gz;
-# export PATH=$PWD/cmake-3.6.2-Darwin-x86_64/bin/:$PATH;
 ###
-# 
-# export IOS_PLATFORM_LOCATION="OS";
-# export CXXFLAGS="-std=c++11 -arch armv7 armv7s arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
-# 
-# xcode-select -print-path;
-# old()
 # brew tap homebrew/boneyard;
 # brew install clang-omp;
 # export C_INCLUDE_PATH=/usr/local/Cellar/libiomp/!date!/include/libiomp:$C_INCLUDE_PATH;
@@ -197,9 +182,6 @@ matrix:
 # alias clang-omp++='/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib';
 # Boost Build?
 # http://blog.livedoor.jp/tek_nishi/archives/7603570.html
-# sudo ln -s /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/usr/include /usr/include/arm
-# build Timeout 
-# cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
 # use?
 # brew tap totakke/openni2;
 # brew install openni2;
