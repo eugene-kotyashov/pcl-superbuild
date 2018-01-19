@@ -290,8 +290,9 @@ macro(crosscompile_pcl tag)
     ${proj}
     SOURCE_DIR ${source_prefix}/pcl
     DOWNLOAD_COMMAND ""
-    # DEPENDS pcl-fetch boost-${tag} flann-${tag} eigen
-    DEPENDS pcl-fetch boost-${tag} flann-${tag} qhull-${tag} eigen
+    DEPENDS pcl-fetch boost-${tag} flann-${tag} eigen
+    # iOS build Error.
+    # DEPENDS pcl-fetch boost-${tag} flann-${tag} qhull-${tag} eigen
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
@@ -313,8 +314,9 @@ macro(crosscompile_pcl tag)
       -DWITH_OPENNI2:BOOL=OFF
       -DWITH_PCAP:BOOL=OFF
       -DWITH_PNG:BOOL=OFF
-      -DWITH_QHULL:BOOL=ON
-      # -DWITH_QHULL:BOOL=OFF
+      # iOS build Error.
+      # -DWITH_QHULL:BOOL=ON
+      -DWITH_QHULL:BOOL=OFF
       -DWITH_QT:BOOL=OFF
       -DWITH_VTK:BOOL=OFF
       -DBUILD_CUDA:BOOL=OFF
@@ -378,6 +380,62 @@ macro(crosscompile_pcl tag)
   force_build(${proj})
 endmacro()
 
+
+#
+# ios device wrapper compile
+# 
+macro(ios_device_wrapper_compile)
+  set(proj ios_device_wrapper)
+  get_toolchain_file(ios-device)
+  get_try_run_results_file(${proj})
+
+  # framework wrapper
+  set(FRAMEWORK_NAME "pcl")                                   # <== Set to your framework's name
+  set(FRAMEWORK_BUNDLE_IDENTIFIER "com.company.framework")    # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
+  set(CODE_SIGN_IDENTITY "iPhone Developer")                  # <== Set to your preferred code sign identity, to see list:
+                                                              # /usr/bin/env xcrun security find-identity -v -p codesigning
+  set(DEPLOYMENT_TARGET 8.0)                                  # <== Set your deployment target version of iOS
+  set(DEVICE_FAMILY "1,2")                                    # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
+
+  ExternalProject_Add(
+    ${proj}
+    SOURCE_DIR ${CMAKE_SOURCE_DIR}/iOSWrapper
+    DOWNLOAD_COMMAND ""
+    CMAKE_ARGS
+      -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
+      -DCMAKE_BUILD_TYPE:STRING=${build_type}
+      -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
+  )
+
+  force_build(${proj})
+endmacro()
+
+#
+# ios simulator wrapper compile
+# 
+macro(ios_simulator_wrapper_compile)
+  set(proj ios_simulator_wrapper)
+  get_toolchain_file(ios-simulator)
+  get_try_run_results_file(${proj})
+
+  set(FRAMEWORK_BUNDLE_IDENTIFIER "com.company.framework")    # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
+  set(CODE_SIGN_IDENTITY "iPhone Developer")                  # <== Set to your preferred code sign identity, to see list:
+                                                              # /usr/bin/env xcrun security find-identity -v -p codesigning
+  set(DEPLOYMENT_TARGET 8.0)                                  # <== Set your deployment target version of iOS
+  set(DEVICE_FAMILY "1,2")                                     # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
+
+  ExternalProject_Add(
+    ${proj}
+    SOURCE_DIR ${CMAKE_SOURCE_DIR}/iOSWrapper
+    DOWNLOAD_COMMAND ""
+    CMAKE_ARGS
+      -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
+      -DCMAKE_BUILD_TYPE:STRING=${build_type}
+      -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
+  )
+
+  force_build(${proj})
+endmacro()
 
 macro(create_pcl_framework)
     add_custom_target(pclFramework ALL
