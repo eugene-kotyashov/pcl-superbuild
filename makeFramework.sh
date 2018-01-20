@@ -10,26 +10,27 @@ fi
 #------------------------------------------------------------------------------
 make_pcl_framework ()
 {
-  device_folder = "ios-device"
-  simulator_folder = "ios-simulator"
+  # device_folder = "ios-device"
+  # simulator_folder = "ios-simulator"
 
   # pcl_device_libs=`find $install/pcl-${device_folder} $install/flann-${device_folder} $install/boost-${device_folder} -name *.a`
-  pcl_device_libs=`find $install/pcl-${device_folder} -name *.a`
-  boost_device_libs=`find $install/boost-${device_folder} -name *.a`
-  flann_device_libs=`find $install/flann-${device_folder} -name *.a`
+  pcl_device_libs=`find $install/pcl-ios-device -name *.a`
+  boost_device_libs=`find $install/boost-ios-device -name *.a`
+  flann_device_libs=`find $install/flann-ios-device -name *.a`
   # pcl_sim_libs=`find $install/pcl-${simulator_folder} $install/flann-${simulator_folder} $install/boost-${simulator_folder} -name *.a`
-  pcl_sim_libs=`find $install/pcl-${simulator_folder} -name *.a`
-  boost_sim_libs=`find $install/boost-${simulator_folder} -name *.a`
-  flann_sim_libs=`find $install/flann-${simulator_folder} -name *.a`
+  pcl_sim_libs=`find $install/pcl-ios-simulator -name *.a`
+  boost_sim_libs=`find $install/boost-ios-simulator -name *.a`
+  flann_sim_libs=`find $install/flann-ios-simulator -name *.a`
 
   # args -> version
   # version 1.7
   # pcl_header_dir=$install/pcl-${device_folder}/include/pcl-1.7
   # version 1.8
-  pcl_header_dir=$install/pcl-${device_folder}/include/pcl-1.8
-  boost_header_dir=$install/boost-${device_folder}/include
+  pcl_header_dir=$install/pcl-ios-device/include/pcl-1.8
+  boost_header_dir=$install/boost-ios-device/include
   eigen_header_dir=$install/eigen
-  flann_header_dir=$install/flann-${device_folder}/include
+  flann_header_dir=$install/flann-ios-device/include
+  qhull_header_dir=$install/qhull-ios-device/include
 
   pcl_framework=$install/frameworks/pcl.framework
 

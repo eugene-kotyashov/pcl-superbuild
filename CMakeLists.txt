@@ -14,8 +14,7 @@ install_eigen()
 fetch_pcl()
 fetch_boost()
 fetch_flann()
-# iOS build Error.
-# fetch_qhull()
+fetch_qhull()
 
 # Build overTime
 # compile_vtk()
@@ -39,22 +38,22 @@ foreach(tag ${tags})
   crosscompile_boost(${tag})
   # crosscompile_boost_on_b2(${tag})
   crosscompile_flann(${tag})
-  # iOS build Error.
-  # crosscompile_qhull(${tag})
+  crosscompile_qhull(${tag})
 
   # use pcl
   crosscompile_pcl(${tag})
 endforeach()
 
-if (BUILD_IOS_DEVICE)
-  ios_device_wrapper_compile()
-endif()
+# if (BUILD_IOS_DEVICE)
+#   # ios_simulator_wrapper_compile()
+#   # ios_device_wrapper_compile()
+# endif()
 
 # if (BUILD_IOS_SIMULATOR)
 #   ios_simulator_wrapper_compile()
 # endif()
 
-# if (BUILD_IOS_DEVICE)
-#   create_pcl_framework()
+if (BUILD_IOS_DEVICE)
+  create_pcl_framework()
 #   # create_pcl_framework2()
-# endif()
+endif()
