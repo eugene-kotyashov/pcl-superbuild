@@ -6,7 +6,7 @@ set (APPLE True)
 set (IOS True)
 
 # Developper Settings
-set(IOS_PLATFORM "SIMULATOR64")
+set(IOS_PLATFORM "OS")
 set(ENABLE_BITCODE 0)
 
 # Required as of cmake 2.8.10
@@ -21,8 +21,8 @@ endif (CMAKE_UNAME)
 
 # Force the compilers to Clang for iOS
 include (CMakeForceCompiler)
-set(CMAKE_C_COMPILER /usr/bin/clang Clang)
-set(CMAKE_CXX_COMPILER /usr/bin/clang++ Clang)
+set(CMAKE_C_COMPILER /usr/bin/clang)
+set(CMAKE_CXX_COMPILER /usr/bin/clang++)
 set(CMAKE_AR ar CACHE FILEPATH "" FORCE)
 
 # Skip the platform compiler checks for cross compiling
