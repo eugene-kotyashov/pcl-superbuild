@@ -387,20 +387,20 @@ endmacro()
 macro(ios_device_wrapper_compile)
   set(proj ios_device_wrapper)
   get_toolchain_file(ios-device)
-  get_try_run_results_file(${proj})
 
-  # framework wrapper
-  set(FRAMEWORK_NAME "pcl")                                   # <== Set to your framework's name
-  set(FRAMEWORK_BUNDLE_IDENTIFIER "com.company.framework")    # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
-  set(CODE_SIGN_IDENTITY "iPhone Developer")                  # <== Set to your preferred code sign identity, to see list:
-                                                              # /usr/bin/env xcrun security find-identity -v -p codesigning
-  set(DEPLOYMENT_TARGET 8.0)                                  # <== Set your deployment target version of iOS
-  set(DEVICE_FAMILY "1,2")                                    # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
+  # framework.plist setting
+  set(FRAMEWORK_NAME "pcl")                                     # <== Set to your framework's name
+  set(FRAMEWORK_BUNDLE_IDENTIFIER "com.sirokujira.framework")   # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
+  set(CODE_SIGN_IDENTITY "iPhone Developer")                    # <== Set to your preferred code sign identity, to see list:
+                                                                # /usr/bin/env xcrun security find-identity -v -p codesigning
+  set(DEPLOYMENT_TARGET 8.0)                                    # <== Set your deployment target version of iOS
+  set(DEVICE_FAMILY "1,2")                                      # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
 
   ExternalProject_Add(
     ${proj}
     SOURCE_DIR ${CMAKE_SOURCE_DIR}/iOSWrapper
     DOWNLOAD_COMMAND ""
+    CMAKE_GENERATOR "Xcode"
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
@@ -408,6 +408,13 @@ macro(ios_device_wrapper_compile)
   )
 
   force_build(${proj})
+
+  add_custom_target(pclFramework ALL
+      COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh device
+      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+      DEPENDS pcl-ios-device
+      COMMENT "Creating pcl.framework")
+
 endmacro()
 
 #
@@ -416,18 +423,19 @@ endmacro()
 macro(ios_simulator_wrapper_compile)
   set(proj ios_simulator_wrapper)
   get_toolchain_file(ios-simulator)
-  get_try_run_results_file(${proj})
 
-  set(FRAMEWORK_BUNDLE_IDENTIFIER "com.company.framework")    # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
-  set(CODE_SIGN_IDENTITY "iPhone Developer")                  # <== Set to your preferred code sign identity, to see list:
-                                                              # /usr/bin/env xcrun security find-identity -v -p codesigning
-  set(DEPLOYMENT_TARGET 8.0)                                  # <== Set your deployment target version of iOS
-  set(DEVICE_FAMILY "1,2")                                     # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
+  # framework.plist setting
+  set(FRAMEWORK_BUNDLE_IDENTIFIER "com.sirokujira.framework")   # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
+  set(CODE_SIGN_IDENTITY "iPhone Developer")                    # <== Set to your preferred code sign identity, to see list:
+                                                                # /usr/bin/env xcrun security find-identity -v -p codesigning
+  set(DEPLOYMENT_TARGET 8.0)                                    # <== Set your deployment target version of iOS
+  set(DEVICE_FAMILY "1,2")                                      # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
 
   ExternalProject_Add(
     ${proj}
     SOURCE_DIR ${CMAKE_SOURCE_DIR}/iOSWrapper
     DOWNLOAD_COMMAND ""
+    CMAKE_GENERATOR "Xcode"
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
@@ -435,6 +443,13 @@ macro(ios_simulator_wrapper_compile)
   )
 
   force_build(${proj})
+
+  add_custom_target(pclFramework ALL
+      COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh simulator
+      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+      DEPENDS pcl-ios-simulator
+      COMMENT "Creating pcl.framework")
+
 endmacro()
 
 macro(create_pcl_framework)

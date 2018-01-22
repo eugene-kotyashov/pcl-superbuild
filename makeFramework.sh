@@ -33,9 +33,10 @@ make_pcl_framework ()
   qhull_header_dir=$install/qhull-ios-device/include
 
   pcl_framework=$install/frameworks/pcl.framework
-
   mkdir -p $pcl_framework
+  
   rm -rf $pcl_framework/*
+  # Public Header
   mkdir $pcl_framework/Headers
   cp -r $pcl_header_dir/* $pcl_framework/Headers/
   cp -r $boost_header_dir/* $pcl_framework/Headers/
@@ -58,8 +59,88 @@ make_pcl_framework ()
 
 
 #------------------------------------------------------------------------------
+make_pcl_framework_device ()
+{
+  # すでに存在する device 用の pcl.Framework に対して外部ライブラリを取り込む
+  pcl_device_libs=`find $install/pcl-ios-device -name *.a`
+  boost_device_libs=`find $install/boost-ios-device -name *.a`
+  flann_device_libs=`find $install/flann-ios-device -name *.a`
+  # ioswrapper_device_libs=$install/ioswrapper-ios-device -name *.a`
+
+  # args -> version
+  # version 1.8
+  pcl_header_dir=$install/pcl-ios-device/include/pcl-1.8
+  boost_header_dir=$install/boost-ios-device/include
+  eigen_header_dir=$install/eigen
+  flann_header_dir=$install/flann-ios-device/include
+  qhull_header_dir=$install/qhull-ios-device/include
+  # ioswrapper_header_dir=$install/ioswrapper-ios-device/include
+
+  pcl_framework=$install/frameworks-device/pcl.framework
+
+  # Public Header
+  mkdir $pcl_framework/Headers
+  cp -r $pcl_header_dir/* $pcl_framework/Headers/
+  cp -r $boost_header_dir/* $pcl_framework/Headers/
+  cp -r $eigen_header_dir/* $pcl_framework/Headers/
+  cp -r $flann_header_dir/* $pcl_framework/Headers/
+  # cp -r $ioswrapper_header_dir/* $pcl_framework/Headers/
+
+  # mkdir $pcl_framework/Modules
+  # cp module.modulemap $pcl_framework/Modules/
+
+  libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs
+
+  # Xcode で生成した framework と合わせる
+  current_pcl_framework=./iOSWrapper/build/Release/iPhone-device/pcl.framework
+  lipo -create $pcl_framework/pcl_device -output $current_pcl_framework/pcl
+}
+
+make_pcl_framework_simulator ()
+{
+  # すでに存在する simulation 用の pcl.Framework に対して外部ライブラリを取り込む
+  pcl_sim_libs=`find $install/pcl-ios-simulator -name *.a`
+  boost_sim_libs=`find $install/boost-ios-simulator -name *.a`
+  flann_sim_libs=`find $install/flann-ios-simulator -name *.a`
+  # ioswrapper_sim_libs=$install/ioswrapper-ios-simulator -name *.a`
+
+  # args -> version
+  # version 1.8
+  pcl_header_dir=$install/pcl-ios-simulator/include/pcl-1.8
+  boost_header_dir=$install/boost-ios-simulator/include
+  eigen_header_dir=$install/eigen
+  flann_header_dir=$install/flann-ios-simulator/include
+  qhull_header_dir=$install/qhull-ios-simulator/include
+  # ioswrapper_header_dir=$install/ioswrapper-ios-simulator/include
+
+  pcl_framework=$install/frameworks-simulator/pcl.framework
+
+  # Public Header
+  mkdir $pcl_framework/Headers
+  cp -r $pcl_header_dir/* $pcl_framework/Headers/
+  cp -r $boost_header_dir/* $pcl_framework/Headers/
+  cp -r $eigen_header_dir/* $pcl_framework/Headers/
+  cp -r $flann_header_dir/* $pcl_framework/Headers/
+  # cp -r $ioswrapper_header_dir/* $pcl_framework/Headers/
+
+  # mkdir $pcl_framework/Modules
+  # cp module.modulemap $pcl_framework/Modules/
+
+  libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs
+  # lipo -create $pcl_framework/pcl_sim -output $pcl_framework/pcl
+  # Xcode で生成した framework と合わせる
+  current_pcl_framework=./iOSWrapper/build/Release/iPhone-simulator/pcl.framework
+  lipo -create $pcl_framework/pcl_sim -output $current_pcl_framework/pcl
+}
+
+
+#------------------------------------------------------------------------------
 if [ "$1" == "pcl" ]; then
   make_pcl_framework
+elif [ "$1" == "device" ]; then
+  make_pcl_framework_device
+elif [ "$1" == "simulator" ]; then
+  make_pcl_framework_simulator
 else
   echo "Usage: $0 pcl"
   exit 1
