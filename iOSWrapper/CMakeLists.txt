@@ -1,5 +1,12 @@
 cmake_minimum_required (VERSION 3.7)
 
+set(FRAMEWORK_NAME pcl)
+set(CODE_SIGN_IDENTITY "iPhone Developer")                  # <== Set to your preferred code sign identity, to see list:
+                                                            # /usr/bin/env xcrun security find-identity -v -p codesigning
+set(DEPLOYMENT_TARGET 8.0)                                 # <== Set your deployment target version of iOS
+set(DEVICE_FAMILY "1,2")                                    # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
+set(DEVELOPMENT_TEAM_ID "Toru Oonuma")                      # <== Set to your team ID from Apple
+
 # Wrapper
 set(LIBRARY_SOURCE
     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh
@@ -87,12 +94,12 @@ include_directories(${CMAKE_BINARY_DIR}/pcl-ios-device/include)
 # link_directories(${CMAKE_BINARY_DIR}/CMakeExternals/Install/flann-ios-simulator)
 # link_directories(${CMAKE_BINARY_DIR}/CMakeExternals/Install/pcl-ios-device)
 # link_directories(${CMAKE_BINARY_DIR}/CMakeExternals/Install/pcl-ios-simulator)
-target_link_libraries(${boost_device_libraryfiles})
-target_link_libraries(${boost_simulation_libraryfiles})
-target_link_libraries(${flann_device_libraryfiles})
-target_link_libraries(${flann_simulation_libraryfiles})
-target_link_libraries(${pcl_device_libraryfiles})
-target_link_libraries(${pcl_simulation_libraryfiles})
+# target_link_libraries(${boost_device_libraryfiles})
+# target_link_libraries(${boost_simulation_libraryfiles})
+# target_link_libraries(${flann_device_libraryfiles})
+# target_link_libraries(${flann_simulation_libraryfiles})
+# target_link_libraries(${pcl_device_libraryfiles})
+# target_link_libraries(${pcl_simulation_libraryfiles})
 
 set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     FRAMEWORK TRUE
@@ -104,7 +111,6 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     # "compatibility version" in semantic format in Mach-O binary file
     SOVERSION 1.0.0
     PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh"
-    # PRIVATE_HEADER ${boost_includefiles} ${flann_includefiles} ${eigen_includefiles} ${pcl_includefiles} 
     XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY ${CODE_SIGN_IDENTITY}
     XCODE_ATTRIBUTE_DEVELOPMENT_TEAM ${DEVELOPMENT_TEAM_ID}
