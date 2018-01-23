@@ -18,7 +18,7 @@ public:
     PointCloudLibraryWrapper() {std::cout << "PointCloudLibraryWrapper Created." << std::endl;}
     ~PointCloudLibraryWrapper() {std::cout << "PointCloudLibraryWrapper Destroyed." << std::endl;}
 
-	int PrintFoo();
+    int PrintFoo();
     std::string foo;
 private:
 };

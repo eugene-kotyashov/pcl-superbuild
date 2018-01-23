@@ -273,19 +273,6 @@ macro(crosscompile_pcl tag)
   file(APPEND ${toolchain_file}
     "\nlist(APPEND CMAKE_FIND_ROOT_PATH ${install_prefix}/boost-${tag})\n")
 
-  # if (${tag} eq "ios-device")
-  #   # ios only
-  #   # framework wrapper
-  #   set(FRAMEWORK_BUNDLE_IDENTIFIER "com.company.framework")    # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
-  #   set(CODE_SIGN_IDENTITY "iPhone Developer")                  # <== Set to your preferred code sign identity, to see list:
-  #                                                               # /usr/bin/env xcrun security find-identity -v -p codesigning
-  #   set(DEPLOYMENT_TARGET 8.0)                                  # <== Set your deployment target version of iOS
-  #   set(DEVICE_FAMILY "1")                                      # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
-  #   file(APPEND ${toolchain_file}
-  #       "\nlist(APPEND CMAKE_FIND_ROOT_PATH ${CMAKE_SOURCE_DIR}/pclframeworks)\n")
-  #   )
-  # endif()
-
   ExternalProject_Add(
     ${proj}
     SOURCE_DIR ${source_prefix}/pcl
@@ -394,6 +381,7 @@ macro(ios_device_wrapper_compile)
                                                                 # /usr/bin/env xcrun security find-identity -v -p codesigning
   set(DEPLOYMENT_TARGET 8.0)                                    # <== Set your deployment target version of iOS
   set(DEVICE_FAMILY "1,2")                                      # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
+  set(DEVELOPMENT_TEAM_ID "AAAAAAAA")                           # <== Set to your team ID from Apple
 
   ExternalProject_Add(
     ${proj}
@@ -424,11 +412,13 @@ macro(ios_simulator_wrapper_compile)
   get_toolchain_file(ios-simulator)
 
   # framework.plist setting
+  set(FRAMEWORK_NAME "pcl")                                     # <== Set to your framework's name
   set(FRAMEWORK_BUNDLE_IDENTIFIER "com.sirokujira.framework")   # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
   set(CODE_SIGN_IDENTITY "iPhone Developer")                    # <== Set to your preferred code sign identity, to see list:
                                                                 # /usr/bin/env xcrun security find-identity -v -p codesigning
   set(DEPLOYMENT_TARGET 8.0)                                    # <== Set your deployment target version of iOS
   set(DEVICE_FAMILY "1,2")                                      # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
+  set(DEVELOPMENT_TEAM_ID "AAAAAAAA")                           # <== Set to your team ID from Apple
 
   ExternalProject_Add(
     ${proj}

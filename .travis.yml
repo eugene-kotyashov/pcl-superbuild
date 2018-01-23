@@ -226,6 +226,7 @@ before_install:
       brew prune;
       brew update >/dev/null;
       brew install llvm;
+      brew install ninja;
 
       brew install ccache;
       export PATH="/usr/local/opt/ccache/libexec:$PATH";
