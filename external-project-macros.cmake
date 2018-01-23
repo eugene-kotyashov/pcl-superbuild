@@ -290,9 +290,8 @@ macro(crosscompile_pcl tag)
     ${proj}
     SOURCE_DIR ${source_prefix}/pcl
     DOWNLOAD_COMMAND ""
-    DEPENDS pcl-fetch boost-${tag} flann-${tag} eigen
-    # iOS build Error.
-    # DEPENDS pcl-fetch boost-${tag} flann-${tag} qhull-${tag} eigen
+    # DEPENDS pcl-fetch boost-${tag} flann-${tag} eigen
+    DEPENDS pcl-fetch boost-${tag} flann-${tag} qhull-${tag} eigen
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
@@ -314,9 +313,8 @@ macro(crosscompile_pcl tag)
       -DWITH_OPENNI2:BOOL=OFF
       -DWITH_PCAP:BOOL=OFF
       -DWITH_PNG:BOOL=OFF
-      # iOS build Error.
-      # -DWITH_QHULL:BOOL=ON
-      -DWITH_QHULL:BOOL=OFF
+      # -DWITH_QHULL:BOOL=OFF
+      -DWITH_QHULL:BOOL=ON
       -DWITH_QT:BOOL=OFF
       -DWITH_VTK:BOOL=OFF
       -DBUILD_CUDA:BOOL=OFF
@@ -348,6 +346,7 @@ macro(crosscompile_pcl tag)
       -DBUILD_surface:BOOL=ON
       # -DBUILD_surface_on_nurbs:BOOL=ON
       -DBUILD_surface_on_nurbs:BOOL=OFF
+      # build time less
       # -DBUILD_tools:BOOL=ON
       -DBUILD_tools:BOOL=OFF
       # -DBUILD_tracking:BOOL=ON

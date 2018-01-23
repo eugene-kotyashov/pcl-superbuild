@@ -3,9 +3,10 @@ cmake_minimum_required (VERSION 3.7)
 set(FRAMEWORK_NAME pcl)
 set(CODE_SIGN_IDENTITY "iPhone Developer")                  # <== Set to your preferred code sign identity, to see list:
                                                             # /usr/bin/env xcrun security find-identity -v -p codesigning
-set(DEPLOYMENT_TARGET 8.0)                                 # <== Set your deployment target version of iOS
+set(FRAMEWORK_BUNDLE_IDENTIFIER "com.company.framework")    # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
+set(DEPLOYMENT_TARGET 8.0)                                  # <== Set your deployment target version of iOS
 set(DEVICE_FAMILY "1,2")                                    # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
-set(DEVELOPMENT_TEAM_ID "Toru Oonuma")                      # <== Set to your team ID from Apple
+set(DEVELOPMENT_TEAM_ID "AAAAAAAA")                         # <== Set to your team ID from Apple
 
 # Wrapper
 set(LIBRARY_SOURCE
@@ -101,6 +102,7 @@ include_directories(${CMAKE_BINARY_DIR}/pcl-ios-device/include)
 # target_link_libraries(${pcl_device_libraryfiles})
 # target_link_libraries(${pcl_simulation_libraryfiles})
 
+# https://cmake.org/cmake/help/v3.10/prop_tgt/FRAMEWORK.html
 set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     FRAMEWORK TRUE
     FRAMEWORK_VERSION A
@@ -113,10 +115,11 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh"
     XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY ${CODE_SIGN_IDENTITY}
-    XCODE_ATTRIBUTE_DEVELOPMENT_TEAM ${DEVELOPMENT_TEAM_ID}
+    # XCODE_ATTRIBUTE_DEVELOPMENT_TEAM ${DEVELOPMENT_TEAM_ID}
     XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
     XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
 )
+
 
 # Symbol visibility setup, COMPILE_FLAGS only affect C++ so for Objective C we
 # have to use XCODE_ATTRIBUTE_OTHER_CFLAGS.
