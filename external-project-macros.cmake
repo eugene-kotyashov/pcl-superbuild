@@ -396,11 +396,37 @@ macro(ios_device_wrapper_compile)
 
   force_build(${proj})
 
-  add_custom_target(pclFramework ALL
+  # All is UnixMakefile only?
+  # add_custom_target(pclFramework ALL
+  add_custom_target(pclFramework
       COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh device
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
       DEPENDS pcl-ios-device
-      COMMENT "Creating pcl.framework")
+      COMMENT "Creating device pcl.framework")
+
+  # # Codesign the framework in it's new spot
+  # add_custom_command(
+  #     TARGET
+  #     ${FRAMEWORK_NAME}
+  #     POST_BUILD COMMAND /bin/sh -c
+  #     \"COMMAND_DONE=0 \;
+  #     if codesign --force --verbose
+  #         ${CMAKE_BINARY_DIR}/CMakeExternals/Install/frameworks-device/pcl.framework
+  #         --sign ${CODE_SIGN_IDENTITY}
+  #         \&\>/dev/null \; then
+  #         COMMAND_DONE=1 \;
+  #     fi \;
+  #     if codesign --force --verbose
+  #         \${BUILT_PRODUCTS_DIR}/frameworks-device/pcl.framework
+  #         --sign ${CODE_SIGN_IDENTITY}
+  #         \&\>/dev/null \; then
+  #         COMMAND_DONE=1 \;
+  #     fi \;
+  #     if [ \\$$COMMAND_DONE -eq 0 ] \; then
+  #         echo Framework codesign failed \;
+  #         exit 1 \;
+  #     fi\"
+  # )
 
 endmacro()
 
@@ -433,11 +459,37 @@ macro(ios_simulator_wrapper_compile)
 
   force_build(${proj})
 
-  add_custom_target(pclFramework ALL
+  # All is UnixMakefile only?
+  # add_custom_target(pclFramework ALL
+  add_custom_target(pclFramework
       COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh simulator
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
       DEPENDS pcl-ios-simulator
-      COMMENT "Creating pcl.framework")
+      COMMENT "Creating simulator pcl.framework")
+
+  # # Codesign the framework in it's new spot
+  # add_custom_command(
+  #     TARGET
+  #     ${FRAMEWORK_NAME}
+  #     POST_BUILD COMMAND /bin/sh -c
+  #     \"COMMAND_DONE=0 \;
+  #     if codesign --force --verbose
+  #         ${CMAKE_BINARY_DIR}/CMakeExternals/Install/frameworks-simulator/pcl.framework
+  #         --sign ${CODE_SIGN_IDENTITY}
+  #         \&\>/dev/null \; then
+  #         COMMAND_DONE=1 \;
+  #     fi \;
+  #     if codesign --force --verbose
+  #         \${BUILT_PRODUCTS_DIR}/frameworks-simulator/pcl.framework
+  #         --sign ${CODE_SIGN_IDENTITY}
+  #         \&\>/dev/null \; then
+  #         COMMAND_DONE=1 \;
+  #     fi \;
+  #     if [ \\$$COMMAND_DONE -eq 0 ] \; then
+  #         echo Framework codesign failed \;
+  #         exit 1 \;
+  #     fi\"
+  # )
 
 endmacro()
 
