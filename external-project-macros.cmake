@@ -375,7 +375,7 @@ macro(ios_device_wrapper_compile)
   get_toolchain_file(ios-device)
 
   # framework.plist setting
-  set(FRAMEWORK_NAME "pcl")                                     # <== Set to your framework's name
+  set(FRAMEWORK_NAME pcl)                                       # <== Set to your framework's name
   set(FRAMEWORK_BUNDLE_IDENTIFIER "com.sirokujira.framework")   # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
   set(CODE_SIGN_IDENTITY "iPhone Developer")                    # <== Set to your preferred code sign identity, to see list:
                                                                 # /usr/bin/env xcrun security find-identity -v -p codesigning
@@ -394,16 +394,36 @@ macro(ios_device_wrapper_compile)
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
   )
 
-  force_build(${proj})
-
-  # All is UnixMakefile only?
-  # add_custom_target(pclFramework ALL
-  add_custom_target(pclFramework
+  # set before?
+  add_custom_command(
+      TARGET
+      ${FRAMEWORK_NAME}
+      POST_BUILD
+      COMMAND /bin/sh -c
       COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh device
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
       DEPENDS pcl-ios-device
       COMMENT "Creating device pcl.framework")
 
+  force_build(${proj})
+
+  # All is UnixMakefile only?
+  # add_custom_target(pclFramework ALL
+  # add_custom_target(pclFramework
+  #     COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh device
+  #     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  #     DEPENDS pcl-ios-device
+  #     COMMENT "Creating device pcl.framework")
+  # add_custom_command(
+  #     TARGET
+  #     ${FRAMEWORK_NAME}
+  #     POST_BUILD
+  #     COMMAND /bin/sh -c
+  #     COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh device
+  #     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  #     DEPENDS pcl-ios-device
+  #     COMMENT "Creating device pcl.framework")
+  
   # # Codesign the framework in it's new spot
   # add_custom_command(
   #     TARGET
@@ -457,15 +477,36 @@ macro(ios_simulator_wrapper_compile)
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
   )
 
+  # set before?
+  add_custom_command(
+      TARGET
+      ${FRAMEWORK_NAME}
+      POST_BUILD
+      COMMAND /bin/sh -c
+      COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh simulator
+      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+      DEPENDS pcl-ios-simulator
+      COMMENT "Creating device pcl.framework")
+
   force_build(${proj})
 
   # All is UnixMakefile only?
   # add_custom_target(pclFramework ALL
-  add_custom_target(pclFramework
-      COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh simulator
-      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-      DEPENDS pcl-ios-simulator
-      COMMENT "Creating simulator pcl.framework")
+  # add_custom_target(pclFramework
+  #     COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh simulator
+  #     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  #     DEPENDS pcl-ios-simulator
+  #     COMMENT "Creating simulator pcl.framework")
+
+  # add_custom_command(
+  #     TARGET
+  #     ${FRAMEWORK_NAME}
+  #     POST_BUILD
+  #     COMMAND /bin/sh -c
+  #     COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh simulator
+  #     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  #     DEPENDS pcl-ios-simulator
+  #     COMMENT "Creating device pcl.framework")
 
   # # Codesign the framework in it's new spot
   # add_custom_command(
