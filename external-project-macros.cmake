@@ -372,7 +372,7 @@ endmacro()
 # 
 macro(ios_device_wrapper_compile)
   set(proj ios_device_wrapper)
-  get_toolchain_file(ios-device)
+  get_toolchain_file("ios-device")
 
   # framework.plist setting
   set(FRAMEWORK_NAME pcl)                                       # <== Set to your framework's name
@@ -455,7 +455,7 @@ endmacro()
 # 
 macro(ios_simulator_wrapper_compile)
   set(proj ios_simulator_wrapper)
-  get_toolchain_file(ios-simulator)
+  get_toolchain_file("ios-simulator")
 
   # framework.plist setting
   set(FRAMEWORK_NAME "pcl")                                     # <== Set to your framework's name

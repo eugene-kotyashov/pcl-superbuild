@@ -285,7 +285,7 @@ before_build:
 # 7z a pcl-superbuild-%ANDROID_ABIs%.zip -r ./CMakeExternals/Install/*.*
 build_script:
 - cmd: >-
-    cmake.exe --build .
+    cmake.exe --build . --config Release
 
     cd ..
 
