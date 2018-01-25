@@ -543,34 +543,3 @@ macro(create_pcl_framework)
       COMMENT "Creating pcl.framework")
 endmacro()
 
-
-# macro(create_pcl_framework2)
-#     add_subdirectory(pclframeworks)
-# 
-#     set(FRAMEWORK_BUNDLE_IDENTIFIER "com.company.framework")    # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
-#     set(CODE_SIGN_IDENTITY "iPhone Developer")                  # <== Set to your preferred code sign identity, to see list:
-#                                                                 # /usr/bin/env xcrun security find-identity -v -p codesigning
-#     set(DEPLOYMENT_TARGET 8.0)                                  # <== Set your deployment target version of iOS
-#     set(DEVICE_FAMILY "1")                                      # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
-#     ExternalProject_Add(
-#       ${proj}
-#       SOURCE_DIR ${CMAKE_SOURCE_DIR}/pclframeworks
-#       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-#       CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
-#                  -DCMAKE_BUILD_TYPE:STRING=${build_type}
-#                  -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
-#     )
-# 
-#     add_custom_command(
-#       TARGET ${FRAMEWORK_NAME}
-#       POST_BUILD
-#       COMMAND /bin/bash -c "${CMAKE_CURRENT_LIST_DIR}/install_name.sh \${CMAKE_BINARY_DIR}/\${PRODUCT_NAME}.framework/\${PRODUCT_NAME}"
-#     )
-# 
-#     add_custom_command(
-#         TARGET ${FRAMEWORK_NAME}
-#         POST_BUILD
-#         COMMAND install_name_tool -id \"@rpath/\${PRODUCT_NAME}.framework/\${PRODUCT_NAME}\"
-#         \${BUILT_PRODUCTS_DIR}/\${PRODUCT_NAME}.framework/\${PRODUCT_NAME}
-#     )
-# endmacro()

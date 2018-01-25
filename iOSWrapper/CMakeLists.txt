@@ -13,6 +13,9 @@ add_library(
 
 
 # FolderPath Check
+# CMAKE_INSTALL_PREFIX
+message(STATUS ${CMAKE_INSTALL_PREFIX})
+# -> ???
 # message(${CMAKE_BINARY_DIR})
 message(STATUS ${CMAKE_BINARY_DIR})
 # parent root.
@@ -42,8 +45,8 @@ message(STATUS ${boost_simulation_libraryfiles})
 ###
 
 # eigen
-file(GLOB eigen_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/eigen/Eigen *.*)
-file(GLOB eigen_unsupported_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/eigen/unsupported *.*)
+file(GLOB eigen_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/eigen/Eigen *.*)
+file(GLOB eigen_unsupported_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/eigen/unsupported *.*)
 
 message(STATUS ${eigen_includefiles})
 message(STATUS ${eigen_unsupported_includefiles})
@@ -51,9 +54,9 @@ message(STATUS ${eigen_unsupported_includefiles})
 ###
 
 # flann
-file(GLOB flann_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/flann-ios-device/include *.*)
-file(GLOB flann_device_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/flann-ios-device/lib *.a)
-file(GLOB flann_simulation_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/flann-ios-simulator/lib *.a)
+file(GLOB flann_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/flann-ios-device/include *.*)
+file(GLOB flann_device_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/flann-ios-device/lib *.a)
+file(GLOB flann_simulation_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator/lib *.a)
 
 message(STATUS ${flann_includefiles})
 message(STATUS ${flann_device_libraryfiles})
@@ -72,9 +75,9 @@ message(STATUS ${flann_simulation_libraryfiles})
 ###
 
 # qhull
-file(GLOB qhull_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/qhull-ios-device/include *.*)
-file(GLOB qhull_device_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/qhull-ios-device/lib *.a)
-file(GLOB qhull_simulation_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/qhull-ios-simulator/lib *.a)
+file(GLOB qhull_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-device/include *.*)
+file(GLOB qhull_device_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-device/lib *.a)
+file(GLOB qhull_simulation_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-simulator/lib *.a)
 
 message(STATUS ${qhull_includefiles})
 message(STATUS ${qhull_device_libraryfiles})
@@ -93,9 +96,9 @@ message(STATUS ${qhull_simulation_libraryfiles})
 ###
 
 # pcl
-file(GLOB pcl_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/pcl-ios-device/include/pcl-1.8 *.*)
-file(GLOB pcl_device_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/pcl-ios-device/lib *.a)
-file(GLOB pcl_simulation_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/pcl-ios-simulator/lib *.a)
+file(GLOB pcl_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device/include/pcl-1.8 *.*)
+file(GLOB pcl_device_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device/lib *.a)
+file(GLOB pcl_simulation_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator/lib *.a)
 
 message(STATUS ${pcl_includefiles})
 message(STATUS ${pcl_device_libraryfiles})
@@ -117,23 +120,23 @@ message(STATUS ${pcl_simulation_libraryfiles})
 
 set(CMAKE_SHARED_LINKER_FLAGS "-Wall")
 
-include_directories(${CMAKE_BINARY_DIR}/../Install/boost-ios-device/include)
-include_directories(${CMAKE_BINARY_DIR}/../Install/eigen-ios-device/include)
-include_directories(${CMAKE_BINARY_DIR}/../Install/flann-ios-device/include)
-include_directories(${CMAKE_BINARY_DIR}/../Install/pcl-ios-device/include/pcl-1.8)
+include_directories(${CMAKE_BINARY_DIR}/../../Install/boost-ios-device/include)
+include_directories(${CMAKE_BINARY_DIR}/../../Install/eigen-ios-device/include)
+include_directories(${CMAKE_BINARY_DIR}/../../Install/flann-ios-device/include)
+include_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device/include/pcl-1.8)
 
-include_directories(${CMAKE_BINARY_DIR}/../Install/boost-ios-simulator/include)
-include_directories(${CMAKE_BINARY_DIR}/../Install/eigen-ios-simulator/include)
-include_directories(${CMAKE_BINARY_DIR}/../Install/flann-ios-simulator/include)
-include_directories(${CMAKE_BINARY_DIR}/../Install/pcl-ios-simulator/include/pcl-1.8)
+include_directories(${CMAKE_BINARY_DIR}/../../Install/boost-ios-simulator/include)
+include_directories(${CMAKE_BINARY_DIR}/../../Install/eigen-ios-simulator/include)
+include_directories(${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator/include)
+include_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator/include/pcl-1.8)
 
 
-# link_directories(${CMAKE_BINARY_DIR}/../Install/boost-ios-device)
-# link_directories(${CMAKE_BINARY_DIR}/../Install/boost-ios-simulator)
-# link_directories(${CMAKE_BINARY_DIR}/../Install/flann-ios-device)
-# link_directories(${CMAKE_BINARY_DIR}/../Install/flann-ios-simulator)
-# link_directories(${CMAKE_BINARY_DIR}/../Install/pcl-ios-device)
-# link_directories(${CMAKE_BINARY_DIR}/../Install/pcl-ios-simulator)
+# link_directories(${CMAKE_BINARY_DIR}/../../Install/boost-ios-device)
+# link_directories(${CMAKE_BINARY_DIR}/../../Install/boost-ios-simulator)
+# link_directories(${CMAKE_BINARY_DIR}/../../Install/flann-ios-device)
+# link_directories(${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator)
+# link_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device)
+# link_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator)
 # target_link_libraries(${boost_device_libraryfiles})
 # target_link_libraries(${boost_simulation_libraryfiles})
 # target_link_libraries(${flann_device_libraryfiles})
