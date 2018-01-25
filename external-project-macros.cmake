@@ -405,7 +405,7 @@ macro(ios_device_wrapper_compile)
       DEPENDS pcl-ios-device
       COMMENT "Creating device pcl.framework")
 
-  force_build(${proj})
+  # force_build(${proj})
 
   # All is UnixMakefile only?
   # add_custom_target(pclFramework ALL
@@ -488,7 +488,7 @@ macro(ios_simulator_wrapper_compile)
       DEPENDS pcl-ios-simulator
       COMMENT "Creating device pcl.framework")
 
-  force_build(${proj})
+  # force_build(${proj})
 
   # All is UnixMakefile only?
   # add_custom_target(pclFramework ALL
