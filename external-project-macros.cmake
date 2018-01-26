@@ -477,6 +477,8 @@ macro(ios_simulator_wrapper_compile)
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
   )
 
+  message(STATUS "binary_dir : ${CMAKE_BINARY_DIR}")
+
   # set before?
   add_custom_command(
       TARGET
@@ -486,9 +488,9 @@ macro(ios_simulator_wrapper_compile)
       COMMAND ${CMAKE_SOURCE_DIR}/makeFramework.sh simulator
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
       DEPENDS pcl-ios-simulator
-      COMMENT "Creating device pcl.framework")
+      COMMENT "Creating simulator pcl.framework")
 
-  # force_build(${proj})
+  force_build(${proj})
 
   # All is UnixMakefile only?
   # add_custom_target(pclFramework ALL
