@@ -294,13 +294,28 @@ script:
 #     - cat ./CMakeExternals/Build/pcl-ios-simulator/CMakeFiles/CMakeError.log
 after_failure: 
   - echo "Dumping CMakeOutput.log" 
-  # - cat /home/travis/ci/build/builddir/CMakeFiles/CMakeOutput.log 
-  - cat /home/travis/ci/build/CMakeExternals/Build/pcl-ios-device/CMakeFiles/CMakeOutput.log 
-  - cat /home/travis/ci/build/CMakeExternals/Build/pcl-ios-simulator/CMakeFiles/CMakeOutput.log 
+
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/boost-ios-device/CMakeFiles/CMakeOutput.log 
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/boost-ios-simulator/CMakeFiles/CMakeOutput.log 
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/flann-ios-device/CMakeFiles/CMakeOutput.log 
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/flann-ios-simulator/CMakeFiles/CMakeOutput.log 
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/qhull-ios-device/CMakeFiles/CMakeOutput.log 
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/qhull-ios-simulator/CMakeFiles/CMakeOutput.log 
+
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/pcl-ios-device/CMakeFiles/CMakeOutput.log 
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/pcl-ios-simulator/CMakeFiles/CMakeOutput.log 
   - echo "Dumping CMakeError.log" 
   # - cat /home/travis/ci/build/builddir/CMakeFiles/CMakeError.log 
-  - cat /home/travis/ci/build/CMakeExternals/Build/pcl-ios-device/CMakeFiles/CMakeError.log
-  - cat /home/travis/ci/build/CMakeExternals/Build/pcl-ios-simulator/CMakeFiles/CMakeError.log
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/boost-ios-device/CMakeFiles/CMakeError.log
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/boost-ios-simulator/CMakeFiles/CMakeError.log
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/flann-ios-device/CMakeFiles/CMakeError.log
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/flann-ios-simulator/CMakeFiles/CMakeError.log
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/qhull-ios-device/CMakeFiles/CMakeError.log
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/qhull-ios-simulator/CMakeFiles/CMakeError.log
+
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/pcl-ios-device/CMakeFiles/CMakeError.log
+  - cat /home/travis/build/Sirokujira/pcl-superbuild/build/CMakeExternals/Build/pcl-ios-simulator/CMakeFiles/CMakeError.log
+
   - echo "Dumping `which ccache`" 
   - ccache -s 
   - ls -la /usr/lib/ccache/ || ls -la /usr/local/opt/ccache/libexec 

@@ -132,19 +132,23 @@ include_directories(${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator/includ
 include_directories(${CMAKE_BINARY_DIR}/../../Install/qhull-ios-simulator/include)
 include_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator/include/pcl-1.8)
 
-
 # link_directories(${CMAKE_BINARY_DIR}/../../Install/boost-ios-device)
-# link_directories(${CMAKE_BINARY_DIR}/../../Install/boost-ios-simulator)
 # link_directories(${CMAKE_BINARY_DIR}/../../Install/flann-ios-device)
-# link_directories(${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator)
+# link_directories(${CMAKE_BINARY_DIR}/../../Install/qhull-ios-device)
 # link_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device)
+# link_directories(${CMAKE_BINARY_DIR}/../../Install/boost-ios-simulator)
+# link_directories(${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator)
+# link_directories(${CMAKE_BINARY_DIR}/../../Install/qhull-ios-simulator)
 # link_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator)
 # target_link_libraries(${boost_device_libraryfiles})
 # target_link_libraries(${boost_simulation_libraryfiles})
 # target_link_libraries(${flann_device_libraryfiles})
 # target_link_libraries(${flann_simulation_libraryfiles})
+# target_link_libraries(${qhull_device_libraryfiles})
+# target_link_libraries(${qhull_simulation_libraryfiles})
 # target_link_libraries(${pcl_device_libraryfiles})
 # target_link_libraries(${pcl_simulation_libraryfiles})
+
 
 # https://cmake.org/cmake/help/v3.10/prop_tgt/FRAMEWORK.html
 set_target_properties(pcl PROPERTIES
