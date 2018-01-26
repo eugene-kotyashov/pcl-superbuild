@@ -220,6 +220,8 @@ matrix:
 # use ccache?
 # https://docs.travis-ci.com/user/caching/
 # http://www.brianlheim.com/2017/08/20/supercollider-travisci.html
+# ccache ng?(sim/device obj file arch mismatch)
+# cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL="ON" -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       rvm get stable;
@@ -232,7 +234,7 @@ before_install:
       export PATH="/usr/local/opt/ccache/libexec:$PATH";
 
       mkdir build && cd build;
-      cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL="ON" -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
+      cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL="ON" -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="OFF" ../;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
