@@ -120,14 +120,16 @@ message(STATUS ${pcl_simulation_libraryfiles})
 
 set(CMAKE_SHARED_LINKER_FLAGS "-Wall")
 
+include_directories(${CMAKE_BINARY_DIR}/../../Install/eigen)
+
 include_directories(${CMAKE_BINARY_DIR}/../../Install/boost-ios-device/include)
-include_directories(${CMAKE_BINARY_DIR}/../../Install/eigen-ios-device/include)
 include_directories(${CMAKE_BINARY_DIR}/../../Install/flann-ios-device/include)
+include_directories(${CMAKE_BINARY_DIR}/../../Install/qhull-ios-device/include)
 include_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device/include/pcl-1.8)
 
 include_directories(${CMAKE_BINARY_DIR}/../../Install/boost-ios-simulator/include)
-include_directories(${CMAKE_BINARY_DIR}/../../Install/eigen-ios-simulator/include)
 include_directories(${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator/include)
+include_directories(${CMAKE_BINARY_DIR}/../../Install/qhull-ios-simulator/include)
 include_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator/include/pcl-1.8)
 
 

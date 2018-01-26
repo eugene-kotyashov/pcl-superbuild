@@ -387,7 +387,7 @@ macro(ios_device_wrapper_compile)
     ${proj}
     SOURCE_DIR ${CMAKE_SOURCE_DIR}/iOSWrapper
     DOWNLOAD_COMMAND ""
-    CMAKE_GENERATOR "Xcode"
+    # CMAKE_GENERATOR "Xcode"
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
@@ -470,7 +470,7 @@ macro(ios_simulator_wrapper_compile)
     ${proj}
     SOURCE_DIR ${CMAKE_SOURCE_DIR}/iOSWrapper
     DOWNLOAD_COMMAND ""
-    CMAKE_GENERATOR "Xcode"
+    # CMAKE_GENERATOR "Xcode"
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
