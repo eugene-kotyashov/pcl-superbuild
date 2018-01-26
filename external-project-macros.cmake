@@ -490,7 +490,7 @@ macro(ios_simulator_wrapper_compile)
       DEPENDS pcl-ios-simulator
       COMMENT "Creating simulator pcl.framework")
 
-  force_build(${proj})
+  # force_build(${proj})
 
   # All is UnixMakefile only?
   # add_custom_target(pclFramework ALL
