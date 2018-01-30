@@ -105,7 +105,7 @@ macro(fetch_qhull)
   ExternalProject_Add(
     qhull-fetch
     SOURCE_DIR ${source_prefix}/qhull
-    GIT_REPOSITORY git://github.com/qhull/qhull.git
+    GIT_REPOSITORY git://github.com/Sirokujira/qhull.git
     # 
     # GIT_TAG master
     CONFIGURE_COMMAND ""
@@ -278,6 +278,7 @@ macro(crosscompile_pcl tag)
     SOURCE_DIR ${source_prefix}/pcl
     DOWNLOAD_COMMAND ""
     # DEPENDS pcl-fetch boost-${tag} flann-${tag} eigen
+    # iOS Error(multi arch build ng)
     DEPENDS pcl-fetch boost-${tag} flann-${tag} qhull-${tag} eigen
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
@@ -301,6 +302,7 @@ macro(crosscompile_pcl tag)
       -DWITH_PCAP:BOOL=OFF
       -DWITH_PNG:BOOL=OFF
       # -DWITH_QHULL:BOOL=OFF
+      # iOS Error(multi arch build ng)
       -DWITH_QHULL:BOOL=ON
       -DWITH_QT:BOOL=OFF
       -DWITH_VTK:BOOL=OFF
