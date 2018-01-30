@@ -94,6 +94,7 @@ macro(crosscompile_flann tag)
                -DBUILD_C_BINDINGS:BOOL=OFF
                -DBUILD_PYTHON_BINDINGS:BOOL=OFF
                -DBUILD_MATLAB_BINDINGS:BOOL=OFF
+               -DBUILD_SHARED_LIBS:BOOL=OFF
   )
 
   force_build(${proj})
@@ -135,6 +136,7 @@ macro(crosscompile_qhull tag)
                -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
                -DANDROID_STL=gnustl_static
                -DANDROID_STL_FORCE_FEATURES:BOOL=ON
+               -DBUILD_SHARED_LIBS:BOOL=OFF
                -DBUILD_PYTHON_BINDINGS:BOOL=OFF
                -DBUILD_MATLAB_BINDINGS:BOOL=OFF
   )
