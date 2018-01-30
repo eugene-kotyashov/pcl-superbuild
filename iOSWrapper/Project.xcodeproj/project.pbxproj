@@ -1,0 +1,956 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		32DAA1F9629D488BA773FA25 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B990926CC6BE4D5E99E46ADD /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				74513825E1074149854CD41D /* CMake Rules */,
+			);
+			dependencies = (
+				29BBE157D29046098A1FBC7F /* PBXTargetDependency */,
+				0D846FA6CD0F4B309DC90982 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		C1DF7B0B79264650B4E58D69 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3A787B74656E4BA58CBD8056 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		9A3421DAD0E5455C8172D570 /* PointCloudLibraryWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E7923692DCD4FF9BD5FDC55 /* PointCloudLibraryWrapper.cpp */; };
+		B33C8252E83441B188315AA3 /* PointCloudLibraryWrapper.hh in Headers */ = {isa = PBXBuildFile; fileRef = E88295E78C0F42E9BD993A9E /* PointCloudLibraryWrapper.hh */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3509F23BC2A04DDEBA03F87D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8CE73EC9EE341C2B93213AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1DF7B0B79264650B4E58D69;
+			remoteInfo = ZERO_CHECK;
+		};
+		386A32756849484787B8D797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8CE73EC9EE341C2B93213AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1DF7B0B79264650B4E58D69;
+			remoteInfo = ZERO_CHECK;
+		};
+		7199FC8713304365966454E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8CE73EC9EE341C2B93213AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33BCC4270738459CB12C0DD5;
+			remoteInfo = pcl;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		11E9BB9A59E347AA90F6C3EE /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		1E7923692DCD4FF9BD5FDC55 /* PointCloudLibraryWrapper.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = PointCloudLibraryWrapper.cpp; sourceTree = SOURCE_ROOT; };
+		348C959B197F4DD69E511BD3 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		A03B9738534D47C9A1BC14E4 /* pcl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = pcl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C888A64E2012F52B00A71537 /* boost */ = {isa = PBXFileReference; lastKnownFileType = folder; name = boost; path = "../build/CMakeExternals/Install/boost-ios-device/include/boost"; sourceTree = "<group>"; };
+		C888A64F2012F53900A71537 /* unsupported */ = {isa = PBXFileReference; lastKnownFileType = folder; name = unsupported; path = ../build/CMakeExternals/Install/eigen/unsupported; sourceTree = "<group>"; };
+		C888A6502012F53900A71537 /* Eigen */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Eigen; path = ../build/CMakeExternals/Install/eigen/Eigen; sourceTree = "<group>"; };
+		C888A6512012F54B00A71537 /* pcl-1.8 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "pcl-1.8"; path = "../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8"; sourceTree = "<group>"; };
+		C888A6522012F55D00A71537 /* libpcl_io.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_io.a; path = "../build/CMakeExternals/Install/pcl-ios-device/lib/libpcl_io.a"; sourceTree = "<group>"; };
+		C888A6532012F55D00A71537 /* libpcl_stereo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_stereo.a; path = "../build/CMakeExternals/Install/pcl-ios-device/lib/libpcl_stereo.a"; sourceTree = "<group>"; };
+		C888A6542012F55D00A71537 /* libpcl_octree.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_octree.a; path = "../build/CMakeExternals/Install/pcl-ios-device/lib/libpcl_octree.a"; sourceTree = "<group>"; };
+		C888A6552012F55D00A71537 /* libpcl_common.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_common.a; path = "../build/CMakeExternals/Install/pcl-ios-device/lib/libpcl_common.a"; sourceTree = "<group>"; };
+		C888A6562012F55E00A71537 /* libpcl_surface.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_surface.a; path = "../build/CMakeExternals/Install/pcl-ios-device/lib/libpcl_surface.a"; sourceTree = "<group>"; };
+		C888A6572012F55E00A71537 /* libpcl_kdtree.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_kdtree.a; path = "../build/CMakeExternals/Install/pcl-ios-device/lib/libpcl_kdtree.a"; sourceTree = "<group>"; };
+		C888A6582012F55E00A71537 /* libpcl_io_ply.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_io_ply.a; path = "../build/CMakeExternals/Install/pcl-ios-device/lib/libpcl_io_ply.a"; sourceTree = "<group>"; };
+		C888A6592012F55E00A71537 /* libpcl_search.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_search.a; path = "../build/CMakeExternals/Install/pcl-ios-device/lib/libpcl_search.a"; sourceTree = "<group>"; };
+		C888A65A2012F55E00A71537 /* libpcl_ml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_ml.a; path = "../build/CMakeExternals/Install/pcl-ios-device/lib/libpcl_ml.a"; sourceTree = "<group>"; };
+		C888A65B2012F57000A71537 /* libpcl_common.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_common.a; path = "../build/CMakeExternals/Install/pcl-ios-simulator/lib/libpcl_common.a"; sourceTree = "<group>"; };
+		C888A65C2012F57000A71537 /* libpcl_search.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_search.a; path = "../build/CMakeExternals/Install/pcl-ios-simulator/lib/libpcl_search.a"; sourceTree = "<group>"; };
+		C888A65D2012F57100A71537 /* libpcl_io_ply.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_io_ply.a; path = "../build/CMakeExternals/Install/pcl-ios-simulator/lib/libpcl_io_ply.a"; sourceTree = "<group>"; };
+		C888A65E2012F57100A71537 /* libpcl_stereo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_stereo.a; path = "../build/CMakeExternals/Install/pcl-ios-simulator/lib/libpcl_stereo.a"; sourceTree = "<group>"; };
+		C888A65F2012F57100A71537 /* libpcl_octree.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_octree.a; path = "../build/CMakeExternals/Install/pcl-ios-simulator/lib/libpcl_octree.a"; sourceTree = "<group>"; };
+		C888A6602012F57100A71537 /* libpcl_kdtree.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_kdtree.a; path = "../build/CMakeExternals/Install/pcl-ios-simulator/lib/libpcl_kdtree.a"; sourceTree = "<group>"; };
+		C888A6612012F57100A71537 /* libpcl_ml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_ml.a; path = "../build/CMakeExternals/Install/pcl-ios-simulator/lib/libpcl_ml.a"; sourceTree = "<group>"; };
+		C888A6622012F57100A71537 /* libpcl_surface.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_surface.a; path = "../build/CMakeExternals/Install/pcl-ios-simulator/lib/libpcl_surface.a"; sourceTree = "<group>"; };
+		C888A6632012F57200A71537 /* libpcl_io.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpcl_io.a; path = "../build/CMakeExternals/Install/pcl-ios-simulator/lib/libpcl_io.a"; sourceTree = "<group>"; };
+		C888A6642012F58A00A71537 /* flann */ = {isa = PBXFileReference; lastKnownFileType = folder; name = flann; path = "../build/CMakeExternals/Install/flann-ios-device/include/flann"; sourceTree = "<group>"; };
+		C888A6652012F59500A71537 /* libflann_cpp.1.9.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libflann_cpp.1.9.1.dylib; path = "../build/CMakeExternals/Install/flann-ios-device/lib/libflann_cpp.1.9.1.dylib"; sourceTree = "<group>"; };
+		C888A6662012F59500A71537 /* libflann_cpp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libflann_cpp.dylib; path = "../build/CMakeExternals/Install/flann-ios-device/lib/libflann_cpp.dylib"; sourceTree = "<group>"; };
+		C888A6672012F59500A71537 /* libflann_cpp.1.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libflann_cpp.1.9.dylib; path = "../build/CMakeExternals/Install/flann-ios-device/lib/libflann_cpp.1.9.dylib"; sourceTree = "<group>"; };
+		C888A6682012F59500A71537 /* libflann_cpp_s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libflann_cpp_s.a; path = "../build/CMakeExternals/Install/flann-ios-device/lib/libflann_cpp_s.a"; sourceTree = "<group>"; };
+		C888A6692012F5A600A71537 /* libflann_cpp.1.9.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libflann_cpp.1.9.1.dylib; path = "../build/CMakeExternals/Install/flann-ios-simulator/lib/libflann_cpp.1.9.1.dylib"; sourceTree = "<group>"; };
+		C888A66A2012F5A600A71537 /* libflann_cpp_s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libflann_cpp_s.a; path = "../build/CMakeExternals/Install/flann-ios-simulator/lib/libflann_cpp_s.a"; sourceTree = "<group>"; };
+		C888A66B2012F5AF00A71537 /* libflann_cpp.1.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libflann_cpp.1.9.dylib; path = "../build/CMakeExternals/Install/flann-ios-simulator/lib/libflann_cpp.1.9.dylib"; sourceTree = "<group>"; };
+		C888A66C2012F5AF00A71537 /* libflann_cpp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libflann_cpp.dylib; path = "../build/CMakeExternals/Install/flann-ios-simulator/lib/libflann_cpp.dylib"; sourceTree = "<group>"; };
+		C888A66D2012F5BF00A71537 /* libboost_signals.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_signals.a; path = "../build/CMakeExternals/Install/boost-ios-device/lib/libboost_signals.a"; sourceTree = "<group>"; };
+		C888A66E2012F5BF00A71537 /* libboost_date_time.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_date_time.a; path = "../build/CMakeExternals/Install/boost-ios-device/lib/libboost_date_time.a"; sourceTree = "<group>"; };
+		C888A66F2012F5BF00A71537 /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = "../build/CMakeExternals/Install/boost-ios-device/lib/libboost_system.a"; sourceTree = "<group>"; };
+		C888A6702012F5BF00A71537 /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = "../build/CMakeExternals/Install/boost-ios-device/lib/libboost_filesystem.a"; sourceTree = "<group>"; };
+		C888A6712012F5BF00A71537 /* libboost_program_options.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_program_options.a; path = "../build/CMakeExternals/Install/boost-ios-device/lib/libboost_program_options.a"; sourceTree = "<group>"; };
+		C888A6722012F5BF00A71537 /* libboost_regex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_regex.a; path = "../build/CMakeExternals/Install/boost-ios-device/lib/libboost_regex.a"; sourceTree = "<group>"; };
+		C888A6732012F5C000A71537 /* libboost_iostreams.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_iostreams.a; path = "../build/CMakeExternals/Install/boost-ios-device/lib/libboost_iostreams.a"; sourceTree = "<group>"; };
+		C888A6742012F5C000A71537 /* libboost_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_thread.a; path = "../build/CMakeExternals/Install/boost-ios-device/lib/libboost_thread.a"; sourceTree = "<group>"; };
+		C888A6752012F5CB00A71537 /* libboost_iostreams.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_iostreams.a; path = "../build/CMakeExternals/Install/boost-ios-simulator/lib/libboost_iostreams.a"; sourceTree = "<group>"; };
+		C888A6762012F5CB00A71537 /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = "../build/CMakeExternals/Install/boost-ios-simulator/lib/libboost_filesystem.a"; sourceTree = "<group>"; };
+		C888A6772012F5CB00A71537 /* libboost_date_time.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_date_time.a; path = "../build/CMakeExternals/Install/boost-ios-simulator/lib/libboost_date_time.a"; sourceTree = "<group>"; };
+		C888A6782012F5CB00A71537 /* libboost_signals.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_signals.a; path = "../build/CMakeExternals/Install/boost-ios-simulator/lib/libboost_signals.a"; sourceTree = "<group>"; };
+		C888A6792012F5CB00A71537 /* libboost_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_thread.a; path = "../build/CMakeExternals/Install/boost-ios-simulator/lib/libboost_thread.a"; sourceTree = "<group>"; };
+		C888A67A2012F5CC00A71537 /* libboost_program_options.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_program_options.a; path = "../build/CMakeExternals/Install/boost-ios-simulator/lib/libboost_program_options.a"; sourceTree = "<group>"; };
+		C888A67B2012F5CC00A71537 /* libboost_regex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_regex.a; path = "../build/CMakeExternals/Install/boost-ios-simulator/lib/libboost_regex.a"; sourceTree = "<group>"; };
+		C888A67C2012F5CC00A71537 /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = "../build/CMakeExternals/Install/boost-ios-simulator/lib/libboost_system.a"; sourceTree = "<group>"; };
+		C888A67D2012F74900A71537 /* boost */ = {isa = PBXFileReference; lastKnownFileType = folder; name = boost; path = "../build/CMakeExternals/Install/boost-ios-device/include/boost"; sourceTree = "<group>"; };
+		C888A67F2012F75B00A71537 /* unsupported */ = {isa = PBXFileReference; lastKnownFileType = folder; name = unsupported; path = ../build/CMakeExternals/Install/eigen/unsupported; sourceTree = "<group>"; };
+		C888A6802012F75B00A71537 /* Eigen */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Eigen; path = ../build/CMakeExternals/Install/eigen/Eigen; sourceTree = "<group>"; };
+		C888A6832012F77700A71537 /* flann */ = {isa = PBXFileReference; lastKnownFileType = folder; name = flann; path = "../build/CMakeExternals/Install/flann-ios-device/include/flann"; sourceTree = "<group>"; };
+		C888A6852012F79000A71537 /* pcl-1.8 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "pcl-1.8"; path = "../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8"; sourceTree = "<group>"; };
+		DDE84FCA232D440898E5F807 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		E88295E78C0F42E9BD993A9E /* PointCloudLibraryWrapper.hh */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = PointCloudLibraryWrapper.hh; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		224D12445ACB4E388118765F /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				422CDAE4940C4F9480E677AD /* CMake Rules */,
+				348C959B197F4DD69E511BD3 /* CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		422CDAE4940C4F9480E677AD /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		4CB9C8EA026542EA9E65D717 /* pcl */ = {
+			isa = PBXGroup;
+			children = (
+				C888A66E2012F5BF00A71537 /* libboost_date_time.a */,
+				C888A6772012F5CB00A71537 /* libboost_date_time.a */,
+				C888A6702012F5BF00A71537 /* libboost_filesystem.a */,
+				C888A6762012F5CB00A71537 /* libboost_filesystem.a */,
+				C888A6732012F5C000A71537 /* libboost_iostreams.a */,
+				C888A6712012F5BF00A71537 /* libboost_program_options.a */,
+				C888A6722012F5BF00A71537 /* libboost_regex.a */,
+				C888A67A2012F5CC00A71537 /* libboost_program_options.a */,
+				C888A67B2012F5CC00A71537 /* libboost_regex.a */,
+				C888A66D2012F5BF00A71537 /* libboost_signals.a */,
+				C888A66F2012F5BF00A71537 /* libboost_system.a */,
+				C888A67C2012F5CC00A71537 /* libboost_system.a */,
+				C888A6742012F5C000A71537 /* libboost_thread.a */,
+				C888A6752012F5CB00A71537 /* libboost_iostreams.a */,
+				C888A6782012F5CB00A71537 /* libboost_signals.a */,
+				C888A6792012F5CB00A71537 /* libboost_thread.a */,
+				C888A66B2012F5AF00A71537 /* libflann_cpp.1.9.dylib */,
+				C888A66C2012F5AF00A71537 /* libflann_cpp.dylib */,
+				C888A6682012F59500A71537 /* libflann_cpp_s.a */,
+				C888A66A2012F5A600A71537 /* libflann_cpp_s.a */,
+				C888A6652012F59500A71537 /* libflann_cpp.1.9.1.dylib */,
+				C888A6692012F5A600A71537 /* libflann_cpp.1.9.1.dylib */,
+				C888A6672012F59500A71537 /* libflann_cpp.1.9.dylib */,
+				C888A6662012F59500A71537 /* libflann_cpp.dylib */,
+				C888A6552012F55D00A71537 /* libpcl_common.a */,
+				C888A6582012F55E00A71537 /* libpcl_io_ply.a */,
+				C888A6522012F55D00A71537 /* libpcl_io.a */,
+				C888A6632012F57200A71537 /* libpcl_io.a */,
+				C888A6572012F55E00A71537 /* libpcl_kdtree.a */,
+				C888A65A2012F55E00A71537 /* libpcl_ml.a */,
+				C888A6602012F57100A71537 /* libpcl_kdtree.a */,
+				C888A6612012F57100A71537 /* libpcl_ml.a */,
+				C888A6542012F55D00A71537 /* libpcl_octree.a */,
+				C888A65D2012F57100A71537 /* libpcl_io_ply.a */,
+				C888A65F2012F57100A71537 /* libpcl_octree.a */,
+				C888A6592012F55E00A71537 /* libpcl_search.a */,
+				C888A6532012F55D00A71537 /* libpcl_stereo.a */,
+				C888A6562012F55E00A71537 /* libpcl_surface.a */,
+				C888A65B2012F57000A71537 /* libpcl_common.a */,
+				C888A65C2012F57000A71537 /* libpcl_search.a */,
+				C888A65E2012F57100A71537 /* libpcl_stereo.a */,
+				C888A6622012F57100A71537 /* libpcl_surface.a */,
+				EAF918B1546546EA8B738254 /* Header Files */,
+				9EBD24CFA5EA4C9BA5D77D4A /* Source Files */,
+				DDE84FCA232D440898E5F807 /* CMakeLists.txt */,
+			);
+			name = pcl;
+			sourceTree = "<group>";
+		};
+		5169FCAD3C8448FBB0968E28 /* ZERO_CHECK */ = {
+			isa = PBXGroup;
+			children = (
+				AF647DAD5F4444039B6E2315 /* CMake Rules */,
+				11E9BB9A59E347AA90F6C3EE /* CMakeLists.txt */,
+			);
+			name = ZERO_CHECK;
+			sourceTree = "<group>";
+		};
+		9EBD24CFA5EA4C9BA5D77D4A /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				1E7923692DCD4FF9BD5FDC55 /* PointCloudLibraryWrapper.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		AF647DAD5F4444039B6E2315 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		C932326803C54D7C98C4C702 = {
+			isa = PBXGroup;
+			children = (
+				C888A6852012F79000A71537 /* pcl-1.8 */,
+				C888A6832012F77700A71537 /* flann */,
+				C888A6802012F75B00A71537 /* Eigen */,
+				C888A67F2012F75B00A71537 /* unsupported */,
+				C888A67D2012F74900A71537 /* boost */,
+				4CB9C8EA026542EA9E65D717 /* pcl */,
+				224D12445ACB4E388118765F /* ALL_BUILD */,
+				5169FCAD3C8448FBB0968E28 /* ZERO_CHECK */,
+				FE3D32EBD70E411B903250D0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EAF918B1546546EA8B738254 /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				C888A6642012F58A00A71537 /* flann */,
+				C888A6512012F54B00A71537 /* pcl-1.8 */,
+				C888A6502012F53900A71537 /* Eigen */,
+				C888A64F2012F53900A71537 /* unsupported */,
+				C888A64E2012F52B00A71537 /* boost */,
+				E88295E78C0F42E9BD993A9E /* PointCloudLibraryWrapper.hh */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		FE3D32EBD70E411B903250D0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A03B9738534D47C9A1BC14E4 /* pcl.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FA1C0A4F0C0D494FB53EC53A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B33C8252E83441B188315AA3 /* PointCloudLibraryWrapper.hh in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		33BCC4270738459CB12C0DD5 /* pcl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43E1DAC1955945B5A3C9081E /* Build configuration list for PBXNativeTarget "pcl" */;
+			buildPhases = (
+				FA1C0A4F0C0D494FB53EC53A /* Headers */,
+				7B2CEC6321354BD6A6D7773A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2CD26CF7E005405695D0BA50 /* PBXTargetDependency */,
+			);
+			name = pcl;
+			productName = pcl;
+			productReference = A03B9738534D47C9A1BC14E4 /* pcl.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D8CE73EC9EE341C2B93213AC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0920;
+				TargetAttributes = {
+					32DAA1F9629D488BA773FA25 = {
+						DevelopmentTeam = 78DZ8RW2TV;
+					};
+					33BCC4270738459CB12C0DD5 = {
+						DevelopmentTeam = 78DZ8RW2TV;
+					};
+					C1DF7B0B79264650B4E58D69 = {
+						DevelopmentTeam = 78DZ8RW2TV;
+					};
+				};
+			};
+			buildConfigurationList = 3F358A441A5849F58330D6DA /* Build configuration list for PBXProject "Project" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C932326803C54D7C98C4C702;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				32DAA1F9629D488BA773FA25 /* ALL_BUILD */,
+				C1DF7B0B79264650B4E58D69 /* ZERO_CHECK */,
+				33BCC4270738459CB12C0DD5 /* pcl */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		74513825E1074149854CD41D /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/T_O/pcl-superbuild/iOSWrapper -f /Users/T_O/pcl-superbuild/iOSWrapper/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7B2CEC6321354BD6A6D7773A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A3421DAD0E5455C8172D570 /* PointCloudLibraryWrapper.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0D846FA6CD0F4B309DC90982 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 33BCC4270738459CB12C0DD5 /* pcl */;
+			targetProxy = 7199FC8713304365966454E1 /* PBXContainerItemProxy */;
+		};
+		29BBE157D29046098A1FBC7F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1DF7B0B79264650B4E58D69 /* ZERO_CHECK */;
+			targetProxy = 386A32756849484787B8D797 /* PBXContainerItemProxy */;
+		};
+		2CD26CF7E005405695D0BA50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1DF7B0B79264650B4E58D69 /* ZERO_CHECK */;
+			targetProxy = 3509F23BC2A04DDEBA03F87D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0156E188BDC342B7AF731D6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/boost-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/eigen",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/flann-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8",
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SDKROOT = iphoneos11.2;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		26505F0852434F9E839B2695 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/boost-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/eigen",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/flann-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8",
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SDKROOT = iphoneos11.2;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		27E9461CBBAA4A0886CB62D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/boost-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/eigen",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/flann-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8",
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SDKROOT = iphoneos11.2;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		32324762B9BD42FEBEFE7441 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 78DZ8RW2TV;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos11.2;
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper/build";
+			};
+			name = RelWithDebInfo;
+		};
+		69F02AA569AE49089BB2CD4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 78DZ8RW2TV;
+				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_VERSION = A;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					pcl_EXPORTS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/boost-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/eigen",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/flann-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8",
+				);
+				INFOPLIST_FILE = "/Users/T_O/pcl-superbuild/iOSWrapper/Info.plist";
+				INSTALL_PATH = "@rpath";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				MACH_O_TYPE = mh_dylib;
+				OTHER_CFLAGS = (
+					"-fvisibility=hidden",
+					"-fvisibility-inlines-hidden",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"-fPIC",
+					"-fvisibility=hidden",
+					"-fvisibility-inlines-hidden",
+				);
+				OTHER_LDFLAGS = "-Wall  ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = pcl;
+				SDKROOT = iphoneos11.2;
+				SECTORDER_FLAGS = "";
+				SKIP_INSTALL = YES;
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		6C4372F8E8414F8AB31AC637 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/boost-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/eigen",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/flann-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8",
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SDKROOT = iphoneos11.2;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		8A2C852F95684604ABEE5E7B /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 78DZ8RW2TV;
+				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_VERSION = A;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					pcl_EXPORTS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/boost-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/eigen",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/flann-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8",
+				);
+				INFOPLIST_FILE = "/Users/T_O/pcl-superbuild/iOSWrapper/Info.plist";
+				INSTALL_PATH = "@rpath";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				MACH_O_TYPE = mh_dylib;
+				OTHER_CFLAGS = (
+					"-fvisibility=hidden",
+					"-fvisibility-inlines-hidden",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"-fPIC",
+					"-fvisibility=hidden",
+					"-fvisibility-inlines-hidden",
+				);
+				OTHER_LDFLAGS = "-Wall  ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = pcl;
+				SDKROOT = iphoneos11.2;
+				SECTORDER_FLAGS = "";
+				SKIP_INSTALL = YES;
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		933D5D32995142DD96E8B0F0 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 78DZ8RW2TV;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos11.2;
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper/build";
+			};
+			name = MinSizeRel;
+		};
+		9E29E527615D4DCF847356B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/boost-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/eigen",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/flann-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8",
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SDKROOT = iphoneos11.2;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		A792EF664D4B45509FA47FB4 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 78DZ8RW2TV;
+				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_VERSION = A;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					pcl_EXPORTS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/boost-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/eigen",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/flann-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8",
+				);
+				INFOPLIST_FILE = "/Users/T_O/pcl-superbuild/iOSWrapper/Info.plist";
+				INSTALL_PATH = "@rpath";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				MACH_O_TYPE = mh_dylib;
+				OTHER_CFLAGS = (
+					"-fvisibility=hidden",
+					"-fvisibility-inlines-hidden",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"-fPIC",
+					"-fvisibility=hidden",
+					"-fvisibility-inlines-hidden",
+				);
+				OTHER_LDFLAGS = "-Wall  ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = pcl;
+				SDKROOT = iphoneos11.2;
+				SECTORDER_FLAGS = "";
+				SKIP_INSTALL = YES;
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		ABE9BC48AE864EF78FAFB8D5 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/boost-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/eigen",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/flann-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8",
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SDKROOT = iphoneos11.2;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		B47CA370E443415EBD676880 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 78DZ8RW2TV;
+				DYLIB_COMPATIBILITY_VERSION = 1.0.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_VERSION = A;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					pcl_EXPORTS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/boost-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/eigen",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/flann-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8",
+				);
+				INFOPLIST_FILE = "/Users/T_O/pcl-superbuild/iOSWrapper/Info.plist";
+				INSTALL_PATH = "@rpath";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				MACH_O_TYPE = mh_dylib;
+				OTHER_CFLAGS = (
+					"-fvisibility=hidden",
+					"-fvisibility-inlines-hidden",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-fPIC",
+					"-fvisibility=hidden",
+					"-fvisibility-inlines-hidden",
+				);
+				OTHER_LDFLAGS = "-Wall  ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = pcl;
+				SDKROOT = iphoneos11.2;
+				SECTORDER_FLAGS = "";
+				SKIP_INSTALL = YES;
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		BA49775FE64B4B479C6F9863 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/boost-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/eigen",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/flann-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8",
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SDKROOT = iphoneos11.2;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		D5A7E7F13D0146B480D29C02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/boost-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/eigen",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/flann-ios-device/include",
+					"/Users/T_O/pcl-superbuild/iOSWrapper/../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8",
+				);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SDKROOT = iphoneos11.2;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		F4B4346C2B3D420A8B06590C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 78DZ8RW2TV;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos11.2;
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper/build";
+			};
+			name = Release;
+		};
+		FD4A2CEDDEBD4CE39D31541F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 78DZ8RW2TV;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos11.2;
+				SYMROOT = "/Users/T_O/pcl-superbuild/iOSWrapper/build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A787B74656E4BA58CBD8056 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5A7E7F13D0146B480D29C02 /* Debug */,
+				0156E188BDC342B7AF731D6A /* Release */,
+				6C4372F8E8414F8AB31AC637 /* MinSizeRel */,
+				ABE9BC48AE864EF78FAFB8D5 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F358A441A5849F58330D6DA /* Build configuration list for PBXProject "Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD4A2CEDDEBD4CE39D31541F /* Debug */,
+				F4B4346C2B3D420A8B06590C /* Release */,
+				933D5D32995142DD96E8B0F0 /* MinSizeRel */,
+				32324762B9BD42FEBEFE7441 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43E1DAC1955945B5A3C9081E /* Build configuration list for PBXNativeTarget "pcl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B47CA370E443415EBD676880 /* Debug */,
+				69F02AA569AE49089BB2CD4A /* Release */,
+				8A2C852F95684604ABEE5E7B /* MinSizeRel */,
+				A792EF664D4B45509FA47FB4 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B990926CC6BE4D5E99E46ADD /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E29E527615D4DCF847356B4 /* Debug */,
+				27E9461CBBAA4A0886CB62D8 /* Release */,
+				BA49775FE64B4B479C6F9863 /* MinSizeRel */,
+				26505F0852434F9E839B2695 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D8CE73EC9EE341C2B93213AC /* Project object */;
+}
