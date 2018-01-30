@@ -68,6 +68,9 @@ make_pcl_framework_device ()
   pcl_device_libs=`find $install/pcl-ios-device -name *.a`
   boost_device_libs=`find $install/boost-ios-device -name *.a`
   flann_device_libs=`find $install/flann-ios-device -name *.a`
+  qhull_device_libs=`find $install/qhull-ios-device -name *.a`
+  # Object-C/Swift で使用するためのラッパー関数を持つライブラリ
+  # wrapper_device_libs=`find $install/ios_device_wrapper -name *.a`
 
   # args -> version
   # version 1.8
@@ -76,6 +79,7 @@ make_pcl_framework_device ()
   eigen_header_dir=$install/eigen
   flann_header_dir=$install/flann-ios-device/include
   qhull_header_dir=$install/qhull-ios-device/include
+  # ioswrapper_header_dir=$install/ios_device_wrapper/include
 
   pcl_framework=$install/frameworks-device/pcl.framework
 
@@ -87,11 +91,13 @@ make_pcl_framework_device ()
   cp -r $boost_header_dir/* $pcl_framework/Headers/
   cp -r $eigen_header_dir/* $pcl_framework/Headers/
   cp -r $flann_header_dir/* $pcl_framework/Headers/
+  cp -r $qhull_header_dir/* $pcl_framework/Headers/
+  # cp -r $ioswrapper_header_dir/* $pcl_framework/Headers/
 
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
 
-  libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs
+  libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs
 
   # Xcode で生成した framework と 個別にビルドした外部ライブラリを合わせる
   lipo -create -output $pcl_framework/pcl $current_pcl_ios_device_framework/pcl $pcl_framework/pcl_device
@@ -105,7 +111,10 @@ make_pcl_framework_simulator ()
   pcl_sim_libs=`find $install/pcl-ios-simulator -name *.a`
   boost_sim_libs=`find $install/boost-ios-simulator -name *.a`
   flann_sim_libs=`find $install/flann-ios-simulator -name *.a`
+  qhull_sim_libs=`find $install/qhull-ios-simulator -name *.a`
   # ioswrapper_sim_libs=$install/ioswrapper-ios-simulator -name *.a`
+  # Object-C/Swift で使用するためのラッパー関数を持つライブラリ
+  # wrapper_sim_libs=`find $install/ios_simulator_wrapper -name *.a`
 
   # args -> version
   # version 1.8
@@ -126,12 +135,13 @@ make_pcl_framework_simulator ()
   cp -r $boost_header_dir/* $pcl_framework/Headers/
   cp -r $eigen_header_dir/* $pcl_framework/Headers/
   cp -r $flann_header_dir/* $pcl_framework/Headers/
-  # cp -r $ioswrapper_header_dir/* $pcl_framework/Headers/
+  cp -r $qhull_header_dir/* $pcl_framework/Headers/
+  cp -r $ioswrapper_header_dir/* $pcl_framework/Headers/
 
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
 
-  libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs
+  libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs $qhull_sim_libs
 
   # Xcode で生成した framework と 個別にビルドした外部ライブラリを合わせる
   lipo -create -output $pcl_framework/pcl $current_pcl_ios_sim_framework/pcl $pcl_framework/pcl_sim
@@ -150,10 +160,16 @@ make_pcl_framework_universal ()
   pcl_device_libs=`find $install/pcl-ios-device -name *.a`
   boost_device_libs=`find $install/boost-ios-device -name *.a`
   flann_device_libs=`find $install/flann-ios-device -name *.a`
+  qhull_device_libs=`find $install/qhull-ios-device -name *.a`
+  # Object-C/Swift で使用するためのラッパー関数を持つライブラリ
+  # wrapper_device_libs=`find $install/ios_device_wrapper -name *.a`
   # pcl_sim_libs=`find $install/pcl-${simulator_folder} $install/flann-${simulator_folder} $install/boost-${simulator_folder} -name *.a`
   pcl_sim_libs=`find $install/pcl-ios-simulator -name *.a`
   boost_sim_libs=`find $install/boost-ios-simulator -name *.a`
   flann_sim_libs=`find $install/flann-ios-simulator -name *.a`
+  qhull_sim_libs=`find $install/qhull-ios-simulator -name *.a`
+  # Object-C/Swift で使用するためのラッパー関数を持つライブラリ
+  # wrapper_sim_libs=`find $install/ios_simulator_wrapper -name *.a`
 
   # args -> version
   # version 1.7
@@ -175,12 +191,13 @@ make_pcl_framework_universal ()
   cp -r $boost_header_dir/* $pcl_framework/Headers/
   cp -r $eigen_header_dir/* $pcl_framework/Headers/
   cp -r $flann_header_dir/* $pcl_framework/Headers/
+  cp -r $qhull_header_dir/* $pcl_framework/Headers/
 
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
 
-  libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs
-  libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs
+  libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs
+  libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs $qhull_sim_libs
 
   # Xcode で生成した framework と 個別にビルドした外部ライブラリを合わせる
   lipo -create -output $current_pcl_ios_universal_framework/pcl $current_pcl_ios_device_framework/pcl $current_pcl_ios_sim_framework/pcl $pcl_framework/pcl_device $pcl_framework/pcl_sim
