@@ -1,0 +1,20 @@
+import Foundation
+import Libpointcloudlibrary
+
+/// Class outputting an animated terminal progress bar.
+public final class Pointcloudlibrary {
+    let bar: UnsafeMutablePointer<pointcloudlibrary>
+
+    public init(text: String, max: UInt) {
+        let cstring = (text as NSString).UTF8String
+        bar = Libpointcloudlibrary.progressbar_new(cstring, max)
+    }
+
+    public func increment() {
+        Libpointcloudlibrary.progressbar_inc(bar)
+    }
+
+    public func finish() {
+        Libpointcloudlibrary.progressbar_finish(bar)
+    }
+}

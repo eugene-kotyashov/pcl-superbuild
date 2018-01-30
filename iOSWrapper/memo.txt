@@ -1,0 +1,12 @@
+CMake による iOS の Framework 作成
+https://cmake.org/cmake/help/v3.5/prop_tgt/FRAMEWORK.html
+https://cmake.org/cmake/help/v3.10/prop_tgt/FRAMEWORK.html
+
+
+https://stackoverflow.com/questions/25248598/importing-commoncrypto-in-a-swift-framework
+https://www.sitepoint.com/using-legacy-c-apis-swift/
+
+---
+
+iOS のバインディングについて
+https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html
