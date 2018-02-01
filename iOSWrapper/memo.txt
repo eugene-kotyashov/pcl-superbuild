@@ -29,3 +29,12 @@ http://blog3.logosware.com/archives/1843
 
 PointCloudLibraryInterface.mm/h
 ※ Object-C で使用する場合の対応
+
+http://blog3.logosware.com/archives/1909
+※ コマンドラインツールを必ず入れておくこと。
+
+---
+other
+https://stackoverflow.com/questions/30355133/swift-framework-umbrella-header-h-not-found
+http://tech.hikware.com/article/20171016a.html
+http://mushikago.com/i/?p=5671
