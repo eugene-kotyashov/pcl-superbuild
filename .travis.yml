@@ -262,12 +262,12 @@ before_install:
 # bash ../iOSWrapper/build-sim64.sh;
 # bash ../makeFramework.sh simulator;
 # bash ../makeFramework.sh universal;
+#     - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
+#         bash ../iOSWrapper/build-ios.sh;
+#         bash ../makeFramework.sh device;
+#     fi
 script:
     - travis_wait 50 cmake --build . --config Release
-    - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
-        bash ../iOSWrapper/build-ios.sh;
-        bash ../makeFramework.sh device;
-    fi
 
 
 # cache upload
