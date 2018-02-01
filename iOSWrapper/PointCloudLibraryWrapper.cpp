@@ -14,6 +14,26 @@ int PointCloudLibraryWrapper::PrintFoo()
     return 1;
 } 
 
+
+// io
+EXPORT
+void PointCloudLibraryWrapper::LoadPCDFile(std::string filename)
+{
+}
+
+
+EXPORT
+void PointCloudLibraryWrapper::LoadPLYFile(std::string filename)
+{
+}
+
+
+EXPORT
+void PointCloudLibraryWrapper::LoadObjFile(std::string filename)
+{
+}
+
+
 //----------------------------------------------------------------------------
 /*
 EXPORT

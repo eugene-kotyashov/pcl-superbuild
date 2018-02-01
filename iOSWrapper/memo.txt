@@ -10,3 +10,37 @@ https://www.sitepoint.com/using-legacy-c-apis-swift/
 
 iOS のバインディングについて
 https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html
+
+build 後の bash 実行
+
+../makeFramework.sh universal
+../makeFramework.sh device
+../makeFramework.sh simulator
+
+
+http://www.swiftprogrammer.info/swift_call_cpp.html
+
+iOSアプリ開発においてFrameworkを自作する方法
+http://d.hatena.ne.jp/MoonMtLab/20141124/1416822881
+※ 今の対応したい方法にもっとも近い手順?(実装は1-4まで。使い方が5)
+
+さらに参照先
+http://blog3.logosware.com/archives/1843
+
+PointCloudLibraryInterface.mm/h
+※ Object-C で使用する場合の対応
+
+http://blog3.logosware.com/archives/1909
+※ コマンドラインツールを必ず入れておくこと。
+
+---
+other
+https://stackoverflow.com/questions/30355133/swift-framework-umbrella-header-h-not-found
+http://tech.hikware.com/article/20171016a.html
+http://mushikago.com/i/?p=5671
+
+
+https://developer.apple.com/library/content/qa/qa1490/_index.html
+Framework を使用する場合の注意点
+
+

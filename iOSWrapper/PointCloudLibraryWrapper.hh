@@ -10,8 +10,6 @@
 // #include <pcl/sample_consensus/model_types.h>
 // #include <pcl/segmentation/sac_segmentation.h>
 
-// #include <pcl/filters/voxel_grid.h>
-
 class PointCloudLibraryWrapper
 {
 public:
@@ -20,7 +18,15 @@ public:
 
     int PrintFoo();
     std::string foo;
+
+    // io
+    void Load(std::string filename);
+
+    // Feature
+    // Filter
+
 private:
+    // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud;
 };
 
 
