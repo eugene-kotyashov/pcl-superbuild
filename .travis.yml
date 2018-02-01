@@ -238,7 +238,8 @@ before_install:
 
       travis_wait 50 cmake --build . --config Release;
 
-      bash ../iOSWrapper/build-ios.sh;
+      cd ../iOSWrapper;
+      bash build-ios.sh;
       bash ../makeFramework.sh device;
     fi
 
