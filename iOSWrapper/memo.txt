@@ -38,3 +38,9 @@ other
 https://stackoverflow.com/questions/30355133/swift-framework-umbrella-header-h-not-found
 http://tech.hikware.com/article/20171016a.html
 http://mushikago.com/i/?p=5671
+
+
+https://developer.apple.com/library/content/qa/qa1490/_index.html
+Framework ‚ğg—p‚·‚éê‡‚Ì’ˆÓ“_
+
+
