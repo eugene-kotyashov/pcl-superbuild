@@ -24,6 +24,8 @@ iOSアプリ開発においてFrameworkを自作する方法
 http://d.hatena.ne.jp/MoonMtLab/20141124/1416822881
 ※ 今の対応したい方法にもっとも近い手順?(実装は1-4まで。使い方が5)
 
+さらに参照先
+http://blog3.logosware.com/archives/1843
 
 PointCloudLibraryInterface.mm/h
 ※ Object-C で使用する場合の対応
