@@ -10,8 +10,13 @@ public final class Pointcloudlibrary {
         bar = Libpointcloudlibrary.progressbar_new(cstring, max)
     }
 
-    public func increment() {
-        Libpointcloudlibrary.progressbar_inc(bar)
+    public load(text: String) {
+        let cstring = (text as NSString).UTF8String
+        bar = Libpointcloudlibrary.(cstring, max)
+    }
+
+    public func debug() {
+        Libpointcloudlibrary.PrintFoo()
     }
 
     public func finish() {

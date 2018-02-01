@@ -379,10 +379,11 @@ macro(ios_device_wrapper_compile)
   get_toolchain_file("ios-device")
 
   # framework.plist setting
-  set(FRAMEWORK_NAME pcl)                                       # <== Set to your framework's name
+  set(FRAMEWORK_NAME "pcl")                                     # <== Set to your framework's name
   set(FRAMEWORK_BUNDLE_IDENTIFIER "com.sirokujira.framework")   # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
-  set(CODE_SIGN_IDENTITY "iPhone Developer")                    # <== Set to your preferred code sign identity, to see list:
-                                                                # /usr/bin/env xcrun security find-identity -v -p codesigning
+  # set(CODE_SIGN_IDENTITY "iPhone Developer")                  # <== Set to your preferred code sign identity, to see list:
+  #                                                             # /usr/bin/env xcrun security find-identity -v -p codesigning
+  set(CODESIGNIDENTITY "iPhone Developer")
   set(DEPLOYMENT_TARGET 8.0)                                    # <== Set your deployment target version of iOS
   set(DEVICE_FAMILY "1,2")                                      # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
   set(DEVELOPMENT_TEAM_ID "AAAAAAAA")                           # <== Set to your team ID from Apple
@@ -464,8 +465,9 @@ macro(ios_simulator_wrapper_compile)
   # framework.plist setting
   set(FRAMEWORK_NAME "pcl")                                     # <== Set to your framework's name
   set(FRAMEWORK_BUNDLE_IDENTIFIER "com.sirokujira.framework")   # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
-  set(CODE_SIGN_IDENTITY "iPhone Developer")                    # <== Set to your preferred code sign identity, to see list:
-                                                                # /usr/bin/env xcrun security find-identity -v -p codesigning
+  # set(CODE_SIGN_IDENTITY "iPhone Developer")                  # <== Set to your preferred code sign identity, to see list:
+  #                                                             # /usr/bin/env xcrun security find-identity -v -p codesigning
+  set(CODESIGNIDENTITY "iPhone Developer")
   set(DEPLOYMENT_TARGET 8.0)                                    # <== Set your deployment target version of iOS
   set(DEVICE_FAMILY "1,2")                                      # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
   set(DEVELOPMENT_TEAM_ID "AAAAAAAA")                           # <== Set to your team ID from Apple

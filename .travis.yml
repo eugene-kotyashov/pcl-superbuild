@@ -257,30 +257,18 @@ before_install:
 # install:
 #   - travis_wait 60 make -j4 VERBOSE=1 2>&1
 # - ls
-# xcodebuild
-# http://blog.ch3cooh.jp/entry/20150210/1423573065
-# - xcodebuild -project build/HelloPCL.xcodeproj -target HelloPCL -sdk iphoneos -configuration Release build
-# xcode open
-# - open build/HelloPCL.xcodeproj
-# xcode command line build
-# http://blog.ch3cooh.jp/entry/20150210/1423573065
-# simulation build
-# - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphonesimulator -configuration Debug build
-# - xcodebuild -project build/HelloPCL2.xcodeproj -target HelloPCL2 -sdk iphoneos -configuration Release build
-# before vtk build module copy?
-# - bash cmake_command.sh
-# warning
-# 4MB maximum log size a little low
-# https://www.google.co.jp/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiEhOiJyN_UAhXHgrwKHV2BCL8QFggiMAA&url=https%3A%2F%2Fgithub.com%2Ftravis-ci%2Ftravis-ci%2Fissues%2F1382&usg=AFQjCNHunsY-8__7zqF6zQwurd-CKnqq6w&cad=rja
-# - travis_wait 60 make -j4 VERBOSE=1 2>&1
-# add swapfile
-# dd if=/dev/zero of=/swapfile bs=1024 count=4194304
-# mkswap /swapfile
-# swapon /swapfile
-# - travis_wait 50 make -j4 VERBOSE=1 2>&1
-# - travis_wait 50 cmake --build .
+# bash ../iOSWrapper/build-ios.sh;
+# bash ../makeFramework.sh device;
+# bash ../iOSWrapper/build-sim64.sh;
+# bash ../makeFramework.sh simulator;
+# bash ../makeFramework.sh universal;
 script:
     - travis_wait 50 cmake --build . --config Release
+    - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
+        bash ../iOSWrapper/build-ios.sh;
+        bash ../makeFramework.sh device;
+    fi
+
 
 # cache upload
 # after_success:
