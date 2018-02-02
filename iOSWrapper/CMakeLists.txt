@@ -46,9 +46,9 @@ file(GLOB boost_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/boost-ios-d
 file(GLOB boost_device_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/boost-ios-device/lib *.a)
 file(GLOB boost_simulation_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/boost-ios-simulator/lib *.a)
 
-message(STATUS ${boost_includefiles})
-message(STATUS ${boost_device_libraryfiles})
-message(STATUS ${boost_simulation_libraryfiles})
+message(STATUS "boost(include)         : ${boost_includefiles}")
+message(STATUS "boost(device - lib)    : ${boost_device_libraryfiles}")
+message(STATUS "boost(simulator - lib) : ${boost_simulation_libraryfiles}")
 
 # add_library(
 #     ${FRAMEWORK_NAME} SHARED
@@ -76,9 +76,9 @@ file(GLOB flann_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/flann-io
 file(GLOB flann_device_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/flann-ios-device/lib *.a)
 file(GLOB flann_simulation_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator/lib *.a)
 
-message(STATUS ${flann_includefiles})
-message(STATUS ${flann_device_libraryfiles})
-message(STATUS ${flann_simulation_libraryfiles})
+message(STATUS "flann(include)         : ${flann_includefiles}")
+message(STATUS "flann(device - lib)    : ${flann_device_libraryfiles}")
+message(STATUS "flann(simulator - lib) : ${flann_simulation_libraryfiles}")
 
 # add_library(
 #     ${FRAMEWORK_NAME} SHARED
@@ -97,9 +97,9 @@ file(GLOB qhull_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/qhull-io
 file(GLOB qhull_device_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-device/lib *.a)
 file(GLOB qhull_simulation_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-simulator/lib *.a)
 
-message(STATUS ${qhull_includefiles})
-message(STATUS ${qhull_device_libraryfiles})
-message(STATUS ${qhull_simulation_libraryfiles})
+message(STATUS "qhull(include)         : ${qhull_includefiles}")
+message(STATUS "qhull(device - lib)    : ${qhull_device_libraryfiles}")
+message(STATUS "qhull(simulator - lib) : ${qhull_simulation_libraryfiles}")
 
 # add_library(
 #     ${FRAMEWORK_NAME} SHARED
@@ -118,9 +118,9 @@ file(GLOB pcl_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-de
 file(GLOB pcl_device_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device/lib *.a)
 file(GLOB pcl_simulation_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator/lib *.a)
 
-message(STATUS ${pcl_includefiles})
-message(STATUS ${pcl_device_libraryfiles})
-message(STATUS ${pcl_simulation_libraryfiles})
+message(STATUS "pcl(include)         : ${pcl_includefiles}")
+message(STATUS "pcl(device - lib)    : ${pcl_device_libraryfiles}")
+message(STATUS "pcl(simulator - lib) : ${pcl_simulation_libraryfiles}")
 
 # add_library(
 #     ${FRAMEWORK_NAME} SHARED
@@ -140,15 +140,23 @@ set(CMAKE_SHARED_LINKER_FLAGS "-Wall")
 
 include_directories(${CMAKE_BINARY_DIR}/../../Install/eigen)
 
-include_directories(${CMAKE_BINARY_DIR}/../../Install/boost-ios-device/include)
-include_directories(${CMAKE_BINARY_DIR}/../../Install/flann-ios-device/include)
-include_directories(${CMAKE_BINARY_DIR}/../../Install/qhull-ios-device/include)
-include_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device/include/pcl-1.8)
+# if (BUILD_IOS_DEVICE)
+set(INCLUDE_DIR
+    ${CMAKE_BINARY_DIR}/../../Install/boost-ios-device/include
+    ${CMAKE_BINARY_DIR}/../../Install/flann-ios-device/include
+    ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-device/include
+    ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device/include/pcl-1.8
+)
+# endif()
 
-include_directories(${CMAKE_BINARY_DIR}/../../Install/boost-ios-simulator/include)
-include_directories(${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator/include)
-include_directories(${CMAKE_BINARY_DIR}/../../Install/qhull-ios-simulator/include)
-include_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator/include/pcl-1.8)
+# if (BUILD_IOS_SIMULATOR)
+# set(INCLUDE_DIR
+#     ${CMAKE_BINARY_DIR}/../../Install/boost-ios-simulator/include
+#     ${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator/include
+#     ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-simulator/include
+#     ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator/include/pcl-1.8
+# )
+# endif()
 
 # link_directories(${CMAKE_BINARY_DIR}/../../Install/boost-ios-device)
 # link_directories(${CMAKE_BINARY_DIR}/../../Install/flann-ios-device)
@@ -158,25 +166,21 @@ include_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator/include/
 # link_directories(${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator)
 # link_directories(${CMAKE_BINARY_DIR}/../../Install/qhull-ios-simulator)
 # link_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator)
-# target_link_libraries(${boost_device_libraryfiles})
-# target_link_libraries(${boost_simulation_libraryfiles})
-# target_link_libraries(${flann_device_libraryfiles})
-# target_link_libraries(${flann_simulation_libraryfiles})
-# target_link_libraries(${qhull_device_libraryfiles})
-# target_link_libraries(${qhull_simulation_libraryfiles})
-# target_link_libraries(${pcl_device_libraryfiles})
-# target_link_libraries(${pcl_simulation_libraryfiles})
+# target_link_libraries(${FRAMEWORK_NAME} ${boost_simulation_libraryfiles})
+# target_link_libraries(${FRAMEWORK_NAME} ${flann_simulation_libraryfiles})
+# target_link_libraries(${FRAMEWORK_NAME} ${qhull_simulation_libraryfiles})
+# target_link_libraries(${FRAMEWORK_NAME} ${pcl_simulation_libraryfiles})
 
 target_include_directories(pcl PRIVATE
-    ${CMAKE_BINARY_DIR}/../../Install/boost-ios-device/include
-    ${CMAKE_BINARY_DIR}/../../Install/flann-ios-device/include
-    ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-device/include
-    ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device/include/pcl-1.8
-    ${CMAKE_BINARY_DIR}/../../Install/boost-ios-simulator/include
-    ${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator/include
-    ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-simulator/include
-    ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator/include/pcl-1.8
+    ${INCLUDE_DIR}
 )
+
+# target_link_libraries(pcl 
+#     ${boost_device_libraryfiles}
+#     ${flann_device_libraryfiles}
+#     ${qhull_device_libraryfiles}
+#     ${pcl_device_libraryfiles}
+# )
 
 # https://cmake.org/cmake/help/v3.10/prop_tgt/FRAMEWORK.html
 # set_target_properties(${FRAMEWORK_NAME} PROPERTIES
