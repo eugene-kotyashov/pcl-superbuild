@@ -42,9 +42,9 @@ message(STATUS ${CMAKE_BINARY_DIR})
 
 # a/dylib
 # boost?
-file(GLOB boost_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/boost-ios-device/include *.*)
-file(GLOB boost_device_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/boost-ios-device/lib *.a)
-file(GLOB boost_simulation_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../Install/boost-ios-simulator/lib *.a)
+file(GLOB boost_includefiles ${CMAKE_BINARY_DIR}/../Install/boost-ios-device/include/*.h*)
+file(GLOB boost_device_libraryfiles ${CMAKE_BINARY_DIR}/../Install/boost-ios-device/lib/*.a)
+file(GLOB boost_simulation_libraryfiles ${CMAKE_BINARY_DIR}/../Install/boost-ios-simulator/lib/*.a)
 
 message(STATUS "boost(include)         : ${boost_includefiles}")
 message(STATUS "boost(device - lib)    : ${boost_device_libraryfiles}")
@@ -63,8 +63,8 @@ message(STATUS "boost(simulator - lib) : ${boost_simulation_libraryfiles}")
 ###
 
 # eigen
-file(GLOB eigen_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/eigen/Eigen *.*)
-file(GLOB eigen_unsupported_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/eigen/unsupported *.*)
+file(GLOB eigen_includefiles ${CMAKE_BINARY_DIR}/../../Install/eigen/Eigen/*.*)
+file(GLOB eigen_unsupported_includefiles ${CMAKE_BINARY_DIR}/../../Install/eigen/unsupported/*.*)
 
 message(STATUS ${eigen_includefiles})
 message(STATUS ${eigen_unsupported_includefiles})
@@ -72,9 +72,9 @@ message(STATUS ${eigen_unsupported_includefiles})
 ###
 
 # flann
-file(GLOB flann_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/flann-ios-device/include *.*)
-file(GLOB flann_device_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/flann-ios-device/lib *.a)
-file(GLOB flann_simulation_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator/lib *.a)
+file(GLOB flann_includefiles ${CMAKE_BINARY_DIR}/../../Install/flann-ios-device/include/*.h*)
+file(GLOB flann_device_libraryfiles ${CMAKE_BINARY_DIR}/../../Install/flann-ios-device/lib/*.a)
+file(GLOB flann_simulation_libraryfiles ${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator/lib/*.a)
 
 message(STATUS "flann(include)         : ${flann_includefiles}")
 message(STATUS "flann(device - lib)    : ${flann_device_libraryfiles}")
@@ -93,9 +93,9 @@ message(STATUS "flann(simulator - lib) : ${flann_simulation_libraryfiles}")
 ###
 
 # qhull
-file(GLOB qhull_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-device/include *.*)
-file(GLOB qhull_device_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-device/lib *.a)
-file(GLOB qhull_simulation_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-simulator/lib *.a)
+file(GLOB qhull_includefiles ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-device/include/*.h*)
+file(GLOB qhull_device_libraryfiles ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-device/lib/*.a)
+file(GLOB qhull_simulation_libraryfiles ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-simulator/lib/*.a)
 
 message(STATUS "qhull(include)         : ${qhull_includefiles}")
 message(STATUS "qhull(device - lib)    : ${qhull_device_libraryfiles}")
@@ -114,9 +114,9 @@ message(STATUS "qhull(simulator - lib) : ${qhull_simulation_libraryfiles}")
 ###
 
 # pcl
-file(GLOB pcl_includefiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device/include/pcl-1.8 *.*)
-file(GLOB pcl_device_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device/lib *.a)
-file(GLOB pcl_simulation_libraryfiles RELATIVE ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator/lib *.a)
+file(GLOB_RECURSE pcl_includefiles ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device/include/pcl-1.8/*.h*)
+file(GLOB_RECURSE pcl_device_libraryfiles ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device/lib/*.a)
+file(GLOB_RECURSE pcl_simulation_libraryfiles ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator/lib/*.a)
 
 message(STATUS "pcl(include)         : ${pcl_includefiles}")
 message(STATUS "pcl(device - lib)    : ${pcl_device_libraryfiles}")
