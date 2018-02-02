@@ -19,11 +19,16 @@ set(LIBRARY_SOURCE
     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.cpp
 )
 
-add_library(
-    ${FRAMEWORK_NAME} SHARED
-    ${LIBRARY_SOURCE}
-)
+# add_library(
+#     ${FRAMEWORK_NAME} SHARED
+#     ${LIBRARY_SOURCE}
+# )
 
+add_library(
+    pcl SHARED
+    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh
+    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.cpp
+)
 
 # FolderPath Check
 # CMAKE_INSTALL_PREFIX
@@ -164,25 +169,39 @@ include_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator/include/
 
 
 # https://cmake.org/cmake/help/v3.10/prop_tgt/FRAMEWORK.html
-set_target_properties(${FRAMEWORK_NAME} PROPERTIES
+# set_target_properties(${FRAMEWORK_NAME} PROPERTIES
+#     FRAMEWORK TRUE
+#     FRAMEWORK_VERSION A
+#     MACOSX_FRAMEWORK_IDENTIFIER ${FRAMEWORK_BUNDLE_IDENTIFIER}
+#     MACOSX_FRAMEWORK_INFO_PLIST ${CMAKE_CURRENT_LIST_DIR}/framework.plist.in
+#     # info_plist properties
+#     # MACOSX_FRAMEWORK_BUNDLE_VERSION
+#     # MACOSX_FRAMEWORK_ICON_FILE ${FRAMEWORK_ICON_FILE}
+#     # MACOSX_FRAMEWORK_SHORT_VERSION_STRING 1.0.0
+#     # "current version" in semantic format in Mach-O binary file
+#     VERSION 1.0.0
+#     # "compatibility version" in semantic format in Mach-O binary file
+#     SOVERSION 1.0.0
+#     PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh"
+#     # XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
+#     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY ${CODE_SIGN_IDENTITY}
+#     # XCODE_ATTRIBUTE_DEVELOPMENT_TEAM ${DEVELOPMENT_TEAM_ID}
+#     # XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
+#     # XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
+# )
+
+
+set_target_properties(pcl PROPERTIES
     FRAMEWORK TRUE
     FRAMEWORK_VERSION A
-    MACOSX_FRAMEWORK_IDENTIFIER ${FRAMEWORK_BUNDLE_IDENTIFIER}
-    MACOSX_FRAMEWORK_INFO_PLIST ${CMAKE_CURRENT_LIST_DIR}/framework.plist.in
-    # info_plist properties
-    # MACOSX_FRAMEWORK_BUNDLE_VERSION
-    # MACOSX_FRAMEWORK_ICON_FILE ${FRAMEWORK_ICON_FILE}
-    # MACOSX_FRAMEWORK_SHORT_VERSION_STRING 1.0.0
+    MACOSX_FRAMEWORK_IDENTIFIER com.sirokujira.framework
+    MACOSX_FRAMEWORK_INFO_PLIST ${CMAKE_CURRENT_LIST_DIR}/framework.plist
     # "current version" in semantic format in Mach-O binary file
     VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
     SOVERSION 1.0.0
     PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh"
-    # XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
-    XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY ${CODE_SIGN_IDENTITY}
-    # XCODE_ATTRIBUTE_DEVELOPMENT_TEAM ${DEVELOPMENT_TEAM_ID}
-    # XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
-    # XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
+    XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
 )
 
 
