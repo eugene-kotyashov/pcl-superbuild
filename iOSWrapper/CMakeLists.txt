@@ -63,8 +63,8 @@ message(STATUS "boost(simulator - lib) : ${boost_simulation_libraryfiles}")
 ###
 
 # eigen
-file(GLOB eigen_includefiles "../build/CMakeExternals/../Install/eigen/Eigen/*.*")
-file(GLOB eigen_unsupported_includefiles "../build/CMakeExternals/../Install/eigen/unsupported/*.*")
+file(GLOB eigen_includefiles "../build/CMakeExternals/Install/eigen/Eigen/*.*")
+file(GLOB eigen_unsupported_includefiles "../build/CMakeExternals/Install/eigen/unsupported/*.*")
 
 message(STATUS ${eigen_includefiles})
 message(STATUS ${eigen_unsupported_includefiles})
@@ -72,9 +72,9 @@ message(STATUS ${eigen_unsupported_includefiles})
 ###
 
 # flann
-file(GLOB flann_includefiles "../build/CMakeExternals/../Install/flann-ios-device/include/*.h*")
-file(GLOB flann_device_libraryfiles "../build/CMakeExternals/../Install/flann-ios-device/lib/*.a")
-file(GLOB flann_simulation_libraryfiles "../build/CMakeExternals/../Install/flann-ios-simulator/lib/*.a")
+file(GLOB flann_includefiles "../build/CMakeExternals/Install/flann-ios-device/include/*.h*")
+file(GLOB flann_device_libraryfiles "../build/CMakeExternals/Install/flann-ios-device/lib/*.a")
+file(GLOB flann_simulation_libraryfiles "../build/CMakeExternals/Install/flann-ios-simulator/lib/*.a")
 
 message(STATUS "flann(include)         : ${flann_includefiles}")
 message(STATUS "flann(device - lib)    : ${flann_device_libraryfiles}")
@@ -93,9 +93,9 @@ message(STATUS "flann(simulator - lib) : ${flann_simulation_libraryfiles}")
 ###
 
 # qhull
-file(GLOB qhull_includefiles "../build/CMakeExternals/../Install/qhull-ios-device/include/*.h*")
-file(GLOB qhull_device_libraryfiles "../build/CMakeExternals/../Install/qhull-ios-device/lib/*.a")
-file(GLOB qhull_simulation_libraryfiles "../build/CMakeExternals/../Install/qhull-ios-simulator/lib/*.a")
+file(GLOB qhull_includefiles "../build/CMakeExternals/Install/qhull-ios-device/include/*.h*")
+file(GLOB qhull_device_libraryfiles "../build/CMakeExternals/Install/qhull-ios-device/lib/*.a")
+file(GLOB qhull_simulation_libraryfiles "../build/CMakeExternals/Install/qhull-ios-simulator/lib/*.a")
 
 message(STATUS "qhull(include)         : ${qhull_includefiles}")
 message(STATUS "qhull(device - lib)    : ${qhull_device_libraryfiles}")
@@ -114,9 +114,9 @@ message(STATUS "qhull(simulator - lib) : ${qhull_simulation_libraryfiles}")
 ###
 
 # pcl
-file(GLOB_RECURSE pcl_includefiles "../build/CMakeExternals/../Install/pcl-ios-device/include/pcl-1.8/*.h*")
-file(GLOB_RECURSE pcl_device_libraryfiles "../build/CMakeExternals/../Install/pcl-ios-device/lib/*.a")
-file(GLOB_RECURSE pcl_simulation_libraryfiles "../build/CMakeExternals/../Install/pcl-ios-simulator/lib/*.a")
+file(GLOB_RECURSE pcl_includefiles "../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8/*.h*")
+file(GLOB_RECURSE pcl_device_libraryfiles "../build/CMakeExternals/Install/pcl-ios-device/lib/*.a")
+file(GLOB_RECURSE pcl_simulation_libraryfiles "../build/CMakeExternals/Install/pcl-ios-simulator/lib/*.a")
 
 message(STATUS "pcl(include)         : ${pcl_includefiles}")
 message(STATUS "pcl(device - lib)    : ${pcl_device_libraryfiles}")
