@@ -167,6 +167,16 @@ include_directories(${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator/include/
 # target_link_libraries(${pcl_device_libraryfiles})
 # target_link_libraries(${pcl_simulation_libraryfiles})
 
+target_include_directories(pcl PRIVATE
+    ${CMAKE_BINARY_DIR}/../../Install/boost-ios-device/include
+    ${CMAKE_BINARY_DIR}/../../Install/flann-ios-device/include
+    ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-device/include
+    ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-device/include/pcl-1.8
+    ${CMAKE_BINARY_DIR}/../../Install/boost-ios-simulator/include
+    ${CMAKE_BINARY_DIR}/../../Install/flann-ios-simulator/include
+    ${CMAKE_BINARY_DIR}/../../Install/qhull-ios-simulator/include
+    ${CMAKE_BINARY_DIR}/../../Install/pcl-ios-simulator/include/pcl-1.8
+)
 
 # https://cmake.org/cmake/help/v3.10/prop_tgt/FRAMEWORK.html
 # set_target_properties(${FRAMEWORK_NAME} PROPERTIES
