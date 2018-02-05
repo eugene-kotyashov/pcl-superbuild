@@ -63,8 +63,8 @@ message(STATUS "boost(simulator - lib) : ${boost_simulation_libraryfiles}")
 ###
 
 # eigen
-file(GLOB eigen_includefiles "../build/CMakeExternals/Install/eigen/Eigen/*.*")
-file(GLOB eigen_unsupported_includefiles "../build/CMakeExternals/Install/eigen/unsupported/*.*")
+file(GLOB eigen_includefiles "../build/CMakeExternals/Install/eigen/Eigen/*.")
+file(GLOB eigen_unsupported_includefiles "../build/CMakeExternals/Install/eigen/unsupported/*.")
 
 message(STATUS ${eigen_includefiles})
 message(STATUS ${eigen_unsupported_includefiles})
@@ -72,7 +72,7 @@ message(STATUS ${eigen_unsupported_includefiles})
 ###
 
 # flann
-file(GLOB flann_includefiles "../build/CMakeExternals/Install/flann-ios-device/include/*.h*")
+file(GLOB flann_includefiles "../build/CMakeExternals/Install/flann-ios-device/include/flann/*.h*")
 file(GLOB flann_device_libraryfiles "../build/CMakeExternals/Install/flann-ios-device/lib/*.a")
 file(GLOB flann_simulation_libraryfiles "../build/CMakeExternals/Install/flann-ios-simulator/lib/*.a")
 
@@ -93,9 +93,9 @@ message(STATUS "flann(simulator - lib) : ${flann_simulation_libraryfiles}")
 ###
 
 # qhull
-file(GLOB qhull_includefiles "../build/CMakeExternals/Install/qhull-ios-device/include/*.h*")
-file(GLOB qhull_device_libraryfiles "../build/CMakeExternals/Install/qhull-ios-device/lib/*.a")
-file(GLOB qhull_simulation_libraryfiles "../build/CMakeExternals/Install/qhull-ios-simulator/lib/*.a")
+file(GLOB qhull_includefiles "../build/CMakeExternals/Install/qhull-ios-device/*.h*")
+file(GLOB qhull_device_libraryfiles "../build/CMakeExternals/Install/qhull-ios-device/*.a")
+file(GLOB qhull_simulation_libraryfiles "../build/CMakeExternals/Install/qhull-ios-simulator/*.a")
 
 message(STATUS "qhull(include)         : ${qhull_includefiles}")
 message(STATUS "qhull(device - lib)    : ${qhull_device_libraryfiles}")
@@ -144,7 +144,9 @@ include_directories(../build/CMakeExternals/Install/eigen)
 set(INCLUDE_DIR
     ../build/CMakeExternals/Install/boost-ios-device/include
     ../build/CMakeExternals/Install/flann-ios-device/include
-    ../build/CMakeExternals/Install/qhull-ios-device/include
+    ../build/CMakeExternals/Install/qhull-ios-device/include/libqhull
+    ../build/CMakeExternals/Install/qhull-ios-device/include/libqhull_r
+    ../build/CMakeExternals/Install/qhull-ios-device/include/libqhullcpp
     ../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8
 )
 # endif()

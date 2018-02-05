@@ -19,7 +19,7 @@ int PointCloudLibraryWrapper::PrintFoo()
 EXPORT
 void PointCloudLibraryWrapper::Load(std::string filename)
 {
-	// ì«Ç›çûÇ›OK :
+    // ì«Ç›çûÇ›OK :
     std::string pcl_file = "storage/emulated/0/lamppost.pcd";
     if (pcl::io::loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
     {
@@ -32,17 +32,19 @@ void PointCloudLibraryWrapper::Load(std::string filename)
 
 EXPORT
 void PointCloudLibraryWrapper::FilterAxis(string axis,double min, double max)
+{
     // Create the filtering object
-    pcl::PassThrough<pcl::PointXYZ> pass;
-    pass.setInputCloud (cloud);
+    // pcl::PassThrough<pcl::PointXYZ> pass;
+    // pass.setInputCloud (cloud);
 
     // NSLog(@"arr1 %d : %d", i, intArr[i]);
 
     // pass.setFilterFieldName ("z");
-    pass.setFilterFieldName ("y");
-    pass.setFilterLimits (min, max);
-    //pass.setFilterLimitsNegative (true);
-    pass.filter (*cloud_filtered);
+    // pass.setFilterFieldName ("y");
+    // pass.setFilterLimits (min, max);
+    // pass.setFilterLimitsNegative (true);
+    // pass.filter (*cloud_filtered);
+}
 
 /*
 EXPORT
