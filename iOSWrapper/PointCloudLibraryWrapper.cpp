@@ -1,4 +1,4 @@
-#include "PointCloudLibraryWrapper.hh"
+#include "PointCloudLibraryWrapper.h"
 
 #define EXPORT __attribute__((visibility("default")))
 
@@ -19,10 +19,11 @@ void PointCloudLibraryWrapper::Load(std::string filename)
 {
 	// header read error?
     // if (pcl::io::loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
-    // {
+    // if (loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
+    {
         // PCL_ERROR ("Couldn't read file test_pcd.pcd.\n");
         return;
-    // }
+    }
 }
 
 //----------------------------------------------------------------------------
