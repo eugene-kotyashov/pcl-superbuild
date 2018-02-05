@@ -1,6 +1,4 @@
 #include "PointCloudLibraryWrapper.hh"
-#include <string>
-#include <iostream>
 
 #define EXPORT __attribute__((visibility("default")))
 
@@ -20,7 +18,7 @@ EXPORT
 void PointCloudLibraryWrapper::Load(std::string filename)
 {
     // ì«Ç›çûÇ›OK :
-    std::string pcl_file = "storage/emulated/0/lamppost.pcd";
+    // std::string pcl_file = "storage/emulated/0/lamppost.pcd";
     if (pcl::io::loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
     {
         // PCL_ERROR ("Couldn't read file test_pcd.pcd.\n");
@@ -31,7 +29,7 @@ void PointCloudLibraryWrapper::Load(std::string filename)
 //----------------------------------------------------------------------------
 
 EXPORT
-void PointCloudLibraryWrapper::FilterAxis(string axis,double min, double max)
+void PointCloudLibraryWrapper::FilterAxis(std::string axis, double min, double max)
 {
     // Create the filtering object
     // pcl::PassThrough<pcl::PointXYZ> pass;

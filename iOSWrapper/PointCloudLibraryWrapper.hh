@@ -1,3 +1,4 @@
+
 #include <string>
 #include <iostream>
 
@@ -18,8 +19,8 @@
 class PointCloudLibraryWrapper
 {
 public:
-    PointCloudLibraryWrapper() {std::cout << "PointCloudLibraryWrapper Created." << std::endl;}
-    ~PointCloudLibraryWrapper() {std::cout << "PointCloudLibraryWrapper Destroyed." << std::endl;}
+    PointCloudLibraryWrapper() { std::cout << "PointCloudLibraryWrapper Created." << std::endl; }
+    ~PointCloudLibraryWrapper() { std::cout << "PointCloudLibraryWrapper Destroyed." << std::endl; }
 
     int PrintFoo();
     std::string foo;
@@ -32,6 +33,7 @@ public:
 
     // Feature
     // Filter
+    void FilterAxis(std::string axis, double min, double max);
 
 private:
     // 加工前データ
