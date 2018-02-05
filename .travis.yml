@@ -240,6 +240,7 @@ before_install:
 
       cd ../iOSWrapper;
       bash build-ios.sh;
+      cd ../build;
       bash ../makeFramework.sh device;
     fi
 
