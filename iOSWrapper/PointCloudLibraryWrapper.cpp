@@ -19,12 +19,34 @@ int PointCloudLibraryWrapper::PrintFoo()
 EXPORT
 void PointCloudLibraryWrapper::Load(std::string filename)
 {
+	// ì«Ç›çûÇ›OK :
+    std::string pcl_file = "storage/emulated/0/lamppost.pcd";
+    if (pcl::io::loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
+    {
+        // PCL_ERROR ("Couldn't read file test_pcd.pcd.\n");
+        return;
+    }
 }
 
 //----------------------------------------------------------------------------
+
+EXPORT
+void PointCloudLibraryWrapper::FilterAxis(string axis,double min, double max)
+    // Create the filtering object
+    pcl::PassThrough<pcl::PointXYZ> pass;
+    pass.setInputCloud (cloud);
+
+    // NSLog(@"arr1 %d : %d", i, intArr[i]);
+
+    // pass.setFilterFieldName ("z");
+    pass.setFilterFieldName ("y");
+    pass.setFilterLimits (min, max);
+    //pass.setFilterLimitsNegative (true);
+    pass.filter (*cloud_filtered);
+
 /*
 EXPORT
-pcl::PointCloud<pcl::PointXYZ>::Ptr ApplyVoxelGrid(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud, double leafSize[3])
+PointCloudLibraryWrapper::ApplyVoxelGrid(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud, double leafSize[3])
 {
     pcl::VoxelGrid<pcl::PointXYZ> voxelGrid;
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloudFiltered(new pcl::PointCloud<pcl::PointXYZ>);

@@ -43,4 +43,11 @@ http://mushikago.com/i/?p=5671
 https://developer.apple.com/library/content/qa/qa1490/_index.html
 Framework ‚ğg—p‚·‚éê‡‚Ì’ˆÓ“_
 
+---
+
+2018/02/05 : 
+
+String Œ^‚Ìæ‚èˆµ‚¢
+http://blog.szmake.net/archives/812
+https://stackoverflow.com/questions/20906618/nsstring-to-char
 

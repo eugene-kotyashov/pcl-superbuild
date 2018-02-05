@@ -1,4 +1,4 @@
-#import "CppInterface.h"
+#import "PointCloudLibraryInterface.h"
 #include <pcl/PointCloudLibraryWrapper.hh>
 
 @interface PointCloudLibraryInterface () 
@@ -7,18 +7,29 @@
 }
 @end
 
-@implementation CppInterface
+@implementation PointCloudLibraryInterface
 
--(instancetype)init
-{
+-(id)init {
     self = [super init];
-    if (self) {
+    if (self != nil) 
+    {
         myPointCloudLibraryWrapper = new PointCloudLibraryWrapper();
         myPointCloudLibraryWrapper->PrintFoo();
-        delete myPointCloudLibraryWrapper;
-        myPointCloudLibraryWrapper = nullptr;
     }
+
     return self;
 }
-
+- (void) dealloc {
+    if(myPointCloudLibraryWrapper != NULL) delete myPointCloudLibraryWrapper;
+    [super dealloc];
+}
+- (void) callLoad : (NSString *)argString {
+    std::string strDst = [argString UTF8String];
+    myPointCloudLibraryWrapper->Load(strDst);
+}
+- (void) callFiltering {
+    // myPointCloudLibraryWrapper.min = 5;
+    // myPointCloudLibraryWrapper.max = 5;
+    myPointCloudLibraryWrapper->FilterAxis();
+}
 @end
