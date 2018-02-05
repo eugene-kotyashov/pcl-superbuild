@@ -173,12 +173,12 @@ target_include_directories(pcl PRIVATE
     ${INCLUDE_DIR}
 )
 
-# target_link_libraries(pcl 
-#     ${boost_device_libraryfiles}
-#     ${flann_device_libraryfiles}
-#     ${qhull_device_libraryfiles}
-#     ${pcl_device_libraryfiles}
-# )
+target_link_libraries(pcl 
+    ${boost_device_libraryfiles}
+    ${flann_device_libraryfiles}
+    ${qhull_device_libraryfiles}
+    ${pcl_device_libraryfiles}
+)
 
 # target_link_libraries(${FRAMEWORK_NAME} ${boost_simulation_libraryfiles})
 # target_link_libraries(${FRAMEWORK_NAME} ${flann_simulation_libraryfiles})
@@ -217,7 +217,8 @@ set_target_properties(pcl PROPERTIES
     VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
     SOVERSION 1.0.0
-    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh"
+    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh" ${INCLUDE_DIR}
+    XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
 )
 
