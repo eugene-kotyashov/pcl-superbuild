@@ -38,10 +38,10 @@ make_pcl_framework ()
   rm -rf $pcl_framework/*
   # Public Header
   mkdir $pcl_framework/Headers
-  cp -r $pcl_header_dir/* $pcl_framework/Headers/
-  cp -r $boost_header_dir/* $pcl_framework/Headers/
-  cp -r $eigen_header_dir/* $pcl_framework/Headers/
-  cp -r $flann_header_dir/* $pcl_framework/Headers/
+  cp -R $pcl_header_dir/* $pcl_framework/Headers/
+  cp -R $boost_header_dir/* $pcl_framework/Headers/
+  cp -R $eigen_header_dir/* $pcl_framework/Headers/
+  cp -R $flann_header_dir/* $pcl_framework/Headers/
 
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
@@ -62,7 +62,7 @@ make_pcl_framework ()
 make_pcl_framework_device ()
 {
   # すでに存在する device 用の pcl.Framework に対して外部ライブラリを取り込む
-  current_pcl_ios_device_framework=./iOSWrapper/build/Release-iphoneos/pcl.framework
+  current_pcl_ios_device_framework=../iOSWrapper/build.ios/Release-iphoneos/pcl.framework
 
   # Step 1. Build Device and Simulator versions complete
   pcl_device_libs=`find $install/pcl-ios-device -name *.a`
@@ -84,15 +84,15 @@ make_pcl_framework_device ()
   pcl_framework=$install/frameworks-device/pcl.framework
 
   # Step 2. Copy the framework structure (from iphoneos build) to the device folder
-  cp -R "${current_pcl_ios_device_framework}" "$pcl_framework"
+  cp -R "${current_pcl_ios_device_framework}" "${pcl_framework}/.."
 
   # mkdir $pcl_framework/Headers
-  cp -r $pcl_header_dir/* $pcl_framework/Headers/
-  cp -r $boost_header_dir/* $pcl_framework/Headers/
-  cp -r $eigen_header_dir/* $pcl_framework/Headers/
-  cp -r $flann_header_dir/* $pcl_framework/Headers/
-  cp -r $qhull_header_dir/* $pcl_framework/Headers/
-  # cp -r $ioswrapper_header_dir/* $pcl_framework/Headers/
+  cp -R $pcl_header_dir/* $pcl_framework/Headers/
+  cp -R $boost_header_dir/* $pcl_framework/Headers/
+  cp -R $eigen_header_dir/* $pcl_framework/Headers/
+  cp -R $flann_header_dir/* $pcl_framework/Headers/
+  cp -R $qhull_header_dir/* $pcl_framework/Headers/
+  # cp -R $ioswrapper_header_dir/* $pcl_framework/Headers/
 
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
@@ -131,12 +131,12 @@ make_pcl_framework_simulator ()
 
   # Public Header
   # mkdir $pcl_framework/Headers
-  cp -r $pcl_header_dir/* $pcl_framework/Headers/
-  cp -r $boost_header_dir/* $pcl_framework/Headers/
-  cp -r $eigen_header_dir/* $pcl_framework/Headers/
-  cp -r $flann_header_dir/* $pcl_framework/Headers/
-  cp -r $qhull_header_dir/* $pcl_framework/Headers/
-  cp -r $ioswrapper_header_dir/* $pcl_framework/Headers/
+  cp -R $pcl_header_dir/* $pcl_framework/Headers/
+  cp -R $boost_header_dir/* $pcl_framework/Headers/
+  cp -R $eigen_header_dir/* $pcl_framework/Headers/
+  cp -R $flann_header_dir/* $pcl_framework/Headers/
+  cp -R $qhull_header_dir/* $pcl_framework/Headers/
+  cp -R $ioswrapper_header_dir/* $pcl_framework/Headers/
 
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
@@ -187,11 +187,11 @@ make_pcl_framework_universal ()
   rm -rf $pcl_framework/*
   # Public Header
   mkdir $pcl_framework/Headers
-  cp -r $pcl_header_dir/* $pcl_framework/Headers/
-  cp -r $boost_header_dir/* $pcl_framework/Headers/
-  cp -r $eigen_header_dir/* $pcl_framework/Headers/
-  cp -r $flann_header_dir/* $pcl_framework/Headers/
-  cp -r $qhull_header_dir/* $pcl_framework/Headers/
+  cp -R $pcl_header_dir/* $pcl_framework/Headers/
+  cp -R $boost_header_dir/* $pcl_framework/Headers/
+  cp -R $eigen_header_dir/* $pcl_framework/Headers/
+  cp -R $flann_header_dir/* $pcl_framework/Headers/
+  cp -R $qhull_header_dir/* $pcl_framework/Headers/
 
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/

@@ -51,3 +51,18 @@ String 型の取り扱い
 http://blog.szmake.net/archives/812
 https://stackoverflow.com/questions/20906618/nsstring-to-char
 
+https://code.i-harness.com/ja/q/1814356
+
+Xcodeのカスタムビルドアクションで使える環境変数 
+http://matsukaz.hatenablog.com/entry/2015/07/06/090933
+
+ex. xcodebuild -project example/proj.ios_mac/example.xcodeproj -target "example iOS" -showBuildSettings
+
+
+BitbucketとSlackを連携させる 
+http://mushikago.com/i/?p=8259
+
+http://blog.lisb.direct/entry/2017/07/20/100000
+
+Use C++ with Cocoa Instead of Objective-C?
+https://stackoverflow.com/questions/525609/use-c-with-cocoa-instead-of-objective-c

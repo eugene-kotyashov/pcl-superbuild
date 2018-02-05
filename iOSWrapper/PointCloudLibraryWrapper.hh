@@ -6,8 +6,6 @@
 #include <pcl/PointIndices.h>
 #include <pcl/ModelCoefficients.h>
 
-#include <pcl/point_types.h>
-#include <pcl/point_cloud.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/kdtree/kdtree.h>
 #include <pcl/kdtree/kdtree_flann.h>
@@ -26,8 +24,8 @@ public:
     int PrintFoo();
     std::string foo;
 
-    double[] GetPointData();
-    double[] GetPointData2();
+    // double[] GetPointData();
+    // double[] GetPointData2();
 
     // io
     void Load(std::string filename);

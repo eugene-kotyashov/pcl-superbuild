@@ -5,8 +5,7 @@ import Libpointcloudlibrary
 public final class Pointcloudlibrary {
     let bar: UnsafeMutablePointer<pointcloudlibrary>
 
-    public init(text: String, max: UInt) {
-        let cstring = (text as NSString).UTF8String
+    public init() {
         bar = Libpointcloudlibrary.progressbar_new(cstring, max)
     }
 
