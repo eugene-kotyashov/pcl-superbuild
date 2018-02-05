@@ -173,12 +173,12 @@ target_include_directories(pcl PRIVATE
     ${INCLUDE_DIR}
 )
 
-target_link_libraries(pcl 
-    ${boost_device_libraryfiles}
-    ${flann_device_libraryfiles}
-    ${qhull_device_libraryfiles}
-    ${pcl_device_libraryfiles}
-)
+# target_link_libraries(pcl 
+#     ${boost_device_libraryfiles}
+#     ${flann_device_libraryfiles}
+#     ${qhull_device_libraryfiles}
+#     ${pcl_device_libraryfiles}
+# )
 
 # target_link_libraries(${FRAMEWORK_NAME} ${boost_simulation_libraryfiles})
 # target_link_libraries(${FRAMEWORK_NAME} ${flann_simulation_libraryfiles})
