@@ -17,13 +17,12 @@ int PointCloudLibraryWrapper::PrintFoo()
 EXPORT
 void PointCloudLibraryWrapper::Load(std::string filename)
 {
-    // ì«Ç›çûÇ›OK :
-    // std::string pcl_file = "storage/emulated/0/lamppost.pcd";
-    if (pcl::io::loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
-    {
+	// header read error?
+    // if (pcl::io::loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
+    // {
         // PCL_ERROR ("Couldn't read file test_pcd.pcd.\n");
         return;
-    }
+    // }
 }
 
 //----------------------------------------------------------------------------
