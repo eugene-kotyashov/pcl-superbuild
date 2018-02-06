@@ -42,9 +42,9 @@ message(STATUS "CMAKE_BINARY_DIR : ${CMAKE_BINARY_DIR}")
 
 # a/dylib
 # boost?
-file(GLOB boost_includefiles "../build/CMakeExternals/Install/boost-ios-device/include/*.h*")
-file(GLOB boost_device_libraryfiles "../build/CMakeExternals/Install/boost-ios-device/lib/*.a")
-file(GLOB boost_simulation_libraryfiles "../build/CMakeExternals/Install/boost-ios-simulator/lib/*.a")
+file(GLOB_RECURSE boost_includefiles "../build/CMakeExternals/Install/boost-ios-device/include/*.h*")
+file(GLOB_RECURSE boost_device_libraryfiles "../build/CMakeExternals/Install/boost-ios-device/lib/*.a")
+file(GLOB_RECURSE boost_simulation_libraryfiles "../build/CMakeExternals/Install/boost-ios-simulator/lib/*.a")
 
 message(STATUS "boost(include)         : ${boost_includefiles}")
 message(STATUS "boost(device - lib)    : ${boost_device_libraryfiles}")
@@ -63,8 +63,8 @@ message(STATUS "boost(simulator - lib) : ${boost_simulation_libraryfiles}")
 ###
 
 # eigen
-file(GLOB eigen_includefiles "../build/CMakeExternals/Install/eigen/Eigen/*.")
-file(GLOB eigen_unsupported_includefiles "../build/CMakeExternals/Install/eigen/unsupported/*.")
+file(GLOB_RECURSE eigen_includefiles "../build/CMakeExternals/Install/eigen/Eigen/*.")
+file(GLOB_RECURSE eigen_unsupported_includefiles "../build/CMakeExternals/Install/eigen/unsupported/*.")
 
 message(STATUS ${eigen_includefiles})
 message(STATUS ${eigen_unsupported_includefiles})
@@ -72,9 +72,9 @@ message(STATUS ${eigen_unsupported_includefiles})
 ###
 
 # flann
-file(GLOB flann_includefiles "../build/CMakeExternals/Install/flann-ios-device/include/flann/*.h*")
-file(GLOB flann_device_libraryfiles "../build/CMakeExternals/Install/flann-ios-device/lib/*.a")
-file(GLOB flann_simulation_libraryfiles "../build/CMakeExternals/Install/flann-ios-simulator/lib/*.a")
+file(GLOB_RECURSE flann_includefiles "../build/CMakeExternals/Install/flann-ios-device/include/flann/*.h*")
+file(GLOB_RECURSE flann_device_libraryfiles "../build/CMakeExternals/Install/flann-ios-device/lib/*.a")
+file(GLOB_RECURSE flann_simulation_libraryfiles "../build/CMakeExternals/Install/flann-ios-simulator/lib/*.a")
 
 message(STATUS "flann(include)         : ${flann_includefiles}")
 message(STATUS "flann(device - lib)    : ${flann_device_libraryfiles}")
@@ -93,9 +93,9 @@ message(STATUS "flann(simulator - lib) : ${flann_simulation_libraryfiles}")
 ###
 
 # qhull
-file(GLOB qhull_includefiles "../build/CMakeExternals/Install/qhull-ios-device/*.h*")
-file(GLOB qhull_device_libraryfiles "../build/CMakeExternals/Install/qhull-ios-device/*.a")
-file(GLOB qhull_simulation_libraryfiles "../build/CMakeExternals/Install/qhull-ios-simulator/*.a")
+file(GLOB_RECURSE qhull_includefiles "../build/CMakeExternals/Install/qhull-ios-device/*.h*")
+file(GLOB_RECURSE qhull_device_libraryfiles "../build/CMakeExternals/Install/qhull-ios-device/*.a")
+file(GLOB_RECURSE qhull_simulation_libraryfiles "../build/CMakeExternals/Install/qhull-ios-simulator/*.a")
 
 message(STATUS "qhull(include)         : ${qhull_includefiles}")
 message(STATUS "qhull(device - lib)    : ${qhull_device_libraryfiles}")
@@ -223,11 +223,12 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
 )
 
 
+# -ObjC++
 # Symbol visibility setup, COMPILE_FLAGS only affect C++ so for Objective C we
 # have to use XCODE_ATTRIBUTE_OTHER_CFLAGS.
 set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     COMPILE_FLAGS "-fvisibility=hidden -fvisibility-inlines-hidden"
-    XCODE_ATTRIBUTE_OTHER_CFLAGS "-fvisibility=hidden -fvisibility-inlines-hidden")
+    XCODE_ATTRIBUTE_OTHER_CFLAGS "-fvisibility=hidden -fvisibility-inlines-hidden -ObjC++")
 
 # set_target_properties(pcl PROPERTIES COMPILE_FLAGS "-x c++")
 

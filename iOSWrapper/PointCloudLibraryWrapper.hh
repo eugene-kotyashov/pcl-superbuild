@@ -1,6 +1,6 @@
 
-#ifndef __PointCloudWrapper_h
-#define __PointCloudWrapper_h
+#ifndef __PointCloudWrapper_hh
+#define __PointCloudWrapper_hh
 
 #include <string>
 #include <iostream>
@@ -35,6 +35,6 @@ private:
     float* pointdata;
 };
 
-#endif // __PointCloudWrapper_h
+#endif // __PointCloudWrapper_hh
 
 
