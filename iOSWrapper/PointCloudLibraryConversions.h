@@ -17,7 +17,7 @@ class PointCloudLibraryConversions
 public:
   static PointCloudLibraryConversions* New();
 
-  static float* PointCloudDataFromPCDFile(const std::string& filename);
+  static float* PointCloudDataFromPCDFile(const char* filename);
   static float* PointCloudDataFromPointCloud(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud);
   static float* PointCloudDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud);
   static float* PointCloudDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr cloud);

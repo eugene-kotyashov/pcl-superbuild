@@ -31,7 +31,8 @@ namespace {
 
 
 //----------------------------------------------------------------------------
-float* PointCloudLibraryConversions::PointCloudDataFromPCDFile(const std::string& filename)
+// float* PointCloudLibraryConversions::PointCloudDataFromPCDFile(const std::string& filename)
+float* PointCloudLibraryConversions::PointCloudDataFromPCDFile(const char* filename)
 {
     int version;
     int type;
