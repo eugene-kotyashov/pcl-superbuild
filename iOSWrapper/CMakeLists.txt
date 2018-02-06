@@ -43,9 +43,9 @@ file(GLOB_RECURSE boost_includefiles "../build/CMakeExternals/Install/boost-ios-
 file(GLOB_RECURSE boost_device_libraryfiles "../build/CMakeExternals/Install/boost-ios-device/lib/*.a")
 file(GLOB_RECURSE boost_simulation_libraryfiles "../build/CMakeExternals/Install/boost-ios-simulator/lib/*.a")
 
-message(STATUS "boost(include)         : ${boost_includefiles}")
-message(STATUS "boost(device - lib)    : ${boost_device_libraryfiles}")
-message(STATUS "boost(simulator - lib) : ${boost_simulation_libraryfiles}")
+# message(STATUS "boost(include)         : ${boost_includefiles}")
+# message(STATUS "boost(device - lib)    : ${boost_device_libraryfiles}")
+# message(STATUS "boost(simulator - lib) : ${boost_simulation_libraryfiles}")
 
 # add_library(
 #     ${FRAMEWORK_NAME} SHARED
@@ -63,8 +63,8 @@ message(STATUS "boost(simulator - lib) : ${boost_simulation_libraryfiles}")
 file(GLOB_RECURSE eigen_includefiles "../build/CMakeExternals/Install/eigen/Eigen/*.")
 file(GLOB_RECURSE eigen_unsupported_includefiles "../build/CMakeExternals/Install/eigen/unsupported/*.")
 
-message(STATUS ${eigen_includefiles})
-message(STATUS ${eigen_unsupported_includefiles})
+# message(STATUS ${eigen_includefiles})
+# message(STATUS ${eigen_unsupported_includefiles})
 
 ###
 
@@ -73,9 +73,9 @@ file(GLOB_RECURSE flann_includefiles "../build/CMakeExternals/Install/flann-ios-
 file(GLOB_RECURSE flann_device_libraryfiles "../build/CMakeExternals/Install/flann-ios-device/lib/*.a")
 file(GLOB_RECURSE flann_simulation_libraryfiles "../build/CMakeExternals/Install/flann-ios-simulator/lib/*.a")
 
-message(STATUS "flann(include)         : ${flann_includefiles}")
-message(STATUS "flann(device - lib)    : ${flann_device_libraryfiles}")
-message(STATUS "flann(simulator - lib) : ${flann_simulation_libraryfiles}")
+# message(STATUS "flann(include)         : ${flann_includefiles}")
+# message(STATUS "flann(device - lib)    : ${flann_device_libraryfiles}")
+# message(STATUS "flann(simulator - lib) : ${flann_simulation_libraryfiles}")
 
 # add_library(
 #     ${FRAMEWORK_NAME} SHARED
@@ -94,9 +94,9 @@ file(GLOB_RECURSE qhull_includefiles "../build/CMakeExternals/Install/qhull-ios-
 file(GLOB_RECURSE qhull_device_libraryfiles "../build/CMakeExternals/Install/qhull-ios-device/*.a")
 file(GLOB_RECURSE qhull_simulation_libraryfiles "../build/CMakeExternals/Install/qhull-ios-simulator/*.a")
 
-message(STATUS "qhull(include)         : ${qhull_includefiles}")
-message(STATUS "qhull(device - lib)    : ${qhull_device_libraryfiles}")
-message(STATUS "qhull(simulator - lib) : ${qhull_simulation_libraryfiles}")
+# message(STATUS "qhull(include)         : ${qhull_includefiles}")
+# message(STATUS "qhull(device - lib)    : ${qhull_device_libraryfiles}")
+# message(STATUS "qhull(simulator - lib) : ${qhull_simulation_libraryfiles}")
 
 # add_library(
 #     ${FRAMEWORK_NAME} SHARED
@@ -115,9 +115,9 @@ file(GLOB_RECURSE pcl_includefiles "../build/CMakeExternals/Install/pcl-ios-devi
 file(GLOB_RECURSE pcl_device_libraryfiles "../build/CMakeExternals/Install/pcl-ios-device/lib/*.a")
 file(GLOB_RECURSE pcl_simulation_libraryfiles "../build/CMakeExternals/Install/pcl-ios-simulator/lib/*.a")
 
-message(STATUS "pcl(include)         : ${pcl_includefiles}")
-message(STATUS "pcl(device - lib)    : ${pcl_device_libraryfiles}")
-message(STATUS "pcl(simulator - lib) : ${pcl_simulation_libraryfiles}")
+# message(STATUS "pcl(include)         : ${pcl_includefiles}")
+# message(STATUS "pcl(device - lib)    : ${pcl_device_libraryfiles}")
+# message(STATUS "pcl(simulator - lib) : ${pcl_simulation_libraryfiles}")
 
 # add_library(
 #     ${FRAMEWORK_NAME} SHARED
