@@ -19,16 +19,16 @@ set(LIBRARY_SOURCE
     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.cpp
 )
 
-# add_library(
-#     ${FRAMEWORK_NAME} SHARED
-#     ${LIBRARY_SOURCE}
-# )
-
 add_library(
-    pcl SHARED
-    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh
-    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.cpp
+    ${FRAMEWORK_NAME} SHARED
+    ${LIBRARY_SOURCE}
 )
+
+# add_library(
+#     pcl SHARED
+#     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh
+#     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.cpp
+# )
 
 # FolderPath Check
 # CMAKE_INSTALL_PREFIX
@@ -173,7 +173,7 @@ target_include_directories(pcl PRIVATE
     ${INCLUDE_DIR}
 )
 
-target_link_libraries(pcl 
+target_link_libraries(${FRAMEWORK_NAME} 
     ${boost_device_libraryfiles}
     ${flann_device_libraryfiles}
     ${qhull_device_libraryfiles}
@@ -208,7 +208,7 @@ target_link_libraries(pcl
 # )
 
 
-set_target_properties(pcl PROPERTIES
+set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     FRAMEWORK TRUE
     FRAMEWORK_VERSION A
     MACOSX_FRAMEWORK_IDENTIFIER com.sirokujira.framework

@@ -77,4 +77,9 @@ https://stackoverflow.com/questions/525609/use-c-with-cocoa-instead-of-objective
 フレームワークなどの共有ライブラリの出力シンボル
 https://qiita.com/studiork/items/6cce30da59c695189869
 
+公式
 https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/CppRuntimeEnv/Articles/SymbolVisibility.html
+
+Xcodeでバイナリのシンボルを隠蔽したよ
+http://www.peliphilo.net/archives/1146
+
