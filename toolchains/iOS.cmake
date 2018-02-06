@@ -208,16 +208,16 @@ set (CMAKE_OSX_SYSROOT ${CMAKE_IOS_SDK_ROOT} CACHE PATH "Sysroot used for iOS su
 if (${IOS_PLATFORM} STREQUAL "OS")
 #     set (IOS_ARCH armv7 armv7s arm64)
 # http://d.hatena.ne.jp/feb-hare/comment/20111013/1318506885
-      set (IOS_ARCH "armv7;armv7s;arm64")
+#     set (IOS_ARCH "armv7;armv7s;arm64")
 #     set (IOS_ARCH "armv7 armv7s arm64")
 # iOS10 SDK not support armv7
 # must use lipo(combine a librarys)
 #     set (IOS_ARCH "armv7s;arm64")
-#       set (IOS_ARCH "arm64")
+      set (IOS_ARCH arm64)
 elseif (${IOS_PLATFORM} STREQUAL "SIMULATOR")
-    set (IOS_ARCH "i386")
+    set (IOS_ARCH i386)
 elseif (${IOS_PLATFORM} STREQUAL "SIMULATOR64")
-    set (IOS_ARCH "x86_64")
+    set (IOS_ARCH x86_64)
 endif (${IOS_PLATFORM} STREQUAL "OS")
 
 set (CMAKE_OSX_ARCHITECTURES ${IOS_ARCH} CACHE string  "Build architecture for iOS")
