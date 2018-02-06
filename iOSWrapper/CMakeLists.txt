@@ -225,7 +225,7 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
 # have to use XCODE_ATTRIBUTE_OTHER_CFLAGS.
 set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     COMPILE_FLAGS "-fvisibility=hidden -fvisibility-inlines-hidden"
-    XCODE_ATTRIBUTE_OTHER_CFLAGS "-fvisibility=hidden -fvisibility-inlines-hidden -ObjC++")
+    XCODE_ATTRIBUTE_OTHER_CFLAGS "-fvisibility=hidden -fvisibility-inlines-hidden")
 
 # set_target_properties(pcl PROPERTIES COMPILE_FLAGS "-x c++")
 

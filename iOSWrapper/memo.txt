@@ -83,3 +83,11 @@ https://developer.apple.com/library/content/documentation/DeveloperTools/Concept
 Xcodeでバイナリのシンボルを隠蔽したよ
 http://www.peliphilo.net/archives/1146
 
+http://philjordan.eu/article/mixing-objective-c-c++-and-objective-c++
+
+[Unity] C#とObjective-Cの連携まとめ
+https://qiita.com/tkyaji/items/74d485a021c75ed10bca
+
+C++でつくるUnreal Engineアプリ開発 for Windows & macOS ?初歩からプラグイン開発まで
+https://t.co/TFEpkzHhUm
+
