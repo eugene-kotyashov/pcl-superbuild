@@ -23,6 +23,8 @@
     if(myPointCloudLibraryWrapper != NULL) delete myPointCloudLibraryWrapper;
     [super dealloc];
 }
+
+// custom
 - (void) callLoad : (NSString *)argString {
     std::string strDst = [argString UTF8String];
     myPointCloudLibraryWrapper->Load(strDst);
