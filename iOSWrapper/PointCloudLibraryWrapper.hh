@@ -20,11 +20,11 @@ public:
     // double[] GetPointData2();
 
     // io
-    void Load(const std::string& filename);
+    void Load(const char* filename);
 
     // Feature
     // Filter
-    void FilterAxis(const std::string& axis, double min, double max);
+    void FilterAxis(const char* axis, double min, double max);
 
 private:
     // namespace ‚ÌŽg—p‚ÍNG

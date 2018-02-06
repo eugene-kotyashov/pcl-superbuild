@@ -18,7 +18,7 @@ int PointCloudLibraryWrapper::PrintFoo()
 
 // io
 EXPORT
-void PointCloudLibraryWrapper::Load(const std::string& filename)
+void PointCloudLibraryWrapper::Load(const char* filename)
 {
     // not using namespace to object-c
     // if (pcl::io::loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
@@ -30,7 +30,7 @@ void PointCloudLibraryWrapper::Load(const std::string& filename)
 //----------------------------------------------------------------------------
 
 EXPORT
-void PointCloudLibraryWrapper::FilterAxis(const std::string& axis, double min, double max)
+void PointCloudLibraryWrapper::FilterAxis(const char* axis, double min, double max)
 {
     // Create the filtering object
     // pcl::PassThrough<pcl::PointXYZ> pass;
