@@ -1,5 +1,5 @@
 #include "PointCloudLibraryInterface.h"
-#include <pcl/PointCloudLibraryWrapper.h>
+#include <pcl/PointCloudLibraryWrapper.hh>
 
 @interface PointCloudLibraryInterface () 
 {

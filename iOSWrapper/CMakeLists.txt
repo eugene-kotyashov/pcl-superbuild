@@ -17,6 +17,8 @@ set(DEVELOPMENT_TEAM_ID "AAAAAAAA")                           # <== Set to your 
 set(LIBRARY_SOURCE
     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh
     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryConversions.h
+    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryConversions.cxx
 )
 
 add_library(
@@ -24,11 +26,6 @@ add_library(
     ${LIBRARY_SOURCE}
 )
 
-# add_library(
-#     pcl SHARED
-#     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh
-#     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.cpp
-# )
 
 # FolderPath Check
 # CMAKE_INSTALL_PREFIX
