@@ -22,7 +22,7 @@ namespace {
         if (pcl::io::loadPCDFile(filename, *cloud) == -1)
         {
             std::cout << "Error reading pcd file: " << filename;
-            return;
+            return NULL;
         }
 
         return PointCloudLibraryConversions::PointCloudDataFromPointCloud(cloud);
@@ -63,7 +63,7 @@ float* PointCloudLibraryConversions::PointCloudDataFromPointCloud(pcl::PointClou
 {
     int nr_points = cloud->points.size();
 
-    float[] tmpFloatArray = new float[nr_points * 3];
+    float* tmpFloatArray = new float[nr_points * 3];
 
     if (cloud->is_dense)
     {
@@ -107,7 +107,7 @@ float* PointCloudLibraryConversions::PointCloudDataFromPointCloud(pcl::PointClou
 {
     int nr_points = cloud->points.size();
 
-    float[] tmpFloatArray = new float[nr_points * 3];
+    float* tmpFloatArray = new float[nr_points * 3];
 
     if (cloud->is_dense)
     {
@@ -156,7 +156,7 @@ float* PointCloudLibraryConversions::PointCloudDataFromPointCloud(pcl::PointClou
 {
     int nr_points = cloud->points.size();
 
-    float[] tmpFloatArray = new float[nr_points * 3];
+    float* tmpFloatArray = new float[nr_points * 3];
 
     if (cloud->is_dense)
     {
