@@ -84,6 +84,7 @@ make_pcl_framework_device ()
   pcl_framework=$install/frameworks-device/pcl.framework
 
   # Step 2. Copy the framework structure (from iphoneos build) to the device folder
+  rm -rf $pcl_framework/*
   cp -R "${current_pcl_ios_device_framework}" "${pcl_framework}/.."
 
   # mkdir $pcl_framework/Headers
@@ -97,16 +98,19 @@ make_pcl_framework_device ()
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
 
-  libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs
+  # ライブラリの結合
+  libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs $current_pcl_ios_device_framework/pcl
 
   # Xcode で生成した framework と 個別にビルドした外部ライブラリを合わせる
-  lipo -create -output $pcl_framework/pcl $current_pcl_ios_device_framework/pcl $pcl_framework/pcl_device
+  lipo -create -output $pcl_framework/pcl $pcl_framework/pcl_device
+
+  rm -rf $pcl_framework/pcl_*
 }
 
 make_pcl_framework_simulator ()
 {
   # すでに存在する simulation 用の pcl.Framework に対して外部ライブラリを取り込む
-  current_pcl_ios_sim_framework=./iOSWrapper/build/Release-iphonesimulator/pcl.framework
+  current_pcl_ios_sim_framework=../iOSWrapper/build/Release-iphonesimulator/pcl.framework
 
   pcl_sim_libs=`find $install/pcl-ios-simulator -name *.a`
   boost_sim_libs=`find $install/boost-ios-simulator -name *.a`
@@ -127,7 +131,8 @@ make_pcl_framework_simulator ()
 
   # Step 3. Copy the framework structure (from iphoneos-simulator build) to the device folder
   pcl_framework=$install/frameworks-simulator/pcl.framework
-  cp -R "${current_pcl_ios_sim_framework}" "$pcl_framework"
+  rm -rf $pcl_framework/*
+  cp -R "${current_pcl_ios_sim_framework}" "${pcl_framework}/.."
 
   # Public Header
   # mkdir $pcl_framework/Headers
@@ -141,17 +146,20 @@ make_pcl_framework_simulator ()
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
 
-  libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs $qhull_sim_libs
+  # ライブラリの結合
+  libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs $qhull_sim_libs $current_pcl_ios_sim_framework/pcl 
 
   # Xcode で生成した framework と 個別にビルドした外部ライブラリを合わせる
-  lipo -create -output $pcl_framework/pcl $current_pcl_ios_sim_framework/pcl $pcl_framework/pcl_sim
+  lipo -create -output $pcl_framework/pcl $pcl_framework/pcl_sim
+
+  rm -rf $pcl_framework/pcl_*
 }
 
 make_pcl_framework_universal ()
 {
   # すでに存在する device/sim 用の pcl.Framework に対して外部ライブラリを取り込む
-  current_pcl_ios_device_framework=./iOSWrapper/build/Release-iphoneos/pcl.framework
-  current_pcl_ios_sim_framework=./iOSWrapper/build/Release-iphonesimulator/pcl.framework
+  current_pcl_ios_device_framework=../iOSWrapper/build/Release-iphoneos/pcl.framework
+  current_pcl_ios_sim_framework=../iOSWrapper/build/Release-iphonesimulator/pcl.framework
 
   # device_folder = "ios-device"
   # simulator_folder = "ios-simulator"
@@ -163,6 +171,7 @@ make_pcl_framework_universal ()
   qhull_device_libs=`find $install/qhull-ios-device -name *.a`
   # Object-C/Swift で使用するためのラッパー関数を持つライブラリ
   # wrapper_device_libs=`find $install/ios_device_wrapper -name *.a`
+
   # pcl_sim_libs=`find $install/pcl-${simulator_folder} $install/flann-${simulator_folder} $install/boost-${simulator_folder} -name *.a`
   pcl_sim_libs=`find $install/pcl-ios-simulator -name *.a`
   boost_sim_libs=`find $install/boost-ios-simulator -name *.a`
@@ -182,9 +191,11 @@ make_pcl_framework_universal ()
   qhull_header_dir=$install/qhull-ios-device/include
 
   pcl_framework=$install/frameworks-universal/pcl.framework
-  mkdir -p $pcl_framework
-
+  mkdir -p ${pcl_framework}
   rm -rf $pcl_framework/*
+  cp -R "${current_pcl_ios_device_framework}" "${pcl_framework}/.."
+  cp -R "${current_pcl_ios_sim_framework}" "${pcl_framework}/.."
+
   # Public Header
   mkdir $pcl_framework/Headers
   cp -R $pcl_header_dir/* $pcl_framework/Headers/
@@ -196,11 +207,14 @@ make_pcl_framework_universal ()
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
 
-  libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs
-  libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs $qhull_sim_libs
+  # ライブラリの結合
+  libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs $current_pcl_ios_device_framework/pcl
+  libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs $qhull_sim_libs $current_pcl_ios_sim_framework/pcl
 
   # Xcode で生成した framework と 個別にビルドした外部ライブラリを合わせる
-  lipo -create -output $current_pcl_ios_universal_framework/pcl $current_pcl_ios_device_framework/pcl $current_pcl_ios_sim_framework/pcl $pcl_framework/pcl_device $pcl_framework/pcl_sim
+  lipo -create -output $pcl_framework/pcl $pcl_framework/pcl_device $pcl_framework/pcl_sim
+
+  rm -rf $pcl_framework/pcl_*
 }
 
 #------------------------------------------------------------------------------

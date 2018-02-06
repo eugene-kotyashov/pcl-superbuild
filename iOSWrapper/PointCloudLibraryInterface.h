@@ -2,4 +2,6 @@
 @interface PointCloudLibraryInterface : NSObject
 - (void)callLoad:(NSString *)argString;
 - (void)callFiltering;
+
+- (void)setPointCloudData:();
 @end

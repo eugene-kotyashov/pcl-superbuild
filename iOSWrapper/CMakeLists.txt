@@ -15,7 +15,7 @@ set(DEVELOPMENT_TEAM_ID "AAAAAAAA")                           # <== Set to your 
 
 # Wrapper
 set(LIBRARY_SOURCE
-    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh
+    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.h
     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.cpp
 )
 
@@ -26,7 +26,7 @@ set(LIBRARY_SOURCE
 
 add_library(
     pcl SHARED
-    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh
+    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.h
     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.cpp
 )
 
@@ -199,7 +199,7 @@ target_link_libraries(pcl
 #     VERSION 1.0.0
 #     # "compatibility version" in semantic format in Mach-O binary file
 #     SOVERSION 1.0.0
-#     PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh"
+#     PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.h"
 #     # XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
 #     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY ${CODE_SIGN_IDENTITY}
 #     # XCODE_ATTRIBUTE_DEVELOPMENT_TEAM ${DEVELOPMENT_TEAM_ID}
@@ -217,7 +217,7 @@ set_target_properties(pcl PROPERTIES
     VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
     SOVERSION 1.0.0
-    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh" ${INCLUDE_DIR}
+    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.h" ${INCLUDE_DIR}
     XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
 )

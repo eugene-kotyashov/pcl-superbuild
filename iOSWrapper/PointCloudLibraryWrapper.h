@@ -27,6 +27,7 @@ public:
     void FilterAxis(const std::string& axis, double min, double max);
 
 private:
+    // namespace の使用はNG
     // 加工前データ
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud;
     // 加工後データ
