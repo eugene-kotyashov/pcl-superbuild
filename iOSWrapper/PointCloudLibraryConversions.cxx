@@ -19,7 +19,7 @@ PointCloudLibraryConversions::~PointCloudLibraryConversions()
 
 namespace {
     template <typename T>
-    void TemplatedPolyDataFromPCDFile(const std::string& filename)
+    float* TemplatedPointCloudDataFromPCDFile(const std::string& filename)
     {
         typename pcl::PointCloud<T>::Ptr cloud(new pcl::PointCloud<T>);
         if (pcl::io::loadPCDFile(filename, *cloud) == -1)
@@ -28,13 +28,13 @@ namespace {
             return;
         }
 
-        // return PointCloudLibraryConversions::PolyDataFromPointCloud(cloud);
+        return PointCloudLibraryConversions::PointCloudDataFromPointCloud(cloud);
     }
 }
 
 
 //----------------------------------------------------------------------------
-void PointCloudLibraryConversions::PolyDataFromPCDFile(const std::string& filename)
+float* PointCloudLibraryConversions::PointCloudDataFromPCDFile(const std::string& filename)
 {
     int version;
     int type;
@@ -48,26 +48,24 @@ void PointCloudLibraryConversions::PolyDataFromPCDFile(const std::string& filena
 
     if (pcl::getFieldIndex(cloud, "rgba") != -1) 
     {
-        return TemplatedPolyDataFromPCDFile<pcl::PointXYZRGBA>(filename);
+        return TemplatedPointCloudDataFromPCDFile<pcl::PointXYZRGBA>(filename);
     }
     else if (pcl::getFieldIndex(cloud, "rgb") != -1) 
     {
-        return TemplatedPolyDataFromPCDFile<pcl::PointXYZRGB>(filename);
+        return TemplatedPointCloudDataFromPCDFile<pcl::PointXYZRGB>(filename);
     }
     else 
     {
-        return TemplatedPolyDataFromPCDFile<pcl::PointXYZ>(filename);
+        return TemplatedPointCloudDataFromPCDFile<pcl::PointXYZ>(filename);
     }
 }
 
 //----------------------------------------------------------------------------
-void PointCloudLibraryConversions::PolyDataFromPointCloud(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud)
+float* PointCloudLibraryConversions::PointCloudDataFromPointCloud(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud)
 {
     int nr_points = cloud->points.size();
 
-    //vtkNew<vtkPoints> points;
-    //points->SetDataTypeToFloat();
-    //points->SetNumberOfPoints(nr_points);
+    float[] tmpFloatArray = new float[nr_points * 3];
 
     if (cloud->is_dense)
     {
@@ -75,6 +73,9 @@ void PointCloudLibraryConversions::PolyDataFromPointCloud(pcl::PointCloud<pcl::P
         {
             float point[3] = {cloud->points[i].x, cloud->points[i].y, cloud->points[i].z}; 
             // points->SetPoint(i, point);
+            tmpFloatArray[i * 3 + 0] = point[0];
+            tmpFloatArray[i * 3 + 1] = point[1];
+            tmpFloatArray[i * 3 + 2] = point[2];
         }
     }
     else
@@ -89,33 +90,26 @@ void PointCloudLibraryConversions::PolyDataFromPointCloud(pcl::PointCloud<pcl::P
             continue;
 
             float point[3] = {cloud->points[i].x, cloud->points[i].y, cloud->points[i].z}; 
-            //points->SetPoint(j, point);
+            tmpFloatArray[j * 3 + 0] = point[0];
+            tmpFloatArray[j * 3 + 1] = point[1];
+            tmpFloatArray[j * 3 + 2] = point[2];
             j++;
         }
-        
+
         nr_points = j;
         //points->SetNumberOfPoints(nr_points);
     }
 
-    //vtkSmartPointer<vtkPolyData> polyData = vtkSmartPointer<vtkPolyData>::New();
-    //polyData->SetPoints(points.GetPointer());
-    //polyData->SetVerts(NewVertexCells(nr_points));
-    //return polyData;
+    // ì_åQâ¡çH
+    return tmpFloatArray;
 }
 
 //----------------------------------------------------------------------------
-void PointCloudLibraryConversions::PolyDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud)
+float* PointCloudLibraryConversions::PointCloudDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud)
 {
     int nr_points = cloud->points.size();
 
-    //vtkNew<vtkPoints> points;
-    //points->SetDataTypeToFloat();
-    //points->SetNumberOfPoints(nr_points);
-
-    //vtkNew<vtkUnsignedCharArray> rgbArray;
-    //rgbArray->SetName("rgb_colors");
-    //rgbArray->SetNumberOfComponents(3);
-    //rgbArray->SetNumberOfTuples(nr_points);
+    float[] tmpFloatArray = new float[nr_points * 3];
 
     if (cloud->is_dense)
     {
@@ -123,7 +117,10 @@ void PointCloudLibraryConversions::PolyDataFromPointCloud(pcl::PointCloud<pcl::P
         {
             float point[3] = {cloud->points[i].x, cloud->points[i].y, cloud->points[i].z};
             unsigned char color[3] = {cloud->points[i].r, cloud->points[i].g, cloud->points[i].b}; 
-            //points->SetPoint(i, point);
+            tmpFloatArray[i * 3 + 0] = point[0];
+            tmpFloatArray[i * 3 + 1] = point[1];
+            tmpFloatArray[i * 3 + 2] = point[2];
+
             //rgbArray->SetTupleValue(i, color);
         }
     }
@@ -140,7 +137,9 @@ void PointCloudLibraryConversions::PolyDataFromPointCloud(pcl::PointCloud<pcl::P
 
             float point[3] = {cloud->points[i].x, cloud->points[i].y, cloud->points[i].z};
             unsigned char color[3] = {cloud->points[i].r, cloud->points[i].g, cloud->points[i].b};
-            //points->SetPoint(j, point);
+            tmpFloatArray[j * 3 + 0] = point[0];
+            tmpFloatArray[j * 3 + 1] = point[1];
+            tmpFloatArray[j * 3 + 2] = point[2];
             //rgbArray->SetTupleValue(j, color);
             j++;
         }
@@ -150,26 +149,16 @@ void PointCloudLibraryConversions::PolyDataFromPointCloud(pcl::PointCloud<pcl::P
         //rgbArray->SetNumberOfTuples(nr_points);
     }
 
-    //vtkSmartPointer<vtkPolyData> polyData = vtkSmartPointer<vtkPolyData>::New();
-    //polyData->SetPoints(points.GetPointer());
-    //polyData->GetPointData()->AddArray(rgbArray.GetPointer());
-    //polyData->SetVerts(NewVertexCells(nr_points));
-    //return polyData;
+    // ì_åQâ¡çH
+    return tmpFloatArray;
 }
 
 //----------------------------------------------------------------------------
-void PointCloudLibraryConversions::PolyDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr cloud)
+float* PointCloudLibraryConversions::PointCloudDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr cloud)
 {
     int nr_points = cloud->points.size();
 
-    //vtkNew<vtkPoints> points;
-    //points->SetDataTypeToFloat();
-    //points->SetNumberOfPoints(nr_points);
-
-    //vtkNew<vtkUnsignedCharArray> rgbArray;
-    //rgbArray->SetName("rgb_colors");
-    //rgbArray->SetNumberOfComponents(3);
-    //rgbArray->SetNumberOfTuples(nr_points);
+    float[] tmpFloatArray = new float[nr_points * 3];
 
     if (cloud->is_dense)
     {
@@ -177,8 +166,10 @@ void PointCloudLibraryConversions::PolyDataFromPointCloud(pcl::PointCloud<pcl::P
         {
             float point[3] = {cloud->points[i].x, cloud->points[i].y, cloud->points[i].z};
             unsigned char color[3] = {cloud->points[i].r, cloud->points[i].g, cloud->points[i].b}; 
-            //points->SetPoint(i, point);
-            //rgbArray->SetTupleValue(i, color);
+            tmpFloatArray[i * 3 + 0] = point[0];
+            tmpFloatArray[i * 3 + 1] = point[1];
+            tmpFloatArray[i * 3 + 2] = point[2];
+            // rgbArray->SetTupleValue(i, color);
         }
     }
     else
@@ -194,7 +185,9 @@ void PointCloudLibraryConversions::PolyDataFromPointCloud(pcl::PointCloud<pcl::P
 
             float point[3] = {cloud->points[i].x, cloud->points[i].y, cloud->points[i].z};
             unsigned char color[3] = {cloud->points[i].r, cloud->points[i].g, cloud->points[i].b};
-            //points->SetPoint(j, point);
+            tmpFloatArray[j * 3 + 0] = point[0];
+            tmpFloatArray[j * 3 + 1] = point[1];
+            tmpFloatArray[j * 3 + 2] = point[2];
             //rgbArray->SetTupleValue(j, color);
             j++;
         }
@@ -203,11 +196,8 @@ void PointCloudLibraryConversions::PolyDataFromPointCloud(pcl::PointCloud<pcl::P
         //points->SetNumberOfPoints(nr_points);
         //rgbArray->SetNumberOfTuples(nr_points);
     }
-    
-    //vtkSmartPointer<vtkPolyData> polyData = vtkSmartPointer<vtkPolyData>::New();
-    //polyData->SetPoints(points.GetPointer());
-    //polyData->GetPointData()->AddArray(rgbArray.GetPointer());
-    //polyData->SetVerts(NewVertexCells(nr_points));
-    //return polyData;
+
+    // ì_åQâ¡çH
+    return tmpFloatArray;
 }
 

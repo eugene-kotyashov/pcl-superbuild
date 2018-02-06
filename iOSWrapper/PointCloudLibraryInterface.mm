@@ -1,5 +1,5 @@
-#import "PointCloudLibraryInterface.h"
-#include <pcl/PointCloudLibraryWrapper.hh>
+#include "PointCloudLibraryInterface.h"
+#include <pcl/PointCloudLibraryWrapper.h>
 
 @interface PointCloudLibraryInterface () 
 {
@@ -28,8 +28,8 @@
     myPointCloudLibraryWrapper->Load(strDst);
 }
 - (void) callFiltering {
-    // myPointCloudLibraryWrapper.min = 5;
-    // myPointCloudLibraryWrapper.max = 5;
-    myPointCloudLibraryWrapper->FilterAxis();
+    // myPointCloudLibraryWrapper.min = 1.0;
+    // myPointCloudLibraryWrapper.max = 5.0;
+    myPointCloudLibraryWrapper->FilterAxis("x", 1.0, 5.0);
 }
 @end

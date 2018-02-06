@@ -5,20 +5,8 @@
 #include <string>
 #include <iostream>
 
-#include <pcl/point_cloud.h>
-#include <pcl/point_types.h>
-#include <pcl/PointIndices.h>
-#include <pcl/ModelCoefficients.h>
 
-#include <pcl/io/pcd_io.h>
-#include <pcl/kdtree/kdtree.h>
-#include <pcl/kdtree/kdtree_flann.h>
-// #include <pcl/filters/passthrough.h>
-// #include <pcl/filters/radius_outlier_removal.h>
-// #include <pcl/filters/conditional_removal.h>
-// #include <pcl/filters/voxel_grid.h>
-// #include <pcl/filters/statistical_outlier_removal.h>
-
+// namespace の使用はNG
 class PointCloudLibraryWrapper
 {
 public:
@@ -32,17 +20,18 @@ public:
     // double[] GetPointData2();
 
     // io
-    void Load(std::string filename);
+    void Load(const std::string& filename);
 
     // Feature
     // Filter
-    void FilterAxis(std::string axis, double min, double max);
+    void FilterAxis(const std::string& axis, double min, double max);
 
 private:
     // 加工前データ
-    pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud;
+    // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud;
     // 加工後データ
-    pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud_filtered;
+    // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud_filtered;
+    float* pointdata;
 };
 
 #endif // __PointCloudWrapper_h

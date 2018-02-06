@@ -1,4 +1,6 @@
+// namespace ‚ÌŽg—p‚ÍNG
 #include "PointCloudLibraryWrapper.h"
+#include "PointCloudLibraryConversions.h"
 
 #define EXPORT __attribute__((visibility("default")))
 
@@ -15,21 +17,18 @@ int PointCloudLibraryWrapper::PrintFoo()
 
 // io
 EXPORT
-void PointCloudLibraryWrapper::Load(std::string filename)
+void PointCloudLibraryWrapper::Load(const std::string& filename)
 {
-	// header read error?
+    // not using namespace to object-c
     // if (pcl::io::loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
     // if (loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
-    {
-        // PCL_ERROR ("Couldn't read file test_pcd.pcd.\n");
-        return;
-    }
+    this->pointdata = PointCloudLibraryConversions::PointCloudDataFromPCDFile(filename);
 }
 
 //----------------------------------------------------------------------------
 
 EXPORT
-void PointCloudLibraryWrapper::FilterAxis(std::string axis, double min, double max)
+void PointCloudLibraryWrapper::FilterAxis(const std::string& axis, double min, double max)
 {
     // Create the filtering object
     // pcl::PassThrough<pcl::PointXYZ> pass;
