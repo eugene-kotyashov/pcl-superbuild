@@ -66,3 +66,15 @@ http://blog.lisb.direct/entry/2017/07/20/100000
 
 Use C++ with Cocoa Instead of Objective-C?
 https://stackoverflow.com/questions/525609/use-c-with-cocoa-instead-of-objective-c
+
+---
+
+20180206
+
+#define EXPORT __attribute__((visibility("default")))
+について
+↓
+フレームワークなどの共有ライブラリの出力シンボル
+https://qiita.com/studiork/items/6cce30da59c695189869
+
+https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/CppRuntimeEnv/Articles/SymbolVisibility.html

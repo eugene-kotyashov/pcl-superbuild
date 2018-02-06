@@ -1,5 +1,6 @@
 // namespace ‚ÌŽg—p‚ÍNG
-#include "PointCloudLibraryWrapper.h"
+// #include "PointCloudLibraryWrapper.h"
+#include "PointCloudLibraryWrapper.hh"
 #include "PointCloudLibraryConversions.h"
 
 #define EXPORT __attribute__((visibility("default")))
@@ -22,6 +23,7 @@ void PointCloudLibraryWrapper::Load(const std::string& filename)
     // not using namespace to object-c
     // if (pcl::io::loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
     // if (loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
+    // use C++?
     this->pointdata = PointCloudLibraryConversions::PointCloudDataFromPCDFile(filename);
 }
 
