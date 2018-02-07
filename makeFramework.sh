@@ -88,11 +88,11 @@ make_pcl_framework_device ()
   cp -R "${current_pcl_ios_device_framework}" "${pcl_framework}/.."
 
   # mkdir $pcl_framework/Headers
-  cp -R $pcl_header_dir/* $pcl_framework/Headers/
-  cp -R $boost_header_dir/* $pcl_framework/Headers/
-  cp -R $eigen_header_dir/* $pcl_framework/Headers/
-  cp -R $flann_header_dir/* $pcl_framework/Headers/
-  cp -R $qhull_header_dir/* $pcl_framework/Headers/
+  cp -R $pcl_header_dir/* $pcl_framework/Headers/ > dev/null 2>&1
+  cp -R $boost_header_dir/* $pcl_framework/Headers/ > dev/null 2>&1
+  cp -R $eigen_header_dir/* $pcl_framework/Headers/ > dev/null 2>&1
+  cp -R $flann_header_dir/* $pcl_framework/Headers/ > dev/null 2>&1
+  cp -R $qhull_header_dir/* $pcl_framework/Headers/ > dev/null 2>&1
   # cp -R $ioswrapper_header_dir/* $pcl_framework/Headers/
 
   # mkdir $pcl_framework/Modules
