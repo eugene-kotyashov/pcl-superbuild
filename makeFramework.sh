@@ -34,8 +34,8 @@ make_pcl_framework ()
 
   pcl_framework=$install/frameworks/pcl.framework
   mkdir -p $pcl_framework
-  
   rm -rf $pcl_framework/*
+
   # Public Header
   mkdir $pcl_framework/Headers
   cp -R $pcl_header_dir/* $pcl_framework/Headers/
@@ -81,10 +81,11 @@ make_pcl_framework_device ()
   qhull_header_dir=$install/qhull-ios-device/include
   # ioswrapper_header_dir=$install/ios_device_wrapper/include
 
-  pcl_framework=$install/frameworks-device/pcl.framework
-
   # Step 2. Copy the framework structure (from iphoneos build) to the device folder
+  pcl_framework=$install/frameworks-device/pcl.framework
+  mkdir -p ${pcl_framework}
   rm -rf $pcl_framework/*
+
   cp -R "${current_pcl_ios_device_framework}" "${pcl_framework}/.."
 
   # mkdir $pcl_framework/Headers
@@ -131,7 +132,9 @@ make_pcl_framework_simulator ()
 
   # Step 3. Copy the framework structure (from iphoneos-simulator build) to the device folder
   pcl_framework=$install/frameworks-simulator/pcl.framework
+  mkdir -p ${pcl_framework}
   rm -rf $pcl_framework/*
+
   cp -R "${current_pcl_ios_sim_framework}" "${pcl_framework}/.."
 
   # Public Header
@@ -193,6 +196,7 @@ make_pcl_framework_universal ()
   pcl_framework=$install/frameworks-universal/pcl.framework
   mkdir -p ${pcl_framework}
   rm -rf $pcl_framework/*
+
   cp -R "${current_pcl_ios_device_framework}" "${pcl_framework}/.."
   cp -R "${current_pcl_ios_sim_framework}" "${pcl_framework}/.."
 
