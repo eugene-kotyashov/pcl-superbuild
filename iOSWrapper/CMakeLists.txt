@@ -219,6 +219,8 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
 )
 
+# To disable bitcode:
+set_target_properties(${FRAMEWORK_NAME} PROPERTIES XCODE_ATTRIBUTE_ENABLE_BITCODE "NO")
 
 # -ObjC++
 # Symbol visibility setup, COMPILE_FLAGS only affect C++ so for Objective C we
