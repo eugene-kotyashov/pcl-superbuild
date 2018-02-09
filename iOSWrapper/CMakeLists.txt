@@ -19,10 +19,6 @@ set(LIBRARY_SOURCE
     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.cpp
     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryConversions.h
     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryConversions.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryVoxelGrid.h
-    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryVoxelGrid.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibrarySACSegmentationPlane.h
-    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibrarySACSegmentationPlane.cxx
 )
 
 add_library(
