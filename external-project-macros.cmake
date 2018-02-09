@@ -331,8 +331,9 @@ macro(crosscompile_pcl tag)
       -DBUILD_recognition:BOOL=ON
       -DBUILD_registration:BOOL=ON
       # build error(files not UTF-8 or BOM Check ON?)
-      -DBUILD_sample_consensus:BOOL=ON
-      # -DBUILD_sample_consensus:BOOL=OFF
+      # over TestCI build time(50 min)
+      # -DBUILD_sample_consensus:BOOL=ON
+      -DBUILD_sample_consensus:BOOL=OFF
       -DBUILD_search:BOOL=ON
       -DBUILD_segmentation:BOOL=ON
       -DBUILD_surface:BOOL=ON
