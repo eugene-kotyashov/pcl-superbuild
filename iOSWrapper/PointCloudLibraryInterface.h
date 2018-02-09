@@ -7,5 +7,5 @@
 
 - (void)callLoad:(NSString *)argString;
 - (void)callFiltering;
-// - (void)setPointCloudData:(NSArray *)pointArray;
+// - (void)setPointCloudData:(NSArray<NSValue *>)pointArray;
 @end

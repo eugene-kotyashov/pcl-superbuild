@@ -1,5 +1,6 @@
 module Libpointcloudlibrary [system] {
-  umbrella header "PointCloudLibraryInterface.hh"
+  link pcl
+  umbrella header "umbrella-libpcl.h"
 
   export *
   module * { export * }
