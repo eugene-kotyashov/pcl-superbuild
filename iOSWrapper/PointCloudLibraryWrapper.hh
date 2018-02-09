@@ -22,7 +22,9 @@ public:
     void FilterAxis(const char* axis, double min, double max);
 
     // Segmentation
-
+    float* GetPointCloudData() { return this->pointdata; }
+    int GetPointCloudCount() { return this->pointcount; }
+    int GetPointCloudType() { return this->pointtype; }
 private:
     // 加工前データ
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud;
@@ -30,6 +32,9 @@ private:
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud_filtered;
     // PointCloudLibraryConversions* conversion;
     float* pointdata;
+    int pointcount;
+    int pointtype;
 };
 
 #endif // __PointCloudWrapper_hh
+

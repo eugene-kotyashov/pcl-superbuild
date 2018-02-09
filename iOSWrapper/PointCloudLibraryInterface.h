@@ -8,4 +8,5 @@
 - (void)callLoad:(NSString *)argString;
 - (void)callFiltering;
 // - (void)setPointCloudData:(NSArray<NSValue *>)pointArray;
+- (NSArray<NSValue *>)GetPointCloudData;
 @end
