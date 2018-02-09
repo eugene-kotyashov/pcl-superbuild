@@ -1,28 +1,15 @@
-
 #ifndef __PointCloudWrapper_hh
 #define __PointCloudWrapper_hh
 
 #include <string>
 #include <iostream>
 
-
 // このファイル内(cpp含む)での namespace の使用はNG
 class PointCloudLibraryWrapper
 {
 public:
-    PointCloudLibraryWrapper() 
-	{ 
-		std::cout << "PointCloudLibraryWrapper Created." << std::endl; 
-		// conversion = new PointCloudLibraryConversions();
-	}
-    ~PointCloudLibraryWrapper()
-	{ 
-		std::cout << "PointCloudLibraryWrapper Destroyed." << std::endl; 
-		// if (conversion != NULL)
-		// {
-		// 	delete conversion;
-		// }
-	}
+    PointCloudLibraryWrapper();
+    ~PointCloudLibraryWrapper();
 
     int PrintFoo();
     std::string foo;
@@ -41,12 +28,8 @@ private:
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud;
     // 加工後データ
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud_filtered;
-	// PointCloudLibraryConversions* conversion;
-
-	// 
+    // PointCloudLibraryConversions* conversion;
     float* pointdata;
 };
 
 #endif // __PointCloudWrapper_hh
-
-

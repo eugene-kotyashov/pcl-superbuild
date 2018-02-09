@@ -16,7 +16,7 @@ class PointCloudLibraryConversions
 {
 public:
     static PointCloudLibraryConversions* New();
-    
+
     static float* PointCloudDataFromPCDFile(const char* filename);
     static float* PointCloudDataFromPointCloud(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud);
     static float* PointCloudDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud);
@@ -28,12 +28,12 @@ public:
     static pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr PointCloudDataFromFloatArray(float* farray);
 
 protected:
-  PointCloudLibraryConversions();
-  ~PointCloudLibraryConversions();
+    PointCloudLibraryConversions();
+    ~PointCloudLibraryConversions();
 
 private:
-  PointCloudLibraryConversions(const PointCloudLibraryConversions&); // Not implemented
-  void operator=(const PointCloudLibraryConversions&); // Not implemented
+    PointCloudLibraryConversions(const PointCloudLibraryConversions&); // Not implemented
+    void operator=(const PointCloudLibraryConversions&); // Not implemented
 };
 
-#endif
+#endif // __PointCloudLibraryConversions_h

@@ -2,8 +2,23 @@
 // #include "PointCloudLibraryWrapper.h"
 #include "PointCloudLibraryWrapper.hh"
 #include "PointCloudLibraryConversions.h"
+// #include "PointCloudLibraryVoxelGrid.h"
+// #include "PointCloudLibrarySACSegmentationPlane.h"
 
 #define EXPORT __attribute__((visibility("default")))
+
+PointCloudLibraryWrapper::PointCloudLibraryWrapper()
+{ 
+    std::cout << "PointCloudLibraryWrapper Created." << std::endl; 
+    PointCloudLibraryConversions::New();
+    // PointCloudLibraryVoxelGrid::New();
+    // PointCloudLibrarySACSegmentationPlane::New();
+}
+
+PointCloudLibraryWrapper::~PointCloudLibraryWrapper();
+{ 
+    std::cout << "PointCloudLibraryWrapper Destroyed." << std::endl; 
+}
 
 EXPORT
 int PointCloudLibraryWrapper::PrintFoo()
@@ -35,29 +50,14 @@ void PointCloudLibraryWrapper::Load(const char* filename)
 EXPORT
 void PointCloudLibraryWrapper::FilterAxis(const char* axis, double min, double max)
 {
-    // Create the filtering object
-    // pcl::PassThrough<pcl::PointXYZ> pass;
-    // pass.setInputCloud (cloud);
-
-    // NSLog(@"arr1 %d : %d", i, intArr[i]);
-
-    // pass.setFilterFieldName ("z");
-    // pass.setFilterFieldName ("y");
-    // pass.setFilterLimits (min, max);
-    // pass.setFilterLimitsNegative (true);
-    // pass.filter (*cloud_filtered);
+    // this->pointdata = PointCloudLibraryVoxelGrid::PointCloudLibraryVoxelGridFromFloatArray(this->pointdata);
 }
 
 /*
 EXPORT
-PointCloudLibraryWrapper::ApplyVoxelGrid(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud, double leafSize[3])
+void PointCloudLibraryWrapper::SegmentationPlane(double leafSize[3])
 {
-    pcl::VoxelGrid<pcl::PointXYZ> voxelGrid;
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudFiltered(new pcl::PointCloud<pcl::PointXYZ>);
-    voxelGrid.setInputCloud(cloud);
-    voxelGrid.setLeafSize(leafSize[0], leafSize[1], leafSize[2]);
-    voxelGrid.filter(*cloudFiltered);
-    return cloudFiltered;
+    this->pointdata = PointCloudLibraryVoxelGrid::PointCloudLibrarySACSegmentationPlaneFromFloatArray(this->pointdata);
 }
 
 //----------------------------------------------------------------------------

@@ -5,23 +5,26 @@
 #ifndef __PointCloudLibraryVoxelGrid_h
 #define __PointCloudLibraryVoxelGrid_h
 
+#include <pcl/filters/voxel_grid.h>
+
 class PointCloudLibraryVoxelGrid
 {
 public:
-  static PointCloudLibraryVoxelGrid *New();
+    static PointCloudLibraryVoxelGrid *New();
+    static float* PointCloudLibraryVoxelGridFromFloatArray(float* farray);
 
 protected:
-  double LeafSize[3];
+    double LeafSize[3];
 
-  // virtual int RequestData();
+    // virtual int RequestData();
+    PointCloudLibraryVoxelGrid();
 
-  PointCloudLibraryVoxelGrid();
-  virtual ~PointCloudLibraryVoxelGrid();
+    virtual ~PointCloudLibraryVoxelGrid();
 private:
-  PointCloudLibraryVoxelGrid(const PointCloudLibraryVoxelGrid&);  // Not implemented.
-  void operator=(const PointCloudLibraryVoxelGrid&);  // Not implemented.
+    PointCloudLibraryVoxelGrid(const PointCloudLibraryVoxelGrid&);  // Not implemented.
+    void operator=(const PointCloudLibraryVoxelGrid&);  // Not implemented.
 };
 
-#endif
+#endif  // __PointCloudLibraryVoxelGrid_h
 
 

@@ -72,6 +72,55 @@ namespace {
     }
 }
 
+void PointCloudLibrarySACSegmentationPlane::PointCloudLibrarySACSegmentationPlaneFromFloatArray(float* farray)
+{
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = PointCloudDataFromFloatArray(farray);
+    // pcl::PointCloud<pcl::PointXYZ>::Ptr cloudFiltered = ApplyVoxelGrid(cloud, this->LeafSize);
+    
+    pcl::PointIndices::Ptr inlierIndices;
+    pcl::ModelCoefficients::Ptr modelCoefficients;
+    
+    if (this->PerpendicularConstraintEnabled)
+    {
+        ComputeSACSegmentationPerpendicularPlane(
+                                                cloud,
+                                                this->DistanceThreshold,
+                                                Eigen::Vector3f(this->PerpendicularAxis[0],
+                                                                this->PerpendicularAxis[1],
+                                                                this->PerpendicularAxis[2]),
+                                                this->AngleEpsilon,
+                                                this->MaxIterations,
+                                                modelCoefficients,
+                                                inlierIndices);
+    }
+    else
+    {
+        ComputeSACSegmentationPlane(cloud,
+                                    this->DistanceThreshold,
+                                    this->MaxIterations,
+                                    modelCoefficients,
+                                    inlierIndices);
+    }
+    
+    // store plane coefficients
+    for (size_t i = 0; i < modelCoefficients->values.size(); ++i)
+    {
+        this->PlaneCoefficients[i] = modelCoefficients->values[i];
+    }
+
+    // compute origin and normal
+    Eigen::Vector4d coeffs(this->PlaneCoefficients);
+    if (coeffs[2] < 0)
+    {
+        coeffs *= -1.0;
+    }
+    Eigen::Vector3d normal(coeffs.data());
+
+    // “_ŒQ‰ÁH
+    // return tmpFloatArray;
+}
+
+
 
 //----------------------------------------------------------------------------
 // int PointCloudLibrarySACSegmentationPlane::RequestData()

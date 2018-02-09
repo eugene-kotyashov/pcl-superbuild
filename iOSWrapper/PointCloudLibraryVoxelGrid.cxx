@@ -1,25 +1,9 @@
-/*=========================================================================
-
-  Program:   Visualization Toolkit
-  Module:    PointCloudLibraryVoxelGrid.cxx
-
-  Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen
-  All rights reserved.
-  See Copyright.txt or http://www.kitware.com/Copyright.htm for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.  See the above copyright notice for more information.
-
-=========================================================================*/
 #include "PointCloudLibraryVoxelGrid.h"
 #include "PointCloudLibraryConversions.h"
 
-#include <pcl/filters/voxel_grid.h>
-
 //----------------------------------------------------------------------------
-namespace {
-
+namespace 
+{
     pcl::PointCloud<pcl::PointXYZ>::Ptr ApplyVoxelGrid(
                       pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud,
                       double leafSize[3])
@@ -35,20 +19,65 @@ namespace {
 }
 
 PointCloudLibraryVoxelGrid::PointCloudLibraryVoxelGrid() 
-{ 
+{
     this->LeafSize[0] = 0.01;
     this->LeafSize[1] = 0.01;
     this->LeafSize[2] = 0.01;
-    // this->SetNumberOfInputPorts(1);
-    // this->SetNumberOfOutputPorts(1);
-} 
+}
 
-//----------------------------------------------------------------------------
-int PointCloudLibraryVoxelGrid::RequestData()
+float* PointCloudLibraryVoxelGrid::PointCloudLibraryVoxelGridFromFloatArray(float* farray)
 {
-    // pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = PointCloudLibraryConversions::PointCloudFromPolyData(input);
-
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = PointCloudDataFromFloatArray(farray);
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloudFiltered = ApplyVoxelGrid(cloud, this->LeafSize);
 
-    return 1;
+    size_t nr_points = cloudFiltered->points.size();
+    float* tmpFloatArray = new float[nr_points * 3];
+    if (cloudFiltered->is_dense)
+    {
+        for (int i = 0; i < nr_points; ++i)
+        {
+            float point[3] = {cloud->points[i].x, cloud->points[i].y, cloud->points[i].z};
+            // unsigned char color[3] = {cloud->points[i].r, cloud->points[i].g, cloud->points[i].b};
+            tmpFloatArray[i * 3 + 0] = point[0];
+            tmpFloatArray[i * 3 + 1] = point[1];
+            tmpFloatArray[i * 3 + 2] = point[2];
+            // rgbArray->SetTupleValue(i, color);
+        }
+    }
+    else
+    {
+        int j = 0;    // true point index
+        for (int i = 0; i < nr_points; ++i)
+        {
+            // Check if the point is invalid
+            if (!pcl_isfinite (cloud->points[i].x) || 
+                !pcl_isfinite (cloud->points[i].y) || 
+                !pcl_isfinite (cloud->points[i].z))
+            continue;
+
+            float point[3] = { cloud->points[i].x, cloud->points[i].y, cloud->points[i].z };
+            // unsigned char color[3] = {cloud->points[i].r, cloud->points[i].g, cloud->points[i].b};
+            tmpFloatArray[j * 3 + 0] = point[0];
+            tmpFloatArray[j * 3 + 1] = point[1];
+            tmpFloatArray[j * 3 + 2] = point[2];
+            //rgbArray->SetTupleValue(j, color);
+            j++;
+        }
+
+        nr_points = j;
+        //points->SetNumberOfPoints(nr_points);
+        //rgbArray->SetNumberOfTuples(nr_points);
+    }
+
+    // ì_åQâ¡çH
+    return tmpFloatArray;
 }
+
+//----------------------------------------------------------------------------
+// int PointCloudLibraryVoxelGrid::RequestData()
+// {
+//     // pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = PointCloudLibraryConversions::PointCloudFromPolyData(input);
+//     // pcl::PointCloud<pcl::PointXYZ>::Ptr cloudFiltered = ApplyVoxelGrid(cloud, this->LeafSize);
+// 
+//     return 1;
+// }
