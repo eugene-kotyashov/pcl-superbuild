@@ -181,7 +181,7 @@ float* PointCloudLibraryConversions::PointCloudDataFromPointCloud(pcl::PointClou
                 !pcl_isfinite (cloud->points[i].z))
             continue;
 
-            float point[3] = {cloud->points[i].x, cloud->points[i].y, cloud->points[i].z};
+            float point[3] = { cloud->points[i].x, cloud->points[i].y, cloud->points[i].z };
             // unsigned char color[3] = {cloud->points[i].r, cloud->points[i].g, cloud->points[i].b};
             tmpFloatArray[j * 3 + 0] = point[0];
             tmpFloatArray[j * 3 + 1] = point[1];
@@ -197,5 +197,52 @@ float* PointCloudLibraryConversions::PointCloudDataFromPointCloud(pcl::PointClou
 
     // ì_åQâ¡çH
     return tmpFloatArray;
+}
+
+pcl::PointCloud<pcl::PointXYZ>::ConstPtr PointCloudDataFromPCDFile(float* farray)
+{
+    pcl::PointCloud<pcl::PointXYZ> tmpPointCloudPtr;
+
+    int arraySize = 0;
+    for(int i = 0; i < arraySize; i++)
+    {
+        cloud->points[i].x
+        cloud->points[i].y
+        cloud->points[i].z
+    }
+
+    return tmpPointCloudPtr;
+}
+
+pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr PointCloudLibraryConversions::PointCloudDataFromPCDFile(float* farray)
+{
+    pcl::PointCloud<pcl::PointXYZRGB> tmpPointCloudPtr;
+
+    int arraySize = 0;
+    for(int i = 0; i < arraySize; i++)
+    {
+        cloud->points[i].x = 0;
+        cloud->points[i].y = 0;
+        cloud->points[i].z = 0;
+        cloud->points[i].rgb = 0;
+    }
+
+    return tmpPointCloudPtr;
+}
+
+pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr PointCloudLibraryConversions::PointCloudDataFromPCDFile(float* farray)
+{
+    pcl::PointCloud<pcl::PointXYZRGBA> tmpPointCloudPtr;
+
+    int arraySize = 0;
+    for(int i = 0; i < arraySize; i++)
+    {
+        cloud->points[i].x = 0;
+        cloud->points[i].y = 0;
+        cloud->points[i].z = 0;
+        cloud->points[i].rgba = 0;
+    }
+
+    return tmpPointCloudPtr;
 }
 

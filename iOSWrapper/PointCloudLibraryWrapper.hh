@@ -6,18 +6,26 @@
 #include <iostream>
 
 
-// namespace の使用はNG
+// このファイル内(cpp含む)での namespace の使用はNG
 class PointCloudLibraryWrapper
 {
 public:
-    PointCloudLibraryWrapper() { std::cout << "PointCloudLibraryWrapper Created." << std::endl; }
-    ~PointCloudLibraryWrapper() { std::cout << "PointCloudLibraryWrapper Destroyed." << std::endl; }
+    PointCloudLibraryWrapper() 
+	{ 
+		std::cout << "PointCloudLibraryWrapper Created." << std::endl; 
+		// conversion = new PointCloudLibraryConversions();
+	}
+    ~PointCloudLibraryWrapper()
+	{ 
+		std::cout << "PointCloudLibraryWrapper Destroyed." << std::endl; 
+		// if (conversion != NULL)
+		// {
+		// 	delete conversion;
+		// }
+	}
 
     int PrintFoo();
     std::string foo;
-
-    // double[] GetPointData();
-    // double[] GetPointData2();
 
     // io
     void Load(const char* filename);
@@ -26,12 +34,16 @@ public:
     // Filter
     void FilterAxis(const char* axis, double min, double max);
 
+    // Segmentation
+
 private:
-    // namespace の使用はNG
     // 加工前データ
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud;
     // 加工後データ
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud_filtered;
+	// PointCloudLibraryConversions* conversion;
+
+	// 
     float* pointdata;
 };
 

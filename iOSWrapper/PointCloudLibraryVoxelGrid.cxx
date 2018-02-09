@@ -34,12 +34,21 @@ namespace {
 
 }
 
+PointCloudLibraryVoxelGrid::PointCloudLibraryVoxelGrid() 
+{ 
+    this->LeafSize[0] = 0.01;
+    this->LeafSize[1] = 0.01;
+    this->LeafSize[2] = 0.01;
+    // this->SetNumberOfInputPorts(1);
+    // this->SetNumberOfOutputPorts(1);
+} 
+
 //----------------------------------------------------------------------------
-// int PointCloudLibraryVoxelGrid::RequestData()
-// {
-//  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = PointCloudLibraryConversions::PointCloudFromPolyData(input);
-//  pcl::PointCloud<pcl::PointXYZ>::Ptr cloudFiltered = ApplyVoxelGrid(cloud, this->LeafSize);
-//
-//  output->ShallowCopy(PointCloudLibraryConversions::PolyDataFromPointCloud(cloudFiltered));
-//  return 1;
-// }
+int PointCloudLibraryVoxelGrid::RequestData()
+{
+    // pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = PointCloudLibraryConversions::PointCloudFromPolyData(input);
+
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudFiltered = ApplyVoxelGrid(cloud, this->LeafSize);
+
+    return 1;
+}
