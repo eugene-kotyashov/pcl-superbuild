@@ -12,6 +12,7 @@
 + (NSValue*)valueWithCGPoint:(PointXYZ)point;
 - (PointXYZ)cgpointValue;
 @end
+
 @implementation NSValue (PointXYZ)
 + (NSValue*)valueWithCGPoint:(PointXYZ)point
 {

@@ -199,7 +199,7 @@ float* PointCloudLibraryConversions::PointCloudDataFromPointCloud(pcl::PointClou
     return tmpFloatArray;
 }
 
-pcl::PointCloud<pcl::PointXYZ>::ConstPtr PointCloudDataFromPCDFile(float* farray)
+pcl::PointCloud<pcl::PointXYZ>::ConstPtr PointCloudDataFromFloatArray(float* farray)
 {
     pcl::PointCloud<pcl::PointXYZ> tmpPointCloudPtr;
 
@@ -214,7 +214,7 @@ pcl::PointCloud<pcl::PointXYZ>::ConstPtr PointCloudDataFromPCDFile(float* farray
     return tmpPointCloudPtr;
 }
 
-pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr PointCloudLibraryConversions::PointCloudDataFromPCDFile(float* farray)
+pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr PointCloudLibraryConversions::PointCloudDataFromFloatArray(float* farray)
 {
     pcl::PointCloud<pcl::PointXYZRGB> tmpPointCloudPtr;
 
@@ -230,7 +230,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr PointCloudLibraryConversions::PointC
     return tmpPointCloudPtr;
 }
 
-pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr PointCloudLibraryConversions::PointCloudDataFromPCDFile(float* farray)
+pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr PointCloudLibraryConversions::PointCloudDataFromFloatArray(float* farray)
 {
     pcl::PointCloud<pcl::PointXYZRGBA> tmpPointCloudPtr;
 
