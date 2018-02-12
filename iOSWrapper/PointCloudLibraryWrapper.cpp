@@ -15,8 +15,8 @@ PointCloudLibraryWrapper::PointCloudLibraryWrapper()
     // PointCloudLibrarySACSegmentationPlane::New();
 }
 
-PointCloudLibraryWrapper::~PointCloudLibraryWrapper();
-{ 
+PointCloudLibraryWrapper::~PointCloudLibraryWrapper()
+{
     std::cout << "PointCloudLibraryWrapper Destroyed." << std::endl; 
 }
 

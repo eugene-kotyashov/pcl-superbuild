@@ -23,9 +23,9 @@ public:
     static float* PointCloudDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr cloud);
 
     // Convert to PointCloud Array
-    static pcl::PointCloud<pcl::PointXYZ>::ConstPtr PointCloudDataFromFloatArray(float* farray);
-    static pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr PointCloudDataFromFloatArray(float* farray);
-    static pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr PointCloudDataFromFloatArray(float* farray);
+    static pcl::PointCloud<pcl::PointXYZ>::ConstPtr PointCloudDataFromFloatArray1(float* farray);
+    static pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr PointCloudDataFromFloatArray2(float* farray);
+    static pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr PointCloudDataFromFloatArray3(float* farray);
 
 protected:
     PointCloudLibraryConversions();
