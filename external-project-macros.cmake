@@ -317,13 +317,14 @@ macro(crosscompile_pcl tag)
       -DBUILD_common:BOOL=ON
       -DBUILD_example:BOOL=OFF
       -DBUILD_features:BOOL=ON
-      -DBUILD_filters:BOOL=ON
       -DBUILD_geometry:BOOL=ON
       -DBUILD_global_tests:BOOL=OFF
       -DBUILD_io:BOOL=ON
       -DBUILD_kdtree:BOOL=ON
       -DBUILD_keypoints:BOOL=ON
       # use vtk?
+      # depend sample_consensus
+      -DBUILD_filters:BOOL=ON
       # -DBUILD_outofcore:BOOL=ON
       # -DBUILD_people:BOOL=ON
       -DBUILD_outofcore:BOOL=OFF
