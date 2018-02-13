@@ -39,7 +39,8 @@ void PointCloudLibraryWrapper::Load(const char* filename)
     // if (pcl::io::loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
     // if (loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
     // use C++?
-    this->pointdata = PointCloudLibraryConversions::PointCloudDataFromPCDFile(filename);
+    // this->pointdata = PointCloudLibraryConversions::PointCloudDataFromPCDFile(filename);
+	this->pointdata = PointCloudLibraryConversions::PointCloudDataFromPCDFile2(filename);
     // not static?
     // PointCloudLibraryConversions* conversion = new PointCloudLibraryConversions();
     // conversion->PointCloudDataFromPCDFile(filename);

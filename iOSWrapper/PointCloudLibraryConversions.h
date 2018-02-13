@@ -19,10 +19,15 @@ class PointCloudLibraryConversions
 public:
     static PointCloudLibraryConversions* New();
 
-    static float* PointCloudDataFromPCDFile(const char* filename);
+	static float* PointCloudDataFromPCDFile(const char* filename);
     static float* PointCloudDataFromPointCloud(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud);
     static float* PointCloudDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud);
     static float* PointCloudDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr cloud);
+
+    static SwiftPointXYZRGBA* PointCloudDataFromPCDFile2(const char* filename);
+    static SwiftPointXYZRGBA* PointCloudDataFromPointCloud2(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud);
+    static SwiftPointXYZRGBA* PointCloudDataFromPointCloud2(pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud);
+    static SwiftPointXYZRGBA* PointCloudDataFromPointCloud2(pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr cloud);
 
     // Convert to PointCloud Array
     static pcl::PointCloud<pcl::PointXYZ>::ConstPtr PointCloudDataFromFloatArray1(float* farray);

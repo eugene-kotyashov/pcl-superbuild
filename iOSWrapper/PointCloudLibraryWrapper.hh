@@ -24,8 +24,11 @@ public:
     void FilterAxis(const char* axis, double min, double max);
 
     // Segmentation
-    // PointXYZRGBA* GetPointCloudData() 
-    float* GetPointCloudData() 
+    // float* GetPointCloudData() 
+	// { 
+    //     return this->pointdata;
+    // }
+    SwiftPointXYZRGBA* GetPointCloudData() 
     { 
         return this->pointdata;
     }
@@ -38,7 +41,8 @@ private:
     // â¡çHå„ÉfÅ[É^
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud_filtered;
     // PointCloudLibraryConversions* conversion;
-    float* pointdata;
+	// float* pointdata;
+    SwiftPointXYZRGBA* pointdata;
     int pointcount;
     int pointtype;
 };
