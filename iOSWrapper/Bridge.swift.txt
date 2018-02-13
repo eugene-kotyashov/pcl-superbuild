@@ -5,8 +5,21 @@ class ViewController: NSViewController
     override func viewDidLoad() {
         super.viewDidLoad()
 
-         // Objective-C++メソッド呼び出し
-        var pointcloudIFcpp = PointCloudLibraryInterface()
-        pointcloudIFcpp.callLoad("")
+        // Objective-C++メソッド呼び出し
+        var pointcloudWrapper_cpp = PointCloudLibraryWrapper()
+
+        // NSString *modelFileName = [[NSBundle mainBundle] pathForResource:@"pointcloud" ofType:@"pcd"];
+        // std::string modelFileNameCString = [modelFileName UTF8String]; 
+        // myPointCloudLibraryWrapper->Load(strDst);
+
+        // ファイルまでのパスを取得（同時にnilチェック）
+        if let path: String = Bundle.main.path(forResource: "pointcloud", ofType: "pcd")
+        {
+            pointcloudWrapper_cpp.Load(path)
+        }
+
+        // var myPointer :UnsafeMutablePointer<Test> = getPointer(&myTest)
     }
 }
+
+        
