@@ -240,9 +240,11 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
 # https://cmake.org/cmake/help/v3.1/prop_tgt/XCODE_ATTRIBUTE_an-attribute.html
 # To disable bitcode:
 set_target_properties(${FRAMEWORK_NAME} PROPERTIES XCODE_ATTRIBUTE_ENABLE_BITCODE "NO")
-if (IOS_PLATFORM eq "SIMULATOR64")
-    set_target_properties(${FRAMEWORK_NAME} PROPERTIES XCODE_ATTRIBUTE_VALID_ARCHS "x86_64")
-endif()
+# if (IOS_PLATFORM)
+#     if (IOS_PLATFORM eq SIMULATOR64)
+#         set_target_properties(${FRAMEWORK_NAME} PROPERTIES XCODE_ATTRIBUTE_VALID_ARCHS "x86_64")
+#     endif()
+# endif()
 
 # -ObjC++
 # Symbol visibility setup, COMPILE_FLAGS only affect C++ so for Objective C we
