@@ -38,14 +38,14 @@ namespace {
             return NULL;
         }
 
-        return PointCloudLibraryConversions::PointCloudDataFromPointCloud(cloud);
+        return PointCloudLibraryConversions::PointCloudDataFromPointCloud2(cloud);
     }
 }
 
 
 //----------------------------------------------------------------------------
 // float* PointCloudLibraryConversions::PointCloudDataFromPCDFile(const std::string& filename)
-float* PointCloudLibraryConversions::PointCloudDataFromPCDFile2(const char* filename)
+float* PointCloudLibraryConversions::PointCloudDataFromPCDFile(const char* filename)
 {
     int version;
     int type;

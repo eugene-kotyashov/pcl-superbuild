@@ -113,7 +113,7 @@
     }
 
     // Get Float*
-    float* data = myPointCloudLibraryWrapper->GetPointCloudData();
+    SwiftPointXYZRGBA* data = myPointCloudLibraryWrapper->GetPointCloudData();
     int count = myPointCloudLibraryWrapper->GetPointCloudCount();
     int type = myPointCloudLibraryWrapper->GetPointCloudType();
 
@@ -121,10 +121,13 @@
     {
         // ÉfÅ[É^Çâ¡çHÇ∑ÇÈ
         // 3DPoint point = {0.0f, 1.0f, 1.0f};
-        // NSValue *val = [NSValue value:&point withObjCType:@encode(3DPoint)];
+        // NSValue *val = [NSValue value:&point withObjCType:@encode(Vertex)];
+        // [val getValue:&point];
+        // 3DPoint point = {0.0f, 1.0f, 1.0f};
+        // NSValue *val = [NSValue value:&point withObjCType:@encode(Vertex)];
         // [val getValue:&point];
     }
 
-    return nullptr;
+    return data;
 }
 @end
