@@ -128,7 +128,7 @@ make_pcl_framework_device ()
   cp -R $qhull_arm64_header_dir/* $pcl_framework/Headers/ 2>&1
 
   # mkdir $pcl_framework/Modules
-  # cp module.modulemap $pcl_framework/Modules/
+  cp ../iOSWrapper/module.modulemap $pcl_framework/
 
   # ライブラリの結合
   # libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs $current_pcl_ios_device_framework/pcl
@@ -180,6 +180,7 @@ make_pcl_framework_simulator ()
 
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
+  cp ../iOSWrapper/module.modulemap $pcl_framework/
 
   # ライブラリの結合
   libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs $qhull_sim_libs $current_pcl_ios_sim_framework/pcl 
@@ -264,6 +265,7 @@ make_pcl_framework_universal ()
 
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
+  cp ../iOSWrapper/module.modulemap $pcl_framework/
 
   # ライブラリの結合
   # libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs $current_pcl_ios_device_framework/pcl
