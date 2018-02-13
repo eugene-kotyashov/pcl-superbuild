@@ -201,7 +201,8 @@ float* PointCloudLibraryConversions::PointCloudDataFromPointCloud(pcl::PointClou
 
 pcl::PointCloud<pcl::PointXYZ>::ConstPtr PointCloudDataFromFloatArray1(float* farray)
 {
-    pcl::PointCloud<pcl::PointXYZ> tmpPointCloudPtr;
+    // pcl::PointCloud<pcl::PointXYZ> tmpPointCloudPtr;
+	pcl::PointCloud<pcl::PointXYZ>::Ptr tmpPointCloudPtr (new pcl::PointCloud<pcl::PointXYZ>);
 
     int arraySize = 0;
     for(int i = 0; i < arraySize; i++)
@@ -216,7 +217,7 @@ pcl::PointCloud<pcl::PointXYZ>::ConstPtr PointCloudDataFromFloatArray1(float* fa
 
 pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr PointCloudLibraryConversions::PointCloudDataFromFloatArray2(float* farray)
 {
-    pcl::PointCloud<pcl::PointXYZRGB> tmpPointCloudPtr;
+    pcl::PointCloud<pcl::PointXYZ>::Ptr tmpPointCloudPtr (new pcl::PointCloud<pcl::PointXYZ>);
 
     int arraySize = 0;
     for(int i = 0; i < arraySize; i++)
@@ -232,7 +233,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr PointCloudLibraryConversions::PointC
 
 pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr PointCloudLibraryConversions::PointCloudDataFromFloatArray3(float* farray)
 {
-    pcl::PointCloud<pcl::PointXYZRGBA> tmpPointCloudPtr;
+    pcl::PointCloud<pcl::PointXYZ>::Ptr tmpPointCloudPtr (new pcl::PointCloud<pcl::PointXYZ>);
 
     int arraySize = 0;
     for(int i = 0; i < arraySize; i++)

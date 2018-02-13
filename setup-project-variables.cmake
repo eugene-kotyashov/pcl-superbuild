@@ -4,9 +4,9 @@ find_package(Git REQUIRED)
 option(BUILD_ANDROID "Build for Android" ON)
 option(BUILD_IOS_DEVICE "Build for iOS device" OFF)
 option(BUILD_IOS_SIMULATOR "Build for iOS simulator" OFF)
-option(BUILD_IOS_DEVICE_ARM64 "Build for iOS device" OFF)
-option(BUILD_IOS_DEVICE_ARMV7 "Build for iOS device" OFF)
-option(BUILD_IOS_DEVICE_ARMV7S "Build for iOS device" OFF)
+option(BUILD_IOS_DEVICE_ARM64 "Build for iOS device(arm64)" OFF)
+option(BUILD_IOS_DEVICE_ARMV7 "Build for iOS device(armv7)" OFF)
+option(BUILD_IOS_DEVICE_ARMV7S "Build for iOS device(armv7s)" OFF)
 
 # set ccache options
 option(CCACHE_ENABLE "If the command ccache is avilable, use it for compile." ON)
