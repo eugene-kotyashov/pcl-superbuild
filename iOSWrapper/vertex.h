@@ -2,7 +2,7 @@
 #define __Vertex_h
 
 // Swift/Object-C と点群データをやり取りする際の構造体を定義する
-typedef struct {
+struct {
     float x;
     float y;
     float z;
@@ -10,6 +10,8 @@ typedef struct {
     float g;
     float b;
     float a;
-} PointXYZRGBA;
+} SwiftPointXYZRGBA;
+
+typedef struct SwiftPointXYZRGBA SwiftPointXYZRGBA;
 
 #endif // __Vertex_h

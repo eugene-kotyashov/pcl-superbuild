@@ -41,8 +41,10 @@ message(STATUS "CMAKE_BINARY_DIR : ${CMAKE_BINARY_DIR}")
 
 # a/dylib
 # boost?
-file(GLOB_RECURSE boost_includefiles "../build/CMakeExternals/Install/boost-ios-device/include/*.h*")
-file(GLOB_RECURSE boost_device_libraryfiles "../build/CMakeExternals/Install/boost-ios-device/lib/*.a")
+# file(GLOB_RECURSE boost_includefiles "../build/CMakeExternals/Install/boost-ios-device/include/*.h*")
+# file(GLOB_RECURSE boost_device_libraryfiles "../build/CMakeExternals/Install/boost-ios-device/lib/*.a")
+file(GLOB_RECURSE boost_includefiles "../build/CMakeExternals/Install/boost-ios-device-arm64/include/*.h*")
+file(GLOB_RECURSE boost_device_libraryfiles "../build/CMakeExternals/Install/boost-ios-device-arm64/lib/*.a")
 file(GLOB_RECURSE boost_simulation_libraryfiles "../build/CMakeExternals/Install/boost-ios-simulator/lib/*.a")
 
 # message(STATUS "boost(include)         : ${boost_includefiles}")
@@ -71,8 +73,10 @@ file(GLOB_RECURSE eigen_unsupported_includefiles "../build/CMakeExternals/Instal
 ###
 
 # flann
-file(GLOB_RECURSE flann_includefiles "../build/CMakeExternals/Install/flann-ios-device/include/flann/*.h*")
-file(GLOB_RECURSE flann_device_libraryfiles "../build/CMakeExternals/Install/flann-ios-device/lib/*.a")
+# file(GLOB_RECURSE flann_includefiles "../build/CMakeExternals/Install/flann-ios-device/include/flann/*.h*")
+# file(GLOB_RECURSE flann_device_libraryfiles "../build/CMakeExternals/Install/flann-ios-device/lib/*.a")
+file(GLOB_RECURSE flann_includefiles "../build/CMakeExternals/Install/flann-ios-device-arm64/include/flann/*.h*")
+file(GLOB_RECURSE flann_device_libraryfiles "../build/CMakeExternals/Install/flann-ios-device-arm64/lib/*.a")
 file(GLOB_RECURSE flann_simulation_libraryfiles "../build/CMakeExternals/Install/flann-ios-simulator/lib/*.a")
 
 # message(STATUS "flann(include)         : ${flann_includefiles}")
@@ -92,8 +96,10 @@ file(GLOB_RECURSE flann_simulation_libraryfiles "../build/CMakeExternals/Install
 ###
 
 # qhull
-file(GLOB_RECURSE qhull_includefiles "../build/CMakeExternals/Install/qhull-ios-device/*.h*")
-file(GLOB_RECURSE qhull_device_libraryfiles "../build/CMakeExternals/Install/qhull-ios-device/*.a")
+# file(GLOB_RECURSE qhull_includefiles "../build/CMakeExternals/Install/qhull-ios-device/*.h*")
+# file(GLOB_RECURSE qhull_device_libraryfiles "../build/CMakeExternals/Install/qhull-ios-device/*.a")
+file(GLOB_RECURSE qhull_includefiles "../build/CMakeExternals/Install/qhull-ios-device-arm64/*.h*")
+file(GLOB_RECURSE qhull_device_libraryfiles "../build/CMakeExternals/Install/qhull-ios-device-arm64/*.a")
 file(GLOB_RECURSE qhull_simulation_libraryfiles "../build/CMakeExternals/Install/qhull-ios-simulator/*.a")
 
 # message(STATUS "qhull(include)         : ${qhull_includefiles}")
@@ -113,8 +119,10 @@ file(GLOB_RECURSE qhull_simulation_libraryfiles "../build/CMakeExternals/Install
 ###
 
 # pcl
-file(GLOB_RECURSE pcl_includefiles "../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8/*.h*")
-file(GLOB_RECURSE pcl_device_libraryfiles "../build/CMakeExternals/Install/pcl-ios-device/lib/*.a")
+# file(GLOB_RECURSE pcl_includefiles "../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8/*.h*")
+# file(GLOB_RECURSE pcl_device_libraryfiles "../build/CMakeExternals/Install/pcl-ios-device/lib/*.a")
+file(GLOB_RECURSE pcl_includefiles "../build/CMakeExternals/Install/pcl-ios-device-arm64/include/pcl-1.8/*.h*")
+file(GLOB_RECURSE pcl_device_libraryfiles "../build/CMakeExternals/Install/pcl-ios-device-arm64/lib/*.a")
 file(GLOB_RECURSE pcl_simulation_libraryfiles "../build/CMakeExternals/Install/pcl-ios-simulator/lib/*.a")
 
 # message(STATUS "pcl(include)         : ${pcl_includefiles}")
@@ -140,13 +148,21 @@ set(CMAKE_SHARED_LINKER_FLAGS "-Wall")
 include_directories(../build/CMakeExternals/Install/eigen)
 
 # if (BUILD_IOS_DEVICE)
+# set(INCLUDE_DIR
+#     ../build/CMakeExternals/Install/boost-ios-device/include
+#     ../build/CMakeExternals/Install/flann-ios-device/include
+#     ../build/CMakeExternals/Install/qhull-ios-device/include/libqhull
+#     ../build/CMakeExternals/Install/qhull-ios-device/include/libqhull_r
+#     ../build/CMakeExternals/Install/qhull-ios-device/include/libqhullcpp
+#     ../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8
+# )
 set(INCLUDE_DIR
-    ../build/CMakeExternals/Install/boost-ios-device/include
-    ../build/CMakeExternals/Install/flann-ios-device/include
-    ../build/CMakeExternals/Install/qhull-ios-device/include/libqhull
-    ../build/CMakeExternals/Install/qhull-ios-device/include/libqhull_r
-    ../build/CMakeExternals/Install/qhull-ios-device/include/libqhullcpp
-    ../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8
+    ../build/CMakeExternals/Install/boost-ios-device-arm64/include
+    ../build/CMakeExternals/Install/flann-ios-device-arm64/include
+    ../build/CMakeExternals/Install/qhull-ios-device-arm64/include/libqhull
+    ../build/CMakeExternals/Install/qhull-ios-device-arm64/include/libqhull_r
+    ../build/CMakeExternals/Install/qhull-ios-device-arm64/include/libqhullcpp
+    ../build/CMakeExternals/Install/pcl-ios-device-arm64/include/pcl-1.8
 )
 # endif()
 
@@ -221,8 +237,12 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
 )
 
+# https://cmake.org/cmake/help/v3.1/prop_tgt/XCODE_ATTRIBUTE_an-attribute.html
 # To disable bitcode:
 set_target_properties(${FRAMEWORK_NAME} PROPERTIES XCODE_ATTRIBUTE_ENABLE_BITCODE "NO")
+if (IOS_PLATFORM eq "SIMULATOR64")
+    set_target_properties(${FRAMEWORK_NAME} PROPERTIES XCODE_ATTRIBUTE_VALID_ARCHS "x86_64")
+endif()
 
 # -ObjC++
 # Symbol visibility setup, COMPILE_FLAGS only affect C++ so for Objective C we
