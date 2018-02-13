@@ -71,7 +71,7 @@ set (IOS_PLATFORM ${IOS_PLATFORM} CACHE STRING "Type of iOS Platform")
 
 # Setup building for arm64 or not
 if (NOT DEFINED BUILD_ARM64)
-    set (BUILD_ARM64 false)
+    set (BUILD_ARM64 true)
 endif (NOT DEFINED BUILD_ARM64)
 set (BUILD_ARM64 ${BUILD_ARM64} CACHE STRING "Build arm64 arch or not")
 
