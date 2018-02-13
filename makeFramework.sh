@@ -65,20 +65,44 @@ make_pcl_framework_device ()
   current_pcl_ios_device_framework=../iOSWrapper/build.ios/Release-iphoneos/pcl.framework
 
   # Step 1. Build Device and Simulator versions complete
+  # common
   pcl_device_libs=`find $install/pcl-ios-device -name *.a`
   boost_device_libs=`find $install/boost-ios-device -name *.a`
   flann_device_libs=`find $install/flann-ios-device -name *.a`
   qhull_device_libs=`find $install/qhull-ios-device -name *.a`
   # Object-C/Swift で使用するためのラッパー関数を持つライブラリ
   # wrapper_device_libs=`find $install/ios_device_wrapper -name *.a`
+  # arm64
+  pcl_device_arm64_libs=`find $install/pcl-ios-device-arm64 -name *.a`
+  boost_device_arm64_libs=`find $install/boost-ios-device-arm64 -name *.a`
+  flann_device_arm64_libs=`find $install/flann-ios-device-arm64 -name *.a`
+  qhull_device_arm64_libs=`find $install/qhull-ios-device-arm64 -name *.a`
+  # armv7
+  pcl_device_armv7_libs=`find $install/pcl-ios-device-armv7 -name *.a`
+  boost_device_armv7_libs=`find $install/boost-ios-device-armv7 -name *.a`
+  flann_device_armv7_libs=`find $install/flann-ios-device-armv7 -name *.a`
+  qhull_device_armv7_libs=`find $install/qhull-ios-device-armv7 -name *.a`
+  # armv7s
+  pcl_device_armv7s_libs=`find $install/pcl-ios-device-armv7s -name *.a`
+  boost_device_armv7s_libs=`find $install/boost-ios-device-armv7s -name *.a`
+  flann_device_armv7s_libs=`find $install/flann-ios-device-armv7s -name *.a`
+  qhull_device_armv7s_libs=`find $install/qhull-ios-device-armv7s -name *.a`
 
   # args -> version
+  # common
   # version 1.8
   pcl_header_dir=$install/pcl-ios-device/include/pcl-1.8
   boost_header_dir=$install/boost-ios-device/include
   eigen_header_dir=$install/eigen
   flann_header_dir=$install/flann-ios-device/include
   qhull_header_dir=$install/qhull-ios-device/include
+  # ioswrapper_header_dir=$install/ios_device_wrapper/include
+  # arm64
+  pcl_arm64_header_dir=$install/pcl-ios-device-arm64/include/pcl-1.8
+  boost_arm64_header_dir=$install/boost-ios-device-arm64/include
+  eigen_arm64_header_dir=$install/eigen
+  flann_arm64_header_dir=$install/flann-ios-device-arm64/include
+  qhull_arm64_header_dir=$install/qhull-ios-device-arm64/include
   # ioswrapper_header_dir=$install/ios_device_wrapper/include
 
   # Step 2. Copy the framework structure (from iphoneos build) to the device folder
@@ -89,18 +113,26 @@ make_pcl_framework_device ()
   cp -R "${current_pcl_ios_device_framework}" "${pcl_framework}/.."
 
   # mkdir $pcl_framework/Headers
+  # common
   cp -R $pcl_header_dir/* $pcl_framework/Headers/ 2>&1
   cp -R $boost_header_dir/* $pcl_framework/Headers/ 2>&1
   cp -R $eigen_header_dir/* $pcl_framework/Headers/ 2>&1
   cp -R $flann_header_dir/* $pcl_framework/Headers/ 2>&1
   cp -R $qhull_header_dir/* $pcl_framework/Headers/ 2>&1
   # cp -R $ioswrapper_header_dir/* $pcl_framework/Headers/
+  # arm64
+  cp -R $pcl_arm64_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $boost_arm64_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $eigen_arm64_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $flann_arm64_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $qhull_arm64_header_dir/* $pcl_framework/Headers/ 2>&1
 
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
 
   # ライブラリの結合
-  libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs $current_pcl_ios_device_framework/pcl
+  # libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs $current_pcl_ios_device_framework/pcl
+  libtool -static -o $pcl_framework/pcl_device $pcl_device_arm64_libs $boost_arm64_device_libs $flann_arm64_device_libs $qhull_arm64_device_libs $pcl_device_armv7_libs $boost_armv7_device_libs $flann_armv7_device_libs $qhull_armv7_device_libs $pcl_device_armv7s_libs $boost_armv7s_device_libs $flann_armv7s_device_libs $qhull_armv7s_device_libs $current_pcl_ios_device_framework/pcl
 
   # Xcode で生成した framework と 個別にビルドした外部ライブラリを合わせる
   lipo -create -output $pcl_framework/pcl $pcl_framework/pcl_device
@@ -174,6 +206,21 @@ make_pcl_framework_universal ()
   qhull_device_libs=`find $install/qhull-ios-device -name *.a`
   # Object-C/Swift で使用するためのラッパー関数を持つライブラリ
   # wrapper_device_libs=`find $install/ios_device_wrapper -name *.a`
+  # arm64
+  pcl_device_arm64_libs=`find $install/pcl-ios-device-arm64 -name *.a`
+  boost_device_arm64_libs=`find $install/boost-ios-device-arm64 -name *.a`
+  flann_device_arm64_libs=`find $install/flann-ios-device-arm64 -name *.a`
+  qhull_device_arm64_libs=`find $install/qhull-ios-device-arm64 -name *.a`
+  # armv7
+  pcl_device_armv7_libs=`find $install/pcl-ios-device-armv7 -name *.a`
+  boost_device_armv7_libs=`find $install/boost-ios-device-armv7 -name *.a`
+  flann_device_armv7_libs=`find $install/flann-ios-device-armv7 -name *.a`
+  qhull_device_armv7_libs=`find $install/qhull-ios-device-armv7 -name *.a`
+  # armv7s
+  pcl_device_armv7s_libs=`find $install/pcl-ios-device-armv7s -name *.a`
+  boost_device_armv7s_libs=`find $install/boost-ios-device-armv7s -name *.a`
+  flann_device_armv7s_libs=`find $install/flann-ios-device-armv7s -name *.a`
+  qhull_device_armv7s_libs=`find $install/qhull-ios-device-armv7s -name *.a`
 
   # pcl_sim_libs=`find $install/pcl-${simulator_folder} $install/flann-${simulator_folder} $install/boost-${simulator_folder} -name *.a`
   pcl_sim_libs=`find $install/pcl-ios-simulator -name *.a`
@@ -187,11 +234,18 @@ make_pcl_framework_universal ()
   # version 1.7
   # pcl_header_dir=$install/pcl-${device_folder}/include/pcl-1.7
   # version 1.8
+  # common
   pcl_header_dir=$install/pcl-ios-device/include/pcl-1.8
   boost_header_dir=$install/boost-ios-device/include
   eigen_header_dir=$install/eigen
   flann_header_dir=$install/flann-ios-device/include
   qhull_header_dir=$install/qhull-ios-device/include
+  # arm64
+  pcl_arm64_header_dir=$install/pcl-ios-device-arm64/include/pcl-1.8
+  boost_arm64_header_dir=$install/boost-ios-device-arm64/include
+  eigen_arm64_header_dir=$install/eigen
+  flann_arm64_header_dir=$install/flann-ios-device-arm64/include
+  qhull_arm64_header_dir=$install/qhull-ios-device-arm64/include
 
   pcl_framework=$install/frameworks-universal/pcl.framework
   mkdir -p ${pcl_framework}
@@ -212,7 +266,10 @@ make_pcl_framework_universal ()
   # cp module.modulemap $pcl_framework/Modules/
 
   # ライブラリの結合
-  libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs $current_pcl_ios_device_framework/pcl
+  # libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs $current_pcl_ios_device_framework/pcl
+  # device
+  libtool -static -o $pcl_framework/pcl_device $pcl_device_arm64_libs $boost_arm64_device_libs $flann_arm64_device_libs $qhull_arm64_device_libs $pcl_device_armv7_libs $boost_armv7_device_libs $flann_armv7_device_libs $qhull_armv7_device_libs $pcl_device_armv7s_libs $boost_armv7s_device_libs $flann_armv7s_device_libs $qhull_armv7s_device_libs $current_pcl_ios_device_framework/pcl
+  # simulator
   libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs $qhull_sim_libs $current_pcl_ios_sim_framework/pcl
 
   # Xcode で生成した framework と 個別にビルドした外部ライブラリを合わせる

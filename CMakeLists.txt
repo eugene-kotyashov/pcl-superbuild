@@ -31,6 +31,16 @@ endif()
 if(BUILD_IOS_SIMULATOR)
  list(APPEND tags ios-simulator)
 endif()
+# 
+if (BUILD_IOS_DEVICE_ARM64)
+ list(APPEND tags ios-device-arm64)
+endif()
+if (BUILD_IOS_DEVICE_ARMV7)
+ list(APPEND tags ios-device-armv7)
+endif()
+if (BUILD_IOS_DEVICE_ARMV7S)
+ list(APPEND tags ios-device-armv7s)
+endif()
 
 foreach(tag ${tags})
   # Build overTime
