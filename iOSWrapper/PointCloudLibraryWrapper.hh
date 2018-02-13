@@ -4,6 +4,8 @@
 #include <string>
 #include <iostream>
 
+#include "vertex.h"
+
 // このファイル内(cpp含む)での namespace の使用はNG
 class PointCloudLibraryWrapper
 {
@@ -22,7 +24,12 @@ public:
     void FilterAxis(const char* axis, double min, double max);
 
     // Segmentation
-    float* GetPointCloudData() { return this->pointdata; }
+    // PointXYZRGBA* GetPointCloudData() 
+    float* GetPointCloudData() 
+    { 
+        return this->pointdata;
+    }
+
     int GetPointCloudCount() { return this->pointcount; }
     int GetPointCloudType() { return this->pointtype; }
 private:

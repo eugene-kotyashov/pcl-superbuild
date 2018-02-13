@@ -12,6 +12,8 @@
 #include <pcl/PointIndices.h>
 #include <pcl/ModelCoefficients.h>
 
+#include "vertex.h"
+
 class PointCloudLibraryConversions
 {
 public:
