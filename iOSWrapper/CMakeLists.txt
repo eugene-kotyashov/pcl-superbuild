@@ -156,24 +156,28 @@ include_directories(../build/CMakeExternals/Install/eigen)
 #     ../build/CMakeExternals/Install/qhull-ios-device/include/libqhullcpp
 #     ../build/CMakeExternals/Install/pcl-ios-device/include/pcl-1.8
 # )
-set(INCLUDE_DIR
-    ../build/CMakeExternals/Install/boost-ios-device-arm64/include
-    ../build/CMakeExternals/Install/flann-ios-device-arm64/include
-    ../build/CMakeExternals/Install/qhull-ios-device-arm64/include/libqhull
-    ../build/CMakeExternals/Install/qhull-ios-device-arm64/include/libqhull_r
-    ../build/CMakeExternals/Install/qhull-ios-device-arm64/include/libqhullcpp
-    ../build/CMakeExternals/Install/pcl-ios-device-arm64/include/pcl-1.8
-)
-# endif()
+if (IOS_PLATFORM STREQUAL "OS")
+    set(INCLUDE_DIR
+        ../build/CMakeExternals/Install/boost-ios-device-arm64/include
+        ../build/CMakeExternals/Install/flann-ios-device-arm64/include
+        ../build/CMakeExternals/Install/qhull-ios-device-arm64/include/libqhull
+        ../build/CMakeExternals/Install/qhull-ios-device-arm64/include/libqhull_r
+        ../build/CMakeExternals/Install/qhull-ios-device-arm64/include/libqhullcpp
+        ../build/CMakeExternals/Install/pcl-ios-device-arm64/include/pcl-1.8
+    )
+# elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
+elseif (IOS_PLATFORM STREQUAL "SIMULATOR64")
+    set(INCLUDE_DIR
+        ../build/CMakeExternals/Install/boost-ios-simulator/include
+        ../build/CMakeExternals/Install/flann-ios-simulator/include
+        ../build/CMakeExternals/Install/qhull-ios-simulator/include
+        ../build/CMakeExternals/Install/qhull-ios-simulator/include/libqhull
+        ../build/CMakeExternals/Install/qhull-ios-simulator/include/libqhull_r
+        ../build/CMakeExternals/Install/qhull-ios-simulator/include/libqhullcpp
+        ../build/CMakeExternals/Install/pcl-ios-simulator/include/pcl-1.8
+    )
+endif ()
 
-# if (BUILD_IOS_SIMULATOR)
-# set(INCLUDE_DIR
-#     ../build/CMakeExternals/Install/boost-ios-simulator/include
-#     ../build/CMakeExternals/Install/flann-ios-simulator/include
-#     ../build/CMakeExternals/Install/qhull-ios-simulator/include
-#     ../build/CMakeExternals/Install/pcl-ios-simulator/include/pcl-1.8
-# )
-# endif()
 
 # link_directories(../build/CMakeExternals/Install/boost-ios-device)
 # link_directories(../build/CMakeExternals/Install/flann-ios-device)
@@ -188,12 +192,22 @@ target_include_directories(pcl PRIVATE
     ${INCLUDE_DIR}
 )
 
-target_link_libraries(${FRAMEWORK_NAME} 
-    ${boost_device_libraryfiles}
-    ${flann_device_libraryfiles}
-    ${qhull_device_libraryfiles}
-    ${pcl_device_libraryfiles}
-)
+if (IOS_PLATFORM STREQUAL "OS")
+    target_link_libraries(${FRAMEWORK_NAME} 
+        ${boost_device_libraryfiles}
+        ${flann_device_libraryfiles}
+        ${qhull_device_libraryfiles}
+        ${pcl_device_libraryfiles}
+    )
+# elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
+elseif (IOS_PLATFORM STREQUAL "SIMULATOR64")
+    target_link_libraries(${FRAMEWORK_NAME} 
+        ${boost_device_libraryfiles}
+        ${flann_device_libraryfiles}
+        ${qhull_device_libraryfiles}
+        ${pcl_device_libraryfiles}
+    )
+endif ()
 
 # target_link_libraries(${FRAMEWORK_NAME} ${boost_simulation_libraryfiles})
 # target_link_libraries(${FRAMEWORK_NAME} ${flann_simulation_libraryfiles})
