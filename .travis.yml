@@ -28,7 +28,7 @@ branches:
 #   - secure: <encrypted_gh_token>
 env:
   global:
-    - GIT_TAG="librarytest11"
+    - GIT_TAG="librarytest12"
     - secure: "kF66P+xYUADGdu9Yjty7DCeUIQbV10BdaSO5MoiiYy0hgItltPXeJdsqlkyFfcH7y4LWTwPfhdTEE5tCez+BL0yYJn9fqRGm2BDO5xaEDOaIEiwh98KpXAEUuhs5hRnZ5kFVEfI6kdTYwrYKTJQABr2PeBXZWWc51lGyC8aC18PAlFr4LC3d3vRa+e3IeSVyiYoScoZlacGe25UU4PVKI2KIsh6n9RUm6oEk4ptjanqhZjzF7JlbPsFly/3mxmMekQZMjW8KuX5BF+ZiO4KnFZ49pxs+6+68lf2kPtY3KeIZjrRak3mLucgN3bXnrRsAFrW3iXMftF7pFarRLeyupfKtwZMEv7LNGVfg/DivNCqCFKGAU+p1BCJJ3ae1bujMEF0qGSn2yT3ItFsEk0VPDFP5b76eEQpwqOt/R5vNE1+wox+lhJHTJVK1BctS1AT9ygKDKhkQvSCDUBX1OMdymB0KpualW16slj05asLyqPRXXxXtPWY0Wziil+z5B4A7Dk67D5GATrwR4ecINuaAu+PxB3ReqVAhLTGXuEZHEMd45Zv8KeJPcddbsqLvLiHJIYrcUtvOJLp4Iv+ZFFE2BNeoe/P1WGKd1x3w1Mc3nLr3ZQ6UZaSRVPtlZB6CLSxj3QsL74moW0EZ5iUzYzteoYV2aLeeKWsFrfbkzm01qJY="
 
 matrix: 
@@ -72,6 +72,21 @@ matrix:
      # #   env: ANDROID_TARGET_API="23"
      # #   env: TOOLCHAIN_NAME="x86-4.9"
      #     env: TARGET_COMPILER="gcc"
+     # 
+     # - os: osx
+     #   osx_image: xcode8.3
+     #   language: objective-c
+     #   compiler: gcc
+     #   # env: IOS_SDK_VERSION="iPhoneOS10.3.sdk"
+     #   # env: TARGET_COMPILER="clang"
+     #   xcode_sdk: iOS 10.3
+     # - os: osx
+     #   osx_image: xcode9
+     #   language: objective-c
+     #   compiler: gcc
+     #   # env: IOS_SDK_VERSION="iPhoneOS11.0.sdk"
+     #   # env: TARGET_COMPILER="clang"
+     #   xcode_sdk: iOS 11.0
 
      - os: linux
        language: cpp
@@ -97,53 +112,37 @@ matrix:
        env: TOOLCHAIN_NAME="arm-linux-android-clang3.6"
        env: TARGET_COMPILER="clang"
      
-     # - os: linux
-     #   language: cpp
-     #   compiler: clang
-     #   env: ANDROID_ABIs="x86_64"
-     #   env: ANDROID_TARGET_API="23"
-     #   env: TOOLCHAIN_NAME="x86_64-linux-android-clang3.6"
-     #   env: TARGET_COMPILER="clang"
-     # 
-     # - os: linux
-     #   language: cpp
-     #   compiler: clang
-     #   env: ANDROID_ABIs="x86"
-     #   env: ANDROID_TARGET_API="23"
-     #   env: TOOLCHAIN_NAME="x86-linux-android-clang3.6"
-     #   env: TARGET_COMPILER="clang"
-
-     - os: osx
-       osx_image: xcode8.3
-       language: objective-c
+     - os: linux
+       language: cpp
        compiler: clang
-       env: IOS_SDK_VERSION="iPhoneOS10.3.sdk"
+       env: ANDROID_ABIs="x86_64"
+       env: ANDROID_TARGET_API="23"
+       env: TOOLCHAIN_NAME="x86_64-linux-android-clang3.6"
        env: TARGET_COMPILER="clang"
-       xcode_sdk: iOS 10.3
+     
+     - os: linux
+       language: cpp
+       compiler: clang
+       env: ANDROID_ABIs="x86"
+       env: ANDROID_TARGET_API="23"
+       env: TOOLCHAIN_NAME="x86-linux-android-clang3.6"
+       env: TARGET_COMPILER="clang"
 
      # - os: osx
      #   osx_image: xcode8.3
      #   language: objective-c
-     #   compiler: gcc
-     #   env: IOS_SDK_VERSION="iPhoneOS10.3.sdk"
-     #   env: TARGET_COMPILER="clang"
+     #   compiler: clang
+     #   # env: IOS_SDK_VERSION="iPhoneOS10.3.sdk"
+     #   # env: TARGET_COMPILER="clang"
      #   xcode_sdk: iOS 10.3
 
-     # - os: osx
-     #   osx_image: xcode9
-     #   language: objective-c
-     #   compiler: clang
-     #   env: IOS_SDK_VERSION="iPhoneOS11.0.sdk"
-     #   env: TARGET_COMPILER="clang"
-     #   xcode_sdk: iOS 11.0
-
-     # - os: osx
-     #   osx_image: xcode9
-     #   language: objective-c
-     #   compiler: gcc
-     #   env: IOS_SDK_VERSION="iPhoneOS11.0.sdk"
-     #   env: TARGET_COMPILER="clang"
-     #   xcode_sdk: iOS 11.0
+     - os: osx
+       osx_image: xcode9
+       language: objective-c
+       compiler: clang
+       # env: IOS_SDK_VERSION="iPhoneOS11.0.sdk"
+       # env: TARGET_COMPILER="clang"
+       xcode_sdk: iOS 11.0
 
 # iOS Image Setting : 
 # https://blog.travis-ci.com/
@@ -170,16 +169,6 @@ matrix:
 #       brew update;
 # cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -BUILD_IOS_SIMULATOR:BOOL="OFF" ../;
 ###
-# brew tap homebrew/boneyard;
-# brew install clang-omp;
-# export C_INCLUDE_PATH=/usr/local/Cellar/libiomp/!date!/include/libiomp:$C_INCLUDE_PATH;
-# export CPLUS_INCLUDE_PATH=/usr/local/Cellar/libiomp/!date!/include/libiomp:$CPLUS_INCLUDE_PATH;
-# export LIBRARY_PATH=/usr/local/Cellar/libiomp/!date!/lib:$LIBRARY_PATH;
-# 
-# brew install llvm;
-# travis-ci use ng alias
-# alias clang-omp='/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib';
-# alias clang-omp++='/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib';
 # Boost Build?
 # http://blog.livedoor.jp/tek_nishi/archives/7603570.html
 # use?
@@ -197,14 +186,6 @@ matrix:
 # 
 # Android
 # cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK}/build/cmake/android.toolchain.cmake -DCMAKE_MAKE_PROGRAM=${ANDROID_NDK}/prebuilt/linux-x86_64/bin/make -DANDROID_NATIVE_API_LEVEL=${ANDROID_TARGET_API} -DANDROID_ABI=${ANDROID_ABIs} -DANDROID_TOOLCHAIN=${compiler} ..
-# ios(macosx only)
-# cmake -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
-# Xcode 9.0
-# iphoneos11.0
-# set(CMAKE_IOS_SDK_ROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk)
-# Xcode 8.3
-# iphoneos10.3
-# set(CMAKE_IOS_SDK_ROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk)
 # export PATH=$ANDROID_NDK/toolchains/${TOOLCHAIN_NAME}/prebuilt/linux-x86_64/bin:$PATH;
 # add virtual memory
 # - dd if=/dev/zero of=/swapfile bs=1024 count=4194304;
@@ -223,9 +204,8 @@ matrix:
 # ccache ng?(sim/device obj file arch mismatch?) - arm7s error(arg?)
 # cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL="ON" -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
 # envronment parameter check
-# xcodebuild -showBuildSettings
 # bash ../makeFramework.sh device;
-# cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL="ON" -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
+# bash ../makeFramework.sh universal;
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       rvm get stable;
@@ -246,8 +226,9 @@ before_install:
       cd ../iOSWrapper;
       bash build-ios.sh;
       bash build-sim64.sh;
+      xcodebuild -showBuildSettings;
       cd ../build;
-      bash ../makeFramework.sh universal;
+      bash ../makeFramework.sh device;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
@@ -341,14 +322,14 @@ after_failure:
 
 # - packages/pcl-releases-$TRAVIS_XCODE_SDK-$GIT_TAG.tar.gz
 # - packages/pcl-releases-$TRAVIS_XCODE_SDK-$GIT_TAG.zip
-#deploy:
-#  provider: releases
-#  skip_cleanup: true
-#  api_key: 
-#    secure: "nVLOBizFgvnJvKssHPJfeN5AtQKrdZE/EDHtr1UC5PJNqZNdCAr8DcQS0hj6bRZ3iYfb+qn4OZV/HOfG/GY46N4CoFuNaOVFqajSZsheF01zvHob3/7bK7EXCybk8QzUIDAV77JjZiQacXJtX0asHPDAgJBScxU1KEC4osaxRy2p3ebw5JURFQArpt8vvK0180ZkH6E0A6qrsBBvaXUPTQ7gM0t/sDhSrPunu0zjKeHPe8VeUp/ELx4fohdiQGSRzf7X7Jmph3dXNSgJb4UBULWvBoQnmUlRCMfqPOkpsbEWWo/ZaaWb0N48GH0RtSIHX+Oampu8SFRvcQVNBSZMPbw+CTaA0Ij1mMhRQgqgjEroiX3y1WOxcT7eiZtwDToUQnm2CqbiTszm5d/bWY4Z3ln4CyiFLUDjTrjD/z4FJi6sgRNMOybo4tAYixuhI4f4wdRRwYOdM9a919LEgM8XltxO+H0KgqDeVjOdmLinxQ9XefZs3k6uRQuEfDIkoyRopt7wKmbhzgs9tOZuEVySxJAFOU17iPvn/BrjU9/g+MRRbnxuajPSPia7/09uHZ7IJJSMK35qvlBjohnVbY6ZHKjTFw3QjOrH7DYATAHvr9XyKlmKIzeubVRzeK9k932WweCa1ySro+kpoJVxwxDs6XnyPe/nnjkt4FovGJNIJLA="
-#  file:
-#      - packages/pcl-releases-frameworks-$GIT_TAG.zip
-#  on:
-#      tags: false
-#      branch: master
+# deploy:
+#   provider: releases
+#   skip_cleanup: true
+#   api_key: 
+#     secure: "nVLOBizFgvnJvKssHPJfeN5AtQKrdZE/EDHtr1UC5PJNqZNdCAr8DcQS0hj6bRZ3iYfb+qn4OZV/HOfG/GY46N4CoFuNaOVFqajSZsheF01zvHob3/7bK7EXCybk8QzUIDAV77JjZiQacXJtX0asHPDAgJBScxU1KEC4osaxRy2p3ebw5JURFQArpt8vvK0180ZkH6E0A6qrsBBvaXUPTQ7gM0t/sDhSrPunu0zjKeHPe8VeUp/ELx4fohdiQGSRzf7X7Jmph3dXNSgJb4UBULWvBoQnmUlRCMfqPOkpsbEWWo/ZaaWb0N48GH0RtSIHX+Oampu8SFRvcQVNBSZMPbw+CTaA0Ij1mMhRQgqgjEroiX3y1WOxcT7eiZtwDToUQnm2CqbiTszm5d/bWY4Z3ln4CyiFLUDjTrjD/z4FJi6sgRNMOybo4tAYixuhI4f4wdRRwYOdM9a919LEgM8XltxO+H0KgqDeVjOdmLinxQ9XefZs3k6uRQuEfDIkoyRopt7wKmbhzgs9tOZuEVySxJAFOU17iPvn/BrjU9/g+MRRbnxuajPSPia7/09uHZ7IJJSMK35qvlBjohnVbY6ZHKjTFw3QjOrH7DYATAHvr9XyKlmKIzeubVRzeK9k932WweCa1ySro+kpoJVxwxDs6XnyPe/nnjkt4FovGJNIJLA="
+#   file:
+#       - packages/pcl-releases-frameworks-$GIT_TAG.zip
+#   on:
+#       tags: false
+#       branch: master
 
