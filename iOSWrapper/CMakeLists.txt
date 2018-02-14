@@ -236,7 +236,7 @@ endif ()
 #     # XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
 # )
 
-if (IOS_PLATFORM STREQUAL "OS")
+# if (IOS_PLATFORM STREQUAL "OS")
 set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     FRAMEWORK TRUE
     FRAMEWORK_VERSION A
@@ -250,21 +250,21 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
 )
-elseif (IOS_PLATFORM STREQUAL "SIMULATOR64")
-set_target_properties(${FRAMEWORK_NAME} PROPERTIES
-    FRAMEWORK TRUE
-    FRAMEWORK_VERSION A
-    MACOSX_FRAMEWORK_IDENTIFIER com.sirokujira.framework
-    MACOSX_FRAMEWORK_INFO_PLIST ${CMAKE_CURRENT_LIST_DIR}/framework.plist
-    # "current version" in semantic format in Mach-O binary file
-    VERSION 1.0.0
-    # "compatibility version" in semantic format in Mach-O binary file
-    SOVERSION 1.0.0
-    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh" ${INCLUDE_DIR}
-    XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
-    # XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
-)
-endif ()
+# elseif (IOS_PLATFORM STREQUAL "SIMULATOR64")
+# set_target_properties(${FRAMEWORK_NAME} PROPERTIES
+#     FRAMEWORK TRUE
+#     FRAMEWORK_VERSION A
+#     MACOSX_FRAMEWORK_IDENTIFIER com.sirokujira.framework
+#     MACOSX_FRAMEWORK_INFO_PLIST ${CMAKE_CURRENT_LIST_DIR}/framework.plist
+#     # "current version" in semantic format in Mach-O binary file
+#     VERSION 1.0.0
+#     # "compatibility version" in semantic format in Mach-O binary file
+#     SOVERSION 1.0.0
+#     PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh" ${INCLUDE_DIR}
+#     XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
+#     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
+# )
+# endif ()
 
 # https://cmake.org/cmake/help/v3.1/prop_tgt/XCODE_ATTRIBUTE_an-attribute.html
 # To disable bitcode:
