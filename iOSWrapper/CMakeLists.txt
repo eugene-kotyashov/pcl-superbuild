@@ -259,12 +259,12 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     MACOSX_FRAMEWORK_IDENTIFIER com.sirokujira.framework
     MACOSX_FRAMEWORK_INFO_PLIST ${CMAKE_CURRENT_LIST_DIR}/framework.plist
     # "current version" in semantic format in Mach-O binary file
-    VERSION 1.0.0
+    # VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
-    SOVERSION 1.0.0
+    # SOVERSION 1.0.0
     PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hh" ${INCLUDE_DIR}
-    XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
-    XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
+    # XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
+    # XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
 )
 endif ()
 
