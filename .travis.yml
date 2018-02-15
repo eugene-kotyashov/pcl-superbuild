@@ -206,6 +206,7 @@ matrix:
 # envronment parameter check
 # bash ../makeFramework.sh device;
 # bash ../makeFramework.sh universal;
+# bash build-sim64.sh;
 before_install:
   - if [[ $TRAVIS_OS_NAME = "osx" ]]; then
       rvm get stable;
@@ -225,7 +226,6 @@ before_install:
 
       cd ../iOSWrapper;
       bash build-ios.sh;
-      bash build-sim64.sh;
       xcodebuild -showBuildSettings;
       cd ../build;
       bash ../makeFramework.sh device;
