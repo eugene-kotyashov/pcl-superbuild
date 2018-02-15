@@ -228,6 +228,7 @@ before_install:
       bash build-ios.sh;
       cd build.ios;
       xcodebuild -showBuildSettings;
+      cd ..;
       cd ../build;
       bash ../makeFramework.sh device;
     fi
