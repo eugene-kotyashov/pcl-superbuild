@@ -226,6 +226,7 @@ before_install:
 
       cd ../iOSWrapper;
       bash build-ios.sh;
+      cd build.ios;
       xcodebuild -showBuildSettings;
       cd ../build;
       bash ../makeFramework.sh device;
