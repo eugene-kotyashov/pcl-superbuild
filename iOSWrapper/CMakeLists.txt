@@ -24,7 +24,7 @@ set(LIBRARY_SOURCE
 )
 
 add_library(
-    ${FRAMEWORK_NAME} SHARED
+    ${FRAMEWORK_NAME} STATIC
     ${LIBRARY_SOURCE}
 )
 
