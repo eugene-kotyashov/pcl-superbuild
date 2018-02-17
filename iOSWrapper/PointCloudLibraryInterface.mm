@@ -4,8 +4,8 @@
 // Framework headers
 #include <pcl/PointCloudLibraryWrapper.hh>
 
-// namespace ’è‹`‚ª‚ ‚é‚½‚ß’¼Ú‚Í~
-// ‘ã‚í‚è‚Ì’è‹`ƒwƒbƒ_‚ð—pˆÓ‚·‚é?
+// namespace ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½é‚½ï¿½ß’ï¿½ï¿½Ú‚Í~
+// ï¿½ï¿½ï¿½ï¿½Ì’ï¿½`ï¿½wï¿½bï¿½_ï¿½ï¿½pï¿½Ó‚ï¿½ï¿½ï¿½?
 /*
 // XYZ
 @interface NSValue (PointXYZ)
@@ -40,11 +40,11 @@
 }
 @end
 // PointXYZ point = { 0.0f, 1.0f, 0.0f };
-// // NSValue ‰»
+// // NSValue ï¿½ï¿½
 // NSValue val = [NSValue valueWithCGPoint:point];
-// // PointXYZ ‰»
+// // PointXYZ ï¿½ï¿½
 // point = [val cgpointValue];
-// // NSArray ‚É’Ç‰Á
+// // NSArray ï¿½É’Ç‰ï¿½
 // NSArrray *array = [NSArray arrayWithObects:[NSValue valueWithCGPoint:point], nil];
 */
 
@@ -69,7 +69,7 @@
     {
         myPointCloudLibraryWrapper = new PointCloudLibraryWrapper();
         myPointCloudLibraryWrapper->PrintFoo();
-        self.isLoad = NO
+        self.isLoad = NO;
     }
 
     return self;
@@ -119,7 +119,7 @@
 
     for(int i = 0;i < count;i++)
     {
-        // ƒf[ƒ^‚ð‰ÁH‚·‚é
+        // ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½ï¿½Hï¿½ï¿½ï¿½ï¿½
         // 3DPoint point = {0.0f, 1.0f, 1.0f};
         // NSValue *val = [NSValue value:&point withObjCType:@encode(Vertex)];
         // [val getValue:&point];
