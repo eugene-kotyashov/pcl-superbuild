@@ -143,7 +143,7 @@ make_pcl_framework_device ()
 make_pcl_framework_simulator ()
 {
   # すでに存在する simulation 用の pcl.Framework に対して外部ライブラリを取り込む
-  current_pcl_ios_sim_framework=../iOSWrapper/build/Release-iphonesimulator/pcl.framework
+  current_pcl_ios_sim_framework=../iOSWrapper/build.sim64/Release-iphonesimulator/pcl.framework
 
   pcl_sim_libs=`find $install/pcl-ios-simulator -name *.a`
   boost_sim_libs=`find $install/boost-ios-simulator -name *.a`
@@ -194,8 +194,8 @@ make_pcl_framework_simulator ()
 make_pcl_framework_universal ()
 {
   # すでに存在する device/sim 用の pcl.Framework に対して外部ライブラリを取り込む
-  current_pcl_ios_device_framework=../iOSWrapper/build/Release-iphoneos/pcl.framework
-  current_pcl_ios_sim_framework=../iOSWrapper/build/Release-iphonesimulator/pcl.framework
+  current_pcl_ios_device_framework=../iOSWrapper/build.ios/Release-iphoneos/pcl.framework
+  current_pcl_ios_sim_framework=../iOSWrapper/build.sim64/Release-iphonesimulator/pcl.framework
 
   # device_folder = "ios-device"
   # simulator_folder = "ios-simulator"
