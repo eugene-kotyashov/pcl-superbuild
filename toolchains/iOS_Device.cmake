@@ -42,8 +42,14 @@ set(CMAKE_C_OSX_CURRENT_VERSION_FLAG "-current_version ")
 set(CMAKE_CXX_OSX_COMPATIBILITY_VERSION_FLAG "${CMAKE_C_OSX_COMPATIBILITY_VERSION_FLAG}")
 set(CMAKE_CXX_OSX_CURRENT_VERSION_FLAG "${CMAKE_C_OSX_CURRENT_VERSION_FLAG}")
 
-set (CMAKE_C_FLAGS_INIT "")
-set (CMAKE_CXX_FLAGS_INIT "")
+# set (CMAKE_C_FLAGS_INIT "")
+# set (CMAKE_CXX_FLAGS_INIT "")
+# gcc
+# set (CMAKE_C_FLAGS_INIT "-std=c11")
+# set (CMAKE_CXX_FLAGS_INIT "-std=c++11")
+# clang
+set (CMAKE_C_FLAGS_INIT "-std=c11 -stdlib=libc")
+set (CMAKE_CXX_FLAGS_INIT "-std=c++11 -stdlib=libc++")
 
 set (CMAKE_C_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_C_LINK_FLAGS}")
 set (CMAKE_CXX_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_CXX_LINK_FLAGS}")

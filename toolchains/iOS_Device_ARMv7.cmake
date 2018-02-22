@@ -42,8 +42,14 @@ set(CMAKE_C_OSX_CURRENT_VERSION_FLAG "-current_version ")
 set(CMAKE_CXX_OSX_COMPATIBILITY_VERSION_FLAG "${CMAKE_C_OSX_COMPATIBILITY_VERSION_FLAG}")
 set(CMAKE_CXX_OSX_CURRENT_VERSION_FLAG "${CMAKE_C_OSX_CURRENT_VERSION_FLAG}")
 
-set (CMAKE_C_FLAGS_INIT "")
-set (CMAKE_CXX_FLAGS_INIT "")
+# set (CMAKE_C_FLAGS_INIT "")
+# set (CMAKE_CXX_FLAGS_INIT "")
+# gcc
+# set (CMAKE_C_FLAGS_INIT "-std=c11")
+# set (CMAKE_CXX_FLAGS_INIT "-std=c++11")
+# clang
+set (CMAKE_C_FLAGS_INIT "-std=c11 -stdlib=libc")
+set (CMAKE_CXX_FLAGS_INIT "-std=c++11 -stdlib=libc++")
 
 set (CMAKE_C_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_C_LINK_FLAGS}")
 set (CMAKE_CXX_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_CXX_LINK_FLAGS}")
@@ -129,11 +135,6 @@ set (CMAKE_OSX_SYSROOT ${CMAKE_IOS_SDK_ROOT} CACHE PATH "Sysroot used for iOS su
 
 # set the architecture for iOS 
 if (IOS_PLATFORM STREQUAL "OS")
-    # qhull error
-    # ld: warning: ignoring file libqhullstatic.a, file was built for archive which is not the architecture being linked (armv7): libqhullstatic.a
-    # set (IOS_ARCH armv7 armv7s arm64)
-    # qhull ok
-    # set (IOS_ARCH arm64)
     set (IOS_ARCH armv7)
 elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
     set (IOS_ARCH i386)
