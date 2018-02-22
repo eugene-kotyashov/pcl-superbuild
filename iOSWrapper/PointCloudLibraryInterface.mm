@@ -2,10 +2,10 @@
 #import <UIKit/UIKit.h>
 
 // Framework headers
-#include <pcl/PointCloudLibraryWrapper.hh>
+#include <pcl/PointCloudLibraryWrapper.hpp>
 
-// namespace ��`�����邽�ߒ��ڂ́~
-// ����̒�`�w�b�_��p�ӂ���?
+// namespace use ng
+// use wrapper class private
 /*
 // XYZ
 @interface NSValue (PointXYZ)
@@ -59,12 +59,13 @@
 
 @end
 
-@implementation PointCloudLibraryInterface{
+@implementation PointCloudLibraryInterface {
     PointCloudLibraryWrapper* myPointCloudLibraryWrapper;
 }
 
 -(id)init {
     self = [super init];
+
     if (self != nil) 
     {
         myPointCloudLibraryWrapper = new PointCloudLibraryWrapper();
@@ -119,7 +120,7 @@
 
     for(int i = 0;i < count;i++)
     {
-        // �f�[�^����H����
+        // point to use cpp_code
         // 3DPoint point = {0.0f, 1.0f, 1.0f};
         // NSValue *val = [NSValue value:&point withObjCType:@encode(Vertex)];
         // [val getValue:&point];
@@ -130,4 +131,14 @@
 
     return data;
 }
+
+// use Array Sample
+// -(NSArray*)getList {
+//    NSMutableArray *tmpArray = [NSMutableArray arrayWithCapacity:(obj.vct).size()];
+//    for (int i=0;i<(obj.vct).size();i++) {
+//        [tmpArray addObject:[NSNumber numberSithInt:obj.vct[i]]];
+//    }
+//    return [NSArray arrayWithArray:tmpArray];
+// }
+
 @end

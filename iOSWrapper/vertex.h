@@ -11,7 +11,12 @@ struct SwiftPointXYZRGBA{
     float b;
     float a;
 };
-
 typedef struct SwiftPointXYZRGBA SwiftPointXYZRGBA;
+
+struct SwiftPointXYZ {
+    float x;
+    float y;
+    float z;
+};
 
 #endif // __Vertex_h

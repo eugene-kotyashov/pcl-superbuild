@@ -4,25 +4,7 @@
 #include <string>
 #include <iostream>
 
-// #include "vertex.h"
-
-// Swift/Object-C と点群データをやり取りする際の構造体を定義する
-struct SwiftPointXYZRGBA{
-    float x;
-    float y;
-    float z;
-    float r;
-    float g;
-    float b;
-    float a;
-};
-typedef struct SwiftPointXYZRGBA SwiftPointXYZRGBA;
-
-struct SwiftPointXYZ {
-    float x;
-    float y;
-    float z;
-};
+#include "vertex.h"
 
 struct SwiftPointXYZ fcpp(const float **);
 
