@@ -54,13 +54,20 @@ public:
 
     // Segmentation
     // float* GetPointCloudData() 
-	// { 
+    // { 
     //     return this->pointdata;
     // }
-    SwiftPointXYZRGBA* GetPointCloudData() 
-    { 
+    struct SwiftPointXYZRGBA* GetPointCloudData() 
+    {
+        // float** からの Convert で対応する？
         return this->pointdata;
     }
+
+    // struct SwiftPointXYZ* GetPointCloudData()
+    // {
+    //     // float** からの Convert で対応する？
+    //     return this->pointdata;
+    // }
 
     int GetPointCloudCount() { return this->pointcount; }
     int GetPointCloudType() { return this->pointtype; }
@@ -70,7 +77,7 @@ private:
     // 加工後データ
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud_filtered;
     // PointCloudLibraryConversions* conversion;
-	// float* pointdata;
+    // float** pointdata;
     SwiftPointXYZRGBA* pointdata;
     int pointcount;
     int pointtype;
