@@ -4,7 +4,36 @@
 #include <string>
 #include <iostream>
 
-#include "vertex.h"
+// #include "vertex.h"
+
+// Swift/Object-C と点群データをやり取りする際の構造体を定義する
+struct SwiftPointXYZRGBA{
+    float x;
+    float y;
+    float z;
+    float r;
+    float g;
+    float b;
+    float a;
+};
+typedef struct SwiftPointXYZRGBA SwiftPointXYZRGBA;
+
+struct SwiftPointXYZ {
+    float x;
+    float y;
+    float z;
+};
+
+struct SwiftPointXYZ fcpp(const float **);
+
+extern "C" struct SwiftPointXYZ fc(const float ** p) {
+    return fcpp(p);
+};
+
+struct SwiftPointXYZ fcpp2(float t[3][3]);
+extern "C" struct SwiftPointXYZ fc2(float t[3][3]) {
+    return fcpp2(t);
+};
 
 // このファイル内(cpp含む)での namespace の使用はNG
 class PointCloudLibraryWrapper

@@ -8,6 +8,26 @@
 
 #define EXPORT __attribute__((visibility("default")))
 
+struct SwiftPointXYZ fcpp(const float ** triangle) {
+    SwiftPointXYZ curl;
+    curl.z = (triangle[1][0] - triangle[0][0]) * (triangle[2][1]-triangle[0][1]) - (triangle[1][1] - triangle[0][1])*(triangle[2][0]-triangle[0][0]);
+    curl.y = (triangle[1][2] - triangle[0][2]) * (triangle[2][1]-triangle[0][1]) - (triangle[1][0] - triangle[0][0])*(triangle[2][2]-triangle[0][0]);
+    curl.x = (triangle[1][1] - triangle[0][1]) * (triangle[2][2]-triangle[0][2]) - (triangle[1][2] - triangle[0][2])*(triangle[2][1]-triangle[0][1]);
+
+    return curl;
+}
+
+struct SwiftPointXYZ fcpp2(float triangle[3][3]) {
+
+    SwiftPointXYZ curl;
+
+    curl.z = (triangle[1][0] - triangle[0][0])*(triangle[2][1]-triangle[0][1]) - (triangle[1][1] - triangle[0][1])*(triangle[2][0]-triangle[0][0]);
+    curl.y = (triangle[1][2] - triangle[0][2])*(triangle[2][1]-triangle[0][1]) - (triangle[1][0] - triangle[0][0])*(triangle[2][2]-triangle[0][0]);
+    curl.x = (triangle[1][1] - triangle[0][1])*(triangle[2][2]-triangle[0][2]) - (triangle[1][2] - triangle[0][2])*(triangle[2][1]-triangle[0][1]);
+
+    return curl;
+};
+
 PointCloudLibraryWrapper::PointCloudLibraryWrapper()
 { 
     std::cout << "PointCloudLibraryWrapper Created." << std::endl; 
@@ -41,7 +61,7 @@ void PointCloudLibraryWrapper::Load(const char* filename)
     // if (loadPCDFile<pcl::PointXYZ> (filename, *cloud) == -1) //* load the file
     // use C++?
     // this->pointdata = PointCloudLibraryConversions::PointCloudDataFromPCDFile(filename);
-	this->pointdata = PointCloudLibraryConversions::PointCloudDataFromPCDFile2(filename);
+    this->pointdata = PointCloudLibraryConversions::PointCloudDataFromPCDFile2(filename);
     // not static?
     // PointCloudLibraryConversions* conversion = new PointCloudLibraryConversions();
     // conversion->PointCloudDataFromPCDFile(filename);
