@@ -204,6 +204,7 @@ matrix:
 # ccache ng?(sim/device obj file arch mismatch?) - arm7s error(arg?)
 # cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL="ON" -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="ON" -DBUILD_IOS_SIMULATOR:BOOL="ON" ../;
 # envronment parameter check
+# xcodebuild -showBuildSettings;
 # bash ../makeFramework.sh device;
 # bash ../makeFramework.sh universal;
 # bash build-sim64.sh;
@@ -226,11 +227,9 @@ before_install:
 
       cd ../iOSWrapper;
       bash build-ios.sh;
-      cd build.ios;
-      xcodebuild -showBuildSettings;
-      cd ..;
+      bash build-sim64.sh;
       cd ../build;
-      bash ../makeFramework.sh device;
+      bash ../makeFramework.sh universal;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then
