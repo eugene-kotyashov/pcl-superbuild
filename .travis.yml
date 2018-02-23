@@ -227,9 +227,8 @@ before_install:
 
       cd ../iOSWrapper;
       bash build-ios.sh;
-      bash build-sim64.sh;
       cd ../build;
-      bash ../makeFramework.sh universal;
+      bash ../makeFramework.sh device;
 
     fi
 
