@@ -1,1 +1,1 @@
-#include "PointCloudLibraryWrapper.hh"
+#include "PointCloudLibraryWrapper.hpp"
