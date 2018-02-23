@@ -12,8 +12,7 @@ set(TEST_NAME "Tests")                                        # <== Set to your 
 set(TEST_BUNDLE_IDENTIFIER "com.sirokujira.tests")            # <== Set to your tests's bundle ID
 set(LOGIC_ONLY_TESTS 0)                                       # <== Set to 1 if you do not want tests to be hosted by the application, 
                                                               # speeds up pure logic tests but you can not run them on real devices
-# set(DEVELOPMENT_PROJECT_NAME "project")                       # <== Set to your project name, e.g. project.xcodeproj
-# set(DEVELOPMENT_TEAM_ID "AAAAAAAA")                           # <== Set to your team ID from Apple
+set(DEVELOPMENT_TEAM_ID "AAAAAAAA")                           # <== Set to your team ID from Apple
 
 project(${FRAMEWORK_NAME})
 include(BundleUtilities)
