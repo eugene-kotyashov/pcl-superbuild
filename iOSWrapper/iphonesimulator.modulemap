@@ -1,5 +1,5 @@
 module Libpointcloudlibrary [system] {
-  umbrella header "PointCloudLibraryInterface.hh"
+  umbrella header "PointCloudLibraryInterface.h"
 
   export *
   module * { export * }

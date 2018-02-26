@@ -1,4 +1,4 @@
-// namespace ‚ÌŽg—p‚ÍNG
+// namespace use NG
 // #include "PointCloudLibraryWrapper.h"
 // #include "PointCloudLibraryWrapper.hh"
 #include "PointCloudLibraryWrapper.hpp"

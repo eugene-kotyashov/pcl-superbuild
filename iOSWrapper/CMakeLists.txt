@@ -36,7 +36,7 @@ add_library(
 )
 
 # Build tests
-add_subdirectory(tests)
+# add_subdirectory(tests)
 
 # FolderPath Check
 # CMAKE_INSTALL_PREFIX
@@ -271,7 +271,7 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     # VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
     # SOVERSION 1.0.0
-    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp" ${INCLUDE_DIR}
+    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp" "${CMAKE_CURRENT_LIST_DIR}/vertex.h" ${INCLUDE_DIR}
     # XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
     # XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
 )

@@ -111,7 +111,7 @@ float* PointCloudLibraryConversions::PointCloudDataFromPointCloud(pcl::PointClou
         //points->SetNumberOfPoints(nr_points);
     }
 
-    // “_ŒQ‰ÁH
+    // Process to point cloud
     return tmpFloatArray;
 }
 
@@ -160,7 +160,7 @@ float* PointCloudLibraryConversions::PointCloudDataFromPointCloud(pcl::PointClou
         //rgbArray->SetNumberOfTuples(nr_points);
     }
 
-    // “_ŒQ‰ÁH
+    // Process to point cloud
     return tmpFloatArray;
 }
 
@@ -208,7 +208,7 @@ float* PointCloudLibraryConversions::PointCloudDataFromPointCloud(pcl::PointClou
         //rgbArray->SetNumberOfTuples(nr_points);
     }
 
-    // “_ŒQ‰ÁH
+    // Process to point cloud
     return tmpFloatArray;
 }
 
