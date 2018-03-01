@@ -141,4 +141,23 @@
 //    return [NSArray arrayWithArray:tmpArray];
 // }
 
+// ARKit Code?
+// https://stackoverflow.com/questions/46292620/opencv-error-core-hpp-header-must-be-compiled-as-c/46294263#46294263
+// implementation of public methods:
+// + (ARPointCloud *) applyPointCloudLibraryTo: (ARPointCloud*) uiPoints{
+//     pcl::PointCloud<pcl::PointXYZ>::Ptr pclFrame = [PointCloudLibraryInterface pclPointCloudFromARPointCloud: uiPoints];
+//     // do something with cvFrame using OpenCV
+//     pcl::PointCloud<pcl::PointXYZ>::Ptr ret = pclFrame.clone();
+// 
+//     return [PointCloudLibraryInterface ARPointCloudFromPointCloudXYZ: ret];
+// }
+// 
+// // Implementations of the conversion functions:
+// + (ARPointCloud *)ARPointCloudFromPointCloudXYZ:(pcl::PointCloud<pcl::PointXYZ>::Ptr) pclPointCloud {
+//     // do something here
+//     return uiPoints;
+// }
+// 
+// + (pcl::PointCloud<pcl::PointXYZ>::Ptr)pclPointCloudFromARPointCloud:(ARPointCloud *)uiPoints;
+
 @end
