@@ -17,7 +17,7 @@ extern "C" struct SwiftPointXYZ fc2(float t[3][3]) {
 };
 
 // parameter is pointer to array of array 3 of const float
-struct float3CPP fcpp3(const float (* const t)[][3]) {
+struct SwiftPointXYZ fcpp3(const float (* const t)[][3]) {
     return fcpp2(*t);
 }
 

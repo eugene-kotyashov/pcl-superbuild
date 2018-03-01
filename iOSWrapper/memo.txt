@@ -104,3 +104,21 @@ https://qiita.com/tomnic/items/37ee52aa18dcb5c0b51e
 Apple が標準?で用意しているライブラリ群
 https://developer.apple.com/documentation/accelerate
 
+https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html
+https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/InteractingWithCAPIs.html
+
+Importing Swift into Objective-C
+https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html#//apple_ref/doc/uid/TP40014216-CH10-ID138
+
+Interacting with Objective-C APIs
+https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/InteractingWithObjective-CAPIs.html#//apple_ref/doc/uid/TP40014216-CH4-ID35
+
+Interacting with C APIs
+https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/InteractingWithCAPIs.html#//apple_ref/doc/uid/TP40014216-CH8-ID203
+
+名前の付け方?
+https://frasco.io/naming-101-quick-guide-on-how-to-name-things-b17ef6d19c7a
+
+Swift - C++
+http://nw.tsuda.ac.jp/wiki/index.php?Swift/dataTransfer
+

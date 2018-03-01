@@ -277,6 +277,11 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
 )
 endif ()
 
+###
+# toolchain macro
+# set_xcode_property(${FRAMEWORK_NAME} CLANG_CXX_LANGUAGE_STANDARD "c++11") 
+# set_xcode_property(${FRAMEWORK_NAME} CLANG_CXX_LIBRARY "libc++") 
+
 # https://cmake.org/cmake/help/v3.1/prop_tgt/XCODE_ATTRIBUTE_an-attribute.html
 # To disable bitcode:
 set_target_properties(${FRAMEWORK_NAME} PROPERTIES XCODE_ATTRIBUTE_ENABLE_BITCODE "NO")

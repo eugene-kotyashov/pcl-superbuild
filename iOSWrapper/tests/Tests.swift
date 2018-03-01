@@ -1,8 +1,8 @@
 import XCTest
 
-@testable import sample
+@testable import libPointCloudLibrary
 
-class sampleTests: XCTestCase, NetworkManagerDelegate {
+class Tests: XCTestCase {
 
     var callApiExpectation: XCTestExpectation? = nil
 
@@ -19,6 +19,8 @@ class sampleTests: XCTestCase, NetworkManagerDelegate {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let i = libPointCloudLibrary.Hogehoge();
+        XCTAssert(i);
     }
 
     func testPerformanceExample() {

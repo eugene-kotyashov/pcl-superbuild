@@ -1,5 +1,6 @@
 cmake_minimum_required (VERSION 3.7)
 
+# ${CMAKE_CURRENT_LIST_DIR}/Tests.swift
 set(TEST_SOURCE
     ${CMAKE_CURRENT_LIST_DIR}/Tests.m
 )
