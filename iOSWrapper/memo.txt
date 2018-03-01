@@ -98,3 +98,9 @@ https://stackoverflow.com/questions/43810486/how-to-pass-an-array-of-array-of-fl
 
 std::vector のデータを取得する場合(int)
 https://qiita.com/tomnic/items/37ee52aa18dcb5c0b51e
+
+---
+
+Apple が標準?で用意しているライブラリ群
+https://developer.apple.com/documentation/accelerate
+

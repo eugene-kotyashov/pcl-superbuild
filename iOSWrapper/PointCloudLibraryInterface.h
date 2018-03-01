@@ -1,35 +1,16 @@
 // Objective-C++ objective-c class to interface with C++ Library
 #import <Foundation/Foundation.h>
 
-// typedef struct {
+// set Bridge Header
+// typedef struct SwiftPointXYZRGBA SwiftPointXYZRGBA;
+// struct float3 {
 //     float x;
 //     float y;
 //     float z;
-//     float r;
-//     float g;
-//     float b;
-//     float a;
-// } Vertex;
-// Swift/Object-C と点群データをやり取りする際の構造体を定義する
-// struct SwiftPointXYZRGBA{
-//     float x;
-//     float y;
-//     float z;
-//     float r;
-//     float g;
-//     float b;
-//     float a;
 // };
 // 
-// typedef struct SwiftPointXYZRGBA SwiftPointXYZRGBA;
-struct float3 {
-    float x;
-    float y;
-    float z;
-};
-
-struct float3 fc(const float **);
-struct float3 fc2(float [][3]);
+// struct float3 fc(const float **);
+// struct float3 fc2(float [][3]);
 
 @interface PointCloudLibraryInterface : NSObject
 

@@ -7,7 +7,6 @@
 #include "vertex.h"
 
 struct SwiftPointXYZ fcpp(const float **);
-
 extern "C" struct SwiftPointXYZ fc(const float ** p) {
     return fcpp(p);
 };
@@ -16,6 +15,11 @@ struct SwiftPointXYZ fcpp2(float t[3][3]);
 extern "C" struct SwiftPointXYZ fc2(float t[3][3]) {
     return fcpp2(t);
 };
+
+// parameter is pointer to array of array 3 of const float
+struct float3CPP fcpp3(const float (* const t)[][3]) {
+    return fcpp2(*t);
+}
 
 // このファイル内(cpp含む)での namespace の使用はNG
 class PointCloudLibraryWrapper
