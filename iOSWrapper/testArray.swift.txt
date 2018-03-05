@@ -25,13 +25,13 @@ let normal = triangle.withUnsafeBufferPointer { (buffer) -> float3 in
 ---
 
 main.swift - use fc function
-var triangle:[[Float]] = [
+var triangle1:[[Float]] = [
     [1.0, 0.0, 0.8],
     [0.0, 0.5, 0.0],
     [4.0, 0.0, 6.0]
 ]
 
-triangle.flatMap{ $0 }.withUnsafeBufferPointer {(buffer)->() in
+triangle1.flatMap{ $0 }.withUnsafeBufferPointer {(buffer)->() in
     var p = buffer.baseAddress
     let normal = fc(&p)
     print("from Swift:", normal)
@@ -40,13 +40,13 @@ triangle.flatMap{ $0 }.withUnsafeBufferPointer {(buffer)->() in
 ---
 
 main.swift - use fc2 function
-let triangle:[[Float]] = [
+let triangle2:[[Float]] = [
     [1.0, 0.0, 0.8],
     [0.0, 0.5, 0.0],
     [4.0, 0.0, 6.0]
 ]
 
-var t2 = triangle.reduce([]) { (r, row) -> [(Float, Float, Float)] in
+var t2 = triangle2.reduce([]) { (r, row) -> [(Float, Float, Float)] in
     var r = r
     r.append((row[0], row[1], row[2]))
     return r
@@ -61,12 +61,31 @@ t2.withUnsafeMutableBufferPointer { (buffer) -> () in
 ---
 
 main.swift - use fc2 function(update3)
-let triangle:[[Float]] = [
+let triangle3:[[Float]] = [
     [1.0, 0.0, 0.8],
     [0.0, 0.5, 0.0],
     [4.0, 0.0, 6.0]
 ]
-triangle.flatMap{ $0 }.withUnsafeBufferPointer {(buffer)->() in
+triangle3.flatMap{ $0 }.withUnsafeBufferPointer {(buffer)->() in
     let normal3 = fc3(OpaquePointer(buffer.baseAddress))
     print("from Swift fc3:", normal)
 }
+
+---
+
+main.swift - use fc2 function(update3)
+let triangle3:[[Float]] = [
+    [1.0, 0.0, 0.8],
+    [0.0, 0.5, 0.0],
+    [4.0, 0.0, 6.0]
+]
+triangle3.flatMap{ $0 }.withUnsafeBufferPointer {(buffer)->() in
+    let normal3 = PointCloudLibraryInterface.fc2(OpaquePointer(buffer.baseAddress))
+    print("from Swift fc2:", normal)
+}
+
+main.swift - use GetPointCloudData function
+
+PointCloudLibraryInterface.callLoad();
+let pointCloudXYZRGBA = PointCloudLibraryInterface.GetPointCloudData();
+print("from Swift fc3:", pointCloudXYZRGBA);

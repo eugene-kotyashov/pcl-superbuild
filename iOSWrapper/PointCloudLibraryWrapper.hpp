@@ -43,11 +43,12 @@ public:
     // { 
     //     return this->pointdata;
     // }
-    struct SwiftPointXYZRGBA* GetPointCloudData() 
-    {
-        // float** ‚©‚ç‚Ì Convert ‚Å‘Î‰ž‚·‚éH
-        return this->pointdata;
-    }
+	struct SwiftPointXYZRGBA* GetPointCloudData();
+    // struct SwiftPointXYZRGBA* GetPointCloudData() 
+    // {
+    //     // float** ‚©‚ç‚Ì Convert ‚Å‘Î‰ž‚·‚éH
+    //     return this->pointdata;
+    // }
 
     // struct SwiftPointXYZ* GetPointCloudData()
     // {

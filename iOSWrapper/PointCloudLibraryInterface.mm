@@ -106,31 +106,41 @@
     myPointCloudLibraryWrapper->FilterAxis("x", 1.0, 5.0);
 }
 
-- (NSArray<NSValue *>)GetPointCloudData {
+- (struct float7*)GetPointCloudData {
     if (!self.isLoad)
     {
         // NSLog()
         return;
     }
 
-    // Get Float*
     SwiftPointXYZRGBA* data = myPointCloudLibraryWrapper->GetPointCloudData();
-    int count = myPointCloudLibraryWrapper->GetPointCloudCount();
-    int type = myPointCloudLibraryWrapper->GetPointCloudType();
-
-    for(int i = 0;i < count;i++)
-    {
-        // point to use cpp_code
-        // 3DPoint point = {0.0f, 1.0f, 1.0f};
-        // NSValue *val = [NSValue value:&point withObjCType:@encode(Vertex)];
-        // [val getValue:&point];
-        // 3DPoint point = {0.0f, 1.0f, 1.0f};
-        // NSValue *val = [NSValue value:&point withObjCType:@encode(Vertex)];
-        // [val getValue:&point];
-    }
-
-    return data;
 }
+
+// - (NSArray<NSValue *>)GetPointCloudData {
+//     if (!self.isLoad)
+//     {
+//         // NSLog()
+//         return;
+//     }
+// 
+//     // Get Float*
+//     SwiftPointXYZRGBA* data = myPointCloudLibraryWrapper->GetPointCloudData();
+//     int count = myPointCloudLibraryWrapper->GetPointCloudCount();
+//     int type = myPointCloudLibraryWrapper->GetPointCloudType();
+// 
+//     for(int i = 0;i < count;i++)
+//     {
+//         // point to use cpp_code
+//         // 3DPoint point = {0.0f, 1.0f, 1.0f};
+//         // NSValue *val = [NSValue value:&point withObjCType:@encode(Vertex)];
+//         // [val getValue:&point];
+//         // 3DPoint point = {0.0f, 1.0f, 1.0f};
+//         // NSValue *val = [NSValue value:&point withObjCType:@encode(Vertex)];
+//         // [val getValue:&point];
+//     }
+// 
+//     return data;
+// }
 
 // use Array Sample
 // -(NSArray*)getList {

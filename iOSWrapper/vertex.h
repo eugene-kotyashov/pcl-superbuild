@@ -11,7 +11,7 @@ struct SwiftPointXYZRGBA{
     float b;
     float a;
 };
-typedef struct SwiftPointXYZRGBA SwiftPointXYZRGBA;
+// typedef struct SwiftPointXYZRGBA SwiftPointXYZRGBA;
 
 struct SwiftPointXYZ {
     float x;

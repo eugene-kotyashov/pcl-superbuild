@@ -75,6 +75,12 @@ void PointCloudLibraryWrapper::FilterAxis(const char* axis, double min, double m
     // this->pointdata = PointCloudLibraryVoxelGrid::PointCloudLibraryVoxelGridFromFloatArray(this->pointdata);
 }
 
+EXPORT
+struct SwiftPointXYZRGBA* PointCloudLibraryWrapper::GetPointCloudData()
+{
+    return this->pointdata;
+}
+
 /*
 EXPORT
 void PointCloudLibraryWrapper::SegmentationPlane(double leafSize[3])
