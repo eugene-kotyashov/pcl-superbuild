@@ -295,7 +295,7 @@ SwiftPointXYZRGBA* PointCloudLibraryConversions::PointCloudDataFromPointCloud2(p
         for (int i = 0; i < nr_points; ++i)
         {
             float point[3] = {cloud->points[i].x, cloud->points[i].y, cloud->points[i].z};
-            unsigned char color[3] = {cloud->points[i].r, cloud->points[i].g, cloud->points[i].b};
+            // unsigned char color[3] = {cloud->points[i].r, cloud->points[i].g, cloud->points[i].b};
             tmpFloatArray[i].x = point[0];
             tmpFloatArray[i].y = point[1];
             tmpFloatArray[i].z = point[2];

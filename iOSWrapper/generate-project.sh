@@ -1,1 +1,1 @@
-cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/ios.cmake -DIOS_PLATFORM=OS -H. -BXcode -GXcode
+cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/iOS_xcode.cmake -DIOS_PLATFORM=OS -H. -BXcode -GXcode

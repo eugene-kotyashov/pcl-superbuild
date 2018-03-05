@@ -8,7 +8,7 @@ set(CODE_SIGN_IDENTITY "iPhone Developer")                    # <== Set to your 
                                                               # /usr/bin/env xcrun security find-identity -v -p codesigning
 set(DEPLOYMENT_TARGET 10.3)                                   # <== Set your deployment target version of iOS
 set(DEVICE_FAMILY "1,2")                                      # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
-set(TEST_NAME "Tests")                                        # <== Set to your test's name
+set(TEST_NAME Tests)                                          # <== Set to your test's name
 set(TEST_BUNDLE_IDENTIFIER "com.sirokujira.tests")            # <== Set to your tests's bundle ID
 set(LOGIC_ONLY_TESTS 0)                                       # <== Set to 1 if you do not want tests to be hosted by the application, 
                                                               # speeds up pure logic tests but you can not run them on real devices

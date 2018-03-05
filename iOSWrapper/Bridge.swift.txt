@@ -18,7 +18,7 @@ class ViewController: NSViewController
             pointcloudWrapper_cpp.Load(path)
         }
 
-        // var myPointer :UnsafeMutablePointer<Test> = getPointer(&myTest)
+        var myPointer :UnsafeMutablePointer<float7> = pointcloudWrapper_cpp.GetPointCloudData()
     }
 }
 
