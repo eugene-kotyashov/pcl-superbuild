@@ -17,9 +17,11 @@ extern "C" struct SwiftPointXYZ fc2(float t[3][3]) {
 };
 
 // parameter is pointer to array of array 3 of const float
-struct SwiftPointXYZ fcpp3(const float (* const t)[][3]) {
-    return fcpp2(*t);
-}
+// NG : 
+// cannot convert argument of incomplete type 'const float [][3]' to 'float (*)[3]' for 1st argument
+// struct SwiftPointXYZ fcpp3(const float (* const t)[][3]) {
+//     return fcpp2(*t);
+// }
 
 // このファイル内(cpp含む)での namespace の使用はNG
 class PointCloudLibraryWrapper
