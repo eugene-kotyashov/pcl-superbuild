@@ -1,6 +1,13 @@
 cmake_minimum_required (VERSION 3.7)
 
-# framework.plist setting
+# Based : https://github.com/Kitware/CMake/blob/master/Tests/XCTest/CMakeLists.txt
+project(XCTest C)
+enable_testing()
+
+find_package(XCTest REQUIRED)
+
+# Framework/Test Parameter Settings
+# start
 set(FRAMEWORK_NAME pcl)                                       # <== Set to your framework's name
 set(FRAMEWORK_ICON_FILE "")
 set(FRAMEWORK_BUNDLE_IDENTIFIER com.sirokujira.framework)     # <== Set to your framework's bundle identifier (cannot be the same as app bundle identifier)
@@ -14,21 +21,22 @@ set(LOGIC_ONLY_TESTS 0)                                       # <== Set to 1 if 
                                                               # speeds up pure logic tests but you can not run them on real devices
 set(DEVELOPMENT_TEAM_ID "AAAAAAAA")                           # <== Set to your team ID from Apple
 
-project(${FRAMEWORK_NAME})
-include(BundleUtilities)
-include(FindXCTest)
-
-message(STATUS XCTestFound:${XCTest_FOUND})
-
 set(MACOSX_BUNDLE_ICON_FILE "")
 set(MACOSX_BUNDLE_LONG_VERSION_STRING "1.0")
 set(MACOSX_BUNDLE_SHORT_VERSION_STRING "1.0")
 set(MACOSX_BUNDLE_BUNDLE_VERSION "1.0")
 set(MACOSX_BUNDLE_COPYRIGHT "Copyright Sirokujira")
 set(MACOSX_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET})
+# end
 
+# Framework
+project(${FRAMEWORK_NAME})
+include(BundleUtilities)
+include(FindXCTest)
 
-# Wrapper
+message(STATUS XCTestFound:${XCTest_FOUND})
+
+# set Wrapper Code
 set(LIBRARY_SOURCE
     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp
     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.cpp
@@ -43,8 +51,21 @@ add_library(
     ${LIBRARY_SOURCE}
 )
 
-# Build tests
-add_subdirectory(tests)
+# XCTest for Framework
+
+# Simulator only?
+# https://github.com/ruslo/polly/issues/149
+# add_subdirectory(tests)
+xctest_add_bundle(${TEST_NAME} ${FRAMEWORK_NAME} 
+        tests/Tests.m
+        tests/tests.plist)
+
+set_target_properties(${TEST_NAME} PROPERTIES 
+  MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/tests/tests.plist 
+)
+
+xctest_add_test(XCTest.${FRAMEWORK_NAME} ${TEST_NAME})
+
 
 # FolderPath Check
 # CMAKE_INSTALL_PREFIX

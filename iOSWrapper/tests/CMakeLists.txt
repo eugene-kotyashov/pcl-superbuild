@@ -2,9 +2,9 @@ cmake_minimum_required (VERSION 3.7)
 
 project(${TEST_NAME})
 
-# ${CMAKE_CURRENT_LIST_DIR}/Tests.swift
 set(TEST_SOURCE
     ${CMAKE_CURRENT_LIST_DIR}/Tests.m
+    # ${CMAKE_CURRENT_LIST_DIR}/Tests.swift
 )
 
 xctest_add_bundle(
