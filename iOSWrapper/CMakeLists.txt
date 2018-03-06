@@ -20,6 +20,14 @@ include(FindXCTest)
 
 message(STATUS XCTestFound:${XCTest_FOUND})
 
+set(MACOSX_BUNDLE_ICON_FILE "")
+set(MACOSX_BUNDLE_LONG_VERSION_STRING "1.0")
+set(MACOSX_BUNDLE_SHORT_VERSION_STRING "1.0")
+set(MACOSX_BUNDLE_BUNDLE_VERSION "1.0")
+set(MACOSX_BUNDLE_COPYRIGHT "Copyright Sirokujira")
+set(MACOSX_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET})
+
+
 # Wrapper
 set(LIBRARY_SOURCE
     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp
@@ -36,7 +44,7 @@ add_library(
 )
 
 # Build tests
-# add_subdirectory(tests)
+add_subdirectory(tests)
 
 # FolderPath Check
 # CMAKE_INSTALL_PREFIX
@@ -250,7 +258,8 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     FRAMEWORK TRUE
     FRAMEWORK_VERSION A
     MACOSX_FRAMEWORK_IDENTIFIER com.sirokujira.framework
-    MACOSX_FRAMEWORK_INFO_PLIST ${CMAKE_CURRENT_LIST_DIR}/framework.plist
+    # MACOSX_FRAMEWORK_INFO_PLIST ${CMAKE_CURRENT_LIST_DIR}/framework.plist
+    MACOSX_FRAMEWORK_INFO_PLIST ${CMAKE_CURRENT_LIST_DIR}/framework.plist.in
     # "current version" in semantic format in Mach-O binary file
     VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file

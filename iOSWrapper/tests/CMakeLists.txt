@@ -7,9 +7,9 @@ set(TEST_SOURCE
     ${CMAKE_CURRENT_LIST_DIR}/Tests.m
 )
 
-xctest_add_bundle(${TEST_NAME}
-    ${FRAMEWORK_NAME}
-    ${TEST_SOURCE}
+xctest_add_bundle(
+    ${TEST_NAME}                # Name of the XCTest bundle
+    ${TEST_SOURCE}              # Target name of the testee
 )
 
 if(NOT LOGIC_ONLY_TESTS)
@@ -18,14 +18,16 @@ if(NOT LOGIC_ONLY_TESTS)
     )
 endif(NOT LOGIC_ONLY_TESTS)
 
-xctest_add_test(${TEST_BUNDLE_IDENTIFIER}
-    ${TEST_NAME}
+xctest_add_test(
+    ${TEST_BUNDLE_IDENTIFIER}   # Test name
+    ${TEST_NAME}                # Target name of XCTest bundle
 )
 
 set(CMAKE_SHARED_LINKER_FLAGS "-Wall")
 
 set_target_properties(${TEST_NAME} PROPERTIES
     MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_LIST_DIR}/tests.plist.in
+    MACOSX_BUNDLE_IDENTIFIER ${TEST_BUNDLE_IDENTIFIER}
     XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
     # XCODE_ATTRIBUTE_DEVELOPMENT_TEAM ${DEVELOPMENT_TEAM_ID}
