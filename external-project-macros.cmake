@@ -56,10 +56,9 @@ macro(fetch_flann)
     # old(no use LZ4?)
     # GIT_TAG cee08ec38a8df7bc70397f10a4d30b9b33518bb4
     # use LZ4?
-    # build NG(check : ndk14r)(test.py)
+    # build NG(check : ndk14r)
     # GIT_TAG 1.8.4
     # GIT_TAG 1.8.5
-    # build NG(xcode - clang)
     GIT_TAG 1.9.1
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
@@ -151,7 +150,7 @@ macro(fetch_boost)
   ExternalProject_Add(
     boost-fetch
     SOURCE_DIR ${source_prefix}/boost
-    # 1.64.0
+    # Based 1.60.0
     GIT_REPOSITORY git://github.com/Sirokujira/boost-build.git
     GIT_TAG origin/master
     # official(not cmake file)
@@ -239,13 +238,10 @@ macro(fetch_pcl)
     pcl-fetch
     SOURCE_DIR ${source_prefix}/pcl
     GIT_REPOSITORY git://github.com/PointCloudLibrary/pcl.git
-    # official tags
     GIT_TAG pcl-1.8.1
     # GIT_TAG pcl-1.8.0
     # Test
-    # Start
     # GIT_REPOSITORY git://github.com/Sirokujira/pcl.git
-    # check tags
     # GIT_TAG Branch_pcl-1.7.2
     # GIT_REPOSITORY git://github.com/patmarion/PCL.git
     # GIT_TAG origin/android-tag
@@ -280,12 +276,12 @@ macro(crosscompile_pcl tag)
     SOURCE_DIR ${source_prefix}/pcl
     DOWNLOAD_COMMAND ""
     # DEPENDS pcl-fetch boost-${tag} flann-${tag} eigen
-    # iOS Error(multi arch build ng)
     DEPENDS pcl-fetch boost-${tag} flann-${tag} qhull-${tag} eigen
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
       -DCMAKE_BUILD_TYPE:STRING=${build_type}
       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_file}
+      # Android Build Parameters
       -DANDROID_ABI=$ENV{ANDROID_ABIs}
       -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
       -DANDROID_TOOLCHAIN=$ENV{TARGET_COMPILER}
@@ -294,7 +290,7 @@ macro(crosscompile_pcl tag)
       -DBUILD_SHARED_LIBS:BOOL=OFF
       -DPCL_SHARED_LIBS:BOOL=OFF
       -DPCL_ENABLE_SSE:BOOL=OFF
-      # Set Off Parameter(CMake Error)
+      # Set Off Parameter(On : CMake Error)
       -DWITH_CUDA:BOOL=OFF
       -DWITH_OPENGL:BOOL=OFF
       -DWITH_FZAPI:BOOL=OFF
@@ -303,8 +299,8 @@ macro(crosscompile_pcl tag)
       -DWITH_OPENNI2:BOOL=OFF
       -DWITH_PCAP:BOOL=OFF
       -DWITH_PNG:BOOL=OFF
+      # iOS Error(on : multi arch build ng -> single arch parameter ok.)
       # -DWITH_QHULL:BOOL=OFF
-      # iOS Error(multi arch build ng)
       -DWITH_QHULL:BOOL=ON
       -DWITH_QT:BOOL=OFF
       -DWITH_VTK:BOOL=OFF
@@ -325,26 +321,27 @@ macro(crosscompile_pcl tag)
       # use vtk?
       # depend sample_consensus
       -DBUILD_filters:BOOL=ON
-      # -DBUILD_outofcore:BOOL=ON
-      # -DBUILD_people:BOOL=ON
-      -DBUILD_outofcore:BOOL=OFF
-      -DBUILD_people:BOOL=OFF
       -DBUILD_recognition:BOOL=ON
       -DBUILD_registration:BOOL=ON
-      # build error(files not UTF-8 or BOM Check ON?)
       # over TestCI build time(50 min)
+      # local environment build case(on set).
+      # start setting
       # -DBUILD_sample_consensus:BOOL=ON
       -DBUILD_sample_consensus:BOOL=OFF
-      -DBUILD_search:BOOL=ON
-      -DBUILD_segmentation:BOOL=ON
-      -DBUILD_surface:BOOL=ON
       # -DBUILD_surface_on_nurbs:BOOL=ON
       -DBUILD_surface_on_nurbs:BOOL=OFF
-      # build time less
+      # -DBUILD_outofcore:BOOL=ON
+      -DBUILD_outofcore:BOOL=OFF
+      # -DBUILD_people:BOOL=ON
+      -DBUILD_people:BOOL=OFF
       # -DBUILD_tools:BOOL=ON
       -DBUILD_tools:BOOL=OFF
       # -DBUILD_tracking:BOOL=ON
       -DBUILD_tracking:BOOL=OFF
+      # end setting
+      -DBUILD_search:BOOL=ON
+      -DBUILD_segmentation:BOOL=ON
+      -DBUILD_surface:BOOL=ON
       -DBUILD_visualization:BOOL=OFF
       -DBUILD_examples:BOOL=OFF
       -DEIGEN_INCLUDE_DIR:PATH=${install_prefix}/eigen

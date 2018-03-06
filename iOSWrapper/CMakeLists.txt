@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.7)
 
 # Based : https://github.com/Kitware/CMake/blob/master/Tests/XCTest/CMakeLists.txt
-project(XCTest C)
+project(XCTest CXX C)
 enable_testing()
 
 find_package(XCTest REQUIRED)
