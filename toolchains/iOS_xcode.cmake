@@ -140,6 +140,9 @@ endif ()
 set (CMAKE_XCODE_ATTRIBUTE_ARCHS[sdk=iphoneos*] ${IOS_ARCH} CACHE string  "Build architecture for iOS")
 set (CMAKE_XCODE_ATTRIBUTE_VALID_ARCHS[sdk=iphoneos*] ${IOS_ARCH} CACHE string  "Build architecture for iOS")
 
+set(CMAKE_MACOSX_BUNDLE YES)
+set(CMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "NO")
+
 # Set the find root to the iOS developer roots and to user defined paths
 set (CMAKE_FIND_ROOT_PATH ${CMAKE_IOS_DEVELOPER_ROOT} ${CMAKE_IOS_SDK_ROOT} ${CMAKE_PREFIX_PATH} CACHE string  "iOS find search path root")
 
