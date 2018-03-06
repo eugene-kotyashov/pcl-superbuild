@@ -1,6 +1,6 @@
 #import <XCTest/XCTest.h>
 
-#import "PointCloudLibraryInterface.h"
+#import "../PointCloudLibraryInterface.h"
 
 @interface Tests : XCTestCase
 @end
