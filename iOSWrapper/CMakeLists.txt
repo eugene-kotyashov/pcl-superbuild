@@ -240,17 +240,12 @@ if (IOS_PLATFORM STREQUAL "OS")
 # elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
 elseif (IOS_PLATFORM STREQUAL "SIMULATOR64")
     target_link_libraries(${FRAMEWORK_NAME} 
-        ${boost_device_libraryfiles}
-        ${flann_device_libraryfiles}
-        ${qhull_device_libraryfiles}
-        ${pcl_device_libraryfiles}
+        ${boost_simulation_libraryfiles}
+        ${flann_simulation_libraryfiles}
+        ${qhull_simulation_libraryfiles}
+        ${pcl_simulation_libraryfiles}
     )
 endif ()
-
-# target_link_libraries(${FRAMEWORK_NAME} ${boost_simulation_libraryfiles})
-# target_link_libraries(${FRAMEWORK_NAME} ${flann_simulation_libraryfiles})
-# target_link_libraries(${FRAMEWORK_NAME} ${qhull_simulation_libraryfiles})
-# target_link_libraries(${FRAMEWORK_NAME} ${pcl_simulation_libraryfiles})
 
 # https://cmake.org/cmake/help/v3.10/prop_tgt/FRAMEWORK.html
 # set_target_properties(${FRAMEWORK_NAME} PROPERTIES
@@ -309,8 +304,8 @@ endif ()
 
 ###
 # toolchain macro
-# set_xcode_property(${FRAMEWORK_NAME} CLANG_CXX_LANGUAGE_STANDARD "c++11") 
-# set_xcode_property(${FRAMEWORK_NAME} CLANG_CXX_LIBRARY "libc++") 
+# set_xcode_property(${FRAMEWORK_NAME} CLANG_CXX_LANGUAGE_STANDARD "c++11")
+# set_xcode_property(${FRAMEWORK_NAME} CLANG_CXX_LIBRARY "libc++")
 
 # https://cmake.org/cmake/help/v3.1/prop_tgt/XCODE_ATTRIBUTE_an-attribute.html
 # To disable bitcode:
