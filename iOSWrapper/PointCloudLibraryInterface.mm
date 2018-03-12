@@ -94,6 +94,14 @@
     self.isLoad = YES; 
 }
 
+- (void) callLoadResourceFile {
+    NSString *modelFileName = [[NSBundle mainBundle] pathForResource:@"pointcloud" ofType:@"pcd"]; 
+    std::string modelFileNameCString = [modelFileName UTF8String]; 
+    myPointCloudLibraryWrapper->Load(strDst);
+
+    self.isLoad = YES; 
+}
+
 - (void) callFiltering {
     if (!self.isLoad)
     {
@@ -114,6 +122,7 @@
     }
 
     SwiftPointXYZRGBA* data = myPointCloudLibraryWrapper->GetPointCloudData();
+    return data;
 }
 
 // - (NSArray<NSValue *>)GetPointCloudData {

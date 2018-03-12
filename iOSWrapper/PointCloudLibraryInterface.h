@@ -30,6 +30,7 @@ struct float7 {
 @property (nonatomic, copy) NSArray *pointArray;
 
 - (void)callLoad:(NSString *)argString;
+- (void)callLoadResourceFile;
 - (void)callFiltering;
 // - (void)setPointCloudData:(NSArray<NSValue *>)pointArray;
 // - (NSArray<NSValue *>)GetPointCloudData;
