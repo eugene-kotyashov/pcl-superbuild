@@ -271,6 +271,7 @@ macro(crosscompile_pcl tag)
   file(APPEND ${toolchain_file}
     "\nlist(APPEND CMAKE_FIND_ROOT_PATH ${install_prefix}/boost-${tag})\n")
 
+  # octree_base.hpp: warning: taking the max of a value and unsigned zero is always equal to the other value [-Wmax-unsigned-zero]
   ExternalProject_Add(
     ${proj}
     SOURCE_DIR ${source_prefix}/pcl

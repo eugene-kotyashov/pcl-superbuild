@@ -54,6 +54,7 @@ make_pcl_framework ()
   # lipo -create $pcl_framework/pcl_sim -output $pcl_framework/pcl
   lipo -create $pcl_framework/pcl_device $pcl_framework/pcl_sim -output $pcl_framework/pcl
 
+  # 一時的に連結用に作成したライブラリファイルを削除する
   rm $pcl_framework/pcl_*
 }
 
@@ -137,6 +138,7 @@ make_pcl_framework_device ()
   # Xcode で生成した framework と 個別にビルドした外部ライブラリを合わせる
   lipo -create -output $pcl_framework/pcl $pcl_framework/pcl_device
 
+  # 一時的に連結用に作成したライブラリファイルを削除する
   rm -rf $pcl_framework/pcl_*
 }
 
@@ -182,12 +184,19 @@ make_pcl_framework_simulator ()
   # cp module.modulemap $pcl_framework/Modules/
   cp ../iOSWrapper/module.modulemap $pcl_framework/
 
+  # デバッグ表示?
+  # ranlib $boost_sim_libs
+  # ranlib $flann_sim_libs
+  # ranlib $qhull_sim_libs
+  # ranlib $pcl_sim_libs
+
   # ライブラリの結合
   libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs $qhull_sim_libs $current_pcl_ios_sim_framework/pcl 
 
   # Xcode で生成した framework と 個別にビルドした外部ライブラリを合わせる
   lipo -create -output $pcl_framework/pcl $pcl_framework/pcl_sim
 
+  # 一時的に連結用に作成したライブラリファイルを削除する
   rm -rf $pcl_framework/pcl_*
 }
 
@@ -201,10 +210,11 @@ make_pcl_framework_universal ()
   # simulator_folder = "ios-simulator"
 
   # pcl_device_libs=`find $install/pcl-${device_folder} $install/flann-${device_folder} $install/boost-${device_folder} -name *.a`
-  pcl_device_libs=`find $install/pcl-ios-device -name *.a`
-  boost_device_libs=`find $install/boost-ios-device -name *.a`
-  flann_device_libs=`find $install/flann-ios-device -name *.a`
-  qhull_device_libs=`find $install/qhull-ios-device -name *.a`
+  # all device arch(not use)
+  # pcl_device_libs=`find $install/pcl-ios-device -name *.a`
+  # boost_device_libs=`find $install/boost-ios-device -name *.a`
+  # flann_device_libs=`find $install/flann-ios-device -name *.a`
+  # qhull_device_libs=`find $install/qhull-ios-device -name *.a`
   # Object-C/Swift で使用するためのラッパー関数を持つライブラリ
   # wrapper_device_libs=`find $install/ios_device_wrapper -name *.a`
   # arm64
@@ -267,6 +277,12 @@ make_pcl_framework_universal ()
   # cp module.modulemap $pcl_framework/Modules/
   cp ../iOSWrapper/module.modulemap $pcl_framework/
 
+  # デバッグ表示?
+  # ranlib $boost_sim_libs
+  # ranlib $flann_sim_libs
+  # ranlib $qhull_sim_libs
+  # ranlib $pcl_sim_libs
+
   # ライブラリの結合
   # libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs $current_pcl_ios_device_framework/pcl
   # device
@@ -277,6 +293,7 @@ make_pcl_framework_universal ()
   # Xcode で生成した framework と 個別にビルドした外部ライブラリを合わせる
   lipo -create -output $pcl_framework/pcl $pcl_framework/pcl_device $pcl_framework/pcl_sim
 
+  # 一時的に連結用に作成したライブラリファイルを削除する
   rm -rf $pcl_framework/pcl_*
 }
 
