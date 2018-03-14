@@ -24,7 +24,7 @@
     PointCloudLibraryInterface* i = [[PointCloudLibraryInterface alloc] init];
     XCTAssert(i);
 
-    i.callLoadResourceFile();
+    i.callLoadResourceFile;
     XCTAssert(i.isLoad)
 }
 
@@ -32,7 +32,7 @@
     PointCloudLibraryInterface* i = [[PointCloudLibraryInterface alloc] init];
     XCTAssert(i);
 
-    i.callFiltering();
+    i.callFiltering;
 }
 
 - (void)GetPointCloudData {
@@ -40,7 +40,7 @@
     XCTAssert(i);
 
     struct float7* param;
-    param = i.GetPointCloudData();
+    param = i.GetPointCloudData;
 
 }
 @end

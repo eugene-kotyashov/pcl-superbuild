@@ -54,7 +54,7 @@ make_pcl_framework ()
   # lipo -create $pcl_framework/pcl_sim -output $pcl_framework/pcl
   lipo -create $pcl_framework/pcl_device $pcl_framework/pcl_sim -output $pcl_framework/pcl
 
-  # 一時的に連結用に作成したライブラリファイルを削除する
+  # remove tmp library files
   rm $pcl_framework/pcl_*
 }
 
@@ -131,14 +131,14 @@ make_pcl_framework_device ()
   # mkdir $pcl_framework/Modules
   cp ../iOSWrapper/module.modulemap $pcl_framework/
 
-  # ライブラリの結合
+  # combine libraries
   # libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs $current_pcl_ios_device_framework/pcl
   libtool -static -o $pcl_framework/pcl_device $pcl_device_arm64_libs $boost_arm64_device_libs $flann_arm64_device_libs $qhull_arm64_device_libs $pcl_device_armv7_libs $boost_armv7_device_libs $flann_armv7_device_libs $qhull_armv7_device_libs $pcl_device_armv7s_libs $boost_armv7s_device_libs $flann_armv7s_device_libs $qhull_armv7s_device_libs $current_pcl_ios_device_framework/pcl
 
-  # Xcode で生成した framework と 個別にビルドした外部ライブラリを合わせる
+  # combine Xcode generator frameworks and external build libraries
   lipo -create -output $pcl_framework/pcl $pcl_framework/pcl_device
 
-  # 一時的に連結用に作成したライブラリファイルを削除する
+  # remove tmp library files
   rm -rf $pcl_framework/pcl_*
 }
 
@@ -178,25 +178,24 @@ make_pcl_framework_simulator ()
   cp -R $eigen_header_dir/* $pcl_framework/Headers/
   cp -R $flann_header_dir/* $pcl_framework/Headers/
   cp -R $qhull_header_dir/* $pcl_framework/Headers/
-  cp -R $ioswrapper_header_dir/* $pcl_framework/Headers/
 
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
   cp ../iOSWrapper/module.modulemap $pcl_framework/
 
-  # デバッグ表示?
+  # debug libs
   # ranlib $boost_sim_libs
   # ranlib $flann_sim_libs
   # ranlib $qhull_sim_libs
   # ranlib $pcl_sim_libs
 
-  # ライブラリの結合
+  # combine libraries
   libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs $qhull_sim_libs $current_pcl_ios_sim_framework/pcl 
 
-  # Xcode で生成した framework と 個別にビルドした外部ライブラリを合わせる
+  # combine Xcode generator frameworks and external build libraries
   lipo -create -output $pcl_framework/pcl $pcl_framework/pcl_sim
 
-  # 一時的に連結用に作成したライブラリファイルを削除する
+  # remove tmp library files
   rm -rf $pcl_framework/pcl_*
 }
 
@@ -277,23 +276,23 @@ make_pcl_framework_universal ()
   # cp module.modulemap $pcl_framework/Modules/
   cp ../iOSWrapper/module.modulemap $pcl_framework/
 
-  # デバッグ表示?
+  # debug libs
   # ranlib $boost_sim_libs
   # ranlib $flann_sim_libs
   # ranlib $qhull_sim_libs
   # ranlib $pcl_sim_libs
 
-  # ライブラリの結合
+  # combine libraries
   # libtool -static -o $pcl_framework/pcl_device $pcl_device_libs $boost_device_libs $flann_device_libs $qhull_device_libs $current_pcl_ios_device_framework/pcl
   # device
   libtool -static -o $pcl_framework/pcl_device $pcl_device_arm64_libs $boost_arm64_device_libs $flann_arm64_device_libs $qhull_arm64_device_libs $pcl_device_armv7_libs $boost_armv7_device_libs $flann_armv7_device_libs $qhull_armv7_device_libs $pcl_device_armv7s_libs $boost_armv7s_device_libs $flann_armv7s_device_libs $qhull_armv7s_device_libs $current_pcl_ios_device_framework/pcl
   # simulator
   libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs $qhull_sim_libs $current_pcl_ios_sim_framework/pcl
 
-  # Xcode で生成した framework と 個別にビルドした外部ライブラリを合わせる
+  # combine Xcode generator frameworks and external build libraries
   lipo -create -output $pcl_framework/pcl $pcl_framework/pcl_device $pcl_framework/pcl_sim
 
-  # 一時的に連結用に作成したライブラリファイルを削除する
+  # remove tmp library files
   rm -rf $pcl_framework/pcl_*
 }
 
