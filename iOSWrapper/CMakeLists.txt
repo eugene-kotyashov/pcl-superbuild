@@ -57,6 +57,8 @@ add_library(
 # https://github.com/ruslo/polly/issues/149
 # add_subdirectory(tests)
 xctest_add_bundle(${TEST_NAME} ${FRAMEWORK_NAME} 
+        PointCloudLibraryInterface.mm
+        PointCloudLibraryInterface.h
         tests/Tests.m
         tests/tests.plist)
 

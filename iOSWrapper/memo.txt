@@ -131,3 +131,10 @@ https://github.com/damian0815/ARKitPointCloud
 Object-C++ と C++ との連携について
 http://philjordan.eu/article/mixing-objective-c-c++-and-objective-c++
 
+---
+
+"_OBJC_CLASS_$_PointCloudLibraryInterface", referenced from:
+objc-class-ref in Tests.o
+について
+
+m ファイルの 参照先がない?
