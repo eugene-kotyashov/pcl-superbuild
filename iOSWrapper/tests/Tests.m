@@ -25,7 +25,6 @@
     XCTAssert(i);
 
     i.callLoadResourceFile;
-    XCTAssert(i.isLoad)
 }
 
 - (void)testFilterAxis {
