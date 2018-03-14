@@ -50,6 +50,8 @@ set (CMAKE_CXX_OSX_CURRENT_VERSION_FLAG "${CMAKE_C_OSX_CURRENT_VERSION_FLAG}")
 # clang
 set (CMAKE_C_FLAGS_INIT "-std=c11 -stdlib=libc++")
 set (CMAKE_CXX_FLAGS_INIT "-std=c++11 -stdlib=libc++")
+set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS_INIT} ${CMAKE_C_FLAGS}")
+set (CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS_INIT} ${CMAKE_CXX_FLAGS}")
 
 set (CMAKE_C_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_C_LINK_FLAGS}")
 set (CMAKE_CXX_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_CXX_LINK_FLAGS}")
@@ -135,7 +137,10 @@ set (CMAKE_OSX_SYSROOT ${CMAKE_IOS_SDK_ROOT} CACHE PATH "Sysroot used for iOS su
 
 # set the architecture for iOS 
 if (IOS_PLATFORM STREQUAL "OS")
-    set (IOS_ARCH armv7 armv7s arm64)
+    # qhull error
+    # set (IOS_ARCH armv7 armv7s arm64)
+    # qhull ok
+    set (IOS_ARCH arm64)
 elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
     set (IOS_ARCH i386)
 elseif (IOS_PLATFORM STREQUAL "SIMULATOR64")
