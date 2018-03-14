@@ -83,7 +83,7 @@
 // custom
 - (void) callLoad : (NSString *)argString {
     std::string strDst = [argString UTF8String];
-    myPointCloudLibraryWrapper->Load(strDst);
+    myPointCloudLibraryWrapper->Load(strDst.c_str());
 
     // TestCode
     // Load Resource Files
@@ -97,7 +97,7 @@
 - (void) callLoadResourceFile {
     NSString *modelFileName = [[NSBundle mainBundle] pathForResource:@"pointcloud" ofType:@"pcd"]; 
     std::string modelFileNameCString = [modelFileName UTF8String]; 
-    myPointCloudLibraryWrapper->Load(strDst);
+    myPointCloudLibraryWrapper->Load(modelFileNameCString.c_str());
 
     self.isLoad = YES; 
 }
@@ -118,10 +118,10 @@
     if (!self.isLoad)
     {
         // NSLog()
-        return;
+        return nullptr;
     }
 
-    SwiftPointXYZRGBA* data = myPointCloudLibraryWrapper->GetPointCloudData();
+    float7* data = (float7*)myPointCloudLibraryWrapper->GetPointCloudData();
     return data;
 }
 

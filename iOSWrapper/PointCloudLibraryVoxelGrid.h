@@ -18,7 +18,6 @@ protected:
 
     // virtual int RequestData();
     PointCloudLibraryVoxelGrid();
-
     virtual ~PointCloudLibraryVoxelGrid();
 private:
     PointCloudLibraryVoxelGrid(const PointCloudLibraryVoxelGrid&);  // Not implemented.

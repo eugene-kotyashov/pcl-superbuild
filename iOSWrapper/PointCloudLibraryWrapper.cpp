@@ -31,7 +31,7 @@ struct SwiftPointXYZ fcpp2(float triangle[3][3]) {
 PointCloudLibraryWrapper::PointCloudLibraryWrapper()
 { 
     std::cout << "PointCloudLibraryWrapper Created." << std::endl; 
-    PointCloudLibraryConversions::New();
+    // PointCloudLibraryConversions::New();
     // PointCloudLibraryVoxelGrid::New();
     // PointCloudLibrarySACSegmentationPlane::New();
 }

@@ -62,7 +62,7 @@ make_pcl_framework ()
 #------------------------------------------------------------------------------
 make_pcl_framework_device ()
 {
-  # ‚·‚Å‚É‘¶Ý‚·‚é device —p‚Ì pcl.Framework ‚É‘Î‚µ‚ÄŠO•”ƒ‰ƒCƒuƒ‰ƒŠ‚ðŽæ‚èž‚Þ
+  # ï¿½ï¿½ï¿½Å‚É‘ï¿½ï¿½Ý‚ï¿½ï¿½ï¿½ device ï¿½pï¿½ï¿½ pcl.Framework ï¿½É‘Î‚ï¿½ï¿½ÄŠOï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½èžï¿½ï¿½
   current_pcl_ios_device_framework=../iOSWrapper/build.ios/Release-iphoneos/pcl.framework
 
   # Step 1. Build Device and Simulator versions complete
@@ -71,7 +71,7 @@ make_pcl_framework_device ()
   boost_device_libs=`find $install/boost-ios-device -name *.a`
   flann_device_libs=`find $install/flann-ios-device -name *.a`
   qhull_device_libs=`find $install/qhull-ios-device -name *.a`
-  # Object-C/Swift ‚ÅŽg—p‚·‚é‚½‚ß‚Ìƒ‰ƒbƒp[ŠÖ”‚ðŽ‚Âƒ‰ƒCƒuƒ‰ƒŠ
+  # Object-C/Swift ï¿½ÅŽgï¿½pï¿½ï¿½ï¿½é‚½ï¿½ß‚Ìƒï¿½ï¿½bï¿½pï¿½[ï¿½Öï¿½ï¿½ï¿½Âƒï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½
   # wrapper_device_libs=`find $install/ios_device_wrapper -name *.a`
   # arm64
   pcl_device_arm64_libs=`find $install/pcl-ios-device-arm64 -name *.a`
@@ -144,7 +144,7 @@ make_pcl_framework_device ()
 
 make_pcl_framework_simulator ()
 {
-  # ‚·‚Å‚É‘¶Ý‚·‚é simulation —p‚Ì pcl.Framework ‚É‘Î‚µ‚ÄŠO•”ƒ‰ƒCƒuƒ‰ƒŠ‚ðŽæ‚èž‚Þ
+  # ï¿½ï¿½ï¿½Å‚É‘ï¿½ï¿½Ý‚ï¿½ï¿½ï¿½ simulation ï¿½pï¿½ï¿½ pcl.Framework ï¿½É‘Î‚ï¿½ï¿½ÄŠOï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½èžï¿½ï¿½
   current_pcl_ios_sim_framework=../iOSWrapper/build.sim64/Release-iphonesimulator/pcl.framework
 
   pcl_sim_libs=`find $install/pcl-ios-simulator -name *.a`
@@ -152,7 +152,7 @@ make_pcl_framework_simulator ()
   flann_sim_libs=`find $install/flann-ios-simulator -name *.a`
   qhull_sim_libs=`find $install/qhull-ios-simulator -name *.a`
   # ioswrapper_sim_libs=$install/ioswrapper-ios-simulator -name *.a`
-  # Object-C/Swift ‚ÅŽg—p‚·‚é‚½‚ß‚Ìƒ‰ƒbƒp[ŠÖ”‚ðŽ‚Âƒ‰ƒCƒuƒ‰ƒŠ
+  # Object-C/Swift ï¿½ÅŽgï¿½pï¿½ï¿½ï¿½é‚½ï¿½ß‚Ìƒï¿½ï¿½bï¿½pï¿½[ï¿½Öï¿½ï¿½ï¿½Âƒï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½
   # wrapper_sim_libs=`find $install/ios_simulator_wrapper -name *.a`
 
   # args -> version
@@ -201,7 +201,7 @@ make_pcl_framework_simulator ()
 
 make_pcl_framework_universal ()
 {
-  # ‚·‚Å‚É‘¶Ý‚·‚é device/sim —p‚Ì pcl.Framework ‚É‘Î‚µ‚ÄŠO•”ƒ‰ƒCƒuƒ‰ƒŠ‚ðŽæ‚èž‚Þ
+  # ï¿½ï¿½ï¿½Å‚É‘ï¿½ï¿½Ý‚ï¿½ï¿½ï¿½ device/sim ï¿½pï¿½ï¿½ pcl.Framework ï¿½É‘Î‚ï¿½ï¿½ÄŠOï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½èžï¿½ï¿½
   current_pcl_ios_device_framework=../iOSWrapper/build.ios/Release-iphoneos/pcl.framework
   current_pcl_ios_sim_framework=../iOSWrapper/build.sim64/Release-iphonesimulator/pcl.framework
 
@@ -214,7 +214,7 @@ make_pcl_framework_universal ()
   # boost_device_libs=`find $install/boost-ios-device -name *.a`
   # flann_device_libs=`find $install/flann-ios-device -name *.a`
   # qhull_device_libs=`find $install/qhull-ios-device -name *.a`
-  # Object-C/Swift ‚ÅŽg—p‚·‚é‚½‚ß‚Ìƒ‰ƒbƒp[ŠÖ”‚ðŽ‚Âƒ‰ƒCƒuƒ‰ƒŠ
+  # Object-C/Swift ï¿½ÅŽgï¿½pï¿½ï¿½ï¿½é‚½ï¿½ß‚Ìƒï¿½ï¿½bï¿½pï¿½[ï¿½Öï¿½ï¿½ï¿½Âƒï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½
   # wrapper_device_libs=`find $install/ios_device_wrapper -name *.a`
   # arm64
   pcl_device_arm64_libs=`find $install/pcl-ios-device-arm64 -name *.a`
@@ -237,7 +237,7 @@ make_pcl_framework_universal ()
   boost_sim_libs=`find $install/boost-ios-simulator -name *.a`
   flann_sim_libs=`find $install/flann-ios-simulator -name *.a`
   qhull_sim_libs=`find $install/qhull-ios-simulator -name *.a`
-  # Object-C/Swift ‚ÅŽg—p‚·‚é‚½‚ß‚Ìƒ‰ƒbƒp[ŠÖ”‚ðŽ‚Âƒ‰ƒCƒuƒ‰ƒŠ
+  # Object-C/Swift ï¿½ÅŽgï¿½pï¿½ï¿½ï¿½é‚½ï¿½ß‚Ìƒï¿½ï¿½bï¿½pï¿½[ï¿½Öï¿½ï¿½ï¿½Âƒï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½
   # wrapper_sim_libs=`find $install/ios_simulator_wrapper -name *.a`
 
   # args -> version
@@ -266,11 +266,18 @@ make_pcl_framework_universal ()
 
   # Public Header
   mkdir $pcl_framework/Headers
-  cp -R $pcl_header_dir/* $pcl_framework/Headers/
-  cp -R $boost_header_dir/* $pcl_framework/Headers/
-  cp -R $eigen_header_dir/* $pcl_framework/Headers/
-  cp -R $flann_header_dir/* $pcl_framework/Headers/
-  cp -R $qhull_header_dir/* $pcl_framework/Headers/
+  # cp -R $pcl_header_dir/* $pcl_framework/Headers/
+  # cp -R $boost_header_dir/* $pcl_framework/Headers/
+  # cp -R $eigen_header_dir/* $pcl_framework/Headers/
+  # cp -R $flann_header_dir/* $pcl_framework/Headers/
+  # cp -R $qhull_header_dir/* $pcl_framework/Headers/
+
+  cp -R $pcl_arm64_header_dir/* $pcl_framework/Headers/
+  cp -R $boost_arm64_header_dir/* $pcl_framework/Headers/
+  cp -R $eigen_arm64_header_dir/* $pcl_framework/Headers/
+  cp -R $flann_arm64_header_dir/* $pcl_framework/Headers/
+  cp -R $qhull_arm64_header_dir/* $pcl_framework/Headers/
+
 
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/

@@ -53,6 +53,7 @@ add_library(
 
 # XCTest for Framework
 
+if (0)
 # Simulator only?
 # https://github.com/ruslo/polly/issues/149
 # add_subdirectory(tests)
@@ -65,9 +66,8 @@ xctest_add_bundle(${TEST_NAME} ${FRAMEWORK_NAME}
 set_target_properties(${TEST_NAME} PROPERTIES 
   MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/tests/tests.plist 
 )
-
 xctest_add_test(XCTest.${FRAMEWORK_NAME} ${TEST_NAME})
-
+endif ()
 
 # FolderPath Check
 # CMAKE_INSTALL_PREFIX
@@ -282,7 +282,7 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
     SOVERSION 1.0.0
-    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp" ${INCLUDE_DIR}
+    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp" "${CMAKE_CURRENT_LIST_DIR}/vertex.h" "${INCLUDE_DIR}" 
     XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
     XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
@@ -293,12 +293,12 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     FRAMEWORK TRUE
     FRAMEWORK_VERSION A
     MACOSX_FRAMEWORK_IDENTIFIER com.sirokujira.framework
-    MACOSX_FRAMEWORK_INFO_PLIST ${CMAKE_CURRENT_LIST_DIR}/framework.plist
+    MACOSX_FRAMEWORK_INFO_PLIST ${CMAKE_CURRENT_LIST_DIR}/framework.plist.in
     # "current version" in semantic format in Mach-O binary file
-    # VERSION 1.0.0
+    VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
-    # SOVERSION 1.0.0
-    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp" "${CMAKE_CURRENT_LIST_DIR}/vertex.h" ${INCLUDE_DIR}
+    SOVERSION 1.0.0
+    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp" "${CMAKE_CURRENT_LIST_DIR}/vertex.h" "${INCLUDE_DIR}" 
     # XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
     # XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
 )

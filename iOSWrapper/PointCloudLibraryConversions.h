@@ -17,8 +17,6 @@
 class PointCloudLibraryConversions
 {
 public:
-    static PointCloudLibraryConversions* New();
-
     static float* PointCloudDataFromPCDFile(const char* filename);
     static float* PointCloudDataFromPointCloud(pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud);
     static float* PointCloudDataFromPointCloud(pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud);
@@ -34,9 +32,13 @@ public:
     static pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr PointCloudDataFromFloatArray2(float* farray);
     static pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr PointCloudDataFromFloatArray3(float* farray);
 
+// use VTK
+public:
+    // static PointCloudLibraryConversions* New();
+
 protected:
     PointCloudLibraryConversions();
-    ~PointCloudLibraryConversions();
+    virtual ~PointCloudLibraryConversions();
 
 private:
     PointCloudLibraryConversions(const PointCloudLibraryConversions&); // Not implemented

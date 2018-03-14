@@ -3,11 +3,11 @@
 
 class PointCloudLibrarySACSegmentationPlane
 {
+    // virtual int RequestData();
+    static void PointCloudLibrarySACSegmentationPlaneFromFloatArray(float* farray);
+
 public:
     static PointCloudLibrarySACSegmentationPlane *New();
-
-    // virtual int RequestData();
-    static void PointCloudLibrarySACSegmentationPlaneFromFloatArray(float* farray)
 
 protected:
     double DistanceThreshold;
