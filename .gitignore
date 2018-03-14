@@ -1,0 +1,5 @@
+build/
+boost/
+.vscode/
+iOSWrapper/build.ios*
+iOSWrapper/build.sim*
