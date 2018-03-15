@@ -75,7 +75,7 @@ xctest_add_test(XCTest.${FRAMEWORK_NAME} ${TEST_NAME})
 #     XCODE_ATTRIBUTE_FRAMEWORK_SEARCH_PATHS "\$(inherited) " 
 # )
 set_target_properties(${TEST_NAME} PROPERTIES
-    XCODE_ATTRIBUTE_FRAMEWORK_SEARCH_PATHS "../../build/CMakeExternals/Install/frameworks-universal")
+    XCODE_ATTRIBUTE_FRAMEWORK_SEARCH_PATHS "../../build/CMakeExternals/Install/frameworks-universal"
 )
 
 # import boost lib[@rpath?]

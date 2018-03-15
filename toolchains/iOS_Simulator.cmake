@@ -21,8 +21,14 @@ endif (CMAKE_UNAME)
 
 # Force the compilers to Clang for iOS
 include (CMakeForceCompiler)
-set(CMAKE_C_COMPILER /usr/bin/clang)
-set(CMAKE_CXX_COMPILER /usr/bin/clang++)
+# gcc
+# set(CMAKE_C_COMPILER gcc)
+# set(CMAKE_CXX_COMPILER g++)
+# clang
+# set(CMAKE_C_COMPILER /usr/bin/clang)
+# set(CMAKE_CXX_COMPILER /usr/bin/clang++)
+set(CMAKE_C_COMPILER clang)
+set(CMAKE_CXX_COMPILER clang++)
 set(CMAKE_AR ar CACHE FILEPATH "" FORCE)
 
 # Skip the platform compiler checks for cross compiling
@@ -46,12 +52,11 @@ set (CMAKE_CXX_OSX_CURRENT_VERSION_FLAG "${CMAKE_C_OSX_CURRENT_VERSION_FLAG}")
 # set (CMAKE_CXX_FLAGS_INIT "")
 # gcc
 # set (CMAKE_C_FLAGS_INIT "-std=c11")
-# set (CMAKE_CXX_FLAGS_INIT "-std=c++11")
+# set (CMAKE_CXX_FLAGS_INIT "-fPIC -std=c++11 -stdlib=libstdc++")
 # clang
-set (CMAKE_C_FLAGS_INIT "-std=c11 -stdlib=libc++")
 # option ng libc++
-# set (CMAKE_CXX_FLAGS_INIT "-std=c++11 -stdlib=libc++")
-set (CMAKE_CXX_FLAGS_INIT "-std=c++11 -stdlib=libstdc++")
+set (CMAKE_C_FLAGS_INIT "-std=c11")
+set (CMAKE_CXX_FLAGS_INIT "-fPIC -std=c++11 -stdlib=libc++")
 set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS_INIT} ${CMAKE_C_FLAGS}")
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_INIT} ${CMAKE_CXX_FLAGS}")
 
@@ -75,7 +80,7 @@ endif (NOT DEFINED CMAKE_INSTALL_NAME_TOOL)
 
 # Setup iOS platform unless specified manually with IOS_PLATFORM
 if (NOT DEFINED IOS_PLATFORM)
-	set (IOS_PLATFORM "OS")
+    set (IOS_PLATFORM "OS")
 endif (NOT DEFINED IOS_PLATFORM)
 set (IOS_PLATFORM ${IOS_PLATFORM} CACHE STRING "Type of iOS Platform")
 
