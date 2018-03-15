@@ -1,5 +1,20 @@
 cmake_minimum_required (VERSION 3.7)
 
+# https://stackoverflow.com/questions/12547624/cant-link-macos-frameworks-with-cmake
+macro(ADD_FRAMEWORK fwname appname)
+    find_library(FRAMEWORK_${fwname}
+    NAMES ${fwname}
+    PATHS ${CMAKE_OSX_SYSROOT}/System/Library
+    PATH_SUFFIXES Frameworks
+    NO_DEFAULT_PATH)
+    if( ${FRAMEWORK_${fwname}} STREQUAL FRAMEWORK_${fwname}-NOTFOUND)
+        MESSAGE(ERROR ": Framework ${fwname} not found")
+    else()
+        TARGET_LINK_LIBRARIES(${appname} "${FRAMEWORK_${fwname}}/${fwname}")
+        MESSAGE(STATUS "Framework ${fwname} found at ${FRAMEWORK_${fwname}}")
+    endif()
+endmacro(ADD_FRAMEWORK)
+
 # Based : https://github.com/Kitware/CMake/blob/master/Tests/XCTest/CMakeLists.txt
 project(XCTest CXX C)
 enable_testing()
@@ -53,7 +68,19 @@ add_library(
 
 # XCTest for Framework
 
-if (0)
+if (IOS_TESTS)
+# set(PRODUCT_NAME testa)
+# set(EXECUTABLE_NAME testa)
+# set(APP_IDENTIFIER com.example.testa)
+# CONFIGURE_FILE("${CMAKE_CURRENT_LIST_DIR}/Info.plist.in" "${CMAKE_CURRENT_LIST_DIR}/Info.plist") 
+# set_target_properties(testa PROPERTIES 
+#     MACOSX_BUNDLE YES 
+#     MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_LIST_DIR}/Info.plist" 
+#     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer" 
+# )
+# # set_target_properties(testa PROPERTIES SHARED_LIBRARY_FLAGS $<TARGET_FILE:TF>) 
+# target_link_libraries(testa TF) 
+
 # Simulator only?
 # https://github.com/ruslo/polly/issues/149
 # add_subdirectory(tests)
@@ -64,8 +91,24 @@ xctest_add_bundle(${TEST_NAME} ${FRAMEWORK_NAME}
         tests/tests.plist)
 
 set_target_properties(${TEST_NAME} PROPERTIES 
-  MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/tests/tests.plist 
+    MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/tests/tests.plist 
 )
+
+# set custom framework path
+set_target_properties(${TEST_NAME} PROPERTIES
+    XCODE_ATTRIBUTE_FRAMEWORK_SEARCH_PATHS "../../build/CMakeExternals/Install/frameworks-universal"
+)
+
+# set framework?
+# standard
+add_framework(Foundation ${TEST_NAME})
+# custom
+add_framework(pcl ${TEST_NAME})
+
+# add libstdc++.6.0.0.tbd(sim only?)
+# target_link_libraries(${TEST_NAME} libstdc++.6.0.0.tbd)
+target_link_libraries(${TEST_NAME} libstdc++.6.0.0.dylib)
+
 xctest_add_test(XCTest.${FRAMEWORK_NAME} ${TEST_NAME})
 endif ()
 

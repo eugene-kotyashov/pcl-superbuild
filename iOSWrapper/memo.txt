@@ -141,3 +141,6 @@ m ファイルの 参照先がない?
 
 Xcodeでライブラリリンク時に発生するエラーに対応するframework
 https://joyplot.com/documents/2016/09/18/xcode-link-error-framework/
+
+
+https://github.com/headupinclouds/cmake_framework_test/

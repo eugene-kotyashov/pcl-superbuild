@@ -15,7 +15,7 @@ set(LOGIC_ONLY_TESTS 0)
 # Simulator only?
 # https://github.com/ruslo/polly/issues/149
 # add_subdirectory(tests)
-project(${TEST_NAME})
+# project(${TEST_NAME})
 include(BundleUtilities)
 include(FindXCTest)
 

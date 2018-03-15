@@ -230,7 +230,7 @@ before_install:
       bash build-sim64.sh;
       cd ../build;
       bash ../makeFramework.sh universal;
-      cd ../iOSWrapper/tests;
+      cd ../iOSWrapper;
       bash build-test.sh;
     fi
 
