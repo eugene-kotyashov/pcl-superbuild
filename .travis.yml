@@ -230,7 +230,8 @@ before_install:
       bash build-sim64.sh;
       cd ../build;
       bash ../makeFramework.sh universal;
-
+      cd ../iOSWrapper/tests;
+      bash build-test.sh;
     fi
 
   - if [[ $TRAVIS_OS_NAME = "linux" ]]; then

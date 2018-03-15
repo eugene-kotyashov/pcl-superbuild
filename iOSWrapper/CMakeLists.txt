@@ -53,7 +53,7 @@ add_library(
 
 # XCTest for Framework
 
-if (1)
+if (0)
 # Simulator only?
 # https://github.com/ruslo/polly/issues/149
 # add_subdirectory(tests)
