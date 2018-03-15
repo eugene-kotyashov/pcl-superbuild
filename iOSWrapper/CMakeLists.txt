@@ -16,7 +16,7 @@ set(CODE_SIGN_IDENTITY "iPhone Developer")                    # <== Set to your 
 set(DEPLOYMENT_TARGET 10.3)                                   # <== Set your deployment target version of iOS
 set(DEVICE_FAMILY "1,2")                                      # <== Set to "1" to target iPhone, set to "2" to target iPad, set to "1,2" to target both
 set(TEST_NAME Tests)                                          # <== Set to your test's name
-set(TEST_BUNDLE_IDENTIFIER "com.sirokujira.tests")            # <== Set to your tests's bundle ID
+set(TEST_BUNDLE_IDENTIFIER com.sirokujira.tests)              # <== Set to your tests's bundle ID
 set(LOGIC_ONLY_TESTS 0)                                       # <== Set to 1 if you do not want tests to be hosted by the application, 
                                                               # speeds up pure logic tests but you can not run them on real devices
 set(DEVELOPMENT_TEAM_ID "AAAAAAAA")                           # <== Set to your team ID from Apple
@@ -53,7 +53,7 @@ add_library(
 
 # XCTest for Framework
 
-if (0)
+if (1)
 # Simulator only?
 # https://github.com/ruslo/polly/issues/149
 # add_subdirectory(tests)
@@ -163,6 +163,8 @@ file(GLOB_RECURSE qhull_simulation_libraryfiles "../build/CMakeExternals/Install
 # file(GLOB_RECURSE pcl_device_libraryfiles "../build/CMakeExternals/Install/pcl-ios-device/lib/*.a")
 file(GLOB_RECURSE pcl_includefiles "../build/CMakeExternals/Install/pcl-ios-device-arm64/include/pcl-1.8/*.h*")
 file(GLOB_RECURSE pcl_device_libraryfiles "../build/CMakeExternals/Install/pcl-ios-device-arm64/lib/*.a")
+# file(GLOB_RECURSE pcl_device_libraryfiles "../build/CMakeExternals/Install/pcl-ios-device-armv7/lib/*.a")
+# file(GLOB_RECURSE pcl_device_libraryfiles "../build/CMakeExternals/Install/pcl-ios-device-armv7s/lib/*.a")
 file(GLOB_RECURSE pcl_simulation_libraryfiles "../build/CMakeExternals/Install/pcl-ios-simulator/lib/*.a")
 
 # message(STATUS "pcl(include)         : ${pcl_includefiles}")
@@ -218,15 +220,6 @@ elseif (IOS_PLATFORM STREQUAL "SIMULATOR64")
     )
 endif ()
 
-
-# link_directories(../build/CMakeExternals/Install/boost-ios-device)
-# link_directories(../build/CMakeExternals/Install/flann-ios-device)
-# link_directories(../build/CMakeExternals/Install/qhull-ios-device)
-# link_directories(../build/CMakeExternals/Install/pcl-ios-device)
-# link_directories(../build/CMakeExternals/Install/boost-ios-simulator)
-# link_directories(../build/CMakeExternals/Install/flann-ios-simulator)
-# link_directories(../build/CMakeExternals/Install/qhull-ios-simulator)
-# link_directories(../build/CMakeExternals/Install/pcl-ios-simulator)
 
 target_include_directories(pcl PRIVATE
     ${INCLUDE_DIR}
@@ -299,8 +292,8 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     # "compatibility version" in semantic format in Mach-O binary file
     SOVERSION 1.0.0
     PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp" "${CMAKE_CURRENT_LIST_DIR}/vertex.h" "${INCLUDE_DIR}" 
-    # XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
-    # XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
+    XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
+    XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
 )
 endif ()
 

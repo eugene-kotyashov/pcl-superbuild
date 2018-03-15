@@ -62,7 +62,7 @@ make_pcl_framework ()
 #------------------------------------------------------------------------------
 make_pcl_framework_device ()
 {
-  # ���łɑ��݂��� device �p�� pcl.Framework �ɑ΂��ĊO�����C�u�������荞��
+  # Xcode device Wrapper
   current_pcl_ios_device_framework=../iOSWrapper/build.ios/Release-iphoneos/pcl.framework
 
   # Step 1. Build Device and Simulator versions complete
@@ -71,8 +71,6 @@ make_pcl_framework_device ()
   boost_device_libs=`find $install/boost-ios-device -name *.a`
   flann_device_libs=`find $install/flann-ios-device -name *.a`
   qhull_device_libs=`find $install/qhull-ios-device -name *.a`
-  # Object-C/Swift �Ŏg�p���邽�߂̃��b�p�[�֐�����C�u����
-  # wrapper_device_libs=`find $install/ios_device_wrapper -name *.a`
   # arm64
   pcl_device_arm64_libs=`find $install/pcl-ios-device-arm64 -name *.a`
   boost_device_arm64_libs=`find $install/boost-ios-device-arm64 -name *.a`
@@ -144,16 +142,13 @@ make_pcl_framework_device ()
 
 make_pcl_framework_simulator ()
 {
-  # ���łɑ��݂��� simulation �p�� pcl.Framework �ɑ΂��ĊO�����C�u�������荞��
+  # Xcode simulation Wrapper
   current_pcl_ios_sim_framework=../iOSWrapper/build.sim64/Release-iphonesimulator/pcl.framework
 
   pcl_sim_libs=`find $install/pcl-ios-simulator -name *.a`
   boost_sim_libs=`find $install/boost-ios-simulator -name *.a`
   flann_sim_libs=`find $install/flann-ios-simulator -name *.a`
   qhull_sim_libs=`find $install/qhull-ios-simulator -name *.a`
-  # ioswrapper_sim_libs=$install/ioswrapper-ios-simulator -name *.a`
-  # Object-C/Swift �Ŏg�p���邽�߂̃��b�p�[�֐�����C�u����
-  # wrapper_sim_libs=`find $install/ios_simulator_wrapper -name *.a`
 
   # args -> version
   # version 1.8
@@ -201,7 +196,7 @@ make_pcl_framework_simulator ()
 
 make_pcl_framework_universal ()
 {
-  # ���łɑ��݂��� device/sim �p�� pcl.Framework �ɑ΂��ĊO�����C�u�������荞��
+  # Xcode device/simulation Wrapper framework path
   current_pcl_ios_device_framework=../iOSWrapper/build.ios/Release-iphoneos/pcl.framework
   current_pcl_ios_sim_framework=../iOSWrapper/build.sim64/Release-iphonesimulator/pcl.framework
 
@@ -214,8 +209,6 @@ make_pcl_framework_universal ()
   # boost_device_libs=`find $install/boost-ios-device -name *.a`
   # flann_device_libs=`find $install/flann-ios-device -name *.a`
   # qhull_device_libs=`find $install/qhull-ios-device -name *.a`
-  # Object-C/Swift �Ŏg�p���邽�߂̃��b�p�[�֐�����C�u����
-  # wrapper_device_libs=`find $install/ios_device_wrapper -name *.a`
   # arm64
   pcl_device_arm64_libs=`find $install/pcl-ios-device-arm64 -name *.a`
   boost_device_arm64_libs=`find $install/boost-ios-device-arm64 -name *.a`
@@ -237,8 +230,6 @@ make_pcl_framework_universal ()
   boost_sim_libs=`find $install/boost-ios-simulator -name *.a`
   flann_sim_libs=`find $install/flann-ios-simulator -name *.a`
   qhull_sim_libs=`find $install/qhull-ios-simulator -name *.a`
-  # Object-C/Swift �Ŏg�p���邽�߂̃��b�p�[�֐�����C�u����
-  # wrapper_sim_libs=`find $install/ios_simulator_wrapper -name *.a`
 
   # args -> version
   # version 1.7
