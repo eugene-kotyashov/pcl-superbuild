@@ -109,7 +109,7 @@ set_target_properties(${TEST_NAME} PROPERTIES
 # add libstdc++.6.0.0.tbd(sim only?)
 # target_link_libraries(${TEST_NAME} libstdc++.6.0.0.tbd)
 # target_link_libraries(${TEST_NAME} libstdc++.6.0.0.dylib)
-# target_link_libraries(${TEST_NAME} libc++.tbd)
+# target_link_libraries(${TEST_NAME} libc++)
 
 xctest_add_test(XCTest.${FRAMEWORK_NAME} ${TEST_NAME})
 endif ()
@@ -320,7 +320,7 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
     SOVERSION 1.0.0
-    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp" "${CMAKE_CURRENT_LIST_DIR}/vertex.h" "${INCLUDE_DIR}" 
+    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp ${CMAKE_CURRENT_LIST_DIR}/vertex.h ${INCLUDE_DIR}"
     XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
     XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
@@ -336,7 +336,7 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
     SOVERSION 1.0.0
-    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp" "${CMAKE_CURRENT_LIST_DIR}/vertex.h" "${INCLUDE_DIR}" 
+    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp ${CMAKE_CURRENT_LIST_DIR}/vertex.h ${INCLUDE_DIR}"
     XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
     XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
 )
