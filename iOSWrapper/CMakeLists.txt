@@ -7,11 +7,12 @@ macro(ADD_FRAMEWORK fwname appname)
     PATHS ${CMAKE_OSX_SYSROOT}/System/Library
     PATH_SUFFIXES Frameworks
     NO_DEFAULT_PATH)
+
     if( ${FRAMEWORK_${fwname}} STREQUAL FRAMEWORK_${fwname}-NOTFOUND)
-        MESSAGE(ERROR ": Framework ${fwname} not found")
+        message(ERROR ": Framework ${fwname} not found")
     else()
-        TARGET_LINK_LIBRARIES(${appname} "${FRAMEWORK_${fwname}}/${fwname}")
-        MESSAGE(STATUS "Framework ${fwname} found at ${FRAMEWORK_${fwname}}")
+        target_link_libraries(${appname} "${FRAMEWORK_${fwname}}/${fwname}")
+        message(STATUS "Framework ${fwname} found at ${FRAMEWORK_${fwname}}")
     endif()
 endmacro(ADD_FRAMEWORK)
 
@@ -101,13 +102,14 @@ set_target_properties(${TEST_NAME} PROPERTIES
 
 # set framework?
 # standard
-add_framework(Foundation ${TEST_NAME})
+# add_framework(Foundation ${TEST_NAME})
 # custom
 add_framework(pcl ${TEST_NAME})
 
 # add libstdc++.6.0.0.tbd(sim only?)
 # target_link_libraries(${TEST_NAME} libstdc++.6.0.0.tbd)
-target_link_libraries(${TEST_NAME} libstdc++.6.0.0.dylib)
+# target_link_libraries(${TEST_NAME} libstdc++.6.0.0.dylib)
+target_link_libraries(${TEST_NAME} libc++.tbd)
 
 xctest_add_test(XCTest.${FRAMEWORK_NAME} ${TEST_NAME})
 endif ()

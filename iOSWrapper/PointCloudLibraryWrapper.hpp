@@ -6,6 +6,10 @@
 
 #include "vertex.h"
 
+// gcc5?
+// https://stackoverflow.com/questions/33394934/converting-std-cxx11string-to-stdstring
+#define _GLIBCXX_USE_CXX11_ABI 0
+
 struct SwiftPointXYZ fcpp(const float **);
 extern "C" struct SwiftPointXYZ fc(const float ** p) {
     return fcpp(p);
