@@ -100,6 +100,10 @@ set_target_properties(${TEST_NAME} PROPERTIES
     XCODE_ATTRIBUTE_FRAMEWORK_SEARCH_PATHS "../../build/CMakeExternals/Install/frameworks-universal"
 )
 
+target_include_directories(${TEST_NAME} PRIVATE
+    ${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/framework-univarsal/pcl.framework
+)
+
 # set framework?
 # standard
 # add_framework(Foundation ${TEST_NAME})
