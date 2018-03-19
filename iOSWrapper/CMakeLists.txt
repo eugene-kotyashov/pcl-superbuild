@@ -102,9 +102,11 @@ xctest_add_test(
     ${TEST_NAME}                # Target name of XCTest bundle
 )
 
+set(FRAMEWORK_DIR "${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal")
+
 # set custom framework path
 set_target_properties(${TEST_NAME} PROPERTIES
-    XCODE_ATTRIBUTE_FRAMEWORK_SEARCH_PATHS "../../build/CMakeExternals/Install/frameworks-universal"
+    XCODE_ATTRIBUTE_FRAMEWORK_SEARCH_PATHS "${FRAMEWORK_DIR}"
 )
 
 # set framework?
@@ -117,9 +119,8 @@ set_target_properties(${TEST_NAME} PROPERTIES
 target_include_directories(${TEST_NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework
 )
-set(FRAMEWORK_DIR "${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal")
 set_target_properties(${TEST_NAME} PROPERTIES
-    COMPILE_FLAGS "-F ${FRAMEWORK_DIR}"
+    COMPILE_FLAGS "-F ${FRAMEWORK_DIR} -framework ${FRAMEWORK_NAME}"
     LINK_FLAGS "-F ${FRAMEWORK_DIR} -framework ${FRAMEWORK_NAME}"
 )
 
