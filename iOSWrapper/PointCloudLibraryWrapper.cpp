@@ -17,10 +17,10 @@ struct SwiftPointXYZ fcpp(const float ** triangle) {
     return curl;
 }
 
-extern "C" struct SwiftPointXYZ fc(const float ** p) 
-{
-    return fcpp(p);
-};
+// extern "C" struct SwiftPointXYZ fc(const float ** p) 
+// {
+//     return fcpp(p);
+// };
 
 struct SwiftPointXYZ fcpp2(float triangle[3][3]) {
 
@@ -33,9 +33,9 @@ struct SwiftPointXYZ fcpp2(float triangle[3][3]) {
     return curl;
 };
 
-extern "C" struct SwiftPointXYZ fc2(float t[3][3]) {
-    return fcpp2(t);
-};
+// extern "C" struct SwiftPointXYZ fc2(float t[3][3]) {
+//     return fcpp2(t);
+// };
 
 PointCloudLibraryWrapper::PointCloudLibraryWrapper()
 { 

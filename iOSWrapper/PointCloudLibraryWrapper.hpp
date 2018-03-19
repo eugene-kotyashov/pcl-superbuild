@@ -11,23 +11,23 @@
 #define _GLIBCXX_USE_CXX11_ABI 0
 
 struct SwiftPointXYZ fcpp(const float **);
-#ifdef __cplusplus
-extern "C" {
-#endif
-    struct SwiftPointXYZ fc(const float ** p);
-#ifdef __cplusplus
-}
-#endif
+// #ifdef __cplusplus
+// extern "C" {
+// #endif
+//     struct SwiftPointXYZ fc(const float ** p);
+// #ifdef __cplusplus
+// }
+// #endif
 
 struct SwiftPointXYZ fcpp2(float t[3][3]);
 // extern "C" 
-#ifdef __cplusplus
-extern "C" {
-#endif
-    struct SwiftPointXYZ fc2(float t[3][3]);
-#ifdef __cplusplus
-}
-#endif
+// #ifdef __cplusplus
+// extern "C" {
+// #endif
+//     struct SwiftPointXYZ fc2(float t[3][3]);
+// #ifdef __cplusplus
+// }
+// #endif
 
 // parameter is pointer to array of array 3 of const float
 // NG : 
