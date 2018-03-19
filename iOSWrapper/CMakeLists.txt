@@ -107,14 +107,14 @@ set_target_properties(${TEST_NAME} PROPERTIES
 # custom
 # add_framework(${FRAMEWORK_NAME} ${TEST_NAME})
 # target_link_libraries(${TEST_NAME} "${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework/pcl")
-# target_include_directories(${TEST_NAME} PRIVATE
-#     ${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework
-# )
+target_include_directories(${TEST_NAME} PRIVATE
+    ${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework
+)
 set(FRAMEWORK_DIR "${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal")
 set_target_properties(${TEST_NAME} PROPERTIES
     COMPILE_FLAGS "-F ${FRAMEWORK_DIR}"
     LINK_FLAGS "-F ${FRAMEWORK_DIR} -framework ${FRAMEWORK_NAME}"
-    )
+)
 
 # add libstdc++.6.0.0.tbd(sim only?)
 # target_link_libraries(${TEST_NAME} "libstdc++.6.0.0.tbd")
