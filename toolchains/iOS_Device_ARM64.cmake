@@ -186,3 +186,5 @@ macro(find_host_package)
   set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 endmacro(find_host_package)
 
+
+list(APPEND CMAKE_FIND_ROOT_PATH /Users/T_O/pcl-superbuild/build/CMakeExternals/Install/boost-ios-device-arm64)

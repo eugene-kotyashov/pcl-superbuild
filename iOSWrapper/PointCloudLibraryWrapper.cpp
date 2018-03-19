@@ -17,6 +17,11 @@ struct SwiftPointXYZ fcpp(const float ** triangle) {
     return curl;
 }
 
+extern "C" struct SwiftPointXYZ fc(const float ** p) 
+{
+    return fcpp(p);
+};
+
 struct SwiftPointXYZ fcpp2(float triangle[3][3]) {
 
     SwiftPointXYZ curl;
@@ -26,6 +31,10 @@ struct SwiftPointXYZ fcpp2(float triangle[3][3]) {
     curl.x = (triangle[1][1] - triangle[0][1])*(triangle[2][2]-triangle[0][2]) - (triangle[1][2] - triangle[0][2])*(triangle[2][1]-triangle[0][1]);
 
     return curl;
+};
+
+extern "C" struct SwiftPointXYZ fc2(float t[3][3]) {
+    return fcpp2(t);
 };
 
 PointCloudLibraryWrapper::PointCloudLibraryWrapper()
