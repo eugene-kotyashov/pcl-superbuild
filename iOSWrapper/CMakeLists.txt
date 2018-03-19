@@ -116,12 +116,16 @@ set_target_properties(${TEST_NAME} PROPERTIES
     LINK_FLAGS "-F ${FRAMEWORK_DIR} -framework ${FRAMEWORK_NAME}"
 )
 
-# add libstdc++.6.0.0.tbd(sim only?)
-# target_link_libraries(${TEST_NAME} "libstdc++.6.0.0.tbd")
-# target_link_libraries(${TEST_NAME} "libstdc++.6.0.0.dylib")
-target_link_libraries(${TEST_NAME} "libc++")
+# target_link_libraries(${TEST_NAME} PRIVATE "-framework ${FRAMEWORK_NAME}")
 
-xctest_add_test(XCTest.${FRAMEWORK_NAME} ${TEST_NAME})
+# add libstdc++.6.0.0.tbd(sim only?)
+# target_link_libraries(${TEST_NAME} "libstdc++.6.tbd")
+# target_link_libraries(${TEST_NAME} "libstdc++.6.0.9.tbd")
+# target_link_libraries(${TEST_NAME} "libstdc++.6.dylib")
+# target_link_libraries(${TEST_NAME} "libstdc++.6.0.9.dylib")
+# target_link_libraries(${TEST_NAME} "libc++.dylib")
+
+# xctest_add_test(XCTest.${FRAMEWORK_NAME} ${TEST_NAME})
 endif ()
 
 # FolderPath Check
