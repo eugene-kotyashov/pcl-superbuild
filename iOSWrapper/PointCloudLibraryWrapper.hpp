@@ -14,10 +14,7 @@ struct SwiftPointXYZ fcpp(const float **);
 #ifdef __cplusplus
 extern "C" {
 #endif
-    struct SwiftPointXYZ fc(const float ** p) 
-    {
-        return fcpp(p);
-    };
+    struct SwiftPointXYZ fc(const float ** p);
 #ifdef __cplusplus
 }
 #endif
@@ -27,9 +24,7 @@ struct SwiftPointXYZ fcpp2(float t[3][3]);
 #ifdef __cplusplus
 extern "C" {
 #endif
-    struct SwiftPointXYZ fc2(float t[3][3]) {
-        return fcpp2(t);
-    };
+    struct SwiftPointXYZ fc2(float t[3][3]);
 #ifdef __cplusplus
 }
 #endif
@@ -41,7 +36,7 @@ extern "C" {
 //     return fcpp2(*t);
 // }
 
-// ‚±‚Ìƒtƒ@ƒCƒ‹“à(cppŠÜ‚Ş)‚Å‚Ì namespace ‚Ìg—p‚ÍNG
+// ï¿½ï¿½ï¿½Ìƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½(cppï¿½Ü‚ï¿½)ï¿½Å‚ï¿½ namespace ï¿½Ìgï¿½pï¿½ï¿½NG
 class PointCloudLibraryWrapper
 {
 public:
@@ -66,22 +61,22 @@ public:
     struct SwiftPointXYZRGBA* GetPointCloudData();
     // struct SwiftPointXYZRGBA* GetPointCloudData() 
     // {
-    //     // float** ‚©‚ç‚Ì Convert ‚Å‘Î‰‚·‚éH
+    //     // float** ï¿½ï¿½ï¿½ï¿½ï¿½ Convert ï¿½Å‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½H
     //     return this->pointdata;
     // }
 
     // struct SwiftPointXYZ* GetPointCloudData()
     // {
-    //     // float** ‚©‚ç‚Ì Convert ‚Å‘Î‰‚·‚éH
+    //     // float** ï¿½ï¿½ï¿½ï¿½ï¿½ Convert ï¿½Å‘Î‰ï¿½ï¿½ï¿½ï¿½ï¿½H
     //     return this->pointdata;
     // }
 
     int GetPointCloudCount() { return this->pointcount; }
     int GetPointCloudType() { return this->pointtype; }
 private:
-    // ‰ÁH‘Oƒf[ƒ^
+    // ï¿½ï¿½ï¿½Hï¿½Oï¿½fï¿½[ï¿½^
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud;
-    // ‰ÁHŒãƒf[ƒ^
+    // ï¿½ï¿½ï¿½Hï¿½ï¿½fï¿½[ï¿½^
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud_filtered;
     // PointCloudLibraryConversions* conversion;
     // float** pointdata;
