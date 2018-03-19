@@ -4,7 +4,8 @@
 // Framework headers
 // Including Frameworks in Your Project(Apple)
 // https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPFrameworks/Tasks/IncludingFrameworks.html
-#include <pcl/PointCloudLibraryWrapper.hpp>
+// #include <pcl/PointCloudLibraryWrapper.hpp>
+#include "PointCloudLibraryWrapper.hpp"
 
 // namespace use ng
 // use wrapper class private

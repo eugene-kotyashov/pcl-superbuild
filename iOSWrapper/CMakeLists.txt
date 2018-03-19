@@ -117,10 +117,17 @@ set_target_properties(${TEST_NAME} PROPERTIES
 # target_link_libraries(${TEST_NAME} 
 # "${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework/pcl")
 target_include_directories(${TEST_NAME} PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework
+    ${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework/Headers
+    ${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework/Headers/boost-ios-simulator/include
+    ${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework/Headers/flann-ios-simulator/include
+    ${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework/Headers/qhull-ios-simulator/include
+    ${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework/Headers/qhull-ios-simulator/include/libqhull
+    ${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework/Headers/qhull-ios-simulator/include/libqhull_r
+    ${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework/Headers/qhull-ios-simulator/include/libqhullcpp
+    ${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework/Headers/pcl-ios-simulator/include/pcl-1.8
 )
 set_target_properties(${TEST_NAME} PROPERTIES
-    COMPILE_FLAGS "-F ${FRAMEWORK_DIR} -framework ${FRAMEWORK_NAME}"
+    COMPILE_FLAGS "-F ${FRAMEWORK_DIR}"
     LINK_FLAGS "-F ${FRAMEWORK_DIR} -framework ${FRAMEWORK_NAME}"
 )
 
