@@ -85,7 +85,7 @@ set(TEST_SOURCE
 # https://github.com/ruslo/polly/issues/149
 # add_subdirectory(tests)
 xctest_add_bundle(
-    ${TEST_NAME}
+    ${TEST_NAME} ${FRAMEWORK_NAME}
     ${TEST_SOURCE}
 )
 
@@ -125,7 +125,8 @@ set_target_properties(${TEST_NAME} PROPERTIES
 
 # target_link_libraries(${TEST_NAME} PRIVATE "-framework ${FRAMEWORK_NAME}")
 
-# add libstdc++.6.0.0.tbd(sim only?)
+# add libstdc++.6.dylib(sim only?)
+# https://stackoverflow.com/questions/12920891/std-linker-error-with-apple-llvm-4-1
 # target_link_libraries(${TEST_NAME} "libstdc++.6.tbd")
 # target_link_libraries(${TEST_NAME} "libstdc++.6.0.9.tbd")
 # target_link_libraries(${TEST_NAME} "libstdc++.6.dylib")
