@@ -51,6 +51,9 @@ include(BundleUtilities)
 include(FindXCTest)
 
 message(STATUS XCTestFound:${XCTest_FOUND})
+message(STATUS XCTest_EXECUTABLE:${XCTest_EXECUTABLE})
+message(STATUS XCTest_INCLUDE_DIRS:${XCTest_INCLUDE_DIRS})
+message(STATUS XCTest_LIBRARIES:${XCTest_LIBRARIES})
 
 # set Wrapper Code
 set(LIBRARY_SOURCE
@@ -70,29 +73,33 @@ add_library(
 # XCTest for Framework
 
 if (IOS_TESTS)
-# set(PRODUCT_NAME testa)
-# set(EXECUTABLE_NAME testa)
-# set(APP_IDENTIFIER com.example.testa)
-# CONFIGURE_FILE("${CMAKE_CURRENT_LIST_DIR}/Info.plist.in" "${CMAKE_CURRENT_LIST_DIR}/Info.plist") 
-# set_target_properties(testa PROPERTIES 
-#     MACOSX_BUNDLE YES 
-#     MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_LIST_DIR}/Info.plist" 
-#     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer" 
-# )
-# # set_target_properties(testa PROPERTIES SHARED_LIBRARY_FLAGS $<TARGET_FILE:TF>) 
-# target_link_libraries(testa TF) 
+
+set(TEST_SOURCE
+    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryInterface.mm
+    ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryInterface.h
+    ${CMAKE_CURRENT_LIST_DIR}/tests/Tests.m
+    ${CMAKE_CURRENT_LIST_DIR}/tests/tests.plist
+)
 
 # Simulator only?
 # https://github.com/ruslo/polly/issues/149
 # add_subdirectory(tests)
-xctest_add_bundle(${TEST_NAME} ${FRAMEWORK_NAME} 
-        PointCloudLibraryInterface.mm
-        PointCloudLibraryInterface.h
-        tests/Tests.m
-        tests/tests.plist)
+xctest_add_bundle(
+    ${TEST_NAME}
+    ${TEST_SOURCE}
+)
 
 set_target_properties(${TEST_NAME} PROPERTIES 
     MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/tests/tests.plist 
+)
+
+target_include_directories(${TEST_NAME} PUBLIC
+        "${CMAKE_SOURCE_DIR}"
+)
+
+xctest_add_test(
+    XCTest.${FRAMEWORK_NAME}    # Test name
+    ${TEST_NAME}                # Target name of XCTest bundle
 )
 
 # set custom framework path
@@ -100,13 +107,13 @@ set_target_properties(${TEST_NAME} PROPERTIES
     XCODE_ATTRIBUTE_FRAMEWORK_SEARCH_PATHS "../../build/CMakeExternals/Install/frameworks-universal"
 )
 
-
 # set framework?
 # standard
 # add_framework(Foundation ${TEST_NAME})
 # custom
 # add_framework(${FRAMEWORK_NAME} ${TEST_NAME})
-# target_link_libraries(${TEST_NAME} "${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework/pcl")
+# target_link_libraries(${TEST_NAME} 
+# "${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework/pcl")
 target_include_directories(${TEST_NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../build/CMakeExternals/Install/frameworks-universal/pcl.framework
 )
@@ -125,7 +132,6 @@ set_target_properties(${TEST_NAME} PROPERTIES
 # target_link_libraries(${TEST_NAME} "libstdc++.6.0.9.dylib")
 # target_link_libraries(${TEST_NAME} "libc++.dylib")
 
-# xctest_add_test(XCTest.${FRAMEWORK_NAME} ${TEST_NAME})
 endif ()
 
 # FolderPath Check

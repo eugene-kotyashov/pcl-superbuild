@@ -239,10 +239,9 @@ macro(fetch_pcl)
     SOURCE_DIR ${source_prefix}/pcl
     GIT_REPOSITORY git://github.com/PointCloudLibrary/pcl.git
     GIT_TAG pcl-1.8.1
-    # GIT_TAG pcl-1.8.0
     # Test
     # GIT_REPOSITORY git://github.com/Sirokujira/pcl.git
-    # GIT_TAG Branch_pcl-1.7.2
+    # GIT_TAG Branch_pcl-1.8.1
     # GIT_REPOSITORY git://github.com/patmarion/PCL.git
     # GIT_TAG origin/android-tag
     # GIT_TAG origin/master
