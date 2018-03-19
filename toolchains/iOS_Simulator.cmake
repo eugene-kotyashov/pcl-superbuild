@@ -27,8 +27,8 @@ include (CMakeForceCompiler)
 # clang
 # set(CMAKE_C_COMPILER /usr/bin/clang)
 # set(CMAKE_CXX_COMPILER /usr/bin/clang++)
-set(CMAKE_C_COMPILER clang)
-set(CMAKE_CXX_COMPILER clang++)
+set(CMAKE_C_COMPILER /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang)
+set(CMAKE_CXX_COMPILER /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++)
 set(CMAKE_AR ar CACHE FILEPATH "" FORCE)
 
 # Skip the platform compiler checks for cross compiling
@@ -52,11 +52,10 @@ set (CMAKE_CXX_OSX_CURRENT_VERSION_FLAG "${CMAKE_C_OSX_CURRENT_VERSION_FLAG}")
 # set (CMAKE_CXX_FLAGS_INIT "")
 # gcc
 # set (CMAKE_C_FLAGS_INIT "-std=c11")
-# set (CMAKE_CXX_FLAGS_INIT "-fPIC -std=c++11 -stdlib=libstdc++")
+# set (CMAKE_CXX_FLAGS_INIT "-std=c++11 -stdlib=libstdc++")
 # clang
-# option ng libc++
 set (CMAKE_C_FLAGS_INIT "-std=c11")
-set (CMAKE_CXX_FLAGS_INIT "-fPIC -std=c++11 -stdlib=libc++")
+set (CMAKE_CXX_FLAGS_INIT "-std=c++11 -stdlib=libc++")
 set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS_INIT} ${CMAKE_C_FLAGS}")
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_INIT} ${CMAKE_CXX_FLAGS}")
 
