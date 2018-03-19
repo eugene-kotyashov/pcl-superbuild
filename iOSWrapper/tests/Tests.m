@@ -24,14 +24,16 @@
     PointCloudLibraryInterface* i = [[PointCloudLibraryInterface alloc] init];
     XCTAssert(i);
 
-    i.callLoadResourceFile;
+    // i.callLoadResourceFile;
+    [i callLoadResourceFile];
 }
 
 - (void)testFilterAxis {
     PointCloudLibraryInterface* i = [[PointCloudLibraryInterface alloc] init];
     XCTAssert(i);
 
-    i.callFiltering;
+    // i.callFiltering;
+    [i callFiltering];
 }
 
 - (void)GetPointCloudData {
