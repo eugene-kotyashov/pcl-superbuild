@@ -9,48 +9,6 @@
 
 // namespace use ng
 // use wrapper class private
-/*
-// XYZ
-@interface NSValue (PointXYZ)
-+ (NSValue*)valueWithCGPoint:(PointXYZ)point;
-- (PointXYZ)cgpointValue;
-@end
-
-@implementation NSValue (PointXYZ)
-+ (NSValue*)valueWithCGPoint:(PointXYZ)point
-{
-  return [NSValue value:&point withObjCType:@encode(PointXYZ)];
-}
-// XYZRGB
-@interface NSValue (PointXYZRGB)
-+ (NSValue*)valueWithCGPoint:(PointXYZRGB)point;
-- (PointXYZRGB)cgpointValue;
-@end
-@implementation NSValue (PointXYZRGB)
-+ (NSValue*)valueWithCGPoint:(PointXYZRGB)point
-{
-  return [NSValue value:&point withObjCType:@encode(PointXYZRGB)];
-}
-// XYZRGBA
-@interface NSValue (PointXYZRGBA)
-+ (NSValue*)valueWithCGPoint:(PointXYZRGBA)point;
-- (PointXYZRGBA)cgpointValue;
-@end
-@implementation NSValue (PointXYZRGBA)
-+ (NSValue*)valueWithCGPoint:(PointXYZRGBA)point
-{
-  return [NSValue value:&point withObjCType:@encode(PointXYZRGBA)];
-}
-@end
-// PointXYZ point = { 0.0f, 1.0f, 0.0f };
-// // NSValue ��
-// NSValue val = [NSValue valueWithCGPoint:point];
-// // PointXYZ ��
-// point = [val cgpointValue];
-// // NSArray �ɒǉ�
-// NSArrray *array = [NSArray arrayWithObects:[NSValue valueWithCGPoint:point], nil];
-*/
-
 
 // @interface PointCloudLibraryInterface ()
 //     PointCloudLibraryWrapper* myPointCloudLibraryWrapper;
@@ -87,12 +45,6 @@
 - (void) callLoad : (NSString *)argString {
     std::string strDst = [argString UTF8String];
     myPointCloudLibraryWrapper->Load(strDst.c_str());
-
-    // TestCode
-    // Load Resource Files
-    // NSString *modelFileName = [[NSBundle mainBundle] pathForResource:@"pointcloud" ofType:@"pcd"]; 
-    // std::string modelFileNameCString = [modelFileName UTF8String]; 
-    // myPointCloudLibraryWrapper->Load(strDst);
 
     self.isLoad = YES; 
 }
