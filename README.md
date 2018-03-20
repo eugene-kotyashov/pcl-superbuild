@@ -16,26 +16,27 @@ pcl use libraries
 
 [qhull(2015.2)](http://www.qhull.org/)
 
+[PCL API/ABI Tracker](https://abi-laboratory.pro/tracker/timeline/pcl/)
 
 Requirements
 ============
 
     Android
-    * Windows/Linux
-    * Android NDK, Revision 15c/16b
+    * Windows/Linux(Test Windows 7?, Ubuntu 14.04/16.04?)
+    * Android NDK, Revision 15c/16b(Test 16b)
     * CMake >=3.6.x(Test 3.9.2/3.10.1)
 
     iOS
-    * MacOSX ??.?
-    * Xcode 8.3, 9.0(?)
+    * MacOSX ??.?(Test 10.x)
+    * Xcode 8.3, 9.0(?)(Test 9.0)
     * CMake >=3.7.x(Test 3.9.4)
 
 
 To Build 
 ========
 
-Building for Android(Ubuntu 14.04)
-==================================
+Building for Android(Ubuntu 14.04/16.04)
+========================================
 
 ```Sample:Bash
 $ wget -qO- https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip -O /tmp/android-ndk-r16b-linux-x86_64.zip
@@ -74,7 +75,7 @@ $ export TOOLCHAIN_NAME="aarch64-linux-android-4.9"
 $ export TARGET_COMPILER="gcc"
 ```
 
-Building for iOS(Mac OSX ??.?)
+Building for iOS(Mac OSX 10.x)
 ==============================
 
 ```Sample:Bash

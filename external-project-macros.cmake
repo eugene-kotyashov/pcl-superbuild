@@ -352,18 +352,18 @@ macro(crosscompile_pcl tag)
       -DBoost_INCLUDE_DIR:PATH=${install_prefix}/boost-${tag}/include
       -DBoost_LIBRARY_DIRS:PATH=${install_prefix}/boost-${tag}/lib
       # http://pointclouds.org/documentation/tutorials/building_pcl.php
-      -DBoost_DATE_TIME_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_date_time.a
-      -DBoost_DATE_TIME_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_date_time-gd.a
-      -DBoost_DATE_TIME_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_date_time.a
-      -DBoost_FILESYSTEM_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_filesystem.a
-      -DBoost_FILESYSTEM_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_filesystem-gd.a
-      -DBoost_FILESYSTEM_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_filesystem.a
-      -DBoost_SYSTEM_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system.so
-      -DBoost_SYSTEM_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system-gd.so
-      -DBoost_SYSTEM_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system.so
-      -DBoost_THREAD_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread.so
-      -DBoost_THREAD_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread-gd.so
-      -DBoost_THREAD_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread.so
+      # -DBoost_DATE_TIME_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_date_time.a
+      # -DBoost_DATE_TIME_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_date_time-gd.a
+      # -DBoost_DATE_TIME_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_date_time.a
+      # -DBoost_FILESYSTEM_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_filesystem.a
+      # -DBoost_FILESYSTEM_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_filesystem-gd.a
+      # -DBoost_FILESYSTEM_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_filesystem.a
+      # -DBoost_SYSTEM_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system.so
+      # -DBoost_SYSTEM_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system-gd.so
+      # -DBoost_SYSTEM_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_system.so
+      # -DBoost_THREAD_LIBRARY:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread.so
+      # -DBoost_THREAD_LIBRARY_DEBUG:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread-gd.so
+      # -DBoost_THREAD_LIBRARY_RELEASE:FILEPATH=${install_prefix}/boost-${tag}/lib/libboost_thread.so
       -C ${try_run_results_file}
   )
 
