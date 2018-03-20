@@ -141,6 +141,8 @@ set_target_properties(${TEST_NAME} PROPERTIES
 # target_link_libraries(${TEST_NAME} "libstdc++.6.0.9.dylib")
 # target_link_libraries(${TEST_NAME} "libc++.dylib")
 
+target_link_libraries(${TEST_NAME} "${CMAKE_CURRENT_LIST_DIR}/boost/lib/libboost.a")
+
 endif ()
 
 # FolderPath Check
