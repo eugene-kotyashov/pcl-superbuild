@@ -21,6 +21,9 @@ if(POLICY CMP0054)
 endif()
 # end
 
+# use elseif
+cmake_policy(GET CMP0054 NEW)
+
 project(superbuild NONE)
 
 include(setup-superbuild.cmake)
