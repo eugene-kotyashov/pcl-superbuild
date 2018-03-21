@@ -6,7 +6,7 @@ set (APPLE True)
 set (IOS True)
 
 # Simulation Settings
-set(IOS_PLATFORM "SIMULATOR")
+set(IOS_PLATFORM "SIMULATOR32")
 set(ENABLE_BITCODE 0)
 
 # Required as of cmake 2.8.10
@@ -95,7 +95,7 @@ if (IOS_PLATFORM STREQUAL "OS")
 
     # This causes the installers to properly locate the output libraries
     set (CMAKE_XCODE_EFFECTIVE_PLATFORMS "-iphoneos")
-elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
+elseif (IOS_PLATFORM STREQUAL "SIMULATOR32")
     set (SIMULATOR true)
     set (IOS_PLATFORM_LOCATION "iPhoneSimulator.platform")
 
@@ -147,7 +147,7 @@ if (IOS_PLATFORM STREQUAL "OS")
     # set (IOS_ARCH armv7 armv7s arm64)
     # qhull ok
     set (IOS_ARCH arm64)
-elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
+elseif (IOS_PLATFORM STREQUAL "SIMULATOR32")
     set (IOS_ARCH i386)
 elseif (IOS_PLATFORM STREQUAL "SIMULATOR64")
     set (IOS_ARCH x86_64)
