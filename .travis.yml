@@ -128,13 +128,13 @@ matrix:
        env: TOOLCHAIN_NAME="x86-linux-android-clang3.6"
        env: TARGET_COMPILER="clang"
 
-     # - os: osx
-     #   osx_image: xcode8.3
-     #   language: objective-c
-     #   compiler: clang
-     #   # env: IOS_SDK_VERSION="iPhoneOS10.3.sdk"
-     #   # env: TARGET_COMPILER="clang"
-     #   xcode_sdk: iOS 10.3
+     - os: osx
+       osx_image: xcode8.3
+       language: objective-c
+       compiler: clang
+       # env: IOS_SDK_VERSION="iPhoneOS10.3.sdk"
+       # env: TARGET_COMPILER="clang"
+       xcode_sdk: iOS 10.3
 
      - os: osx
        osx_image: xcode9
@@ -221,16 +221,18 @@ before_install:
 
       mkdir build && cd build;
 
-      cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL="ON" -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_DEVICE_ARM64:BOOL="ON" -DBUILD_IOS_DEVICE_ARMV7:BOOL="OFF" -DBUILD_IOS_DEVICE_ARMV7S:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="ON" -DBUILD_IOS_SIMULATOR_I386:BOOL="ON" ../;
+      cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL="ON" -DBUILD_ANDROID:BOOL="OFF" -DBUILD_IOS_DEVICE:BOOL="OFF" -DBUILD_IOS_DEVICE_ARM64:BOOL="ON" -DBUILD_IOS_DEVICE_ARMV7:BOOL="OFF" -DBUILD_IOS_DEVICE_ARMV7S:BOOL="OFF" -DBUILD_IOS_SIMULATOR:BOOL="ON" -DBUILD_IOS_SIMULATOR_X86_64:BOOL="OFF" -DBUILD_IOS_SIMULATOR_I386:BOOL="ON" ../;
 
       travis_wait 50 cmake --build . --config Release;
 
       cd ../iOSWrapper;
       bash build-ios.sh;
-      bash build-sim.sh;
       bash build-sim64.sh;
+      bash build-sim.sh;
+
       cd ../build;
       bash ../makeFramework.sh universal;
+
       cd ../iOSWrapper;
       bash build-test.sh;
     fi
