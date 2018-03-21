@@ -308,7 +308,8 @@ make_pcl_framework_universal ()
   # device
   libtool -static -o $pcl_framework/pcl_device $pcl_device_arm64_libs $boost_arm64_device_libs $flann_arm64_device_libs $qhull_arm64_device_libs $pcl_device_armv7_libs $boost_armv7_device_libs $flann_armv7_device_libs $qhull_armv7_device_libs $pcl_device_armv7s_libs $boost_armv7s_device_libs $flann_armv7s_device_libs $qhull_armv7s_device_libs $current_pcl_ios_device_framework/pcl
   # simulator
-  libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs $qhull_sim_libs $pcl_sim_i386_libs $boost_sim_i386_libs $flann_sim_i386_libs $qhull_sim_i386_libs $current_pcl_ios_sim_framework/pcl $current_pcl_ios_sim_i386_framework/pcl
+  # libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs $qhull_sim_libs $pcl_sim_i386_libs $boost_sim_i386_libs $flann_sim_i386_libs $qhull_sim_i386_libs $current_pcl_ios_sim_framework/pcl $current_pcl_ios_sim_i386_framework/pcl
+  libtool -static -o $pcl_framework/pcl_sim $pcl_sim_libs $boost_sim_libs $flann_sim_libs $qhull_sim_libs $pcl_sim_i386_libs $boost_sim_i386_libs $flann_sim_i386_libs $qhull_sim_i386_libs $current_pcl_ios_sim_framework/pcl
 
   # combine Xcode generator frameworks and external build libraries
   lipo -create -output $pcl_framework/pcl $pcl_framework/pcl_device $pcl_framework/pcl_sim

@@ -19,12 +19,6 @@ macro(ADD_FRAMEWORK fwname appname)
     endif()
 endmacro(ADD_FRAMEWORK)
 
-# Based : https://github.com/Kitware/CMake/blob/master/Tests/XCTest/CMakeLists.txt
-project(XCTest CXX C)
-enable_testing()
-
-find_package(XCTest REQUIRED)
-
 # Framework/Test Parameter Settings
 # start
 set(FRAMEWORK_NAME pcl)                                       # <== Set to your framework's name
@@ -51,12 +45,6 @@ set(MACOSX_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET})
 # Framework
 project(${FRAMEWORK_NAME})
 include(BundleUtilities)
-include(FindXCTest)
-
-message(STATUS XCTestFound:${XCTest_FOUND})
-message(STATUS XCTest_EXECUTABLE:${XCTest_EXECUTABLE})
-message(STATUS XCTest_INCLUDE_DIRS:${XCTest_INCLUDE_DIRS})
-message(STATUS XCTest_LIBRARIES:${XCTest_LIBRARIES})
 
 # set Wrapper Code
 set(LIBRARY_SOURCE
@@ -76,6 +64,18 @@ add_library(
 # XCTest for Framework
 
 if (IOS_TESTS)
+
+# Based : https://github.com/Kitware/CMake/blob/master/Tests/XCTest/CMakeLists.txt
+project(XCTest CXX C)
+enable_testing()
+
+find_package(XCTest REQUIRED)
+include(FindXCTest)
+
+message(STATUS XCTestFound:${XCTest_FOUND})
+message(STATUS XCTest_EXECUTABLE:${XCTest_EXECUTABLE})
+message(STATUS XCTest_INCLUDE_DIRS:${XCTest_INCLUDE_DIRS})
+message(STATUS XCTest_LIBRARIES:${XCTest_LIBRARIES})
 
 set(TEST_SOURCE
     ${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryInterface.mm
@@ -299,6 +299,7 @@ elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
         ../build/CMakeExternals/Install/qhull-ios-simulator-i386/include/libqhull_r
         ../build/CMakeExternals/Install/qhull-ios-simulator-i386/include/libqhullcpp
         ../build/CMakeExternals/Install/pcl-ios-simulator-i386/include/pcl-1.8
+    )
 elseif (IOS_PLATFORM STREQUAL "SIMULATOR64")
     set(INCLUDE_DIR
         ../build/CMakeExternals/Install/boost-ios-simulator/include
@@ -372,7 +373,7 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
     SOVERSION 1.0.0
-    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp ${CMAKE_CURRENT_LIST_DIR}/vertex.h ${INCLUDE_DIR}"
+    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp;${CMAKE_CURRENT_LIST_DIR}/vertex.h;${INCLUDE_DIR}"
     XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
     XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
@@ -388,7 +389,7 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
     SOVERSION 1.0.0
-    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp ${CMAKE_CURRENT_LIST_DIR}/vertex.h ${INCLUDE_DIR}"
+    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp;${CMAKE_CURRENT_LIST_DIR}/vertex.h;${INCLUDE_DIR}"
     XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
     XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
 )
@@ -402,7 +403,7 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
     SOVERSION 1.0.0
-    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp ${CMAKE_CURRENT_LIST_DIR}/vertex.h ${INCLUDE_DIR}"
+    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp;${CMAKE_CURRENT_LIST_DIR}/vertex.h;${INCLUDE_DIR}"
     XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
     XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
 )
