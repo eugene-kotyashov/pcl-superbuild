@@ -42,6 +42,14 @@ if (BUILD_IOS_DEVICE_ARMV7S)
  list(APPEND tags ios-device-armv7s)
 endif()
 
+if (BUILD_IOS_SIMULATOR_X86_64)
+ list(APPEND tags ios-simulator-x86-64)
+endif()
+
+if (BUILD_IOS_SIMULATOR_I386)
+ list(APPEND tags ios-simulator-i386)
+endif()
+
 foreach(tag ${tags})
   # Build overTime
   # crosscompile_vtk(${tag})
