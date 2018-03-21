@@ -1,5 +1,8 @@
 cmake_minimum_required (VERSION 3.7)
 
+# use elseif
+cmake_policy(GET CMP0054 NEW)
+
 # https://stackoverflow.com/questions/12547624/cant-link-macos-frameworks-with-cmake
 macro(ADD_FRAMEWORK fwname appname)
     find_library(FRAMEWORK_${fwname}
@@ -162,6 +165,7 @@ message(STATUS "CMAKE_BINARY_DIR : ${CMAKE_BINARY_DIR}")
 file(GLOB_RECURSE boost_includefiles "../build/CMakeExternals/Install/boost-ios-device-arm64/include/*.h*")
 file(GLOB_RECURSE boost_device_libraryfiles "../build/CMakeExternals/Install/boost-ios-device-arm64/lib/*.a")
 file(GLOB_RECURSE boost_simulation_libraryfiles "../build/CMakeExternals/Install/boost-ios-simulator/lib/*.a")
+file(GLOB_RECURSE boost_simulation_i386_libraryfiles "../build/CMakeExternals/Install/boost-ios-simulator-i386/lib/*.a")
 
 # message(STATUS "boost(include)         : ${boost_includefiles}")
 # message(STATUS "boost(device - lib)    : ${boost_device_libraryfiles}")
@@ -194,6 +198,7 @@ file(GLOB_RECURSE eigen_unsupported_includefiles "../build/CMakeExternals/Instal
 file(GLOB_RECURSE flann_includefiles "../build/CMakeExternals/Install/flann-ios-device-arm64/include/flann/*.h*")
 file(GLOB_RECURSE flann_device_libraryfiles "../build/CMakeExternals/Install/flann-ios-device-arm64/lib/*.a")
 file(GLOB_RECURSE flann_simulation_libraryfiles "../build/CMakeExternals/Install/flann-ios-simulator/lib/*.a")
+file(GLOB_RECURSE flann_simulation_i386_libraryfiles "../build/CMakeExternals/Install/flann-ios-simulator-i386/lib/*.a")
 
 # message(STATUS "flann(include)         : ${flann_includefiles}")
 # message(STATUS "flann(device - lib)    : ${flann_device_libraryfiles}")
@@ -217,6 +222,7 @@ file(GLOB_RECURSE flann_simulation_libraryfiles "../build/CMakeExternals/Install
 file(GLOB_RECURSE qhull_includefiles "../build/CMakeExternals/Install/qhull-ios-device-arm64/*.h*")
 file(GLOB_RECURSE qhull_device_libraryfiles "../build/CMakeExternals/Install/qhull-ios-device-arm64/*.a")
 file(GLOB_RECURSE qhull_simulation_libraryfiles "../build/CMakeExternals/Install/qhull-ios-simulator/*.a")
+file(GLOB_RECURSE qhull_simulation_i386_libraryfiles "../build/CMakeExternals/Install/qhull-ios-simulator-i386/*.a")
 
 # message(STATUS "qhull(include)         : ${qhull_includefiles}")
 # message(STATUS "qhull(device - lib)    : ${qhull_device_libraryfiles}")
@@ -242,6 +248,7 @@ file(GLOB_RECURSE pcl_device_libraryfiles "../build/CMakeExternals/Install/pcl-i
 # file(GLOB_RECURSE pcl_device_libraryfiles "../build/CMakeExternals/Install/pcl-ios-device-armv7/lib/*.a")
 # file(GLOB_RECURSE pcl_device_libraryfiles "../build/CMakeExternals/Install/pcl-ios-device-armv7s/lib/*.a")
 file(GLOB_RECURSE pcl_simulation_libraryfiles "../build/CMakeExternals/Install/pcl-ios-simulator/lib/*.a")
+file(GLOB_RECURSE pcl_simulation_i386_libraryfiles "../build/CMakeExternals/Install/pcl-ios-simulator-i386/lib/*.a")
 
 # message(STATUS "pcl(include)         : ${pcl_includefiles}")
 # message(STATUS "pcl(device - lib)    : ${pcl_device_libraryfiles}")
@@ -283,7 +290,15 @@ if (IOS_PLATFORM STREQUAL "OS")
         ../build/CMakeExternals/Install/qhull-ios-device-arm64/include/libqhullcpp
         ../build/CMakeExternals/Install/pcl-ios-device-arm64/include/pcl-1.8
     )
-# elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
+elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
+    set(INCLUDE_DIR
+        ../build/CMakeExternals/Install/boost-ios-simulator-i386/include
+        ../build/CMakeExternals/Install/flann-ios-simulator-i386/include
+        ../build/CMakeExternals/Install/qhull-ios-simulator-i386/include
+        ../build/CMakeExternals/Install/qhull-ios-simulator-i386/include/libqhull
+        ../build/CMakeExternals/Install/qhull-ios-simulator-i386/include/libqhull_r
+        ../build/CMakeExternals/Install/qhull-ios-simulator-i386/include/libqhullcpp
+        ../build/CMakeExternals/Install/pcl-ios-simulator-i386/include/pcl-1.8
 elseif (IOS_PLATFORM STREQUAL "SIMULATOR64")
     set(INCLUDE_DIR
         ../build/CMakeExternals/Install/boost-ios-simulator/include
@@ -308,7 +323,13 @@ if (IOS_PLATFORM STREQUAL "OS")
         ${qhull_device_libraryfiles}
         ${pcl_device_libraryfiles}
     )
-# elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
+elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
+    target_link_libraries(${FRAMEWORK_NAME} 
+        ${boost_simulation_i386_libraryfiles}
+        ${flann_simulation_i386_libraryfiles}
+        ${qhull_simulation_i386_libraryfiles}
+        ${pcl_simulation_i386_libraryfiles}
+    )
 elseif (IOS_PLATFORM STREQUAL "SIMULATOR64")
     target_link_libraries(${FRAMEWORK_NAME} 
         ${boost_simulation_libraryfiles}
@@ -354,6 +375,20 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp ${CMAKE_CURRENT_LIST_DIR}/vertex.h ${INCLUDE_DIR}"
     XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
+    XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
+    XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
+)
+elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
+set_target_properties(${FRAMEWORK_NAME} PROPERTIES
+    FRAMEWORK TRUE
+    FRAMEWORK_VERSION A
+    MACOSX_FRAMEWORK_IDENTIFIER com.sirokujira.framework
+    MACOSX_FRAMEWORK_INFO_PLIST ${CMAKE_CURRENT_LIST_DIR}/framework.plist.in
+    # "current version" in semantic format in Mach-O binary file
+    VERSION 1.0.0
+    # "compatibility version" in semantic format in Mach-O binary file
+    SOVERSION 1.0.0
+    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp ${CMAKE_CURRENT_LIST_DIR}/vertex.h ${INCLUDE_DIR}"
     XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
     XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
 )
