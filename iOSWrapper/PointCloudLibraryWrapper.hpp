@@ -1,5 +1,5 @@
-#ifndef __PointCloudWrapper_hh
-#define __PointCloudWrapper_hh
+#ifndef __PointCloudWrapper_hpp
+#define __PointCloudWrapper_hpp
 
 #include <string>
 #include <iostream>
@@ -8,7 +8,7 @@
 
 // gcc5?
 // https://stackoverflow.com/questions/33394934/converting-std-cxx11string-to-stdstring
-#define _GLIBCXX_USE_CXX11_ABI 0
+// #define _GLIBCXX_USE_CXX11_ABI 0
 
 struct SwiftPointXYZ fcpp(const float **);
 // #ifdef __cplusplus
@@ -36,7 +36,7 @@ struct SwiftPointXYZ fcpp2(float t[3][3]);
 //     return fcpp2(*t);
 // }
 
-// ���̃t�@�C����(cpp�܂�)�ł� namespace �̎g�p��NG
+// Swift direct namespace source code NG.
 class PointCloudLibraryWrapper
 {
 public:
@@ -61,22 +61,22 @@ public:
     struct SwiftPointXYZRGBA* GetPointCloudData();
     // struct SwiftPointXYZRGBA* GetPointCloudData() 
     // {
-    //     // float** ����� Convert �őΉ�����H
+    //     // float** Convert
     //     return this->pointdata;
     // }
 
     // struct SwiftPointXYZ* GetPointCloudData()
     // {
-    //     // float** ����� Convert �őΉ�����H
+    //     // float** Convert
     //     return this->pointdata;
     // }
 
     int GetPointCloudCount() { return this->pointcount; }
     int GetPointCloudType() { return this->pointtype; }
 private:
-    // ���H�O�f�[�^
+    // 
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud;
-    // ���H��f�[�^
+    // 
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud_filtered;
     // PointCloudLibraryConversions* conversion;
     // float** pointdata;
@@ -85,5 +85,5 @@ private:
     int pointtype;
 };
 
-#endif // __PointCloudWrapper_hh
+#endif // __PointCloudWrapper_hpp
 
