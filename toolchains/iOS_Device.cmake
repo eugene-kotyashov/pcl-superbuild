@@ -46,7 +46,7 @@ set(CMAKE_CXX_OSX_CURRENT_VERSION_FLAG "${CMAKE_C_OSX_CURRENT_VERSION_FLAG}")
 # set (CMAKE_CXX_FLAGS_INIT "")
 # gcc
 # set (CMAKE_C_FLAGS_INIT "-std=c11")
-# set (CMAKE_CXX_FLAGS_INIT "-std=c++11")
+# set (CMAKE_CXX_FLAGS_INIT "-std=c++11 -stdlib=libstdc++")
 # clang
 set (CMAKE_C_FLAGS_INIT "-std=c11 -stdlib=libc++")
 set (CMAKE_CXX_FLAGS_INIT "-std=c++11 -stdlib=libc++")
