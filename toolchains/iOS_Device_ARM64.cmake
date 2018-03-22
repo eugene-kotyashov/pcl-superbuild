@@ -46,7 +46,7 @@ set(CMAKE_CXX_OSX_CURRENT_VERSION_FLAG "${CMAKE_C_OSX_CURRENT_VERSION_FLAG}")
 # set (CMAKE_CXX_FLAGS_INIT "")
 # gcc
 # set (CMAKE_C_FLAGS_INIT "-std=c11")
-# set (CMAKE_CXX_FLAGS_INIT "-std=c++11")
+# set (CMAKE_CXX_FLAGS_INIT "-std=c++11 -stdlib=libstdc++")
 # clang
 set (CMAKE_C_FLAGS_INIT "-std=c11")
 set (CMAKE_CXX_FLAGS_INIT "-std=c++11 -stdlib=libc++")
@@ -186,5 +186,3 @@ macro(find_host_package)
   set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 endmacro(find_host_package)
 
-
-list(APPEND CMAKE_FIND_ROOT_PATH /Users/T_O/pcl-superbuild/build/CMakeExternals/Install/boost-ios-device-arm64)

@@ -25,10 +25,10 @@ include (CMakeForceCompiler)
 # set(CMAKE_C_COMPILER gcc)
 # set(CMAKE_CXX_COMPILER g++)
 # clang
-# set(CMAKE_C_COMPILER /usr/bin/clang)
-# set(CMAKE_CXX_COMPILER /usr/bin/clang++)
-set(CMAKE_C_COMPILER /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang)
-set(CMAKE_CXX_COMPILER /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++)
+set(CMAKE_C_COMPILER /usr/bin/clang)
+set(CMAKE_CXX_COMPILER /usr/bin/clang++)
+# set(CMAKE_C_COMPILER /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang)
+# set(CMAKE_CXX_COMPILER /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++)
 set(CMAKE_AR ar CACHE FILEPATH "" FORCE)
 
 # Skip the platform compiler checks for cross compiling
@@ -56,11 +56,23 @@ set (CMAKE_CXX_OSX_CURRENT_VERSION_FLAG "${CMAKE_C_OSX_CURRENT_VERSION_FLAG}")
 # clang
 set (CMAKE_C_FLAGS_INIT "-std=c11")
 set (CMAKE_CXX_FLAGS_INIT "-std=c++11 -stdlib=libc++")
+
+# set all C and C++ extensions to be OFF on ALL targets
+# this forces the use of -std=c11 and -std=c++11 instead of -std=gnu11 and -std=gnu++11
+# set(CMAKE_C_STANDARD 11)
+# set(CMAKE_CXX_STANDARD 11)
+# set(CMAKE_C_STANDARD_REQUIRED ON)
+# set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# set(CMAKE_C_EXTENSIONS ON CACHE INTERNAL "C compiler extensions OFF")
+# set(CMAKE_CXX_EXTENSIONS ON CACHE INTERNAL "C++ compiler extensions OFF")
 set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS_INIT} ${CMAKE_C_FLAGS}")
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_INIT} ${CMAKE_CXX_FLAGS}")
 
 set (CMAKE_C_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_C_LINK_FLAGS}")
 set (CMAKE_CXX_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_CXX_LINK_FLAGS}")
+# simulator only?
+# https://wiki.appcelerator.org/display/guides2/iOS+Module+64-bit+Support
+# set (CMAKE_CXX_LINK_FLAGS "-Wl,-search_paths_first -lstdc++.6.0.9 ${CMAKE_CXX_LINK_FLAGS}")
 
 set (CMAKE_PLATFORM_HAS_INSTALLNAME 1)
 set (CMAKE_SHARED_LIBRARY_CREATE_C_FLAGS "-dynamiclib -headerpad_max_install_names")
@@ -85,7 +97,7 @@ set (IOS_PLATFORM ${IOS_PLATFORM} CACHE STRING "Type of iOS Platform")
 
 # Setup building for arm64 or not
 if (NOT DEFINED BUILD_ARM64)
-    set (BUILD_ARM64 true)
+    set (BUILD_ARM64 false)
 endif (NOT DEFINED BUILD_ARM64)
 set (BUILD_ARM64 ${BUILD_ARM64} CACHE STRING "Build arm64 arch or not")
 
@@ -143,9 +155,6 @@ set (CMAKE_OSX_SYSROOT ${CMAKE_IOS_SDK_ROOT} CACHE PATH "Sysroot used for iOS su
 
 # set the architecture for iOS 
 if (IOS_PLATFORM STREQUAL "OS")
-    # qhull error
-    # set (IOS_ARCH armv7 armv7s arm64)
-    # qhull ok
     set (IOS_ARCH arm64)
 elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
     set (IOS_ARCH i386)

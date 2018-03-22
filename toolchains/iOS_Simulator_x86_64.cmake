@@ -25,10 +25,10 @@ include (CMakeForceCompiler)
 # set(CMAKE_C_COMPILER gcc)
 # set(CMAKE_CXX_COMPILER g++)
 # clang
-# set(CMAKE_C_COMPILER /usr/bin/clang)
-# set(CMAKE_CXX_COMPILER /usr/bin/clang++)
-set(CMAKE_C_COMPILER /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang)
-set(CMAKE_CXX_COMPILER /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++)
+set(CMAKE_C_COMPILER /usr/bin/clang)
+set(CMAKE_CXX_COMPILER /usr/bin/clang++)
+# set(CMAKE_C_COMPILER /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang)
+# set(CMAKE_CXX_COMPILER /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++)
 set(CMAKE_AR ar CACHE FILEPATH "" FORCE)
 
 # Skip the platform compiler checks for cross compiling
@@ -85,7 +85,7 @@ set (IOS_PLATFORM ${IOS_PLATFORM} CACHE STRING "Type of iOS Platform")
 
 # Setup building for arm64 or not
 if (NOT DEFINED BUILD_ARM64)
-    set (BUILD_ARM64 true)
+    set (BUILD_ARM64 false)
 endif (NOT DEFINED BUILD_ARM64)
 set (BUILD_ARM64 ${BUILD_ARM64} CACHE STRING "Build arm64 arch or not")
 
@@ -143,9 +143,6 @@ set (CMAKE_OSX_SYSROOT ${CMAKE_IOS_SDK_ROOT} CACHE PATH "Sysroot used for iOS su
 
 # set the architecture for iOS 
 if (IOS_PLATFORM STREQUAL "OS")
-    # qhull error
-    # set (IOS_ARCH armv7 armv7s arm64)
-    # qhull ok
     set (IOS_ARCH arm64)
 elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
     set (IOS_ARCH i386)
