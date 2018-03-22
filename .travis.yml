@@ -307,15 +307,15 @@ after_failure:
   - ls -la /usr/lib/ccache/ || ls -la /usr/local/opt/ccache/libexec 
 
 
-# - zip -q packages/pcl-rleases-$GIT_TAG.zip -r ./CMakeExternals/Install
-# - tar czf packages/pcl-releases-$GIT_TAG.tar.gz ./CMakeExternals/Install
-# - zip -q packages/pcl-releases-$GIT_TAG.zip -r ./CMakeExternals/Install
-# - zip -q packages/pcl-releases-frameworks-$TRAVIS_XCODE_SDK-$GIT_TAG.zip -r ./CMakeExternals/Install/frameworks
-# - zip -q packages/pcl-releases-frameworks-$GIT_TAG.zip -r ./CMakeExternals/Install/frameworks-device
-# - zip -q packages/pcl-releases-frameworks-$GIT_TAG.zip -r ./CMakeExternals/Install/frameworks-simulator
+# - zip -q packages/pcl-rleases-$GIT_TAG.zip -r ./../build/CMakeExternals/Install
+# - tar czf packages/pcl-releases-$GIT_TAG.tar.gz ./../build/CMakeExternals/Install
+# - zip -q packages/pcl-releases-$GIT_TAG.zip -r ./../build/CMakeExternals/Install
+# - zip -q packages/pcl-releases-frameworks-$TRAVIS_XCODE_SDK-$GIT_TAG.zip -r ./../build/CMakeExternals/Install/frameworks
+# - zip -q packages/pcl-releases-frameworks-$GIT_TAG.zip -r ./../build/CMakeExternals/Install/frameworks-device
+# - zip -q packages/pcl-releases-frameworks-$GIT_TAG.zip -r ./../build/CMakeExternals/Install/frameworks-simulator
 before_deploy:
    - mkdir packages
-   - zip -q packages/pcl-releases-frameworks-$GIT_TAG.zip -r ./CMakeExternals/Install/frameworks-universal
+   - zip -q packages/pcl-releases-frameworks-$GIT_TAG.zip -r ./../build/CMakeExternals/Install/frameworks-universal
    - git config --global user.name "Sirokujira"
    - git config --global user.email "toru753@gmail.com"
    - git tag $GIT_TAG -a -m "Commit from Travis CI for build $TRAVIS_BUILD_NUMBER"

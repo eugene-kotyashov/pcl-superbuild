@@ -56,6 +56,16 @@ set (CMAKE_CXX_OSX_CURRENT_VERSION_FLAG "${CMAKE_C_OSX_CURRENT_VERSION_FLAG}")
 # clang
 set (CMAKE_C_FLAGS_INIT "-std=c11")
 set (CMAKE_CXX_FLAGS_INIT "-std=c++11 -stdlib=libc++")
+
+# set all C and C++ extensions to be OFF on ALL targets
+# this forces the use of -std=c11 and -std=c++11 instead of -std=gnu11 and -std=gnu++11
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS ON CACHE INTERNAL "C compiler extensions ON")
+set(CMAKE_CXX_EXTENSIONS ON CACHE INTERNAL "C++ compiler extensions ON")
+
 set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS_INIT} ${CMAKE_C_FLAGS}")
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_INIT} ${CMAKE_CXX_FLAGS}")
 
