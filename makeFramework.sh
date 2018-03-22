@@ -38,10 +38,10 @@ make_pcl_framework ()
 
   # Public Header
   mkdir $pcl_framework/Headers
-  cp -R $pcl_header_dir/* $pcl_framework/Headers/
-  cp -R $boost_header_dir/* $pcl_framework/Headers/
-  cp -R $eigen_header_dir/* $pcl_framework/Headers/
-  cp -R $flann_header_dir/* $pcl_framework/Headers/
+  cp -R $pcl_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $boost_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $eigen_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $flann_header_dir/* $pcl_framework/Headers/ 2>&1
 
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
@@ -180,11 +180,11 @@ make_pcl_framework_simulator ()
 
   # Public Header
   # mkdir $pcl_framework/Headers
-  cp -R $pcl_header_dir/* $pcl_framework/Headers/
-  cp -R $boost_header_dir/* $pcl_framework/Headers/
-  cp -R $eigen_header_dir/* $pcl_framework/Headers/
-  cp -R $flann_header_dir/* $pcl_framework/Headers/
-  cp -R $qhull_header_dir/* $pcl_framework/Headers/
+  cp -R $pcl_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $boost_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $eigen_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $flann_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $qhull_header_dir/* $pcl_framework/Headers/ 2>&1
 
   # mkdir $pcl_framework/Modules
   # cp module.modulemap $pcl_framework/Modules/
@@ -281,17 +281,17 @@ make_pcl_framework_universal ()
 
   # Public Header
   mkdir $pcl_framework/Headers
-  # cp -R $pcl_header_dir/* $pcl_framework/Headers/
-  # cp -R $boost_header_dir/* $pcl_framework/Headers/
-  # cp -R $eigen_header_dir/* $pcl_framework/Headers/
-  # cp -R $flann_header_dir/* $pcl_framework/Headers/
-  # cp -R $qhull_header_dir/* $pcl_framework/Headers/
+  # cp -R $pcl_header_dir/* $pcl_framework/Headers/ 2>&1
+  # cp -R $boost_header_dir/* $pcl_framework/Headers/ 2>&1
+  # cp -R $eigen_header_dir/* $pcl_framework/Headers/ 2>&1
+  # cp -R $flann_header_dir/* $pcl_framework/Headers/ 2>&1
+  # cp -R $qhull_header_dir/* $pcl_framework/Headers/ 2>&1
 
-  cp -R $pcl_arm64_header_dir/* $pcl_framework/Headers/
-  cp -R $boost_arm64_header_dir/* $pcl_framework/Headers/
-  cp -R $eigen_arm64_header_dir/* $pcl_framework/Headers/
-  cp -R $flann_arm64_header_dir/* $pcl_framework/Headers/
-  cp -R $qhull_arm64_header_dir/* $pcl_framework/Headers/
+  cp -R $pcl_arm64_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $boost_arm64_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $eigen_arm64_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $flann_arm64_header_dir/* $pcl_framework/Headers/ 2>&1
+  cp -R $qhull_arm64_header_dir/* $pcl_framework/Headers/ 2>&1
 
 
   # mkdir $pcl_framework/Modules
