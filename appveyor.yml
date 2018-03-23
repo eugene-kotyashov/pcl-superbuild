@@ -290,9 +290,13 @@ build_script:
     cd ..
 
     7z a ./pcl-superbuild-%ANDROID_ABIs%.zip -r ./cachebuild/CMakeExternals/Install/boost-android
+
     7z a ./pcl-superbuild-%ANDROID_ABIs%.zip -r ./cachebuild/CMakeExternals/Install/flann-android
+
     7z a ./pcl-superbuild-%ANDROID_ABIs%.zip -r ./cachebuild/CMakeExternals/Install/eigen
+
     7z a ./pcl-superbuild-%ANDROID_ABIs%.zip -r ./cachebuild/CMakeExternals/Install/qhull-android
+
     7z a ./pcl-superbuild-%ANDROID_ABIs%.zip -r ./cachebuild/CMakeExternals/Install/pcl-android
 
 # on successful build
