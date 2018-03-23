@@ -2,10 +2,12 @@
 # ïœêîê›íË
 # ==============================
 INFOPLIST='FrameworkSample/Resources/Info.plist'
-FRAMEWORK_NAME=$(/usr/libexec/PlistBuddy -c "Print CFBundleName" ${INFOPLIST})
+# FRAMEWORK_NAME=$(/usr/libexec/PlistBuddy -c "Print CFBundleName" ${INFOPLIST})
+FRAMEWORK_NAME="pcl"
 BUILD_TARGET_NAME=$FRAMEWORK_NAME
 FRAMEWORK_BUILD_CONFIGURATION="Release"
-FRAMEWORK_VERSION_NUMBER=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" ${INFOPLIST})
+# FRAMEWORK_VERSION_NUMBER=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" ${INFOPLIST})
+FRAMEWORK_VERSION_NUMBER="0.0.1"
 FRAMEWORK_VERSION=A
 FRAMEWORK_BUILD_PATH="Framework"
 FRAMEWORK_DIR="${FRAMEWORK_BUILD_PATH}/${FRAMEWORK_NAME}.framework"

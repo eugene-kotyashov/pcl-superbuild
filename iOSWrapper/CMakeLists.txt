@@ -35,9 +35,9 @@ set(LOGIC_ONLY_TESTS 0)                                       # <== Set to 1 if 
 set(DEVELOPMENT_TEAM_ID "AAAAAAAA")                           # <== Set to your team ID from Apple
 
 set(MACOSX_BUNDLE_ICON_FILE "")
-set(MACOSX_BUNDLE_LONG_VERSION_STRING "1.0")
-set(MACOSX_BUNDLE_SHORT_VERSION_STRING "1.0")
-set(MACOSX_BUNDLE_BUNDLE_VERSION "1.0")
+set(MACOSX_BUNDLE_LONG_VERSION_STRING "1.8.1")
+set(MACOSX_BUNDLE_SHORT_VERSION_STRING "1.8")
+set(MACOSX_BUNDLE_BUNDLE_VERSION "1.8.1")
 set(MACOSX_BUNDLE_COPYRIGHT "Copyright Sirokujira")
 set(MACOSX_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET})
 # end
@@ -373,7 +373,7 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
     SOVERSION 1.0.0
-    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp;${CMAKE_CURRENT_LIST_DIR}/vertex.h;${INCLUDE_DIR}"
+    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp;${CMAKE_CURRENT_LIST_DIR}/vertex.h"
     XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${DEPLOYMENT_TARGET}
     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer"
     XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
@@ -389,7 +389,7 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
     SOVERSION 1.0.0
-    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp;${CMAKE_CURRENT_LIST_DIR}/vertex.h;${INCLUDE_DIR}"
+    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp;${CMAKE_CURRENT_LIST_DIR}/vertex.h"
     XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
     XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
 )
@@ -403,7 +403,7 @@ set_target_properties(${FRAMEWORK_NAME} PROPERTIES
     VERSION 1.0.0
     # "compatibility version" in semantic format in Mach-O binary file
     SOVERSION 1.0.0
-    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp;${CMAKE_CURRENT_LIST_DIR}/vertex.h;${INCLUDE_DIR}"
+    PUBLIC_HEADER "${CMAKE_CURRENT_LIST_DIR}/PointCloudLibraryWrapper.hpp;${CMAKE_CURRENT_LIST_DIR}/vertex.h"
     XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY ${DEVICE_FAMILY}
     XCODE_ATTRIBUTE_SKIP_INSTALL "YES"
 )
