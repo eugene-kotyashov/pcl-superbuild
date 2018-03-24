@@ -40,5 +40,6 @@ struct float7 {
 // these methods have to be in mm file, hence private
 // + (pcl::PointCloud*)pclPointCloudFromARPointCloud:(ARPointCloud *)uiPoints;
 - (struct float7*)GetPointCloudData;
+- (int)GetPointCloudDataCount;
 
 @end
