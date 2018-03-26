@@ -59,20 +59,14 @@ public:
     //     return this->pointdata;
     // }
     struct SwiftPointXYZRGBA* GetPointCloudData();
-    // struct SwiftPointXYZRGBA* GetPointCloudData() 
-    // {
-    //     // float** Convert
-    //     return this->pointdata;
-    // }
 
-    // struct SwiftPointXYZ* GetPointCloudData()
-    // {
-    //     // float** Convert
-    //     return this->pointdata;
-    // }
-
-    int GetPointCloudCount() { return this->pointcount; }
+    int GetPointCloudCount();
     int GetPointCloudType() { return this->pointtype; }
+
+    void SetPointCloudData(struct SwiftPointXYZRGBA* data);
+    void SetPointCloudCount(int count);
+    // void SetPointCloudType(int pointtype);
+
 private:
     // 
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud;

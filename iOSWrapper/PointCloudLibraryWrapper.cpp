@@ -90,6 +90,24 @@ struct SwiftPointXYZRGBA* PointCloudLibraryWrapper::GetPointCloudData()
     return this->pointdata;
 }
 
+EXPORT
+int GetPointCloudCount()
+{
+    return this->pointcount;
+}
+
+EXPORT
+PointCloudLibraryWrapper::SetPointCloudData(struct SwiftPointXYZRGBA* pointdata)
+{
+    this->pointdata = pointdata;
+}
+
+EXPORT
+PointCloudLibraryWrapper::void SetPointCloudCount(int count)
+{
+    this->count = count;
+}
+
 /*
 EXPORT
 void PointCloudLibraryWrapper::SegmentationPlane(double leafSize[3])
