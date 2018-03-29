@@ -42,6 +42,6 @@ struct float7 {
 - (struct float7*)GetPointCloudData;
 - (int)GetPointCloudDataCount;
 
-- SetPointCloudData:(struct float7*)pointdata;
-- (void)SetPointCloudDataCount:(int)count;
+// - SetPointCloudData:(struct float7*)pointdata;
+// - (void)SetPointCloudDataCount:(int)count;
 @end

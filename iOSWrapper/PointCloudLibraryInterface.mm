@@ -92,26 +92,26 @@
 }
 
 
-- (void)GetPointCloudData:(struct float7*)pointcloud {
-    self.isLoad = false;
-
-    SwiftPointXYZRGBA* pointcloud_data = [pointcloud SwiftPointXYZRGBA];
-
-    myPointCloudLibraryWrapper->SetPointCloudData(pointcloud_data);
-    self.isLoad = true;
-    return;
-}
-
-- (void)SetPointCloudDataCount:(int)count {
-    if (!self.isLoad)
-    {
-        // NSLog()
-        return 0;
-    }
-
-    count = myPointCloudLibraryWrapper->SetPointCloudCount(count);
-    return;
-}
+// - (void)SetPointCloudData:(struct float7*)pointcloud {
+//     self.isLoad = false;
+// 
+//     SwiftPointXYZRGBA* pointcloud_data = [pointcloud SwiftPointXYZRGBA];
+// 
+//     myPointCloudLibraryWrapper->SetPointCloudData(pointcloud_data);
+//     self.isLoad = true;
+//     return;
+// }
+// 
+// - (void)SetPointCloudDataCount:(int)count {
+//     if (!self.isLoad)
+//     {
+//         // NSLog()
+//         return 0;
+//     }
+// 
+//     count = myPointCloudLibraryWrapper->SetPointCloudCount(count);
+//     return;
+// }
 
 
 // use Array Sample
