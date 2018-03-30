@@ -91,19 +91,19 @@ struct SwiftPointXYZRGBA* PointCloudLibraryWrapper::GetPointCloudData()
 }
 
 EXPORT
-int GetPointCloudCount()
+int PointCloudLibraryWrapper::GetPointCloudCount()
 {
     return this->pointcount;
 }
 
 EXPORT
-PointCloudLibraryWrapper::SetPointCloudData(struct SwiftPointXYZRGBA* pointdata)
+void PointCloudLibraryWrapper::SetPointCloudData(struct SwiftPointXYZRGBA* pointdata)
 {
     this->pointdata = pointdata;
 }
 
 EXPORT
-PointCloudLibraryWrapper::void SetPointCloudCount(int count)
+void PointCloudLibraryWrapper::SetPointCloudCount(int count)
 {
     this->count = count;
 }

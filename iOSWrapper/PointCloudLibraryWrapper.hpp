@@ -68,11 +68,10 @@ public:
     // void SetPointCloudType(int pointtype);
 
 private:
-    // 
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud;
-    // 
     // pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud_filtered;
     // PointCloudLibraryConversions* conversion;
+
     // float** pointdata;
     SwiftPointXYZRGBA* pointdata;
     int pointcount;
