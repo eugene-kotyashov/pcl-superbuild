@@ -13,6 +13,7 @@ namespace
         voxelGrid.setInputCloud(cloud);
         voxelGrid.setLeafSize(leafSize[0], leafSize[1], leafSize[2]);
         voxelGrid.filter(*cloudFiltered);
+
         return cloudFiltered;
     }
 
@@ -73,11 +74,4 @@ float* PointCloudLibraryVoxelGrid::PointCloudLibraryVoxelGridFromFloatArray(floa
     return tmpFloatArray;
 }
 
-//----------------------------------------------------------------------------
-// int PointCloudLibraryVoxelGrid::RequestData()
-// {
-//     // pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = PointCloudLibraryConversions::PointCloudFromPolyData(input);
-//     // pcl::PointCloud<pcl::PointXYZ>::Ptr cloudFiltered = ApplyVoxelGrid(cloud, this->LeafSize);
-// 
-//     return 1;
-// }
+

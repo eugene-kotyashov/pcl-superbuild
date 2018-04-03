@@ -1,3 +1,9 @@
+//
+// .NAME PointCloudLibrarySACSegmentationPlane
+//
+// .SECTION Description
+// 
+
 #ifndef __PointCloudLibrarySACSegmentationPlane_h
 #define __PointCloudLibrarySACSegmentationPlane_h
 
@@ -29,6 +35,6 @@ private:
     void operator=(const PointCloudLibrarySACSegmentationPlane&);  // Not implemented.
 };
 
-#endif
+#endif  // __PointCloudLibrarySACSegmentationPlane_h
 
 

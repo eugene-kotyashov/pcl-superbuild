@@ -105,7 +105,7 @@ void PointCloudLibraryWrapper::SetPointCloudData(struct SwiftPointXYZRGBA* point
 EXPORT
 void PointCloudLibraryWrapper::SetPointCloudCount(int count)
 {
-    this->count = count;
+    this->pointcount = count;
 }
 
 /*

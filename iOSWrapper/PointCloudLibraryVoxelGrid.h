@@ -14,11 +14,14 @@ public:
     static float* PointCloudLibraryVoxelGridFromFloatArray(float* farray);
 
 protected:
+
+
     double LeafSize[3];
 
     // virtual int RequestData();
     PointCloudLibraryVoxelGrid();
     virtual ~PointCloudLibraryVoxelGrid();
+
 private:
     PointCloudLibraryVoxelGrid(const PointCloudLibraryVoxelGrid&);  // Not implemented.
     void operator=(const PointCloudLibraryVoxelGrid&);  // Not implemented.
