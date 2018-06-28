@@ -85,7 +85,7 @@ macro(crosscompile_flann tag)
                -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
                -DANDROID_TOOLCHAIN=$ENV{TARGET_COMPILER}
                -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
-               -DANDROID_STL=gnustl_static
+               -DANDROID_STL=c++_static
                -DANDROID_STL_FORCE_FEATURES:BOOL=ON
                -DBUILD_EXAMPLES:BOOL=OFF
                -DBUILD_TESTS:BOOL=OFF
@@ -133,7 +133,7 @@ macro(crosscompile_qhull tag)
                -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
                -DANDROID_TOOLCHAIN=$ENV{TARGET_COMPILER}
                -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
-               -DANDROID_STL=gnustl_static
+               -DANDROID_STL=c++_static
                -DANDROID_STL_FORCE_FEATURES:BOOL=ON
                -DBUILD_SHARED_LIBS:BOOL=OFF
                -DBUILD_PYTHON_BINDINGS:BOOL=OFF
@@ -186,7 +186,7 @@ macro(crosscompile_boost tag)
       # boost error
       # https://github.com/android-ndk/ndk/issues/442
       # https://github.com/android-ndk/ndk/issues/480
-      # -DANDROID_STL=gnustl_static
+      # -DANDROID_STL=c++_static
       -DANDROID_STL=c++_static
       # ndk r14
       # -D_FILE_OFFSET_BITS=64
@@ -285,7 +285,7 @@ macro(crosscompile_pcl tag)
       -DANDROID_ABI=$ENV{ANDROID_ABIs}
       -DANDROID_NATIVE_API_LEVEL=$ENV{ANDROID_TARGET_API}
       -DANDROID_TOOLCHAIN=$ENV{TARGET_COMPILER}
-      -DANDROID_STL=gnustl_static
+      -DANDROID_STL=c++_static
       -DANDROID_STL_FORCE_FEATURES:BOOL=ON
       -DBUILD_SHARED_LIBS:BOOL=OFF
       -DPCL_SHARED_LIBS:BOOL=OFF
