@@ -326,8 +326,8 @@ macro(crosscompile_pcl tag)
       # over TestCI build time(50 min)
       # local environment build case(on set).
       # start setting
-      # -DBUILD_sample_consensus:BOOL=ON
-      -DBUILD_sample_consensus:BOOL=OFF
+      -DBUILD_sample_consensus:BOOL=ON
+      # -DBUILD_sample_consensus:BOOL=OFF
       # -DBUILD_surface_on_nurbs:BOOL=ON
       -DBUILD_surface_on_nurbs:BOOL=OFF
       # -DBUILD_outofcore:BOOL=ON
