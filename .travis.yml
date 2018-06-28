@@ -19,6 +19,7 @@ addons:
 branches:
   only:
     - master
+    # - develop
     - CITest
 
 # Android NDK Toolchains
@@ -33,66 +34,11 @@ env:
 
 matrix: 
    include: 
-#      # - os: linux
-#      #   language: cpp
-#      #   compiler: gcc
-#      #   env: ANDROID_ABIs="arm64-v8a"
-#      #   env: ANDROID_TARGET_API="23"
-#      #   env: TOOLCHAIN_NAME="aarch64-linux-android-4.9"
-#      #   env: TARGET_COMPILER="gcc"
-#      # 
-#      # - os: linux
-#      #   language: cpp
-#      #   compiler: gcc
-#      #   env: ANDROID_ABIs="armeabi-v7a"
-#      #   env: ANDROID_TARGET_API="23"
-#      #   env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
-#      #   env: TARGET_COMPILER="gcc"
-#      # 
-#      # - os: linux
-#      #   language: cpp
-#      #   compiler: gcc
-#      #   env: ANDROID_ABIs="armeabi"
-#      #   env: ANDROID_TARGET_API="23"
-#      #   env: TOOLCHAIN_NAME="arm-linux-androideabi-4.9"
-#      #   env: TARGET_COMPILER="gcc"
-#      # 
-#      # # - os: linux
-#      # #   language: cpp
-#      # #   compiler: gcc
-#      # #   env: ANDROID_ABIs="x86_64"
-#      # #   env: ANDROID_TARGET_API="23"
-#      # #   env: TOOLCHAIN_NAME="x86_64-linux-android-4.9"
-#      #     env: TARGET_COMPILER="gcc"
-#      # # 
-#      # # - os: linux
-#      # #   language: cpp
-#      # #   compiler: gcc
-#      # #   env: ANDROID_ABIs="x86"
-#      # #   env: ANDROID_TARGET_API="23"
-#      # #   env: TOOLCHAIN_NAME="x86-4.9"
-#      #     env: TARGET_COMPILER="gcc"
-#      # 
-#      # - os: osx
-#      #   osx_image: xcode8.3
-#      #   language: objective-c
-#      #   compiler: gcc
-#      #   # env: IOS_SDK_VERSION="iPhoneOS10.3.sdk"
-#      #   # env: TARGET_COMPILER="clang"
-#      #   xcode_sdk: iOS 10.3
-#      # - os: osx
-#      #   osx_image: xcode9
-#      #   language: objective-c
-#      #   compiler: gcc
-#      #   # env: IOS_SDK_VERSION="iPhoneOS11.0.sdk"
-#      #   # env: TARGET_COMPILER="clang"
-#      #   xcode_sdk: iOS 11.0
-# 
 #      - os: linux
 #        language: cpp
 #        compiler: clang
 #        env: ANDROID_ABIs="arm64-v8a"
-#        env: ANDROID_TARGET_API="23"
+#        env: ANDROID_TARGET_API="26"
 #        env: TOOLCHAIN_NAME="aarch64-linux-android-clang3.6"
 #        env: TARGET_COMPILER="clang"
 #      
@@ -100,7 +46,7 @@ matrix:
 #        language: cpp
 #        compiler: clang
 #        env: ANDROID_ABIs="armeabi-v7a"
-#        env: ANDROID_TARGET_API="23"
+#        env: ANDROID_TARGET_API="26"
 #        env: TOOLCHAIN_NAME="arm-linux-android-clang3.6"
 #        env: TARGET_COMPILER="clang"
 #      
@@ -108,7 +54,7 @@ matrix:
 #        language: cpp
 #        compiler: clang
 #        env: ANDROID_ABIs="armeabi"
-#        env: ANDROID_TARGET_API="23"
+#        env: ANDROID_TARGET_API="26"
 #        env: TOOLCHAIN_NAME="arm-linux-android-clang3.6"
 #        env: TARGET_COMPILER="clang"
 #      
@@ -116,7 +62,7 @@ matrix:
 #        language: cpp
 #        compiler: clang
 #        env: ANDROID_ABIs="x86_64"
-#        env: ANDROID_TARGET_API="23"
+#        env: ANDROID_TARGET_API="26"
 #        env: TOOLCHAIN_NAME="x86_64-linux-android-clang3.6"
 #        env: TARGET_COMPILER="clang"
 #      
@@ -124,7 +70,7 @@ matrix:
 #        language: cpp
 #        compiler: clang
 #        env: ANDROID_ABIs="x86"
-#        env: ANDROID_TARGET_API="23"
+#        env: ANDROID_TARGET_API="26"
 #        env: TOOLCHAIN_NAME="x86-linux-android-clang3.6"
 #        env: TARGET_COMPILER="clang"
 # 
