@@ -124,3 +124,8 @@ Framework から呼び出すヘッダーは Umbrella Header とする。
 https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html#//apple_ref/doc/uid/TP40014216-CH10-ID122
 
 
+---
+
+ObjectSharpie の使い方?
+https://docs.microsoft.com/en-us/xamarin/ios/platform/binding-objective-c/walkthrough?tabs=vsmac
+

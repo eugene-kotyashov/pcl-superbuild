@@ -8,10 +8,6 @@ class ViewController: NSViewController
         // Objective-C++メソッド呼び出し
         var pointcloudWrapper_cpp = PointCloudLibraryWrapper()
 
-        // NSString *modelFileName = [[NSBundle mainBundle] pathForResource:@"pointcloud" ofType:@"pcd"];
-        // std::string modelFileNameCString = [modelFileName UTF8String]; 
-        // myPointCloudLibraryWrapper->Load(strDst);
-
         // ファイルまでのパスを取得（同時にnilチェック）
         if let path: String = Bundle.main.path(forResource: "pointcloud", ofType: "pcd")
         {

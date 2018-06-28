@@ -42,6 +42,7 @@ fetch_flann()
 fetch_qhull()
 
 # Build overTime
+# pcl-vtk not Implement ios/android I/F
 # compile_vtk()
 
 set(tags)
@@ -87,15 +88,3 @@ foreach(tag ${tags})
   crosscompile_pcl(${tag})
 endforeach()
 
-# if (BUILD_IOS_DEVICE)
-#   ios_device_wrapper_compile()
-# endif()
-
-# if (BUILD_IOS_SIMULATOR)
-#   ios_simulator_wrapper_compile()
-# endif()
-# 
-# if (BUILD_IOS_DEVICE)
-#   create_pcl_framework()
-#   # create_pcl_framework2()
-# endif()
