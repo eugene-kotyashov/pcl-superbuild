@@ -19,7 +19,6 @@ addons:
 branches:
   only:
     - master
-    # - develop
     - CITest
 
 # Android NDK Toolchains

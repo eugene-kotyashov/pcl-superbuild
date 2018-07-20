@@ -105,8 +105,9 @@ macro(fetch_qhull)
   ExternalProject_Add(
     qhull-fetch
     SOURCE_DIR ${source_prefix}/qhull
-    # GIT_REPOSITORY git://github.com/Sirokujira/qhull.git
-    GIT_REPOSITORY git://github.com/qhull/qhull.git
+    GIT_REPOSITORY git://github.com/Sirokujira/qhull.git
+    # iOS build error[link static libraries error(execute to target_link)]
+    # GIT_REPOSITORY git://github.com/qhull/qhull.git
     # GIT_TAG master
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
@@ -135,7 +136,8 @@ macro(crosscompile_qhull tag)
                -DANDROID_TOOLCHAIN_NAME=$ENV{TOOLCHAIN_NAME}
                -DANDROID_STL=c++_static
                -DANDROID_STL_FORCE_FEATURES:BOOL=ON
-               -DBUILD_SHARED_LIBS:BOOL=OFF
+               -DBUILD_SHARED_LIBS:BOOL=ON
+               -DQhull_BUILD_QHULL_BINARIES:BOOL=OFF
                -DBUILD_PYTHON_BINDINGS:BOOL=OFF
                -DBUILD_MATLAB_BINDINGS:BOOL=OFF
   )
@@ -186,7 +188,6 @@ macro(crosscompile_boost tag)
       # boost error
       # https://github.com/android-ndk/ndk/issues/442
       # https://github.com/android-ndk/ndk/issues/480
-      # -DANDROID_STL=c++_static
       -DANDROID_STL=c++_static
       # ndk r14
       # -D_FILE_OFFSET_BITS=64
@@ -207,7 +208,9 @@ macro(crosscompile_boost_on_b2 tag)
   if (${tag} eq "android")
     # ./b2 toolset=$ENV{TARGET_COMPILER} cxxflags="-stdlib=libc++" threading=multi threadapi=pthread link=shared runtime-link=shared -j 6
     execute_process(
-      COMMAND ./b2 toolset=gcc-android4.9 link=static runtime-link=static target-os=linux -stagedir
+      # NDK not support gcc
+      # COMMAND ./b2 toolset=gcc-android4.9 link=static runtime-link=static target-os=linux -stagedir
+      COMMAND ./b2 toolset=clang-android3.6 link=static runtime-link=static target-os=linux -stagedir
       WORKING_DIRECTORY ${source_prefix}/boost
     )
   endif()
@@ -267,8 +270,8 @@ macro(crosscompile_pcl tag)
   # get_filename_component(toolchain_file ${original_toolchain_file} NAME)
   # set(toolchain_file ${build_prefix}/${proj}/${toolchain_file})
   # configure_file(${original_toolchain_file} ${toolchain_file} COPYONLY)
-  file(APPEND ${toolchain_file}
-    "\nlist(APPEND CMAKE_FIND_ROOT_PATH ${install_prefix}/boost-${tag})\n")
+  # file(APPEND ${toolchain_file}
+  #   "\nlist(APPEND CMAKE_FIND_ROOT_PATH ${install_prefix}/boost-${tag})\n")
 
   # octree_base.hpp: warning: taking the max of a value and unsigned zero is always equal to the other value [-Wmax-unsigned-zero]
   ExternalProject_Add(
