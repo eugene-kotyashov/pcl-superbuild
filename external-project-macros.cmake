@@ -105,9 +105,9 @@ macro(fetch_qhull)
   ExternalProject_Add(
     qhull-fetch
     SOURCE_DIR ${source_prefix}/qhull
-    GIT_REPOSITORY git://github.com/Sirokujira/qhull.git
+    # GIT_REPOSITORY git://github.com/Sirokujira/qhull.git
     # iOS build error[link static libraries error(execute to target_link)]
-    # GIT_REPOSITORY git://github.com/qhull/qhull.git
+    GIT_REPOSITORY git://github.com/qhull/qhull.git
     # GIT_TAG master
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
