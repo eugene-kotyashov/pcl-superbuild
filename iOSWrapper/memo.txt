@@ -145,3 +145,25 @@ https://joyplot.com/documents/2016/09/18/xcode-link-error-framework/
 
 
 https://github.com/headupinclouds/cmake_framework_test/
+
+cxx/h ファイルとして作成する項目は以下の分類に分けて実装を進めていく？
+http://pointclouds.org/documentation/
+
+filters
+features
+keypoints 
+registration
+kdtree
+octree 
+segmentation
+sample_consensus
+surface 
+recognition 
+io 
+
+visualization?
+-> not vtk
+-> open gles?
+-> metal?
+
+   

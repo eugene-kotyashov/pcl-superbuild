@@ -128,3 +128,17 @@ https://developer.apple.com/library/content/documentation/Swift/Conceptual/Build
 ObjectSharpie の使い方?
 https://docs.microsoft.com/en-us/xamarin/ios/platform/binding-objective-c/walkthrough?tabs=vsmac
 
+---
+
+ARCore が対応している項目について
+・モーショントラッキング
+・水平・垂直面の検出(認識)
+・光源の推測(環境光)
+・特徴点抽出(PointCloud)
+・空間共有
+・マーカー画像検知
+
+---
+
+http://pointclouds.org/documentation/tutorials/normal_estimation_using_integral_images.php#normal-estimation-using-integral-images
+
