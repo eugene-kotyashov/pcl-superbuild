@@ -35,7 +35,7 @@ endmacro()
 # Eigen fetch and install
 #
 macro(install_eigen)
-  set(eigen_url http://bitbucket.org/eigen/eigen/get/3.3.4.tar.bz2)
+  set(eigen_url https://gitlab.com/libeigen/eigen/-/archive/3.3.4/eigen-3.3.4.tar.bz2)
   ExternalProject_Add(
     eigen
     SOURCE_DIR ${source_prefix}/eigen
